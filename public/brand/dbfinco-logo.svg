@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 132" width="430" height="132" role="img" aria-label="DB FinCo — Financial Accounting Services">
+  <title>DB FinCo — Financial Accounting Services</title>
+  <defs>
+    <linearGradient id="d" gradientUnits="userSpaceOnUse" x1="4" y1="0" x2="67" y2="0">
+      <stop offset="0%" stop-color="#c8992f"/><stop offset="40%" stop-color="#a87c22"/><stop offset="100%" stop-color="#2a1747"/>
+    </linearGradient>
+    <linearGradient id="f" gradientUnits="userSpaceOnUse" x1="140" y1="0" x2="425" y2="0">
+      <stop offset="0%" stop-color="#a87c22"/><stop offset="45%" stop-color="#c8992f"/><stop offset="100%" stop-color="#e6c476"/>
+    </linearGradient>
+  </defs>
+  <text y="76" font-family="'Plus Jakarta Sans','Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="88" font-weight="800" letter-spacing="-0.02em">
+    <tspan x="4" fill="url(#d)">D</tspan><tspan fill="#2a1747">B</tspan>
+  </text>
+  <text y="76" font-family="'Plus Jakarta Sans','Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="88" font-weight="700" letter-spacing="-0.005em">
+    <tspan x="140" fill="url(#f)">FINCO</tspan>
+  </text>
+  <text y="118" x="5" font-family="'Inter','Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="21" letter-spacing="0.09em" fill="#2a1747">FINANCIAL ACCOUNTING SERVICES</text>
+</svg>

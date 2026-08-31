@@ -1,0 +1,312 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   DB FinCo Design System — design tokens
+   Palette sampled from the official DB FinCo wordmark:
+   deep violet ("DB" / tagline) + warm premium gold ("FINCO" gradient).
+   The site is deliberately light: white dominates, purple anchors, gold accents.
+   ========================================================================== */
+
+@theme {
+  /* --- Brand: purple ------------------------------------------------ */
+  --color-purple-950: #150c26;
+  --color-purple-900: #2a1747;
+  --color-purple-800: #3a2063;
+  --color-purple-700: #4c2b7e;
+  --color-purple-600: #603a97;
+  --color-purple-500: #7a52b3;
+  --color-purple-400: #9a79c9;
+  --color-purple-300: #b79fdb;
+  --color-purple-200: #d6c8ec;
+  --color-purple-100: #e9e1f6;
+  --color-purple-50: #f5f1fc;
+
+  /* --- Brand: gold -------------------------------------------------- */
+  --color-gold-900: #6f4f10;
+  --color-gold-800: #8a6417;
+  --color-gold-700: #a87c22;
+  --color-gold-600: #c0912e;
+  --color-gold-500: #d4a73c;
+  --color-gold-400: #e0bc63;
+  --color-gold-300: #ebd08f;
+  --color-gold-200: #f3e2ba;
+  --color-gold-100: #f8eed6;
+  --color-gold-50: #fdf9ef;
+
+  /* --- Surfaces ------------------------------------------------------ */
+  --color-surface-white: #ffffff;
+  --color-surface-subtle: #fbfafd;
+  --color-surface-muted: #f4f2f8;
+  --color-surface-lilac: #f6f3fc;
+  --color-surface-gold-soft: #fdf9ef;
+
+  /* --- Text ---------------------------------------------------------- */
+  --color-ink-primary: #1e1330;
+  --color-ink-secondary: #4a4058;
+  --color-ink-muted: #6e667e;
+  --color-ink-inverse: #ffffff;
+
+  /* --- Lines --------------------------------------------------------- */
+  --color-line: #e6e2ee;
+  --color-line-strong: #d0c9de;
+
+  /* --- Status -------------------------------------------------------- */
+  /* Status colours are darkened enough to clear 4.5:1 not only on white but
+     also on their own 5–10% tinted backgrounds, where the badges sit. */
+  --color-success: #126544;
+  --color-warning: #92400e;
+  --color-danger: #a91d13;
+
+  /* --- Data visualisation (ordered, accessible on white) -------------- */
+  --color-viz-1: #4c2b7e;
+  --color-viz-2: #c0912e;
+  --color-viz-3: #7a52b3;
+  --color-viz-4: #126544;
+  --color-viz-5: #9a79c9;
+  --color-viz-6: #b79fdb;
+
+  /* --- Typography ---------------------------------------------------- */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--font-jakarta), var(--font-inter), ui-sans-serif,
+    system-ui, sans-serif;
+
+  /* Fluid type scale — clamp(min, preferred, max) */
+  --text-display-1: clamp(2.5rem, 1.55rem + 4.25vw, 4.75rem);
+  --text-display-1--line-height: 1.04;
+  --text-display-1--letter-spacing: -0.033em;
+  --text-display-2: clamp(2.125rem, 1.5rem + 2.8vw, 3.5rem);
+  --text-display-2--line-height: 1.08;
+  --text-display-2--letter-spacing: -0.028em;
+  --text-h1: clamp(1.95rem, 1.42rem + 2.35vw, 3rem);
+  --text-h1--line-height: 1.12;
+  --text-h1--letter-spacing: -0.024em;
+  --text-h2: clamp(1.6rem, 1.28rem + 1.42vw, 2.375rem);
+  --text-h2--line-height: 1.18;
+  --text-h2--letter-spacing: -0.02em;
+  --text-h3: clamp(1.3rem, 1.14rem + 0.7vw, 1.6rem);
+  --text-h3--line-height: 1.28;
+  --text-h3--letter-spacing: -0.014em;
+  --text-h4: clamp(1.1rem, 1.03rem + 0.32vw, 1.25rem);
+  --text-h4--line-height: 1.36;
+  --text-h4--letter-spacing: -0.01em;
+  --text-lead: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+  --text-lead--line-height: 1.62;
+  --text-eyebrow: 0.75rem;
+  --text-eyebrow--line-height: 1.2;
+  --text-eyebrow--letter-spacing: 0.11em;
+
+  /* --- Radii --------------------------------------------------------- */
+  --radius-xs: 0.25rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.75rem;
+  --radius-pill: 999px;
+
+  /* --- Elevation ------------------------------------------------------ */
+  --shadow-xs: 0 1px 2px 0 rgb(30 19 48 / 0.05);
+  --shadow-sm: 0 1px 3px 0 rgb(30 19 48 / 0.07), 0 1px 2px -1px rgb(30 19 48 / 0.05);
+  --shadow-md: 0 6px 18px -6px rgb(30 19 48 / 0.12), 0 2px 6px -2px rgb(30 19 48 / 0.06);
+  --shadow-lg: 0 18px 44px -14px rgb(30 19 48 / 0.16), 0 6px 14px -6px rgb(30 19 48 / 0.07);
+  --shadow-xl: 0 32px 72px -22px rgb(30 19 48 / 0.22), 0 10px 22px -10px rgb(30 19 48 / 0.09);
+  --shadow-gold: 0 14px 32px -12px rgb(168 124 34 / 0.34);
+
+  /* --- Motion --------------------------------------------------------- */
+  --ease-out-brand: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out-brand: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* --- Breakpoints ---------------------------------------------------- */
+  --breakpoint-xs: 26.5rem; /* 424px — large phones */
+  --breakpoint-3xl: 100rem; /* 1600px */
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    border-color: var(--color-line);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    /* Offset in-page anchors so the sticky header never covers a heading. */
+    scroll-padding-top: 6.5rem;
+  }
+
+  body {
+    background-color: var(--color-surface-white);
+    color: var(--color-ink-primary);
+    font-family: var(--font-sans);
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Guards against sub-pixel rounding creating a 1px horizontal scrollbar
+       on some Android browsers. Real overflow is fixed at the source. */
+    overflow-wrap: break-word;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-purple-600);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Remove the default focus ring only where we replace it with our own. */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  ::selection {
+    background-color: var(--color-purple-100);
+    color: var(--color-purple-900);
+  }
+
+  svg {
+    display: block;
+  }
+
+  /* Never let a raw media element push the page wider than its column. */
+  img,
+  video,
+  canvas,
+  svg {
+    max-width: 100%;
+  }
+}
+
+/* ==========================================================================
+   Utilities
+   ========================================================================== */
+
+@utility container-page {
+  width: 100%;
+  margin-inline: auto;
+  max-width: 84rem; /* 1344px content ceiling on very large displays */
+  padding-inline: 1.25rem; /* 20px — mobile gutter */
+
+  @media (width >= 40rem) {
+    padding-inline: 2rem; /* 32px — tablet */
+  }
+  @media (width >= 64rem) {
+    padding-inline: 2.5rem; /* 40px — laptop */
+  }
+  @media (width >= 90rem) {
+    padding-inline: 4rem; /* 64px — desktop */
+  }
+}
+
+@utility container-narrow {
+  width: 100%;
+  margin-inline: auto;
+  max-width: 48rem;
+  padding-inline: 1.25rem;
+
+  @media (width >= 40rem) {
+    padding-inline: 2rem;
+  }
+  @media (width >= 64rem) {
+    padding-inline: 2.5rem;
+  }
+}
+
+/* Readable measure for long-form prose. */
+@utility measure {
+  max-width: 68ch;
+}
+
+@utility measure-tight {
+  max-width: 56ch;
+}
+
+/* The gold gradient used by the wordmark, reused sparingly for accents. */
+@utility text-gradient-gold {
+  background-image: linear-gradient(
+    100deg,
+    var(--color-gold-800) 0%,
+    var(--color-gold-600) 38%,
+    var(--color-gold-400) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* ==========================================================================
+   Motion — every animation is opt-out via prefers-reduced-motion
+   ========================================================================== */
+
+@keyframes db-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes db-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes db-draw {
+  from {
+    stroke-dashoffset: var(--db-draw-length, 1000);
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes db-grow-y {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
