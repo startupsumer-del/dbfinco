@@ -33,8 +33,8 @@ export function Hero() {
         <div className="absolute -left-52 top-40 size-[30rem] rounded-full bg-[radial-gradient(circle,var(--color-gold-50),transparent_68%)]" />
       </div>
 
-      <Container className="pb-16 pt-12 sm:pb-20 sm:pt-16 lg:pb-28 lg:pt-20">
-        <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)] lg:gap-14 xl:gap-20">
+      <Container className="pb-16 pt-7 sm:pb-20 sm:pt-10 lg:pb-28 lg:pt-14">
+        <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)] lg:gap-14 xl:gap-20">
           <div>
             <Eyebrow className="mb-6">Financial &amp; Accounting Services</Eyebrow>
 
