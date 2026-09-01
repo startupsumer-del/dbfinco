@@ -236,14 +236,14 @@ test("brand assets are served and the logo renders at its true aspect ratio", as
   );
   expect(broken).toEqual([]);
 
-  // The header logo keeps the artwork's 443:123 ratio, and its box is
+  // The header logo keeps the artwork's 444:124 ratio, and its box is
   // reserved by explicit width/height so it cannot shift the layout.
   const logo = page.locator('header img[src="/brand/dbfinco-logo.svg"]').first();
   await expect(logo).toBeVisible();
   const box = await logo.boundingBox();
   expect(box).not.toBeNull();
   if (box) {
-    expect(box.width / box.height).toBeCloseTo(443 / 123, 1);
+    expect(box.width / box.height).toBeCloseTo(444 / 124, 1);
   }
   await expect(logo).toHaveAttribute("width", /\d+/);
   await expect(logo).toHaveAttribute("height", /\d+/);

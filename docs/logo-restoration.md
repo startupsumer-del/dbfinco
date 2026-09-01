@@ -1,5 +1,12 @@
 # Logo Restoration
 
+> **Update.** The owner later supplied an enhanced file
+> (`public/brand/source/db_finco_logo_enhanced.pdf`) carrying a **2172 × 724**
+> bitmap — roughly twenty times the pixel count of the first version. The
+> shipped vectors are traced from that file. The original low-resolution
+> analysis below is kept because it documents why the first attempt was
+> limited, and the segmentation method still applies.
+
 How the official DB FinCo logo was quality-corrected and turned into the
 production assets.
 
@@ -118,12 +125,38 @@ The site's full violet and gold ramps are generated from these hues in HSL, so
 every tint and shade carries the logo's actual colour rather than an
 approximation. See [`design-system.md`](./design-system.md).
 
-## Recommendation
+## The enhanced source (current assets)
 
-These vector assets are a faithful, cleaned reconstruction, and they are a
-genuine improvement on the supplied file. They are still a *trace* of a
-low-resolution scan, so if the original vector artwork (AI, EPS, or a true
-vector PDF) exists, supplying it would give exact letterform geometry —
-particularly in the tagline, where the source offered only ~1.5px strokes to
-work from. Dropping it in at `public/brand/` is the only change that would be
-needed.
+The enhanced file resolved the limitation above. At 2172 × 724 the wordmark
+cap height is ~345px and the tagline ~80px, against 78px and 17px in the first
+scan — enough to trace clean geometry.
+
+| | First scan | Enhanced scan |
+|---|---|---|
+| Bitmap | 482 × 166 | **2172 × 724** |
+| Tagline cap height | 17px | **~80px** |
+| Wordmark edges | Visibly ragged | Clean |
+| "B" counters | Compression artefacts | Correct |
+| Tagline letterforms | Deformed | Correct |
+
+The same two-criteria segmentation was used (`darkness > 0.35 OR saturation >
+0.25`), because the lightest gold "O" is still only 0.03 dark while being 0.39
+saturated. Traced bounds match the source ink bounds to within 0.4 units in a
+482-wide space, confirming nothing is clipped.
+
+Measured from the enhanced artwork: violet **`#2d0b48`**, gold ramp
+**`#b98845` → `#f4e694`**. The shipped vectors use the site's `#2e0d44` token
+for the violet, which is visually identical, so there is exactly one violet in
+the codebase.
+
+| Asset | Size | Gzipped |
+|---|---|---|
+| `dbfinco-logo.svg` | 444 × 124 | 10.0 KB |
+| `dbfinco-logo-inverse.svg` | 444 × 124 | 10.0 KB |
+| `dbfinco-wordmark.svg` | 442 × 85 | 5.3 KB |
+| `dbfinco-wordmark-inverse.svg` | 442 × 85 | 5.3 KB |
+| `dbfinco-mark.svg` | 64 × 64 | 5.4 KB |
+
+If true vector artwork (AI or EPS) ever becomes available it would still be
+marginally better, but the current assets are clean at every size the site
+uses and at print resolution.
