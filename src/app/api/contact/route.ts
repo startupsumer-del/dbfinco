@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { contactSchema, type ContactFieldErrors } from "@/lib/contact-schema";
+import { readOptionalEnv } from "@/lib/env";
 import { site } from "@/config/site";
 
 export const runtime = "nodejs";
@@ -57,9 +58,13 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true, status: "sent" });
   }
 
-  const apiKey = process.env.RESEND_API_KEY;
-  const toEmail = process.env.CONTACT_TO_EMAIL ?? site.contact.emailEnquiry;
-  const fromEmail = process.env.CONTACT_FROM_EMAIL;
+  // Read through `readOptionalEnv` so a variable set to an empty string or to
+  // whitespace counts as "not configured" — the same trap that `??` alone
+  // walks into, which would otherwise address the mail to an empty string.
+  const apiKey = readOptionalEnv(process.env.RESEND_API_KEY);
+  const fromEmail = readOptionalEnv(process.env.CONTACT_FROM_EMAIL);
+  const toEmail =
+    readOptionalEnv(process.env.CONTACT_TO_EMAIL) ?? site.contact.emailEnquiry;
 
   if (!apiKey || !fromEmail) {
     // No transport configured. Never claim the message was delivered.

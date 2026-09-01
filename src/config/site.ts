@@ -1,3 +1,5 @@
+import { resolveOptionalUrl, resolveSiteUrl } from "@/lib/env";
+
 /**
  * Single source of truth for DB FinCo company facts.
  *
@@ -14,10 +16,19 @@ export const site = {
   description:
     "DB FinCo is a firm of accountants and business advisors providing accounting, bookkeeping, tax, audit and assurance, consulting, risk and financial advisory, analytics and merchant services to small and medium-sized businesses.",
 
-  /** Public origin. Overridden per-environment so previews get correct URLs. */
-  url:
-    process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ??
-    "https://dbfinco.com",
+  /**
+   * Public origin, used for canonical URLs, Open Graph URLs, the sitemap and
+   * structured data. Overridden per-environment so previews get correct URLs.
+   *
+   * `NEXT_PUBLIC_SITE_URL` must be referenced as a complete literal expression
+   * here: Next.js inlines `NEXT_PUBLIC_*` variables by static text replacement
+   * at build time, so reading it indirectly would yield `undefined` in the
+   * browser bundle.
+   *
+   * `resolveSiteUrl` guarantees a valid absolute http(s) origin, so every
+   * consumer — including `new URL(site.url)` in `metadataBase` — is safe.
+   */
+  url: resolveSiteUrl(process.env.NEXT_PUBLIC_SITE_URL),
 
   contact: {
     /** Primary line, formatted for display. */
@@ -77,10 +88,11 @@ export const addressOneLine = [
  * When no booking tool is configured the CTA falls back to the contact page,
  * which is a real, working destination — never a dead link.
  */
-export const bookingUrl =
-  process.env.NEXT_PUBLIC_BOOKING_URL && process.env.NEXT_PUBLIC_BOOKING_URL !== ""
-    ? process.env.NEXT_PUBLIC_BOOKING_URL
-    : "/contact";
+export const bookingUrl = resolveOptionalUrl(
+  process.env.NEXT_PUBLIC_BOOKING_URL,
+  "/contact",
+  "NEXT_PUBLIC_BOOKING_URL",
+);
 
 /** True when the consultation CTA leaves the site. */
 export const bookingIsExternal = bookingUrl.startsWith("http");

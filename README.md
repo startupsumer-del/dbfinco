@@ -126,13 +126,27 @@ in the Vercel project settings.
 
 | Variable | Purpose | If unset |
 |---|---|---|
-| `NEXT_PUBLIC_SITE_URL` | Public origin for canonical URLs, Open Graph URLs, sitemap and structured data | Defaults to `https://dbfinco.com` |
+| `NEXT_PUBLIC_SITE_URL` | Public origin for canonical URLs, Open Graph URLs, sitemap and structured data | Defaults to `https://dbfinco.com` — as do empty, whitespace-only and malformed values |
 | `NEXT_PUBLIC_BOOKING_URL` | External scheduling link | Every "Schedule a Free Consultation" button links to `/contact` |
 | `RESEND_API_KEY` | Contact form email delivery | Form reports honestly that it is not connected |
 | `CONTACT_FROM_EMAIL` | Verified sender address | As above |
 | `CONTACT_TO_EMAIL` | Enquiry destination | Defaults to `enquiry@dbfinco.com` |
 
 **Never commit real values.** `.env*` is git-ignored except `.env.example`.
+
+### How optional is enforced
+
+Every variable is genuinely optional, and the site builds with none of them
+set. That contract is enforced in `src/lib/env.ts` rather than left to
+`??`, which only falls back on `null` and `undefined` — an empty string passes
+straight through it. Vercel stores an empty string for any variable added with
+a blank value, so `process.env.X ?? fallback` silently yields `""`.
+
+`resolveSiteUrl()` therefore treats absent, empty and whitespace-only values as
+identical, validates that anything else is an absolute `http(s)` URL, trims and
+normalises it, and falls back with a build-time warning rather than throwing.
+`new URL(site.url)` in `metadataBase` can never receive an invalid string.
+`tests/site-url.spec.ts` covers every case.
 
 ### Contact form behaviour
 
