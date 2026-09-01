@@ -9,46 +9,46 @@
 
 @theme {
   /* --- Brand: purple ------------------------------------------------ */
-  --color-purple-950: #150c26;
-  --color-purple-900: #2a1747;
-  --color-purple-800: #3a2063;
-  --color-purple-700: #4c2b7e;
-  --color-purple-600: #603a97;
-  --color-purple-500: #7a52b3;
-  --color-purple-400: #9a79c9;
-  --color-purple-300: #b79fdb;
-  --color-purple-200: #d6c8ec;
-  --color-purple-100: #e9e1f6;
-  --color-purple-50: #f5f1fc;
+  --color-purple-950: #190625;
+  --color-purple-900: #2e0d44;
+  --color-purple-800: #40175c;
+  --color-purple-700: #562775;
+  --color-purple-600: #6e3891;
+  --color-purple-500: #8a4db2;
+  --color-purple-400: #a579c3;
+  --color-purple-300: #bfa1d3;
+  --color-purple-200: #dac9e6;
+  --color-purple-100: #ede4f4;
+  --color-purple-50: #f8f3fb;
 
   /* --- Brand: gold -------------------------------------------------- */
-  --color-gold-900: #6f4f10;
-  --color-gold-800: #8a6417;
-  --color-gold-700: #a87c22;
-  --color-gold-600: #c0912e;
-  --color-gold-500: #d4a73c;
-  --color-gold-400: #e0bc63;
-  --color-gold-300: #ebd08f;
-  --color-gold-200: #f3e2ba;
-  --color-gold-100: #f8eed6;
-  --color-gold-50: #fdf9ef;
+  --color-gold-900: #593d15;
+  --color-gold-800: #704e1c;
+  --color-gold-700: #866027;
+  --color-gold-600: #997033;
+  --color-gold-500: #b4833c;
+  --color-gold-400: #c99a54;
+  --color-gold-300: #d9b27b;
+  --color-gold-200: #e9cea7;
+  --color-gold-100: #f5e5cf;
+  --color-gold-50: #fcf6ee;
 
   /* --- Surfaces ------------------------------------------------------ */
   --color-surface-white: #ffffff;
-  --color-surface-subtle: #fbfafd;
-  --color-surface-muted: #f4f2f8;
-  --color-surface-lilac: #f6f3fc;
-  --color-surface-gold-soft: #fdf9ef;
+  --color-surface-subtle: #fbfafc;
+  --color-surface-muted: #f4f1f7;
+  --color-surface-lilac: #f8f3fb;
+  --color-surface-gold-soft: #fcf6ee;
 
   /* --- Text ---------------------------------------------------------- */
-  --color-ink-primary: #1e1330;
-  --color-ink-secondary: #4a4058;
-  --color-ink-muted: #6e667e;
+  --color-ink-primary: #1d0f2b;
+  --color-ink-secondary: #4b3f59;
+  --color-ink-muted: #6f6580;
   --color-ink-inverse: #ffffff;
 
   /* --- Lines --------------------------------------------------------- */
-  --color-line: #e6e2ee;
-  --color-line-strong: #d0c9de;
+  --color-line: #e7e2ee;
+  --color-line-strong: #d1c9dd;
 
   /* --- Status -------------------------------------------------------- */
   /* Status colours are darkened enough to clear 4.5:1 not only on white but
@@ -58,12 +58,12 @@
   --color-danger: #a91d13;
 
   /* --- Data visualisation (ordered, accessible on white) -------------- */
-  --color-viz-1: #4c2b7e;
-  --color-viz-2: #c0912e;
-  --color-viz-3: #7a52b3;
+  --color-viz-1: #562775;
+  --color-viz-2: #997033;
+  --color-viz-3: #8a4db2;
   --color-viz-4: #126544;
-  --color-viz-5: #9a79c9;
-  --color-viz-6: #b79fdb;
+  --color-viz-5: #a579c3;
+  --color-viz-6: #bfa1d3;
 
   /* --- Typography ---------------------------------------------------- */
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
@@ -106,12 +106,12 @@
   --radius-pill: 999px;
 
   /* --- Elevation ------------------------------------------------------ */
-  --shadow-xs: 0 1px 2px 0 rgb(30 19 48 / 0.05);
-  --shadow-sm: 0 1px 3px 0 rgb(30 19 48 / 0.07), 0 1px 2px -1px rgb(30 19 48 / 0.05);
-  --shadow-md: 0 6px 18px -6px rgb(30 19 48 / 0.12), 0 2px 6px -2px rgb(30 19 48 / 0.06);
-  --shadow-lg: 0 18px 44px -14px rgb(30 19 48 / 0.16), 0 6px 14px -6px rgb(30 19 48 / 0.07);
-  --shadow-xl: 0 32px 72px -22px rgb(30 19 48 / 0.22), 0 10px 22px -10px rgb(30 19 48 / 0.09);
-  --shadow-gold: 0 14px 32px -12px rgb(168 124 34 / 0.34);
+  --shadow-xs: 0 1px 2px 0 rgb(29 15 43 / 0.05);
+  --shadow-sm: 0 1px 3px 0 rgb(29 15 43 / 0.07), 0 1px 2px -1px rgb(29 15 43 / 0.05);
+  --shadow-md: 0 6px 18px -6px rgb(29 15 43 / 0.12), 0 2px 6px -2px rgb(29 15 43 / 0.06);
+  --shadow-lg: 0 18px 44px -14px rgb(29 15 43 / 0.16), 0 6px 14px -6px rgb(29 15 43 / 0.07);
+  --shadow-xl: 0 32px 72px -22px rgb(29 15 43 / 0.22), 0 10px 22px -10px rgb(29 15 43 / 0.09);
+  --shadow-gold: 0 14px 32px -12px rgb(153 112 51 / 0.34);
 
   /* --- Motion --------------------------------------------------------- */
   --ease-out-brand: cubic-bezier(0.22, 1, 0.36, 1);

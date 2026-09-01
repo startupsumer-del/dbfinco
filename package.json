@@ -2,7 +2,10 @@
   "name": "dbfinco-website",
   "version": "1.0.0",
   "private": true,
-  "description": "Production website for DB FinCo — Financial & Accounting Services",
+  "description": "Production website for DB FinCo \u2014 Financial & Accounting Services",
+  "engines": {
+    "node": ">=20.9.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",

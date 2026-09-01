@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 
+import { HEADER_LOGO_SRC, HEADER_WORDMARK_SRC } from "@/components/brand/Logo";
 import { Footer } from "@/components/layout/Footer";
 import { JsonLd } from "@/components/layout/JsonLd";
 import { Header } from "@/components/navigation/Header";
@@ -67,6 +68,12 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${inter.variable} ${jakarta.variable}`}>
+      <head>
+        {/* The header logo is above the fold on every route, so both the
+            compact and full variants are preloaded to avoid a visible pop. */}
+        <link rel="preload" as="image" type="image/svg+xml" href={HEADER_WORDMARK_SRC} />
+        <link rel="preload" as="image" type="image/svg+xml" href={HEADER_LOGO_SRC} />
+      </head>
       <body className="flex min-h-dvh flex-col bg-white antialiased">
         <a
           href="#main"

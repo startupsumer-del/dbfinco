@@ -29,7 +29,7 @@ export function Footer() {
           {/* Identity + contact */}
           <div>
             <Link href="/" aria-label={`${site.name} home`} className="inline-block">
-              <Logo height={58} inverse idPrefix="ftr" />
+              <Logo height={56} inverse />
             </Link>
             <p className="measure-tight mt-6 text-sm leading-relaxed text-purple-200">
               A firm of accountants and business advisors helping small and

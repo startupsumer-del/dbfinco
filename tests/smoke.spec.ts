@@ -208,6 +208,55 @@ test("accordion opens and closes with correct ARIA state", async ({ page }) => {
   await expect(first).toHaveAttribute("aria-expanded", "true");
 });
 
+test("brand assets are served and the logo renders at its true aspect ratio", async ({
+  page,
+  request,
+}) => {
+  // Every published brand asset must resolve.
+  for (const asset of [
+    "/brand/dbfinco-logo.svg",
+    "/brand/dbfinco-logo-inverse.svg",
+    "/brand/dbfinco-wordmark.svg",
+    "/brand/dbfinco-wordmark-inverse.svg",
+    "/brand/dbfinco-mark.svg",
+    "/icon.svg",
+  ]) {
+    const response = await request.get(asset);
+    expect(response.status(), `${asset} should be served`).toBe(200);
+    expect(response.headers()["content-type"]).toContain("svg");
+  }
+
+  await page.goto("/");
+
+  // No image on the page may fail to decode.
+  const broken = await page.evaluate(() =>
+    Array.from(document.querySelectorAll("img"))
+      .filter((img) => img.complete && img.naturalWidth === 0)
+      .map((img) => img.getAttribute("src")),
+  );
+  expect(broken).toEqual([]);
+
+  // The header logo keeps the artwork's 443:123 ratio, and its box is
+  // reserved by explicit width/height so it cannot shift the layout.
+  const logo = page.locator('header img[src="/brand/dbfinco-logo.svg"]').first();
+  await expect(logo).toBeVisible();
+  const box = await logo.boundingBox();
+  expect(box).not.toBeNull();
+  if (box) {
+    expect(box.width / box.height).toBeCloseTo(443 / 123, 1);
+  }
+  await expect(logo).toHaveAttribute("width", /\d+/);
+  await expect(logo).toHaveAttribute("height", /\d+/);
+  await expect(logo).toHaveAttribute("alt", /DB FinCo/);
+});
+
+test("the footer uses the inverse logo on the dark ground", async ({ page }) => {
+  await page.goto("/");
+  await expect(
+    page.locator('footer img[src="/brand/dbfinco-logo-inverse.svg"]'),
+  ).toBeVisible();
+});
+
 test("sitemap and robots are served correctly", async ({ request }) => {
   const sitemap = await request.get("/sitemap.xml");
   expect(sitemap.status()).toBe(200);

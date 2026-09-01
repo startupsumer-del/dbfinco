@@ -28,6 +28,10 @@ roughly 100kB out of the client bundle, lets each mark read the design tokens
 directly, and makes the charts genuinely responsive — the plot scales via
 `viewBox` while labels stay as real HTML that never shrinks below legibility.
 
+**Brand palette taken from the logo.** The violet and gold ramps are generated
+in HSL from colours measured directly in the official artwork (violet
+`#2e0d44`, hue 276°; gold hue 36°), so every tint carries the real brand hue.
+
 ---
 
 ## Getting started
@@ -281,9 +285,33 @@ failing contrast on their own tinted backgrounds — see
 | [`docs/design-system.md`](docs/design-system.md) | Tokens, typography, layout, components, motion |
 | [`docs/final-route-qa.md`](docs/final-route-qa.md) | Measured per-route QA results |
 | [`docs/responsive-qa.md`](docs/responsive-qa.md) | Measured 162-check responsive matrix |
+| [`docs/logo-restoration.md`](docs/logo-restoration.md) | How the supplied logo was quality-corrected and vectorised |
 | [`docs/assets.md`](docs/assets.md) | Asset inventory, fonts, licensing |
 
 ---
+
+## Brand assets
+
+The official DB FinCo logo was supplied as a PDF containing a single **482×166
+bitmap** with JPEG artefacts and an opaque near-white background. It was
+vectorised, denoised and given real transparency; the original file is kept at
+`public/brand/source/` as the source of truth.
+
+| Asset | Size | Gzipped | Use |
+|---|---|---|---|
+| `dbfinco-logo.svg` | 443 × 123 | 8.1 KB | Full lockup, light grounds |
+| `dbfinco-logo-inverse.svg` | 443 × 123 | 8.1 KB | Full lockup, violet grounds |
+| `dbfinco-wordmark.svg` | 441 × 84 | 3.5 KB | Compact header |
+| `dbfinco-wordmark-inverse.svg` | 441 × 84 | 3.5 KB | Compact, dark grounds |
+| `dbfinco-mark.svg` | 64 × 64 | 3.6 KB | Monogram, favicon, app icon |
+
+They are served as static files (cached once, not inlined into every page) with
+explicit dimensions so they cannot cause layout shift. Full method in
+[`docs/logo-restoration.md`](docs/logo-restoration.md).
+
+If the **original vector artwork** (AI, EPS or a true vector PDF) exists,
+dropping it into `public/brand/` would give exact letterform geometry — these
+assets are a faithful trace of a low-resolution scan.
 
 ## Content policy
 

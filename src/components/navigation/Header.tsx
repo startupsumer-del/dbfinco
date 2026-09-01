@@ -143,10 +143,10 @@ export function Header() {
             {/* Tagline is dropped below lg so the mark stays legible and clear
                 of the menu button on small screens. */}
             <span className="lg:hidden">
-              <Logo height={30} withTagline={false} idPrefix="hdr-sm" />
+              <Logo height={26} withTagline={false} priority />
             </span>
             <span className="hidden lg:block">
-              <Logo height={52} idPrefix="hdr-lg" />
+              <Logo height={50} priority />
             </span>
           </Link>
 

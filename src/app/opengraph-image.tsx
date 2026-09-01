@@ -23,7 +23,7 @@ export default function OpengraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "linear-gradient(135deg, #150c26 0%, #2a1747 52%, #3a2063 100%)",
+          background: "linear-gradient(135deg, #190625 0%, #2e0d44 52%, #40175c 100%)",
           padding: "72px 80px",
           fontFamily: "sans-serif",
         }}
@@ -36,7 +36,7 @@ export default function OpengraphImage() {
                 fontSize: 96,
                 fontWeight: 800,
                 letterSpacing: "-0.03em",
-                color: "#e0bc63",
+                color: "#d9b27b",
               }}
             >
               DB
@@ -57,7 +57,7 @@ export default function OpengraphImage() {
             style={{
               fontSize: 22,
               letterSpacing: "0.22em",
-              color: "#b79fdb",
+              color: "#bfa1d3",
               marginTop: 10,
             }}
           >
@@ -82,7 +82,7 @@ export default function OpengraphImage() {
             style={{
               fontSize: 26,
               lineHeight: 1.45,
-              color: "#d6c8ec",
+              color: "#dac9e6",
               marginTop: 26,
             }}
           >
@@ -101,10 +101,10 @@ export default function OpengraphImage() {
             paddingTop: 26,
           }}
         >
-          <span style={{ fontSize: 24, color: "#e0bc63", fontWeight: 600 }}>
+          <span style={{ fontSize: 24, color: "#d9b27b", fontWeight: 600 }}>
             {site.contact.phoneDisplay}
           </span>
-          <span style={{ fontSize: 24, color: "#b79fdb" }}>dbfinco.com</span>
+          <span style={{ fontSize: 24, color: "#bfa1d3" }}>dbfinco.com</span>
         </div>
       </div>
     ),

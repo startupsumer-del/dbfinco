@@ -27,12 +27,12 @@ export function CtaSection({
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -right-24 -top-24 size-[26rem] rounded-full
-              bg-[radial-gradient(circle,rgba(224,188,99,0.20),transparent_68%)]"
+              bg-[radial-gradient(circle,rgba(201,154,84,0.22),transparent_68%)]"
           />
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -bottom-32 -left-20 size-[22rem] rounded-full
-              bg-[radial-gradient(circle,rgba(122,82,179,0.35),transparent_70%)]"
+              bg-[radial-gradient(circle,rgba(110,56,145,0.38),transparent_70%)]"
           />
 
           <div className="relative grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,20rem)] lg:items-center lg:gap-16">

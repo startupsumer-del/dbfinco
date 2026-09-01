@@ -18,14 +18,14 @@ export default function GlobalError({ reset }: { error: Error; reset: () => void
           fontFamily:
             "ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif",
           background: "#ffffff",
-          color: "#1e1330",
+          color: "#1d0f2b",
         }}
       >
         <div style={{ maxWidth: "32rem" }}>
           <h1 style={{ fontSize: "1.75rem", lineHeight: 1.2, margin: "0 0 1rem" }}>
             Something went wrong
           </h1>
-          <p style={{ margin: "0 0 1.5rem", color: "#4a4058", lineHeight: 1.6 }}>
+          <p style={{ margin: "0 0 1.5rem", color: "#4b3f59", lineHeight: 1.6 }}>
             The page couldn&apos;t be loaded. Please try again, or call DB FinCo
             on 718-559-7748.
           </p>
@@ -37,7 +37,7 @@ export default function GlobalError({ reset }: { error: Error; reset: () => void
               padding: "0.75rem 1.5rem",
               borderRadius: "999px",
               border: "none",
-              background: "#3a2063",
+              background: "#40175c",
               color: "#ffffff",
               fontSize: "1rem",
               fontWeight: 600,

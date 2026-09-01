@@ -139,8 +139,8 @@ export function AdvisoryVisual() {
           labels={months}
           ariaLabel="Gross margin percentage by month over the last twelve months"
           stroke="var(--color-viz-2)"
-          fillFrom="rgba(192, 145, 46, 0.18)"
-          fillTo="rgba(192, 145, 46, 0)"
+          fillFrom="rgba(153, 112, 51, 0.18)"
+          fillTo="rgba(153, 112, 51, 0)"
           height={140}
         />
       </div>

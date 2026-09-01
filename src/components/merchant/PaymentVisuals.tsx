@@ -18,7 +18,7 @@ export function PaymentCard({ className }: { className?: string }) {
         bg-[linear-gradient(135deg,var(--color-purple-900),var(--color-purple-700)_58%,var(--color-purple-800))]
         p-5 shadow-xl sm:p-6 ${className ?? ""}`}
     >
-      <div className="absolute -right-10 -top-16 size-48 rounded-full bg-[radial-gradient(circle,rgba(224,188,99,0.28),transparent_66%)]" />
+      <div className="absolute -right-10 -top-16 size-48 rounded-full bg-[radial-gradient(circle,rgba(201,154,84,0.30),transparent_66%)]" />
 
       <div className="relative flex h-full flex-col justify-between">
         <div className="flex items-start justify-between gap-4">

@@ -12,8 +12,8 @@ Nothing below is asserted without measurement.
 
 | Range | Mode |
 |---|---|
-| < 1024px | Full-screen drawer with nested services accordion |
-| 1024–1279px | Horizontal nav, mega-menu, one CTA, phone as an icon button |
+| < 1024px | Full-screen drawer with nested services accordion; wordmark-only logo |
+| 1024–1279px | Horizontal nav, mega-menu, one CTA, phone as an icon button; full logo |
 | ≥ 1280px | Adds the phone number as text beside the CTA |
 
 ## Result matrix
@@ -188,5 +188,5 @@ Nothing below is asserted without measurement.
 ## Bugs this suite caught and forced fixes for
 
 1. **The closed mobile drawer extended the document.** Translated fully off-canvas, it added exactly one viewport-width of horizontal scroll to every page below 1024px. Fixed at source by clipping its fixed container and transitioning `visibility` alongside the transform — not by masking it with `overflow-x: hidden` on the body.
-2. **A grid track inflated by min-content.** A `truncate` row inside the filing-calendar visual pushed its grid track 21px wider than the container, overflowing the page by 1px at 360px. Fixed with `min-w-0` on the grid children, which is the structural fix rather than a width override.
+2. **A grid track inflated by min-content.** A `truncate` row inside the filing-calendar visual pushed its grid track 21px wider than the container, overflowing the page by 1px at 360px. Fixed with `min-w-0` on the grid children.
 

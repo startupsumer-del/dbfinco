@@ -10,44 +10,47 @@ anywhere else in the codebase.
 
 ### Brand — violet
 
-Sampled from the deep violet of the official DB FinCo wordmark (`#2a1747`)
-and extended into a full ramp.
+Generated in HSL from the **measured** violet of the official wordmark —
+`#2e0d44`, hue 276°, saturation 0.68 — so every step carries the logo's true
+hue rather than an approximation. See [`logo-restoration.md`](./logo-restoration.md).
 
 | Token | Hex | Used for |
 |---|---|---|
-| `--color-purple-950` | `#150c26` | Footer ground, OG gradient start |
-| `--color-purple-900` | `#2a1747` | **Core brand violet** — logo, dark sections |
-| `--color-purple-800` | `#3a2063` | Primary button fill |
-| `--color-purple-700` | `#4c2b7e` | Primary hover, chart series 1, focus ring |
-| `--color-purple-600` | `#603a97` | Icon accents |
-| `--color-purple-500` | `#7a52b3` | Chart series 3 |
-| `--color-purple-400` | `#9a79c9` | Chart series 5 |
-| `--color-purple-300` | `#b79fdb` | Chart series 6, inverse eyebrow |
-| `--color-purple-200` | `#d6c8ec` | Inverse tagline, card hover border |
-| `--color-purple-100` | `#e9e1f6` | Soft borders on tinted surfaces |
-| `--color-purple-50` | `#f5f1fc` | Icon chips, hover fills |
+| `--color-purple-950` | `#190625` | Footer ground, OG gradient start |
+| `--color-purple-900` | `#2e0d44` | **Core brand violet — measured from the logo** |
+| `--color-purple-800` | `#40175c` | Primary button fill |
+| `--color-purple-700` | `#562775` | Primary hover, chart series 1, focus ring |
+| `--color-purple-600` | `#6e3891` | Icon accents |
+| `--color-purple-500` | `#8a4db2` | Chart series 3 |
+| `--color-purple-400` | `#a579c3` | Chart series 5 |
+| `--color-purple-300` | `#bfa1d3` | Chart series 6, inverse eyebrow |
+| `--color-purple-200` | `#dac9e6` | Inverse tagline, card hover border |
+| `--color-purple-100` | `#ede4f4` | Soft borders on tinted surfaces |
+| `--color-purple-50` | `#f8f3fb` | Icon chips, hover fills |
 
 ### Brand — gold
 
-Sampled from the gold gradient of the wordmark.
+Generated from the **measured** gold ramp of the wordmark: `#ba8f50` at its
+darkest through `#f5e99e` at its lightest, hue 36°.
 
 | Token | Hex | Used for |
 |---|---|---|
-| `--color-gold-900` | `#6f4f10` | Reserved |
-| `--color-gold-800` | `#8a6417` | **All gold text** — 5.4:1 on white |
-| `--color-gold-700` | `#a87c22` | Wordmark gradient mid, non-text accents |
-| `--color-gold-600` | `#c0912e` | Eyebrow rules, bullets, chart series 2 |
-| `--color-gold-500` | `#d4a73c` | Gold button fill |
-| `--color-gold-400` | `#e0bc63` | Accents on violet grounds |
-| `--color-gold-300` | `#ebd08f` | Inverse eyebrow, icons on violet |
-| `--color-gold-200` | `#f3e2ba` | Disclaimer panel border |
-| `--color-gold-100` | `#f8eed6` | Tinted chips |
-| `--color-gold-50` | `#fdf9ef` | Warm surface, disclaimer panel |
+| `--color-gold-900` | `#593d15` | Reserved |
+| `--color-gold-800` | `#704e1c` | **All gold text** — 7.5:1 on white |
+| `--color-gold-700` | `#866027` | Wordmark gradient mid, non-text accents |
+| `--color-gold-600` | `#997033` | Eyebrow rules, bullets, chart series 2 |
+| `--color-gold-500` | `#b4833c` | Gold button fill |
+| `--color-gold-400` | `#c99a54` | Accents on violet grounds |
+| `--color-gold-300` | `#d9b27b` | Inverse eyebrow, icons on violet |
+| `--color-gold-200` | `#e9cea7` | Disclaimer panel border |
+| `--color-gold-100` | `#f5e5cf` | Tinted chips |
+| `--color-gold-50` | `#fcf6ee` | Warm surface, disclaimer panel |
 
-> **Gold discipline rule.** `gold-700` and lighter never carry body text —
-> they fail AA on white. **`gold-800` is the only gold used for text on light
-> surfaces.** This is enforced by the axe suite, which caught and rejected an
-> earlier `gold-700` usage.
+> **Gold discipline rule.** `gold-800` is the gold used for text on light
+> surfaces (7.5:1 on white). The axe suite enforces this: it rejected an
+> earlier `gold-700` text usage, and later caught the gold CTA button at
+> 4.33:1 when the ramp was regenerated from the real artwork — that button now
+> uses `gold-400`, giving 7.6:1 against its violet label.
 
 ### Surfaces
 
@@ -255,18 +258,27 @@ hover behaviour to devices that genuinely support it.
 
 ## Logo
 
-The wordmark is reconstructed as vector in
-`src/components/brand/Logo.tsx`: a gold-to-violet gradient "D", a deep-violet
-"B", the gold-gradient "FINCO", and the letterspaced violet tagline beneath.
+The production marks are the **official DB FinCo logo**, vectorised from the
+artwork supplied by the owner (kept at `public/brand/source/`). The supplied
+file was a 482 × 166 bitmap wrapped in a PDF, carrying JPEG artefacts and an
+opaque near-white background; the vector versions are traced from it, denoised
+and genuinely transparent. The full process — including how the shadow band
+was separated from the lightest gold, and how the gradient was reconstructed —
+is documented in [`logo-restoration.md`](./logo-restoration.md).
 
-Geometry comes from measured Plus Jakarta Sans metrics at 88px — "DB" is
-122.2 units wide, "FINCO" 284.5, with a 14-unit gap — so glyphs render at
-their natural widths and are never stretched. The SVG carries explicit
-`width`/`height`, so the logo box is fixed regardless of font-loading state
-and cannot cause layout shift.
+| Asset | Size | Use |
+|---|---|---|
+| `dbfinco-logo.svg` | 443 × 123 | Full lockup on light grounds |
+| `dbfinco-logo-inverse.svg` | 443 × 123 | Full lockup on violet grounds |
+| `dbfinco-wordmark.svg` | 441 × 84 | Wordmark only, for the compact header |
+| `dbfinco-wordmark-inverse.svg` | 441 × 84 | Wordmark only, dark grounds |
+| `dbfinco-mark.svg` | 64 × 64 | "DB" monogram — favicon and app icons |
 
-The tagline is dropped below `lg`, where it would be unreadable and would
-crowd the menu button.
+`Logo` and `LogoMark` in `src/components/brand/Logo.tsx` render these as static
+files rather than inline SVG, so ~50 KB of path data is fetched and cached once
+instead of being embedded in every page's HTML. Both set explicit `width` and
+`height`, so the logo reserves its box and cannot cause layout shift; the
+header variants are preloaded in the root layout.
 
-`LogoMark` is a square "DB" monogram drawn as paths — no webfont dependency
-at all — used for the favicon and compact placements.
+The tagline is dropped below `lg`, where it would be unreadable and would crowd
+the menu button — the header uses the wordmark-only asset there.

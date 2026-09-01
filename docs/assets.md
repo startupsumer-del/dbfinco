@@ -2,8 +2,9 @@
 
 ## Summary
 
-**This site uses no external image assets, no stock photography, and no
-third-party artwork of any kind.** Every visual is generated in code.
+**Apart from the official DB FinCo logo supplied by the owner, this site uses
+no external image assets, no stock photography, and no third-party artwork of
+any kind.** Every other visual is generated in code.
 
 That is a deliberate decision rather than a shortcut:
 
@@ -19,11 +20,14 @@ That is a deliberate decision rather than a shortcut:
 
 | Asset | Location | Type | Origin |
 |---|---|---|---|
-| DB FinCo wordmark | `src/components/brand/Logo.tsx` | Inline SVG | Reconstructed as vector from the official DB FinCo logo supplied by the owner |
-| DB FinCo wordmark (standalone) | `public/brand/dbfinco-logo.svg` | SVG file | Same geometry, self-contained for external use |
-| "DB" monogram | `src/components/brand/Logo.tsx` (`LogoMark`) | Inline SVG paths | Drawn from scratch; no webfont dependency |
-| Favicon | `src/app/icon.svg` | SVG file | The monogram |
-| Monogram (standalone) | `public/brand/logomark.svg` | SVG file | The monogram |
+| **Supplied logo artwork** | `public/brand/source/db_finco_logo.pdf` | PDF (single 482×166 bitmap) | **Provided by the owner — the source of truth** |
+| Extracted bitmap | `public/brand/source/db_finco_logo_extracted.png` | PNG | The image extracted from that PDF, kept for reference |
+| DB FinCo logo | `public/brand/dbfinco-logo.svg` | SVG | Vectorised from the supplied artwork |
+| DB FinCo logo (inverse) | `public/brand/dbfinco-logo-inverse.svg` | SVG | Same, for violet grounds |
+| DB FinCo wordmark | `public/brand/dbfinco-wordmark.svg` | SVG | Wordmark only, for the compact header |
+| DB FinCo wordmark (inverse) | `public/brand/dbfinco-wordmark-inverse.svg` | SVG | Wordmark only, dark grounds |
+| "DB" monogram | `public/brand/dbfinco-mark.svg` | SVG | Favicon and compact placements |
+| Favicon | `src/app/icon.svg` | SVG | The monogram |
 | Open Graph card | `src/app/opengraph-image.tsx` | Generated PNG (1200×630) | Rendered at build time via `next/og` from the brand palette |
 | Facebook glyph | `src/components/brand/SocialIcons.tsx` | Inline SVG path | Drawn locally (lucide-react v1 removed brand marks) |
 | Financial charts | `src/components/charts/*` | Inline SVG | Hand-built from `src/content/demo-financials.ts` |
@@ -64,7 +68,7 @@ Professional Services Disclaimer.
 Everything in this repository is either written for DB FinCo or is
 open-licensed:
 
-- Brand assets: DB FinCo's own.
+- Brand assets: DB FinCo's own. The logo was supplied by the owner; the vector versions are derived from it (see [`logo-restoration.md`](./logo-restoration.md)).
 - Icons: [Lucide](https://lucide.dev), ISC License.
 - Fonts: SIL Open Font License 1.1.
 - All other visuals: authored for this project.

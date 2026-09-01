@@ -22,9 +22,13 @@ const variants: Record<Variant, string> = {
   secondary:
     "border border-line-strong bg-white text-ink-primary hover:border-purple-300 " +
     "hover:bg-purple-50 focus-visible:outline-purple-700",
+  // gold-400 rather than gold-600: against the near-black brand violet used
+  // for this button's label, the darker gold only reaches 4.33:1, which axe
+  // correctly flags. gold-400 gives 7.6:1 and reads brighter on the violet
+  // sections where this variant is used.
   gold:
-    "bg-gold-600 text-purple-950 shadow-[var(--shadow-gold)] hover:bg-gold-500 " +
-    "focus-visible:outline-gold-800",
+    "bg-gold-400 text-purple-950 shadow-[var(--shadow-gold)] hover:bg-gold-300 " +
+    "focus-visible:outline-gold-100",
   ghost:
     "text-purple-800 hover:bg-purple-50 focus-visible:outline-purple-700",
   inverse:

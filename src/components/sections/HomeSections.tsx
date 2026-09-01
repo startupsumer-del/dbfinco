@@ -267,7 +267,7 @@ export function MerchantTeaser() {
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 overflow-hidden"
       >
-        <div className="absolute -right-32 top-1/4 size-[30rem] rounded-full bg-[radial-gradient(circle,rgba(224,188,99,0.16),transparent_68%)]" />
+        <div className="absolute -right-32 top-1/4 size-[30rem] rounded-full bg-[radial-gradient(circle,rgba(201,154,84,0.18),transparent_68%)]" />
       </div>
 
       <Container className="relative">
