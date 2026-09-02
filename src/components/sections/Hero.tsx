@@ -99,6 +99,7 @@ export function Hero() {
               portrait="explaining"
               tone="gold"
               priority
+              sizes="(min-width: 1024px) 30rem, (min-width: 640px) 26rem, 90vw"
               cards={
                 <>
                   <FloatCard
@@ -112,7 +113,7 @@ export function Hero() {
                     detail="Bank, card and merchant accounts"
                   />
                   <FloatCard
-                    at="bottom-right"
+                    at="low-right"
                     icon={
                       <CardIcon tone="gold">
                         <CalendarCheck className="size-4" />

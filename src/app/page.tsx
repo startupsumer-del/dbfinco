@@ -90,7 +90,11 @@ export default function HomePage() {
               <ProcessSteps steps={howItWorks} className="mt-10 lg:mt-14" />
             </div>
 
-            <PortraitScene portrait="standing" tone="lilac" />
+            <PortraitScene
+              portrait="standing"
+              tone="lilac"
+              sizes="(min-width: 1024px) 21rem, (min-width: 640px) 24rem, 90vw"
+            />
           </div>
         </Container>
       </Section>

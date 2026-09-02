@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { JsonLd } from "@/components/layout/JsonLd";
+import { ServicePortrait } from "@/components/imagery/ServicePortrait";
 import { ServicePageTemplate } from "@/components/sections/ServicePageTemplate";
 import { AuditEvidenceVisual } from "@/components/sections/ServiceVisuals";
 import {
@@ -76,6 +77,7 @@ export default async function AuditServicePage({
         deliverableVisual={
           slug === "external-audit" ? <AuditEvidenceVisual /> : undefined
         }
+        processPortrait={<ServicePortrait slug={slug} />}
         related={getAuditServices(service.related)}
       />
       <JsonLd data={breadcrumbSchema(crumbs)} />

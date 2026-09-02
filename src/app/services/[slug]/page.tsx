@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { ReportingPreview } from "@/components/charts/ReportingPreview";
+import { ServicePortrait } from "@/components/imagery/ServicePortrait";
 import { JsonLd } from "@/components/layout/JsonLd";
 import { ServicePageTemplate } from "@/components/sections/ServicePageTemplate";
 import {
@@ -132,6 +133,7 @@ export default async function ServicePage({
         crumbs={crumbs}
         heroVisual={heroVisualFor(slug)}
         deliverableVisual={deliverableVisualFor(slug)}
+        processPortrait={<ServicePortrait slug={slug} />}
         extraSection={slug === "audit-assurance" ? <EngagementComparison /> : undefined}
         related={related}
       />

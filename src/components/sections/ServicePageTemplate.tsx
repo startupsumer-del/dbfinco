@@ -30,6 +30,7 @@ export function ServicePageTemplate({
   crumbs,
   heroVisual,
   deliverableVisual,
+  processPortrait,
   extraSection,
   related,
 }: {
@@ -39,6 +40,8 @@ export function ServicePageTemplate({
   heroVisual?: ReactNode;
   /** Data-rich preview shown above the deliverables grid. */
   deliverableVisual?: ReactNode;
+  /** Portrait shown alongside the process steps. */
+  processPortrait?: ReactNode;
   extraSection?: ReactNode;
   related: ServiceDetail[];
 }) {
@@ -194,14 +197,29 @@ export function ServicePageTemplate({
       {/* Process */}
       <Section tone="white" ariaLabelledBy="process-heading">
         <Container>
-          <SectionHeading
-            id="process-heading"
-            eyebrow="How It Works"
-            title={service.process.heading}
-            lead={service.process.intro}
-            align="center"
-          />
-          <ProcessSteps steps={service.process.steps} className="mt-10 lg:mt-14" />
+          <div
+            className={
+              processPortrait
+                ? "grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,19rem)] lg:items-center lg:gap-16"
+                : undefined
+            }
+          >
+            <div className="min-w-0">
+              <SectionHeading
+                id="process-heading"
+                eyebrow="How It Works"
+                title={service.process.heading}
+                lead={service.process.intro}
+                align={processPortrait ? "left" : "center"}
+              />
+              <ProcessSteps
+                steps={service.process.steps}
+                className="mt-10 lg:mt-14"
+              />
+            </div>
+
+            {processPortrait}
+          </div>
         </Container>
       </Section>
 

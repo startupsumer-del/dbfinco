@@ -50,10 +50,11 @@ export function WhyDbFinco() {
           <PortraitScene
             portrait="manager"
             tone="gold"
+            sizes="(min-width: 1024px) 22rem, 20rem"
             className="order-2 max-w-[20rem] lg:order-1 lg:max-w-none"
             cards={
               <FloatCard
-                at="bottom-left"
+                at="low-left"
                 icon={
                   <CardIcon tone="violet">
                     <MessagesSquare className="size-4" />

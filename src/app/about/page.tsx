@@ -123,6 +123,7 @@ export default function AboutPage() {
               portrait="partner"
               tone="lilac"
               priority
+              sizes="(min-width: 1024px) 28rem, (min-width: 640px) 26rem, 90vw"
               cards={
                 <>
                   <FloatCard
@@ -136,7 +137,7 @@ export default function AboutPage() {
                     detail="Not a shared inbox"
                   />
                   <FloatCard
-                    at="bottom-right"
+                    at="low-right"
                     icon={
                       <CardIcon tone="success">
                         <CircleCheck className="size-4" />

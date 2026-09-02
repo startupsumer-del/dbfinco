@@ -96,3 +96,75 @@ test("service illustrations differ from one another", async ({ page }) => {
     "each service banner should carry its own illustration",
   ).toBe(BANNER_PAGES.length);
 });
+
+const PORTRAIT_PAGES_WITH_CARDS = [
+  "/",
+  "/about",
+  "/contact",
+  "/services/accounting",
+  "/services/analytics",
+  "/merchant-services",
+] as const;
+
+for (const path of PORTRAIT_PAGES_WITH_CARDS) {
+  test(`${path} keeps its float cards clear of the face and hands`, async ({
+    page,
+  }) => {
+    await page.goto(path);
+
+    const boxes = await page.evaluate(() => {
+      const results: { top: number; bottom: number }[] = [];
+      for (const img of Array.from(
+        document.querySelectorAll<HTMLImageElement>('img[src*="advisor-"]'),
+      )) {
+        const frame = img.parentElement;
+        if (!frame) continue;
+        const f = frame.getBoundingClientRect();
+        if (f.height === 0) continue;
+        for (const card of Array.from(
+          frame.querySelectorAll<HTMLElement>(":scope > [data-float-card]"),
+        )) {
+          const c = card.getBoundingClientRect();
+          if (c.height === 0) continue;
+          results.push({
+            top: ((c.top - f.top) / f.height) * 100,
+            bottom: ((c.bottom - f.top) / f.height) * 100,
+          });
+        }
+      }
+      return results;
+    });
+
+    expect(boxes.length, `${path} should render at least one card`).toBeGreaterThan(0);
+
+    for (const box of boxes) {
+      // Head and shoulders occupy roughly the top 40% of every cut-out.
+      expect(box.top, "a card must never start above the face").toBeGreaterThan(40);
+      // Hands — crossed, gesturing or holding something — start around 62%.
+      // The bottom edge is pinned there by construction, so the half-point of
+      // slack is only for sub-pixel rounding of the percentage inset.
+      expect(box.bottom, "a card must never reach the hands").toBeLessThan(62.5);
+    }
+  });
+}
+
+test("portraits declare a blur placeholder and a realistic size", async ({
+  page,
+}) => {
+  await page.goto("/services/accounting");
+
+  const img = page.locator('img[src*="advisor-"]').first();
+  await img.scrollIntoViewIfNeeded();
+  await expect(img).toBeVisible();
+
+  const sizes = await img.getAttribute("sizes");
+  expect(sizes, "each placement declares its real column width").toBeTruthy();
+
+  // `src` is only the no-srcset fallback and always names the largest
+  // candidate; `currentSrc` is what the browser actually fetched. A blanket
+  // `sizes` had a 304px slot pulling the 1080px source.
+  const chosen = await img.evaluate((el) => (el as HTMLImageElement).currentSrc);
+  const width = Number(new URLSearchParams(chosen.split("?")[1]).get("w"));
+  expect(width, `unexpected source: ${chosen}`).toBeGreaterThan(0);
+  expect(width, "the fetched source should be sized to the slot").toBeLessThanOrEqual(640);
+});

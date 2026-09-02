@@ -59,9 +59,10 @@ export default function ContactPage() {
               portrait="consultant"
               tone="gold"
               priority
+              sizes="(min-width: 1024px) 20rem, (min-width: 640px) 22rem, 90vw"
               cards={
                 <FloatCard
-                  at="bottom-left"
+                  at="low-left"
                   icon={
                     <CardIcon tone="violet">
                       <PhoneCall className="size-4" />

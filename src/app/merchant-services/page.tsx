@@ -22,6 +22,7 @@ import {
   SettlementPanel,
 } from "@/components/merchant/PaymentVisuals";
 import { MerchantScene } from "@/components/illustrations/ServiceScenes";
+import { ServicePortrait } from "@/components/imagery/ServicePortrait";
 import { CtaSection } from "@/components/sections/CtaSection";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { ProcessSteps } from "@/components/sections/ProcessSteps";
@@ -271,14 +272,22 @@ export default function MerchantServicesPage() {
       {/* Onboarding */}
       <Section tone="white" id="onboarding" ariaLabelledBy="onboarding-heading">
         <Container>
-          <SectionHeading
-            id="onboarding-heading"
-            eyebrow="Merchant Onboarding"
-            title={service.process.heading}
-            lead={service.process.intro}
-            align="center"
-          />
-          <ProcessSteps steps={service.process.steps} className="mt-10 lg:mt-14" />
+          <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,19rem)] lg:items-center lg:gap-16">
+            <div className="min-w-0">
+              <SectionHeading
+                id="onboarding-heading"
+                eyebrow="Merchant Onboarding"
+                title={service.process.heading}
+                lead={service.process.intro}
+              />
+              <ProcessSteps
+                steps={service.process.steps}
+                className="mt-10 lg:mt-14"
+              />
+            </div>
+
+            <ServicePortrait slug="merchant-services" />
+          </div>
         </Container>
       </Section>
 
