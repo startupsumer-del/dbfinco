@@ -72,6 +72,8 @@ export const servicesMenu: MegaMenuColumn[] = [
 export const primaryNav: NavLink[] = [
   { label: "Services", href: "/services" },
   { label: "Merchant Services", href: "/merchant-services" },
+  // Anchors the homepage pricing section, so it resolves from any route.
+  { label: "Pricing", href: "/#pricing" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];

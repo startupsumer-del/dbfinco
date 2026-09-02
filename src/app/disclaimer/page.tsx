@@ -118,7 +118,7 @@ export default function DisclaimerPage() {
         certifications, partnership claims or performance statistics, because we
         publish only what can be substantiated. Any figure presented is either
         clearly labelled as illustrative or is a verified fact about our
-        business, such as our contact details and business hours.
+        business, such as our contact details.
       </p>
 
       <h2>Third-party content</h2>

@@ -132,7 +132,7 @@ export function ContactForm() {
             </p>
             <p className="mt-2.5 text-sm leading-relaxed text-ink-secondary">
               Thank you for getting in touch. We&apos;ve received your message
-              and will respond during business hours ({site.contact.hours.label}).
+              and will respond as soon as we can.
             </p>
           </div>
         ) : null}

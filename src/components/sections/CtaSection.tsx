@@ -1,4 +1,4 @@
-import { ArrowRight, Clock, Mail, MapPin, Phone } from "lucide-react";
+import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
@@ -91,10 +91,6 @@ export function CtaSection({
                       {site.contact.emailEnquiry}
                     </span>
                   </a>
-                </li>
-                <li className="flex items-start gap-3 text-purple-100">
-                  <Clock aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-gold-400" />
-                  {site.contact.hours.label}
                 </li>
                 <li className="flex items-start gap-3 text-purple-100">
                   <MapPin aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-gold-400" />

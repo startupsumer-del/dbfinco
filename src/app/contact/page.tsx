@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Clock, Mail, MapPin, Phone, PhoneCall } from "lucide-react";
+import { Mail, MapPin, Phone, PhoneCall } from "lucide-react";
 
 import { socialIconMap } from "@/components/brand/SocialIcons";
 import { ContactForm } from "@/components/forms/ContactForm";
@@ -25,7 +25,7 @@ import { breadcrumbSchema, buildMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "Contact DB FinCo",
   description:
-    "Get in touch with DB FinCo. Call 718-559-7748, email us, or send a message and we’ll respond during business hours. Head office at 459 Columbus Ave, New York, NY 10024.",
+    "Get in touch with DB FinCo. Call 718-559-7748, email us, or send a message and we’ll respond with a straight answer. Head office at 459 Columbus Ave, New York, NY 10024.",
   path: "/contact",
 });
 
@@ -35,7 +35,7 @@ const crumbs = [
 ];
 
 export default function ContactPage() {
-  const { address, hours } = site.contact;
+  const { address } = site.contact;
 
   return (
     <>
@@ -49,9 +49,9 @@ export default function ContactPage() {
                 Let&apos;s Talk About Your Finances
               </h1>
               <p className="measure mt-5 text-lead text-ink-secondary">
-                Tell us where things stand and what you need. We&apos;ll respond
-                during business hours with a straight answer about how we can
-                help — and whether we&apos;re the right fit.
+                Tell us where things stand and what you need. We&apos;ll come
+                back with a straight answer about how we can help — and whether
+                we&apos;re the right fit.
               </p>
             </div>
 
@@ -159,16 +159,6 @@ export default function ContactPage() {
 
                   <li>
                     <p className="text-eyebrow font-semibold uppercase text-gold-800">
-                      Business hours
-                    </p>
-                    <p className="mt-2 flex items-start gap-2.5 text-[0.9375rem] text-ink-secondary">
-                      <Clock aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-purple-700" />
-                      {hours.label}
-                    </p>
-                  </li>
-
-                  <li>
-                    <p className="text-eyebrow font-semibold uppercase text-gold-800">
                       Follow us
                     </p>
                     <div className="mt-3 flex gap-3">
@@ -204,7 +194,7 @@ export default function ContactPage() {
                 <ol className="mt-4 space-y-3">
                   {[
                     "We read your message and check we’re the right fit.",
-                    "We reply during business hours to arrange a consultation.",
+                    "We reply to arrange a consultation at a time that suits you.",
                     "The consultation is free, with no obligation to engage us.",
                   ].map((step, index) => (
                     <li key={step} className="flex gap-3 text-sm text-ink-secondary">

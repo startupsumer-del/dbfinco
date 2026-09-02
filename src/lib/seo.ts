@@ -48,7 +48,7 @@ export function buildMetadata({
 
 /** Organization / ProfessionalService node describing DB FinCo. */
 export function organizationSchema() {
-  const { address, hours } = site.contact;
+  const { address } = site.contact;
   return {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
@@ -69,14 +69,6 @@ export function organizationSchema() {
       postalCode: address.postalCode,
       addressCountry: address.country,
     },
-    openingHoursSpecification: [
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: hours.schemaDays.map((day) => `https://schema.org/${day}`),
-        opens: hours.opens,
-        closes: hours.closes,
-      },
-    ],
     sameAs: site.social.map((profile) => profile.href),
     areaServed: { "@type": "Country", name: "United States" },
     knowsAbout: [

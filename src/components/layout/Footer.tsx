@@ -20,11 +20,11 @@ import {
  */
 export function Footer() {
   const year = new Date().getFullYear();
-  const { address, hours } = site.contact;
+  const { address } = site.contact;
 
   return (
     <footer className="bg-purple-950 text-purple-100">
-      <div className="container-page py-14 sm:py-16 lg:py-20">
+      <div className="container-page py-12 sm:py-16 lg:py-22">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,20rem)_1fr] lg:gap-16">
           {/* Identity + contact */}
           <div>
@@ -37,7 +37,7 @@ export function Footer() {
               and useful for making decisions.
             </p>
 
-            <ul className="mt-8 space-y-4 text-sm">
+            <ul className="mt-8 space-y-1 text-sm">
               <li>
                 <a
                   href={telHref}
@@ -98,8 +98,6 @@ export function Footer() {
                 </a>
               </li>
             </ul>
-
-            <p className="mt-6 text-sm text-purple-300">{hours.label}</p>
 
             <div className="mt-6 flex items-center gap-3">
               {site.social.map((profile) => {

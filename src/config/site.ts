@@ -47,20 +47,6 @@ export const site = {
       country: "US",
       countryName: "United States",
     },
-    hours: {
-      label: "Monday – Friday, 9:00 AM – 6:30 PM",
-      days: "Monday – Friday",
-      opens: "09:00",
-      closes: "18:30",
-      /** Schema.org dayOfWeek values matching the hours above. */
-      schemaDays: [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-      ] as const,
-    },
   },
 
   /**

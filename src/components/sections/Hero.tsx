@@ -77,9 +77,6 @@ export function Hero() {
               <span>
                 <span className="sr-only">Call DB FinCo on </span>
                 {site.contact.phoneDisplay}
-                <span className="ml-2 font-normal text-ink-muted">
-                  {site.contact.hours.days}
-                </span>
               </span>
             </a>
 

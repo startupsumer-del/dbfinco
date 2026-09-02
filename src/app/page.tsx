@@ -13,6 +13,7 @@ import {
 } from "@/components/sections/HomeSections";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { PricingSection } from "@/components/sections/PricingSection";
 import { ProcessSteps } from "@/components/sections/ProcessSteps";
 import { ServiceGrid } from "@/components/sections/ServiceGrid";
 import { WhyDbFinco } from "@/components/sections/WhyDbFinco";
@@ -93,6 +94,8 @@ export default function HomePage() {
           </div>
         </Container>
       </Section>
+
+      <PricingSection />
 
       <FeatureStory
         eyebrow="Bookkeeping"

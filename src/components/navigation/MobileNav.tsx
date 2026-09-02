@@ -239,9 +239,6 @@ export function MobileNav({
             <Mail aria-hidden="true" className="size-4" />
             {site.contact.emailEnquiry}
           </a>
-          <p className="text-center text-xs text-ink-muted">
-            {site.contact.hours.label}
-          </p>
         </div>
       </div>
     </div>
