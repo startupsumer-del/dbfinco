@@ -21,6 +21,9 @@ export const ROUTES = [
 ] as const;
 
 export const VIEWPORTS = [
+  // 320 is the narrowest width the site is expected to hold. It caught a
+  // grid min-content blowout that 360 did not.
+  { name: "narrow-mobile", width: 320, height: 568 },
   { name: "small-mobile", width: 360, height: 800 },
   { name: "modern-mobile", width: 390, height: 844 },
   { name: "large-mobile", width: 430, height: 932 },

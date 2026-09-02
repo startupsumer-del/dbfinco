@@ -271,8 +271,11 @@ export function MerchantTeaser() {
       </div>
 
       <Container className="relative">
+        {/* `min-w-0` on the grid children: without it a track sizes to its
+            min-content, and the longest payment-method label pushes the whole
+            section past the viewport at 320px. */}
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
-          <div>
+          <div className="min-w-0">
             <Eyebrow tone="inverse" className="mb-4">
               Merchant Services
             </Eyebrow>
@@ -286,8 +289,11 @@ export function MerchantTeaser() {
 
             <ul className="mt-8 grid gap-x-6 gap-y-3 sm:grid-cols-2">
               {paymentMethods.map((method) => (
-                <li key={method} className="flex items-center gap-2.5 text-sm text-purple-100">
-                  <CircleCheck aria-hidden="true" className="size-4 shrink-0 text-gold-400" />
+                <li
+                  key={method}
+                  className="flex min-w-0 items-start gap-2.5 text-sm text-purple-100"
+                >
+                  <CircleCheck aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-gold-400" />
                   {method}
                 </li>
               ))}
@@ -299,7 +305,7 @@ export function MerchantTeaser() {
             </Button>
           </div>
 
-          <div className="rounded-xl border border-white/12 bg-white/[0.06] p-5 backdrop-blur-sm sm:p-7">
+          <div className="min-w-0 rounded-xl border border-white/12 bg-white/[0.06] p-5 backdrop-blur-sm sm:p-7">
             <div className="space-y-3">
               {[
                 { icon: CreditCard, label: "Card payment", detail: "Settled — net of fees", amount: "$2,480.00" },

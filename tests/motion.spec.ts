@@ -15,14 +15,35 @@ test("no revealed block is ever below full opacity", async ({ page }) => {
   // Walk the page the way a visitor would, so every observer entry fires.
   await page.evaluate(async () => {
     const step = window.innerHeight * 0.8;
-    for (let y = 0; y < document.body.scrollHeight; y += step) {
+    const bottom = () =>
+      Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+    for (let y = 0; y < bottom(); y += step) {
       window.scrollTo(0, y);
       await new Promise((r) => setTimeout(r, 60));
     }
-    window.scrollTo(0, document.body.scrollHeight);
+    window.scrollTo(0, bottom());
   });
-  // Longest possible reveal: 350ms of stagger plus the 420ms transition.
-  await page.waitForTimeout(1200);
+
+  // Poll rather than guess at a duration: the last cards carry up to 350ms of
+  // stagger on top of a 420ms transition, and a fixed wait races that.
+  await expect
+    .poll(
+      async () =>
+        page.evaluate(() =>
+          Array.from(document.querySelectorAll("[data-reveal]"))
+            .filter((el) => {
+              const t = getComputedStyle(el).transform;
+              return t !== "none" && t !== "matrix(1, 0, 0, 1, 0, 0)";
+            })
+            .map(
+              (el) =>
+                `${el.getAttribute("data-reveal") || "unrevealed"}: ` +
+                `${el.textContent?.trim().slice(0, 40) ?? "(empty)"}`,
+            ),
+        ),
+      { timeout: 8000, message: "every block should settle at its final position" },
+    )
+    .toEqual([]);
 
   const faded = await page.evaluate(() =>
     Array.from(document.querySelectorAll("[data-reveal]"))
@@ -32,16 +53,6 @@ test("no revealed block is ever below full opacity", async ({ page }) => {
 
   expect(faded, "the reveal must never fade text").toEqual([]);
 
-  const displaced = await page.evaluate(() =>
-    Array.from(document.querySelectorAll("[data-reveal]"))
-      .filter((el) => {
-        const t = getComputedStyle(el).transform;
-        return t !== "none" && t !== "matrix(1, 0, 0, 1, 0, 0)";
-      })
-      .map((el) => el.textContent?.trim().slice(0, 60) ?? "(empty)"),
-  );
-
-  expect(displaced, "every block should settle at its final position").toEqual([]);
 });
 
 test("reveal targets exist and the document is marked", async ({

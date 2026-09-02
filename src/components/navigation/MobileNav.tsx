@@ -11,6 +11,9 @@ import { bookingUrl, mailtoEnquiry, site, telHref } from "@/config/site";
 import { useEscapeKey, useScrollLock } from "@/lib/hooks";
 import { cn } from "@/lib/cn";
 
+/** Matches the accordion's CSS transition duration. */
+const SERVICES_TRANSITION_MS = 300;
+
 /**
  * Full-screen navigation drawer for mobile and tablet.
  *
@@ -29,6 +32,40 @@ export function MobileNav({
   const panelRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const [servicesOpen, setServicesOpen] = useState(false);
+
+  // Enter/exit staging for the services accordion.
+  //
+  // `hidden` is what genuinely removes the collapsed links — from the page,
+  // the tab order and the accessibility tree. `inert` alone is not enough:
+  // it is correct in a browser, but tooling that walks the DOM still finds
+  // the links, and "present but unreachable" is a state worth avoiding
+  // outright. A hidden element cannot animate, though, so the two states are
+  // staged: on open the panel is rendered first and expands on the next
+  // frame; on close it collapses first and is hidden once the transition has
+  // finished.
+  const [servicesMounted, setServicesMounted] = useState(false);
+  const [servicesExpanded, setServicesExpanded] = useState(false);
+
+  // Both halves run from an async callback, so neither queues a cascading
+  // render: the panel is already mounted (or already collapsing) by the time
+  // this runs, because the click handler does that part synchronously.
+  useEffect(() => {
+    if (servicesOpen) {
+      const frame = requestAnimationFrame(() => setServicesExpanded(true));
+      return () => cancelAnimationFrame(frame);
+    }
+
+    const timer = setTimeout(() => setServicesMounted(false), SERVICES_TRANSITION_MS);
+    return () => clearTimeout(timer);
+  }, [servicesOpen]);
+
+  function toggleServices() {
+    const next = !servicesOpen;
+    setServicesOpen(next);
+    // Render before expanding, collapse before hiding.
+    if (next) setServicesMounted(true);
+    else setServicesExpanded(false);
+  }
 
   useScrollLock(open);
   useEscapeKey(open, onClose);
@@ -144,7 +181,7 @@ export function MobileNav({
                 type="button"
                 aria-expanded={servicesOpen}
                 aria-controls="mobile-services-panel"
-                onClick={() => setServicesOpen((value) => !value)}
+                onClick={toggleServices}
                 className="flex min-h-11 w-full items-center justify-between gap-3 rounded-lg
                   px-3 py-3 text-left text-h4 font-semibold text-ink-primary
                   transition-colors hover:bg-purple-50"
@@ -159,45 +196,57 @@ export function MobileNav({
                 />
               </button>
 
-              <div id="mobile-services-panel" hidden={!servicesOpen} className="pb-2">
-                <Link
-                  href="/services"
-                  onClick={handleNavigate}
-                  className="mx-3 mb-2 flex min-h-11 items-center gap-1.5 rounded-lg px-3 py-2
-                    text-sm font-semibold text-purple-800 transition-colors hover:bg-purple-50"
-                >
-                  All services
-                  <ArrowRight aria-hidden="true" className="size-4" />
-                </Link>
-                {servicesMenu.map((column) => (
-                  <div key={column.heading} className="mb-3">
-                    <p className="text-eyebrow px-3 pb-1 pt-2 font-semibold uppercase text-gold-800">
-                      {column.heading}
-                    </p>
-                    <ul>
-                      {column.items.map((service) => {
-                        const Icon = service.icon;
-                        return (
-                          <li key={service.slug}>
-                            <Link
-                              href={service.href}
-                              onClick={handleNavigate}
-                              className="flex min-h-11 items-center gap-3 rounded-lg px-3 py-2.5
-                                text-[0.9375rem] text-ink-secondary transition-colors
-                                hover:bg-purple-50 hover:text-purple-900"
-                            >
-                              <Icon
-                                aria-hidden="true"
-                                className="size-4 shrink-0 text-purple-500"
-                              />
-                              {service.name}
-                            </Link>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </div>
-                ))}
+              {/* Grid-row collapse animates height without needing a measured
+                  pixel value, so the panel expands smoothly whatever the
+                  service list contains. */}
+              <div
+                id="mobile-services-panel"
+                hidden={!servicesMounted}
+                className={cn(
+                  "grid transition-[grid-template-rows] duration-300 ease-[var(--ease-out-brand)]",
+                  servicesExpanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
+                )}
+              >
+                <div className="overflow-hidden">
+                  <Link
+                    href="/services"
+                    onClick={handleNavigate}
+                    className="mx-3 mb-2 flex min-h-11 items-center gap-1.5 rounded-lg px-3 py-2
+                      text-sm font-semibold text-purple-800 transition-colors hover:bg-purple-50"
+                  >
+                    All Services
+                    <ArrowRight aria-hidden="true" className="size-4" />
+                  </Link>
+                  {servicesMenu.map((column) => (
+                    <div key={column.heading} className="mb-3">
+                      <p className="text-eyebrow px-3 pb-1 pt-2 font-semibold uppercase text-gold-800">
+                        {column.heading}
+                      </p>
+                      <ul>
+                        {column.items.map((service) => {
+                          const Icon = service.icon;
+                          return (
+                            <li key={service.slug}>
+                              <Link
+                                href={service.href}
+                                onClick={handleNavigate}
+                                className="flex min-h-11 items-center gap-3 rounded-lg px-3 py-2.5
+                                  text-[0.9375rem] text-ink-secondary transition-colors
+                                  hover:bg-purple-50 hover:text-purple-900"
+                              >
+                                <Icon
+                                  aria-hidden="true"
+                                  className="size-4 shrink-0 text-purple-500"
+                                />
+                                {service.name}
+                              </Link>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
               </div>
             </li>
 

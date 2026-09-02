@@ -21,25 +21,69 @@ import { cn } from "@/lib/cn";
 
 let observer: IntersectionObserver | null = null;
 
+/** Elements that have not played yet. Empty means nothing left to watch. */
+const pending = new Set<Element>();
+let sweepQueued = false;
+let listening = false;
+
 function reveal(el: Element) {
   el.setAttribute("data-reveal", "in");
+  pending.delete(el);
+  observer?.unobserve(el);
+  if (pending.size === 0) stopSweeping();
+}
+
+/**
+ * Safety net for elements the observer never saw.
+ *
+ * A fast scroll — a fling, Cmd+End, a restored position, a jump to an anchor —
+ * can move an element from below the fold to above it between two frames, so
+ * it never intersects at any sampled frame and would otherwise sit offset for
+ * good. After any scroll settles, anything at or above the fold is revealed
+ * outright. One rAF-throttled listener covers the whole page, and it detaches
+ * as soon as nothing is left to reveal.
+ */
+function sweep() {
+  sweepQueued = false;
+  const limit = window.innerHeight * 1.1;
+  for (const el of Array.from(pending)) {
+    if (el.getBoundingClientRect().top < limit) reveal(el);
+  }
+}
+
+function onScroll() {
+  if (sweepQueued) return;
+  sweepQueued = true;
+  requestAnimationFrame(sweep);
+}
+
+function startSweeping() {
+  if (listening) return;
+  listening = true;
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll, { passive: true });
+}
+
+function stopSweeping() {
+  if (!listening) return;
+  listening = false;
+  window.removeEventListener("scroll", onScroll);
+  window.removeEventListener("resize", onScroll);
 }
 
 function getObserver(): IntersectionObserver | null {
   if (typeof IntersectionObserver === "undefined") return null;
   observer ??= new IntersectionObserver(
-    (entries, obs) => {
+    (entries) => {
       for (const entry of entries) {
-        if (!entry.isIntersecting) continue;
-        reveal(entry.target);
-        obs.unobserve(entry.target);
+        if (entry.isIntersecting) reveal(entry.target);
       }
     },
     // The bottom margin is deliberately positive: it reveals slightly before
     // an element reaches the fold, and — more importantly — it can never
     // create a band at the bottom of the document where an element is on
     // screen but does not count as intersecting, which would leave the last
-    // blocks on the page invisible forever.
+    // blocks on the page permanently offset.
     { rootMargin: "0px 0px 10% 0px", threshold: 0 },
   );
   return observer;
@@ -79,8 +123,15 @@ export function Reveal({
       return;
     }
 
+    pending.add(el);
     io.observe(el);
-    return () => io.unobserve(el);
+    startSweeping();
+
+    return () => {
+      pending.delete(el);
+      io.unobserve(el);
+      if (pending.size === 0) stopSweeping();
+    };
   }, []);
 
   return (
