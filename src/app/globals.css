@@ -302,6 +302,66 @@
   }
 }
 
+/* --------------------------------------------------------------------------
+   Scroll reveal
+
+   The reveal moves position only — it never touches opacity. A fade would put
+   real text below full contrast for the length of the transition, and would
+   leave everything past the fold at zero contrast until it is scrolled to,
+   which an automated audit correctly reports as a violation and a reader on a
+   slow device would genuinely experience. Movement alone still reads as a
+   reveal and keeps every word legible at every moment.
+
+   The hidden state is gated on `.js-reveal`, added before first paint by a
+   script at the end of the body. Three consequences, all deliberate:
+
+     - with JavaScript disabled the class is never added, so nothing is ever
+       offset and every section renders exactly where it belongs;
+     - the same script exempts anything already on screen, so the first view
+       never animates;
+     - a reader who prefers reduced motion gets the override below.
+
+   Only transform animates, so a reveal never triggers layout.
+   -------------------------------------------------------------------------- */
+
+.js-reveal [data-reveal] {
+  transform: translate3d(0, 16px, 0);
+  transition: transform 420ms var(--ease-out-brand);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: transform;
+}
+
+.js-reveal [data-reveal="in"] {
+  transform: translate3d(0, 0, 0);
+  will-change: auto;
+}
+
+/* Already on screen at first paint: leave it exactly where it is. */
+.js-reveal [data-reveal="ready"] {
+  transform: none;
+  transition: none;
+  will-change: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js-reveal [data-reveal],
+  .js-reveal [data-reveal="in"],
+  .js-reveal [data-reveal="ready"] {
+    transform: none;
+    transition: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js-reveal [data-reveal],
+  .js-reveal [data-reveal="in"],
+  .js-reveal [data-reveal="ready"] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

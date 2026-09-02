@@ -88,6 +88,23 @@ export default function RootLayout({
         </main>
         <Footer />
         <JsonLd data={organizationSchema()} />
+        {/* Runs at the end of the body, so the DOM is parsed but nothing has
+            painted yet. It does two things: marks the document, which is what
+            switches the scroll-reveal styles on at all, and exempts every
+            block already on screen so the first view never fades in.
+
+            With JavaScript disabled neither happens, the marker class is
+            absent, and every section renders plainly visible — which is the
+            correct fallback rather than a degraded one. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              '(function(){var r=document.documentElement;r.classList.add("js-reveal");' +
+              'var h=window.innerHeight,e=document.querySelectorAll("[data-reveal]");' +
+              'for(var i=0;i<e.length;i++){if(e[i].getBoundingClientRect().top<h)' +
+              'e[i].setAttribute("data-reveal","ready");}})()',
+          }}
+        />
       </body>
     </html>
   );

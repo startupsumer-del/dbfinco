@@ -1,5 +1,7 @@
 import { Check } from "lucide-react";
 
+import { Reveal } from "@/components/motion/Reveal";
+
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
@@ -30,19 +32,21 @@ export function PricingSection() {
   return (
     <Section tone="subtle" id="pricing" ariaLabelledBy="pricing-heading">
       <Container>
-        <SectionHeading
-          id="pricing-heading"
-          eyebrow="Transparent Pricing"
-          title="Plans Built for Business Growth"
-          lead="Three monthly packages covering bookkeeping, reporting and filing — each one scoped and agreed with you before any work begins."
-          align="center"
-        />
+        <Reveal>
+          <SectionHeading
+            id="pricing-heading"
+            eyebrow="Transparent Pricing"
+            title="Plans Built for Business Growth"
+            lead="Three monthly packages covering bookkeeping, reporting and filing — each one scoped and agreed with you before any work begins."
+            align="center"
+          />
+        </Reveal>
 
         <ul className="mt-10 grid items-stretch gap-6 lg:mt-14 lg:grid-cols-3 lg:gap-7">
-          {pricingPlans.map((plan) => {
+          {pricingPlans.map((plan, index) => {
             const featured = Boolean(plan.badge);
             return (
-              <li key={plan.id} className="flex">
+              <Reveal key={plan.id} as="li" className="flex" delay={index * 70}>
                 <div
                   className={cn(
                     "flex w-full flex-col rounded-2xl bg-white p-6 sm:p-7 lg:p-8",
@@ -116,7 +120,7 @@ export function PricingSection() {
                     ))}
                   </ul>
                 </div>
-              </li>
+              </Reveal>
             );
           })}
         </ul>

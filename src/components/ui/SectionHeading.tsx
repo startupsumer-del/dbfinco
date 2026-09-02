@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 
+import { Reveal } from "@/components/motion/Reveal";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { cn } from "@/lib/cn";
 
@@ -30,7 +31,7 @@ export function SectionHeading({
   const centered = align === "center";
 
   return (
-    <div
+    <Reveal
       className={cn("max-w-3xl", centered && "mx-auto text-center", className)}
     >
       {eyebrow ? (
@@ -61,6 +62,6 @@ export function SectionHeading({
           {lead}
         </p>
       ) : null}
-    </div>
+    </Reveal>
   );
 }

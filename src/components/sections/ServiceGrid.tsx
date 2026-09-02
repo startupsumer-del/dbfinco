@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
+import { Reveal } from "@/components/motion/Reveal";
 import { Card } from "@/components/ui/Card";
 import { cn } from "@/lib/cn";
 import type { ServiceDetail } from "@/types/content";
@@ -33,36 +34,44 @@ export function ServiceGrid({
         className,
       )}
     >
-      {services.map((service) => {
+      {services.map((service, index) => {
         const Icon = service.icon;
         return (
-          <Card key={service.slug} as="li" interactive className="flex flex-col">
-            <span
-              aria-hidden="true"
-              className="flex size-11 items-center justify-center rounded-lg border
-                border-purple-100 bg-purple-50 text-purple-700"
-            >
-              <Icon className="size-5" />
-            </span>
-
-            <h3 className="mt-5 text-h4 font-semibold text-ink-primary">
-              <Link
-                href={service.href}
-                className="after:absolute after:inset-0 after:content-['']"
+          <Reveal
+            key={service.slug}
+            as="li"
+            className="flex"
+            // Capped so a long grid never trails far behind the first card.
+            delay={Math.min(index, 5) * 70}
+          >
+            <Card as="div" interactive className="flex w-full flex-col">
+              <span
+                aria-hidden="true"
+                className="flex size-11 items-center justify-center rounded-lg border
+                  border-purple-100 bg-purple-50 text-purple-700"
               >
-                {service.name}
-              </Link>
-            </h3>
+                <Icon className="size-5" />
+              </span>
 
-            <p className="mt-2.5 flex-1 text-sm leading-relaxed text-ink-secondary">
-              {service.summary}
-            </p>
+              <h3 className="mt-5 text-h4 font-semibold text-ink-primary">
+                <Link
+                  href={service.href}
+                  className="after:absolute after:inset-0 after:content-['']"
+                >
+                  {service.name}
+                </Link>
+              </h3>
 
-            <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-purple-800">
-              Learn More
-              <ArrowRight aria-hidden="true" className="size-4" />
-            </span>
-          </Card>
+              <p className="mt-2.5 flex-1 text-sm leading-relaxed text-ink-secondary">
+                {service.summary}
+              </p>
+
+              <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-purple-800">
+                Learn More
+                <ArrowRight aria-hidden="true" className="size-4" />
+              </span>
+              </Card>
+          </Reveal>
         );
       })}
     </ul>
