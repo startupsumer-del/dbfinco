@@ -21,6 +21,7 @@ import {
   PaymentTerminal,
   SettlementPanel,
 } from "@/components/merchant/PaymentVisuals";
+import { MerchantScene } from "@/components/illustrations/ServiceScenes";
 import { CtaSection } from "@/components/sections/CtaSection";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { ProcessSteps } from "@/components/sections/ProcessSteps";
@@ -114,48 +115,49 @@ export default function MerchantServicesPage() {
 
   return (
     <>
-      {/* Hero */}
-      <section className="relative overflow-hidden border-b border-line bg-white">
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-          <div className="absolute -right-52 -top-48 size-[38rem] rounded-full bg-[radial-gradient(circle,var(--color-purple-50),transparent_66%)]" />
-          <div className="absolute -bottom-40 -left-40 size-[26rem] rounded-full bg-[radial-gradient(circle,var(--color-gold-50),transparent_68%)]" />
+      {/* Hero banner */}
+      <section className="relative overflow-hidden bg-purple-900">
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+          <div className="absolute -right-40 -top-44 size-[34rem] rounded-full bg-[radial-gradient(circle,rgba(201,154,84,0.22),transparent_68%)]" />
+          <div className="absolute -bottom-48 -left-40 size-[30rem] rounded-full bg-[radial-gradient(circle,rgba(110,56,145,0.45),transparent_70%)]" />
         </div>
 
-        <Container className="pb-16 pt-8 sm:pb-20 sm:pt-10 lg:pb-24 lg:pt-12">
-          <Breadcrumbs crumbs={crumbs} />
+        <Container className="relative pb-16 pt-8 sm:pb-20 sm:pt-10 lg:pb-24 lg:pt-12">
+          <Breadcrumbs crumbs={crumbs} tone="inverse" />
 
-          <div className="mt-8 grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] lg:items-center lg:gap-16">
-            <div>
-              <Eyebrow className="mb-5">Merchant Services</Eyebrow>
-              <h1 className="text-display-2 text-ink-primary">
+          <div className="mt-8 grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:items-center lg:gap-16">
+            <div className="min-w-0">
+              <Eyebrow tone="inverse" className="mb-5">
+                Merchant Services
+              </Eyebrow>
+              <h1 className="text-display-2 text-white">
                 Accept payments, and know exactly what landed in the bank.
               </h1>
-              <p className="measure mt-6 text-lead text-ink-secondary">
+              <p className="measure mt-6 text-lead text-purple-100">
                 Support for taking card, online, in-person and ACH payments —
                 with settlement, fee and chargeback data reconciled back into
                 your books, where it can actually be understood.
               </p>
 
               <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <Button href={bookingUrl} size="lg" fullWidth className="sm:w-auto">
+                <Button href={bookingUrl} variant="gold" size="lg" fullWidth className="sm:w-auto">
                   Schedule a Free Consultation
                   <ArrowRight aria-hidden="true" className="size-4" />
                 </Button>
                 <a
                   href={telHref}
                   className="inline-flex min-h-11 items-center justify-center gap-2 rounded-pill
-                    border border-line-strong bg-white px-6 py-3.5 text-base font-semibold
-                    text-ink-primary transition-colors hover:border-purple-300 hover:bg-purple-50"
+                    border border-white/25 px-6 py-3.5 text-base font-semibold text-white
+                    transition-colors hover:border-white/50 hover:bg-white/10"
                 >
-                  <Phone aria-hidden="true" className="size-4 text-purple-700" />
+                  <Phone aria-hidden="true" className="size-4 text-gold-300" />
                   {site.contact.phoneDisplay}
                 </a>
               </div>
             </div>
 
-            <div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-center lg:flex-col lg:items-stretch">
-              <PaymentCard className="sm:max-w-[17rem] lg:max-w-none" />
-              <PaymentTerminal className="lg:mx-auto" />
+            <div className="min-w-0 [&_svg]:drop-shadow-[0_18px_44px_rgba(12,4,20,0.45)]">
+              <MerchantScene />
             </div>
           </div>
         </Container>
@@ -193,6 +195,12 @@ export default function MerchantServicesPage() {
               );
             })}
           </ul>
+
+          {/* Card acceptance and terminal, shown rather than described. */}
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:mt-14 lg:gap-8">
+            <PaymentCard className="mx-auto w-full sm:max-w-none" />
+            <PaymentTerminal className="mx-auto w-full sm:max-w-none" />
+          </div>
         </Container>
       </Section>
 

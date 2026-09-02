@@ -2,6 +2,7 @@ import { AdvisoryVisual, CloseChecklistVisual, FilingCalendarVisual } from "@/co
 import { CtaSection } from "@/components/sections/CtaSection";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { FeatureStory } from "@/components/sections/FeatureStory";
+import { PortraitScene } from "@/components/imagery/PortraitScene";
 import { Hero } from "@/components/sections/Hero";
 import {
   CapabilityStrip,
@@ -77,14 +78,19 @@ export default function HomePage() {
 
       <Section tone="white" ariaLabelledBy="how-heading">
         <Container>
-          <SectionHeading
-            id="how-heading"
-            eyebrow="How it works"
-            title="Four steps from first conversation to a finance function that runs."
-            lead="Nothing starts until the scope is written down and agreed. After that, the work settles into a predictable monthly rhythm."
-            align="center"
-          />
-          <ProcessSteps steps={howItWorks} className="mt-14 lg:mt-16" />
+          <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,21rem)] lg:items-center lg:gap-16">
+            <div className="min-w-0">
+              <SectionHeading
+                id="how-heading"
+                eyebrow="How it works"
+                title="Four steps from first conversation to a finance function that runs."
+                lead="Nothing starts until the scope is written down and agreed. After that, the work settles into a predictable monthly rhythm."
+              />
+              <ProcessSteps steps={howItWorks} className="mt-14 lg:mt-16" />
+            </div>
+
+            <PortraitScene portrait="standing" tone="lilac" />
+          </div>
         </Container>
       </Section>
 

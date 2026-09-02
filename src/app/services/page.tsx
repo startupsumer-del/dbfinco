@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 
 import { JsonLd } from "@/components/layout/JsonLd";
-import { Breadcrumbs } from "@/components/sections/ServicePageTemplate";
 import { CtaSection } from "@/components/sections/CtaSection";
+import { ServicesOverviewScene } from "@/components/illustrations/ServiceScenes";
+import { PageBanner } from "@/components/sections/PageBanner";
 import { ServiceGrid } from "@/components/sections/ServiceGrid";
 import { Container } from "@/components/ui/Container";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { auditServices } from "@/content/audit-services";
@@ -29,23 +29,13 @@ export default function ServicesPage() {
 
   return (
     <>
-      <section className="border-b border-line bg-white">
-        <Container className="pb-14 pt-8 sm:pb-16 sm:pt-10 lg:pb-20 lg:pt-12">
-          <Breadcrumbs crumbs={crumbs} />
-          <div className="mt-8 max-w-3xl">
-            <Eyebrow className="mb-5">Our Services</Eyebrow>
-            <h1 className="text-display-2 text-ink-primary">
-              A complete finance function, delivered by one firm.
-            </h1>
-            <p className="measure mt-6 text-lead text-ink-secondary">
-              Every service below can be engaged on its own. Most clients
-              combine two or three, and they work better together — the tax
-              return is prepared from books we keep, and the advisory work draws
-              on reporting we build.
-            </p>
-          </div>
-        </Container>
-      </section>
+      <PageBanner
+        crumbs={crumbs}
+        eyebrow="Our Services"
+        title="A complete finance function, delivered by one firm."
+        lead="Every service below can be engaged on its own. Most clients combine two or three, and they work better together — the tax return is prepared from books we keep, and the advisory work draws on reporting we build."
+        visual={<ServicesOverviewScene />}
+      />
 
       <Section tone="subtle" ariaLabelledBy="core-heading">
         <Container>

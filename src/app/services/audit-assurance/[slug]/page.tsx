@@ -4,6 +4,11 @@ import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/layout/JsonLd";
 import { ServicePageTemplate } from "@/components/sections/ServicePageTemplate";
 import { AuditEvidenceVisual } from "@/components/sections/ServiceVisuals";
+import {
+  AuditScene,
+  InternalAuditScene,
+  ProceduresScene,
+} from "@/components/illustrations/ServiceScenes";
 import { auditServices, getAuditService, getAuditServices } from "@/content/audit-services";
 import { breadcrumbSchema, buildMetadata, serviceSchema } from "@/lib/seo";
 
@@ -27,6 +32,20 @@ export async function generateMetadata({
     description: service.metaDescription,
     path: service.href,
   });
+}
+
+/** Each engagement type gets its own illustration in the hero banner. */
+function heroVisualFor(slug: string) {
+  switch (slug) {
+    case "external-audit":
+      return <AuditScene />;
+    case "internal-audit":
+      return <InternalAuditScene />;
+    case "agreed-upon-procedures":
+      return <ProceduresScene />;
+    default:
+      return undefined;
+  }
 }
 
 export default async function AuditServicePage({
@@ -53,7 +72,10 @@ export default async function AuditServicePage({
       <ServicePageTemplate
         service={service}
         crumbs={crumbs}
-        heroVisual={slug === "external-audit" ? <AuditEvidenceVisual /> : undefined}
+        heroVisual={heroVisualFor(slug)}
+        deliverableVisual={
+          slug === "external-audit" ? <AuditEvidenceVisual /> : undefined
+        }
         related={getAuditServices(service.related)}
       />
       <JsonLd data={breadcrumbSchema(crumbs)} />

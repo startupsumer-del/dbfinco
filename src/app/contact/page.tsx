@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
-import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import { Clock, Mail, MapPin, Phone, PhoneCall } from "lucide-react";
 
 import { socialIconMap } from "@/components/brand/SocialIcons";
 import { ContactForm } from "@/components/forms/ContactForm";
+import {
+  CardIcon,
+  FloatCard,
+  PortraitScene,
+} from "@/components/imagery/PortraitScene";
 import { JsonLd } from "@/components/layout/JsonLd";
 import { Breadcrumbs } from "@/components/sections/ServicePageTemplate";
 import { Container } from "@/components/ui/Container";
@@ -37,16 +42,36 @@ export default function ContactPage() {
       <section className="border-b border-line bg-white">
         <Container className="pb-12 pt-8 sm:pb-14 sm:pt-10 lg:pt-12">
           <Breadcrumbs crumbs={crumbs} />
-          <div className="mt-8 max-w-3xl">
-            <Eyebrow className="mb-5">Contact</Eyebrow>
-            <h1 className="text-display-2 text-ink-primary">
-              Let&apos;s talk about your finances.
-            </h1>
-            <p className="measure mt-6 text-lead text-ink-secondary">
-              Tell us where things stand and what you need. We&apos;ll respond
-              during business hours with a straight answer about how we can
-              help — and whether we&apos;re the right fit.
-            </p>
+          <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,20rem)] lg:items-center lg:gap-16">
+            <div className="min-w-0">
+              <Eyebrow className="mb-5">Contact</Eyebrow>
+              <h1 className="text-display-2 text-ink-primary">
+                Let&apos;s talk about your finances.
+              </h1>
+              <p className="measure mt-6 text-lead text-ink-secondary">
+                Tell us where things stand and what you need. We&apos;ll respond
+                during business hours with a straight answer about how we can
+                help — and whether we&apos;re the right fit.
+              </p>
+            </div>
+
+            <PortraitScene
+              portrait="consultant"
+              tone="gold"
+              priority
+              cards={
+                <FloatCard
+                  at="bottom-left"
+                  icon={
+                    <CardIcon tone="violet">
+                      <PhoneCall className="size-4" />
+                    </CardIcon>
+                  }
+                  title="A free first conversation"
+                  detail="No cost, no obligation"
+                />
+              }
+            />
           </div>
         </Container>
       </section>

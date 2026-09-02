@@ -1,8 +1,15 @@
 import type { Metadata } from "next";
-import { ArrowRight, Building2, Compass, Handshake, ScrollText } from "lucide-react";
+import {
+  ArrowRight,
+  Building2,
+  CircleCheck,
+  Compass,
+  Handshake,
+  ScrollText,
+  UserRound,
+} from "lucide-react";
 
 import { JsonLd } from "@/components/layout/JsonLd";
-import { ReportingPreview } from "@/components/charts/ReportingPreview";
 import { CtaSection } from "@/components/sections/CtaSection";
 import { ProcessSteps } from "@/components/sections/ProcessSteps";
 import { Breadcrumbs } from "@/components/sections/ServicePageTemplate";
@@ -10,6 +17,11 @@ import { ServiceGrid } from "@/components/sections/ServiceGrid";
 import { WhyDbFinco } from "@/components/sections/WhyDbFinco";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
+import {
+  CardIcon,
+  FloatCard,
+  PortraitScene,
+} from "@/components/imagery/PortraitScene";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Section } from "@/components/ui/Section";
@@ -107,7 +119,35 @@ export default function AboutPage() {
               </Button>
             </div>
 
-            <ReportingPreview compact />
+            <PortraitScene
+              portrait="partner"
+              tone="lilac"
+              priority
+              cards={
+                <>
+                  <FloatCard
+                    at="mid-left"
+                    icon={
+                      <CardIcon tone="violet">
+                        <UserRound className="size-4" />
+                      </CardIcon>
+                    }
+                    title="A named accountant"
+                    detail="Not a shared inbox"
+                  />
+                  <FloatCard
+                    at="bottom-right"
+                    icon={
+                      <CardIcon tone="success">
+                        <CircleCheck className="size-4" />
+                      </CardIcon>
+                    }
+                    title="Scope agreed in writing"
+                    detail="Before any work starts"
+                  />
+                </>
+              }
+            />
           </div>
         </Container>
       </section>

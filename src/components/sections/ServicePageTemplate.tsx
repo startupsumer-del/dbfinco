@@ -11,6 +11,7 @@ import { Card } from "@/components/ui/Card";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Section } from "@/components/ui/Section";
+import { cn } from "@/lib/cn";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { bookingUrl, site, telHref } from "@/config/site";
 import type { ServiceDetail } from "@/types/content";
@@ -28,25 +29,30 @@ export function ServicePageTemplate({
   service,
   crumbs,
   heroVisual,
+  deliverableVisual,
   extraSection,
   related,
 }: {
   service: ServiceDetail;
   crumbs: Crumb[];
+  /** Illustration shown inside the hero banner. */
   heroVisual?: ReactNode;
+  /** Data-rich preview shown above the deliverables grid. */
+  deliverableVisual?: ReactNode;
   extraSection?: ReactNode;
   related: ServiceDetail[];
 }) {
   return (
     <>
-      {/* Hero */}
-      <section className="relative overflow-hidden border-b border-line bg-white">
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-          <div className="absolute -right-48 -top-40 size-[34rem] rounded-full bg-[radial-gradient(circle,var(--color-purple-50),transparent_68%)]" />
+      {/* Hero banner — branded ground, with the service's own illustration */}
+      <section className="relative overflow-hidden bg-purple-900">
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+          <div className="absolute -right-40 -top-44 size-[34rem] rounded-full bg-[radial-gradient(circle,rgba(201,154,84,0.20),transparent_68%)]" />
+          <div className="absolute -bottom-48 -left-40 size-[30rem] rounded-full bg-[radial-gradient(circle,rgba(110,56,145,0.45),transparent_70%)]" />
         </div>
 
-        <Container className="pb-14 pt-8 sm:pb-16 sm:pt-10 lg:pb-20 lg:pt-12">
-          <Breadcrumbs crumbs={crumbs} />
+        <Container className="relative pb-14 pt-8 sm:pb-16 sm:pt-10 lg:pb-20 lg:pt-12">
+          <Breadcrumbs crumbs={crumbs} tone="inverse" />
 
           <div
             className={
@@ -55,31 +61,37 @@ export function ServicePageTemplate({
                 : "mt-8"
             }
           >
-            <div>
-              <Eyebrow className="mb-5">{service.eyebrow}</Eyebrow>
-              <h1 className="text-display-2 text-ink-primary">{service.headline}</h1>
-              <p className="measure mt-6 text-lead text-ink-secondary">
+            <div className="min-w-0">
+              <Eyebrow tone="inverse" className="mb-5">
+                {service.eyebrow}
+              </Eyebrow>
+              <h1 className="text-display-2 text-white">{service.headline}</h1>
+              <p className="measure mt-6 text-lead text-purple-100">
                 {service.intro}
               </p>
 
               <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <Button href={bookingUrl} size="lg" fullWidth className="sm:w-auto">
+                <Button href={bookingUrl} variant="gold" size="lg" fullWidth className="sm:w-auto">
                   Schedule a Free Consultation
                   <ArrowRight aria-hidden="true" className="size-4" />
                 </Button>
                 <a
                   href={telHref}
                   className="inline-flex min-h-11 items-center justify-center gap-2 rounded-pill
-                    border border-line-strong bg-white px-6 py-3.5 text-base font-semibold
-                    text-ink-primary transition-colors hover:border-purple-300 hover:bg-purple-50"
+                    border border-white/25 px-6 py-3.5 text-base font-semibold text-white
+                    transition-colors hover:border-white/50 hover:bg-white/10"
                 >
-                  <Phone aria-hidden="true" className="size-4 text-purple-700" />
+                  <Phone aria-hidden="true" className="size-4 text-gold-300" />
                   {site.contact.phoneDisplay}
                 </a>
               </div>
             </div>
 
-            {heroVisual ? <div>{heroVisual}</div> : null}
+            {heroVisual ? (
+              <div className="min-w-0 [&_svg]:drop-shadow-[0_18px_44px_rgba(12,4,20,0.45)]">
+                {heroVisual}
+              </div>
+            ) : null}
           </div>
         </Container>
       </section>
@@ -140,6 +152,9 @@ export function ServicePageTemplate({
       {/* Deliverables */}
       <Section tone="lilac" ariaLabelledBy="deliverables-heading">
         <Container>
+          {deliverableVisual ? (
+            <div className="mb-12 lg:mb-16">{deliverableVisual}</div>
+          ) : null}
           <div className="grid gap-10 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:gap-16">
             <SectionHeading
               id="deliverables-heading"
@@ -213,25 +228,46 @@ export function ServicePageTemplate({
 }
 
 /** Breadcrumb trail. The final crumb is the current page and is not a link. */
-export function Breadcrumbs({ crumbs }: { crumbs: Crumb[] }) {
+export function Breadcrumbs({
+  crumbs,
+  tone = "default",
+}: {
+  crumbs: Crumb[];
+  tone?: "default" | "inverse";
+}) {
+  const inverse = tone === "inverse";
   return (
     <nav aria-label="Breadcrumb">
-      <ol className="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-xs text-ink-muted">
+      <ol
+        className={cn(
+          "flex flex-wrap items-center gap-x-1.5 gap-y-1 text-xs",
+          inverse ? "text-purple-200" : "text-ink-muted",
+        )}
+      >
         {crumbs.map((crumb, index) => {
           const isLast = index === crumbs.length - 1;
           return (
             <li key={crumb.path} className="flex items-center gap-1.5">
               {index > 0 ? (
-                <ChevronRight aria-hidden="true" className="size-3.5 text-line-strong" />
+                <ChevronRight
+                  aria-hidden="true"
+                  className={cn("size-3.5", inverse ? "text-purple-400" : "text-line-strong")}
+                />
               ) : null}
               {isLast ? (
-                <span aria-current="page" className="font-medium text-ink-secondary">
+                <span
+                  aria-current="page"
+                  className={cn("font-medium", inverse ? "text-white" : "text-ink-secondary")}
+                >
                   {crumb.name}
                 </span>
               ) : (
                 <Link
                   href={crumb.path}
-                  className="transition-colors hover:text-purple-800"
+                  className={cn(
+                    "transition-colors",
+                    inverse ? "hover:text-white" : "hover:text-purple-800",
+                  )}
                 >
                   {crumb.name}
                 </Link>

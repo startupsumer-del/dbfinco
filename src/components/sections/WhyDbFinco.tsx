@@ -1,3 +1,10 @@
+import { MessagesSquare } from "lucide-react";
+
+import {
+  CardIcon,
+  FloatCard,
+  PortraitScene,
+} from "@/components/imagery/PortraitScene";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -38,32 +45,53 @@ export function WhyDbFinco() {
   return (
     <Section tone="subtle" ariaLabelledBy="why-heading">
       <Container>
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,24rem)_minmax(0,1fr)] lg:gap-16">
-          <SectionHeading
-            id="why-heading"
-            eyebrow="Why DB FinCo"
-            title="The difference is in how the work is run."
-            lead="We would rather be judged on how an engagement actually feels month to month than on claims nobody can verify."
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:items-center lg:gap-16">
+          {/* Portrait sits second on mobile so the heading is read first. */}
+          <PortraitScene
+            portrait="manager"
+            tone="gold"
+            className="order-2 max-w-[20rem] lg:order-1 lg:max-w-none"
+            cards={
+              <FloatCard
+                at="bottom-left"
+                icon={
+                  <CardIcon tone="violet">
+                    <MessagesSquare className="size-4" />
+                  </CardIcon>
+                }
+                title="One team, one contact"
+                detail="Accounting, tax and advisory"
+              />
+            }
           />
 
-          <ul className="grid gap-x-8 gap-y-8 sm:grid-cols-2">
-            {reasons.map((reason, index) => (
-              <li key={reason.title}>
-                <p
-                  aria-hidden="true"
-                  className="text-sm font-bold tabular-nums text-gold-800"
-                >
-                  {String(index + 1).padStart(2, "0")}
-                </p>
-                <h3 className="mt-2 text-h4 font-semibold text-ink-primary">
-                  {reason.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink-secondary">
-                  {reason.body}
-                </p>
-              </li>
-            ))}
-          </ul>
+          <div className="order-1 min-w-0 lg:order-2">
+            <SectionHeading
+              id="why-heading"
+              eyebrow="Why DB FinCo"
+              title="The difference is in how the work is run."
+              lead="We would rather be judged on how an engagement actually feels month to month than on claims nobody can verify."
+            />
+
+            <ul className="mt-12 grid gap-x-8 gap-y-8 sm:grid-cols-2 lg:mt-14">
+              {reasons.map((reason, index) => (
+                <li key={reason.title}>
+                  <p
+                    aria-hidden="true"
+                    className="text-sm font-bold tabular-nums text-gold-800"
+                  >
+                    {String(index + 1).padStart(2, "0")}
+                  </p>
+                  <h3 className="mt-2 text-h4 font-semibold text-ink-primary">
+                    {reason.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-ink-secondary">
+                    {reason.body}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </Container>
     </Section>

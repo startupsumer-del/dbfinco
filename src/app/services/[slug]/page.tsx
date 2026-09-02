@@ -14,6 +14,15 @@ import {
   CloseChecklistVisual,
   FilingCalendarVisual,
 } from "@/components/sections/StoryVisuals";
+import {
+  AccountingScene,
+  AnalyticsScene,
+  AuditScene,
+  BookkeepingScene,
+  ConsultingScene,
+  RiskScene,
+  TaxScene,
+} from "@/components/illustrations/ServiceScenes";
 import { getAuditServices } from "@/content/audit-services";
 import { coreServices, getService, getServices } from "@/content/services";
 import { breadcrumbSchema, buildMetadata, serviceSchema } from "@/lib/seo";
@@ -43,11 +52,40 @@ export async function generateMetadata({
   });
 }
 
-/** Each service gets its own hero visual so the pages never read as clones. */
+/**
+ * Each service gets its own illustration in the hero banner, so the eight
+ * pages are distinguishable at a glance rather than reading as one template.
+ */
 function heroVisualFor(slug: string) {
   switch (slug) {
     case "accounting":
-      return <ReportingPreview compact />;
+      return <AccountingScene />;
+    case "bookkeeping":
+      return <BookkeepingScene />;
+    case "tax":
+      return <TaxScene />;
+    case "audit-assurance":
+      return <AuditScene />;
+    case "risk-advisory":
+      return <RiskScene />;
+    case "consulting":
+      return <ConsultingScene />;
+    case "analytics":
+      return <AnalyticsScene />;
+    default:
+      return undefined;
+  }
+}
+
+/**
+ * The data-rich preview sits with the deliverables, where the page is already
+ * talking about what actually gets handed over.
+ */
+function deliverableVisualFor(slug: string) {
+  switch (slug) {
+    case "accounting":
+    case "analytics":
+      return <ReportingPreview />;
     case "bookkeeping":
       return <CloseChecklistVisual />;
     case "tax":
@@ -57,7 +95,6 @@ function heroVisualFor(slug: string) {
     case "risk-advisory":
       return <RiskRegisterVisual />;
     case "consulting":
-    case "analytics":
       return <AdvisoryVisual />;
     default:
       return undefined;
@@ -94,6 +131,7 @@ export default async function ServicePage({
         service={service}
         crumbs={crumbs}
         heroVisual={heroVisualFor(slug)}
+        deliverableVisual={deliverableVisualFor(slug)}
         extraSection={slug === "audit-assurance" ? <EngagementComparison /> : undefined}
         related={related}
       />

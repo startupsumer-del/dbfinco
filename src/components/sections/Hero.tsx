@@ -1,6 +1,10 @@
-import { ArrowRight, Phone } from "lucide-react";
+import { ArrowRight, CalendarCheck, CircleCheck, Phone } from "lucide-react";
 
-import { ReportingPreview } from "@/components/charts/ReportingPreview";
+import {
+  CardIcon,
+  FloatCard,
+  PortraitScene,
+} from "@/components/imagery/PortraitScene";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
@@ -18,7 +22,7 @@ const heroPoints = [
  * Mobile order is deliberate: headline, supporting copy, primary CTA,
  * phone, proof points, then the reporting visual — so the visitor reaches an
  * action before any decoration. Desktop switches to a two-column editorial
- * composition with the reporting panel alongside.
+ * composition with the portrait alongside.
  */
 export function Hero() {
   return (
@@ -93,9 +97,37 @@ export function Hero() {
             </ul>
           </div>
 
-          {/* Reporting panel. Below lg it sits after the content in the flow. */}
+          {/* Portrait composition. Below lg it sits after the content in the flow. */}
           <div className="relative">
-            <ReportingPreview />
+            <PortraitScene
+              portrait="explaining"
+              tone="gold"
+              priority
+              cards={
+                <>
+                  <FloatCard
+                    at="mid-left"
+                    icon={
+                      <CardIcon tone="success">
+                        <CircleCheck className="size-4" />
+                      </CardIcon>
+                    }
+                    title="Books reconciled"
+                    detail="Bank, card and merchant accounts"
+                  />
+                  <FloatCard
+                    at="bottom-right"
+                    icon={
+                      <CardIcon tone="gold">
+                        <CalendarCheck className="size-4" />
+                      </CardIcon>
+                    }
+                    title="Filed on time"
+                    detail="Federal, state and local"
+                  />
+                </>
+              }
+            />
           </div>
         </div>
       </Container>
