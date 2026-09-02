@@ -4,10 +4,11 @@ import { site } from "@/config/site";
  * DB FinCo logo.
  *
  * These are the official DB FinCo marks, vectorised from the enhanced artwork
- * supplied by the owner (kept at `public/brand/source/`). That file carries a
- * 2172×724 bitmap — roughly twenty times the pixel count of the first version
- * supplied — which is high enough to trace clean letterforms, correct counters
- * in the "B" and a crisp tagline. The vectors have a genuinely transparent
+ * supplied by the owner, kept at `assets/brand-source/` — outside `public/`,
+ * so 2 MB of source artwork is not served alongside the site. That file
+ * carries a 2172×724 bitmap, roughly twenty times the pixel count of the
+ * first version supplied, which is high enough to trace clean letterforms,
+ * correct counters in the "B" and a crisp tagline. The vectors have a genuinely transparent
  * background, so they stay sharp at any size and sit correctly on both light
  * and dark grounds.
  *

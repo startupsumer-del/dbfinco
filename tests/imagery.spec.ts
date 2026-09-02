@@ -163,6 +163,16 @@ test("portraits declare a blur placeholder and a realistic size", async ({
   // `src` is only the no-srcset fallback and always names the largest
   // candidate; `currentSrc` is what the browser actually fetched. A blanket
   // `sizes` had a 304px slot pulling the 1080px source.
+  //
+  // Poll for it: currentSrc is empty until the browser has picked a candidate,
+  // which under load can be after the element is already visible.
+  await expect
+    .poll(
+      async () => img.evaluate((el) => (el as HTMLImageElement).currentSrc),
+      { message: "the browser should choose a source" },
+    )
+    .toContain("?");
+
   const chosen = await img.evaluate((el) => (el as HTMLImageElement).currentSrc);
   const width = Number(new URLSearchParams(chosen.split("?")[1]).get("w"));
   expect(width, `unexpected source: ${chosen}`).toBeGreaterThan(0);
