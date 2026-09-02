@@ -54,10 +54,11 @@ export async function generateMetadata({
 }
 
 /**
- * Each service gets its own illustration in the hero banner, so the eight
- * pages are distinguishable at a glance rather than reading as one template.
+ * Each service's own illustration, shown beside the process steps — a diagram
+ * of the work sits more naturally next to "how the engagement runs" than a
+ * person does, and it keeps the eight pages distinguishable further down.
  */
-function heroVisualFor(slug: string) {
+function processVisualFor(slug: string) {
   switch (slug) {
     case "accounting":
       return <AccountingScene />;
@@ -131,9 +132,9 @@ export default async function ServicePage({
       <ServicePageTemplate
         service={service}
         crumbs={crumbs}
-        heroVisual={heroVisualFor(slug)}
+        heroVisual={<ServicePortrait slug={slug} />}
         deliverableVisual={deliverableVisualFor(slug)}
-        processPortrait={<ServicePortrait slug={slug} />}
+        processVisual={processVisualFor(slug)}
         extraSection={slug === "audit-assurance" ? <EngagementComparison /> : undefined}
         related={related}
       />

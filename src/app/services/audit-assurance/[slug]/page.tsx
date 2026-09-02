@@ -35,8 +35,8 @@ export async function generateMetadata({
   });
 }
 
-/** Each engagement type gets its own illustration in the hero banner. */
-function heroVisualFor(slug: string) {
+/** Each engagement type's own illustration, shown beside the process steps. */
+function processVisualFor(slug: string) {
   switch (slug) {
     case "external-audit":
       return <AuditScene />;
@@ -73,11 +73,11 @@ export default async function AuditServicePage({
       <ServicePageTemplate
         service={service}
         crumbs={crumbs}
-        heroVisual={heroVisualFor(slug)}
+        heroVisual={<ServicePortrait slug={slug} />}
         deliverableVisual={
           slug === "external-audit" ? <AuditEvidenceVisual /> : undefined
         }
-        processPortrait={<ServicePortrait slug={slug} />}
+        processVisual={processVisualFor(slug)}
         related={getAuditServices(service.related)}
       />
       <JsonLd data={breadcrumbSchema(crumbs)} />

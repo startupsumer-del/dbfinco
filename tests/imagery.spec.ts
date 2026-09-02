@@ -61,14 +61,39 @@ const BANNER_PAGES = [
   "/merchant-services",
 ] as const;
 
-for (const path of BANNER_PAGES) {
-  test(`${path} banner carries an illustration hidden from assistive tech`, async ({
+/**
+ * The /services index is a directory rather than a service page: it carries
+ * the overview illustration and no portrait, which is why it is excluded here
+ * but still included in the illustration checks below.
+ */
+const SERVICE_PAGES = BANNER_PAGES.filter((p) => p !== "/services");
+
+for (const path of SERVICE_PAGES) {
+  test(`${path} opens with a portrait, not a scroll away from one`, async ({
     page,
   }) => {
     await page.goto(path);
 
-    const banner = page.locator("section").first();
-    const scene = banner.locator("svg[viewBox='0 0 400 280']").first();
+    // In the banner: the portrait used to sit beside the process steps, about
+    // three and a half screens down, which read as no imagery at all.
+    const portrait = page.locator("section").first().locator('img[src*="advisor-"]');
+    await expect(portrait).toHaveCount(1);
+    await expect(portrait).toBeVisible();
+    await expect(portrait).toHaveAttribute("alt", "");
+
+    const top = await portrait.evaluate((el) => el.getBoundingClientRect().top);
+    expect(top, "the portrait should be in the first viewport").toBeLessThan(900);
+  });
+}
+
+for (const path of BANNER_PAGES) {
+  test(`${path} carries its own illustration, hidden from assistive tech`, async ({
+    page,
+  }) => {
+    await page.goto(path);
+
+    const scene = page.locator("svg[viewBox='0 0 400 280']").first();
+    await scene.scrollIntoViewIfNeeded();
 
     await expect(scene).toBeVisible();
     await expect(scene).toHaveAttribute("aria-hidden", "true");
@@ -83,18 +108,59 @@ test("service illustrations differ from one another", async ({ page }) => {
 
   for (const path of BANNER_PAGES) {
     await page.goto(path);
-    const scene = page
-      .locator("section")
-      .first()
-      .locator("svg[viewBox='0 0 400 280']")
-      .first();
+    const scene = page.locator("svg[viewBox='0 0 400 280']").first();
+    await scene.scrollIntoViewIfNeeded();
     markup.add(await scene.innerHTML());
   }
 
   expect(
     markup.size,
-    "each service banner should carry its own illustration",
+    "each service page should carry its own illustration",
   ).toBe(BANNER_PAGES.length);
+});
+
+test("every portrait supplied is used somewhere on the site", async ({
+  page,
+  request,
+}) => {
+  const files = [
+    "advisor-standing", "advisor-explaining", "advisor-partner",
+    "advisor-manager", "advisor-consultant", "advisor-principal",
+    "advisor-lead", "advisor-associate", "advisor-analyst",
+    "advisor-specialist", "advisor-adviser", "advisor-director",
+    "advisor-manager-2",
+  ];
+
+  const routes = [
+    "/", "/about", "/contact", "/merchant-services",
+    "/services/accounting", "/services/bookkeeping", "/services/tax",
+    "/services/audit-assurance", "/services/audit-assurance/external-audit",
+    "/services/audit-assurance/internal-audit",
+    "/services/audit-assurance/agreed-upon-procedures",
+    "/services/consulting", "/services/risk-advisory", "/services/analytics",
+  ];
+
+  const found = new Set<string>();
+  for (const route of routes) {
+    await page.goto(route);
+    for (const src of await page
+      .locator('img[src*="advisor-"]')
+      .evaluateAll((els) =>
+        els.map((el) => decodeURIComponent(el.getAttribute("src") ?? "")),
+      )) {
+      const name = src.match(/advisor-[\w-]+/)?.[0];
+      if (name) found.add(name);
+    }
+  }
+
+  const unused = files.filter((f) => !found.has(f));
+  expect(unused, "no supplied portrait should sit unused").toEqual([]);
+
+  // And every one is actually served.
+  for (const file of files) {
+    const response = await request.get(`/imagery/${file}.webp`);
+    expect(response.status(), `${file}.webp should be served`).toBe(200);
+  }
 });
 
 const PORTRAIT_PAGES_WITH_CARDS = [
@@ -103,6 +169,9 @@ const PORTRAIT_PAGES_WITH_CARDS = [
   "/contact",
   "/services/accounting",
   "/services/analytics",
+  "/services/tax",
+  "/services/risk-advisory",
+  "/services/audit-assurance",
   "/merchant-services",
 ] as const;
 

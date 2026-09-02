@@ -157,9 +157,7 @@ export default function MerchantServicesPage() {
               </div>
             </div>
 
-            <div className="min-w-0 [&_svg]:drop-shadow-[0_18px_44px_rgba(12,4,20,0.45)]">
-              <MerchantScene />
-            </div>
+            <ServicePortrait slug="merchant-services" />
           </div>
         </Container>
       </section>
@@ -286,7 +284,9 @@ export default function MerchantServicesPage() {
               />
             </div>
 
-            <ServicePortrait slug="merchant-services" />
+            <div className="min-w-0 [&_svg]:drop-shadow-[0_10px_30px_rgba(46,13,68,0.12)]">
+              <MerchantScene />
+            </div>
           </div>
         </Container>
       </Section>
