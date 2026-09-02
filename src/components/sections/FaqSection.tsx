@@ -8,7 +8,7 @@ import type { FaqItem } from "@/types/content";
 
 export function FaqSection({
   faqs,
-  heading = "Frequently asked questions",
+  heading = "Frequently Asked Questions",
   eyebrow = "Questions",
   lead,
   tone = "subtle",

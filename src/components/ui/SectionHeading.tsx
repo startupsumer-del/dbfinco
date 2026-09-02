@@ -31,16 +31,12 @@ export function SectionHeading({
 
   return (
     <div
-      className={cn(
-        centered && "mx-auto text-center",
-        centered ? "max-w-3xl" : "max-w-3xl",
-        className,
-      )}
+      className={cn("max-w-3xl", centered && "mx-auto text-center", className)}
     >
       {eyebrow ? (
         <Eyebrow
           tone={tone === "dark" ? "inverse" : "purple"}
-          className={cn("mb-4", centered && "flex justify-center")}
+          className="mb-3.5"
         >
           {eyebrow}
         </Eyebrow>
@@ -57,7 +53,7 @@ export function SectionHeading({
       {lead ? (
         <p
           className={cn(
-            "mt-5 text-lead",
+            "mt-4 text-lead",
             centered ? "mx-auto measure" : "measure",
             tone === "dark" ? "text-purple-100" : "text-ink-secondary",
           )}

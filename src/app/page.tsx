@@ -24,12 +24,12 @@ import { homeFaqs } from "@/content/home-faqs";
 
 const howItWorks = [
   {
-    title: "Free consultation",
+    title: "Free Consultation",
     description:
       "We learn how your business runs, what your current setup looks like and what is prompting the conversation. No cost, no obligation.",
   },
   {
-    title: "Scope and proposal",
+    title: "Scope and Proposal",
     description:
       "You get a written scope covering exactly which services are included, what you will receive and when, and what it costs.",
   },
@@ -39,7 +39,7 @@ const howItWorks = [
       "We take over the records, correct what needs correcting, set up systems and access, and agree the reporting and filing calendar.",
   },
   {
-    title: "Ongoing service",
+    title: "Ongoing Service",
     description:
       "Books are kept current, periods close on schedule, filings are made on time, and you have a named contact for anything in between.",
   },
@@ -57,20 +57,20 @@ export default function HomePage() {
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
             <SectionHeading
               id="services-heading"
-              eyebrow="What we do"
-              title="A complete finance function, delivered by one firm."
-              lead="Each service stands on its own, and they work better together — the tax return is prepared from books we keep, and the advisory work draws on reporting we build."
+              eyebrow="What We Do"
+              title="A Complete Finance Function, Delivered by One Firm"
+              lead="Each service stands on its own, and they work better together — the tax return is prepared from books we keep."
             />
             <Link
               href="/services"
               className="inline-flex min-h-11 shrink-0 items-center gap-1.5 text-sm font-semibold
                 text-purple-800 transition-colors hover:text-purple-950"
             >
-              View all services
+              View All Services
               <ArrowRight aria-hidden="true" className="size-4" />
             </Link>
           </div>
-          <ServiceGrid services={services} columns={4} className="mt-12 lg:mt-16" />
+          <ServiceGrid services={services} columns={4} className="mt-10 lg:mt-14" />
         </Container>
       </Section>
 
@@ -82,11 +82,11 @@ export default function HomePage() {
             <div className="min-w-0">
               <SectionHeading
                 id="how-heading"
-                eyebrow="How it works"
-                title="Four steps from first conversation to a finance function that runs."
-                lead="Nothing starts until the scope is written down and agreed. After that, the work settles into a predictable monthly rhythm."
+                eyebrow="How It Works"
+                title="Four Steps to a Finance Function That Runs"
+                lead="Nothing starts until the scope is agreed in writing. After that, the work settles into a monthly rhythm."
               />
-              <ProcessSteps steps={howItWorks} className="mt-14 lg:mt-16" />
+              <ProcessSteps steps={howItWorks} className="mt-10 lg:mt-14" />
             </div>
 
             <PortraitScene portrait="standing" tone="lilac" />
@@ -96,55 +96,55 @@ export default function HomePage() {
 
       <FeatureStory
         eyebrow="Bookkeeping"
-        heading="Books that close on the date we agreed."
-        body="Transactions categorized against a documented policy, every bank, card and merchant account reconciled, and a close checklist completed before the period is called done."
+        heading="Books That Close on the Date We Agreed"
+        body="Transactions categorized against a documented policy, every account reconciled, and a close checklist completed before the period is called done."
         points={[
-          "Transaction categorization",
-          "Bank & card reconciliation",
-          "Accounts receivable & payable",
-          "Month-end close checklist",
-          "Financial statements each period",
-          "Catch-up work scoped up front",
+          "Transaction Categorization",
+          "Bank & Card Reconciliation",
+          "Accounts Receivable & Payable",
+          "Month-End Close Checklist",
+          "Financial Statements Each Period",
+          "Catch-Up Work Scoped up Front",
         ]}
         href="/services/bookkeeping"
-        linkLabel="Bookkeeping services"
+        linkLabel="Bookkeeping Services"
         visual={<CloseChecklistVisual />}
         tone="lilac"
       />
 
       <FeatureStory
-        eyebrow="Tax & compliance"
-        heading="Filing deadlines that never arrive as a surprise."
-        body="We map every federal, state and local obligation that applies to your business, build the calendar around it, and prepare returns from books that are already closed."
+        eyebrow="Tax &amp; Compliance"
+        heading="Filing Deadlines That Never Arrive as a Surprise"
+        body="We map every federal, state and local obligation, build the calendar around it, and prepare returns from books already closed."
         points={[
-          "Federal & state business returns",
-          "Sales tax across jurisdictions",
-          "Form 1099 information reporting",
-          "Multi-state registration support",
-          "Tax notice response",
-          "Year-round coordination",
+          "Federal & State Business Returns",
+          "Sales Tax Across Jurisdictions",
+          "Form 1099 Information Reporting",
+          "Multi-State Registration Support",
+          "Tax Notice Response",
+          "Year-Round Coordination",
         ]}
         href="/services/tax"
-        linkLabel="Tax services"
+        linkLabel="Tax Services"
         visual={<FilingCalendarVisual />}
         reverse
         tone="white"
       />
 
       <FeatureStory
-        eyebrow="Advisory & analytics"
-        heading="Analysis that turns reporting into a decision."
-        body="Margin and profitability analysis, cash forecasting and risk review — built from your own data, with the assumptions written down and open to challenge."
+        eyebrow="Advisory &amp; Analytics"
+        heading="Analysis That Turns Reporting Into a Decision"
+        body="Margin analysis, cash forecasting and risk review — built from your own data, with the assumptions open to challenge."
         points={[
-          "Margin & profitability analysis",
-          "Cash flow forecasting",
-          "Budget vs actual variance",
-          "Financial risk assessment",
-          "Internal control design",
-          "Board & lender reporting",
+          "Margin & Profitability Analysis",
+          "Cash Flow Forecasting",
+          "Budget vs Actual Variance",
+          "Financial Risk Assessment",
+          "Internal Control Design",
+          "Board & Lender Reporting",
         ]}
         href="/services/analytics"
-        linkLabel="Financial analytics"
+        linkLabel="Financial Analytics"
         visual={<AdvisoryVisual />}
         tone="subtle"
       />
@@ -155,13 +155,13 @@ export default function HomePage() {
 
       <FaqSection
         faqs={homeFaqs}
-        lead="If your question isn’t here, call us or send a message — we answer questions before there’s an engagement."
+        lead="If your question isn’t here, call or send a message. We answer before there is an engagement."
         tone="white"
       />
 
       <CtaSection
-        heading="Let’s talk about where your finances stand."
-        body="A free consultation is a straight conversation about your current setup, what is working and what is not. You will leave it knowing what we would recommend, whether or not you engage us."
+        heading="Let’s Talk About Where Your Finances Stand"
+        body="A free consultation is a straight conversation about your current setup. You will leave knowing what we would recommend, whether or not you engage us."
       />
     </>
   );

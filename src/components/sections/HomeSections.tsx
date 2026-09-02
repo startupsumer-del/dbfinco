@@ -85,22 +85,22 @@ export function CapabilityStrip() {
 const problems = [
   {
     icon: CalendarClock,
-    title: "The numbers arrive too late",
+    title: "The Numbers Arrive Too Late",
     body: "By the time last month’s statements are ready, the decisions they should have informed have already been made.",
   },
   {
     icon: FileSpreadsheet,
-    title: "Nobody fully trusts them",
+    title: "Nobody Fully Trusts Them",
     body: "Balances that never quite reconcile mean every discussion starts with whether the figures are right instead of what to do about them.",
   },
   {
     icon: Receipt,
-    title: "Deadlines drive everything",
+    title: "Deadlines Drive Everything",
     body: "Filings are handled at the last possible moment, which leaves no room to plan and turns routine compliance into a scramble.",
   },
   {
     icon: MessagesSquare,
-    title: "There’s no one to ask",
+    title: "There’s No One to Ask",
     body: "A question about margin, cash or a tax notice goes unanswered because nobody owns the finances end to end.",
   },
 ];
@@ -111,12 +111,12 @@ export function ProblemSection() {
       <Container>
         <SectionHeading
           id="problem-heading"
-          eyebrow="Why this matters"
-          title="Most businesses don’t have a data problem. They have a clarity problem."
-          lead="The information already exists somewhere — in the bank feed, the invoicing system, the payment processor. What is usually missing is someone making it accurate, timely and readable."
+          eyebrow="Why This Matters"
+          title="Most Businesses Have a Clarity Problem, Not a Data Problem"
+          lead="The information already exists — in the bank feed, the invoicing system, the payment processor. What is missing is someone making it accurate, timely and readable."
         />
 
-        <ul className="mt-12 grid gap-5 sm:grid-cols-2 sm:gap-6 lg:mt-16 lg:grid-cols-4">
+        <ul className="mt-10 grid gap-5 sm:grid-cols-2 sm:gap-6 lg:mt-14 lg:grid-cols-4">
           {problems.map((problem) => {
             const Icon = problem.icon;
             return (
@@ -147,12 +147,12 @@ export function ReportingSection() {
       <Container>
         <SectionHeading
           id="reporting-heading"
-          eyebrow="Financial reporting"
-          title="Reporting that shows you what changed, and why."
-          lead="Every engagement includes a reporting pack built from your own books — performance, position and cash, with written commentary rather than a file dropped in your inbox."
+          eyebrow="Financial Reporting"
+          title="Reporting That Shows What Changed, and Why"
+          lead="Every engagement includes a reporting pack built from your own books — performance, position and cash, with written commentary."
         />
 
-        <div className="mt-12 grid gap-5 sm:gap-6 lg:mt-16 lg:grid-cols-3">
+        <div className="mt-10 grid gap-5 sm:gap-6 lg:mt-14 lg:grid-cols-3">
           <div className="rounded-xl border border-line bg-white p-5 sm:p-6 lg:col-span-2">
             <div className="flex flex-wrap items-end justify-between gap-3">
               <div>
@@ -250,14 +250,14 @@ export function ReportingSection() {
    ------------------------------------------------------------------------- */
 
 const paymentMethods = [
-  "Card acceptance",
-  "Online payments",
-  "In-person & POS",
-  "ACH & bank transfers",
-  "Payment links",
+  "Card Acceptance",
+  "Online Payments",
+  "In-Person & POS",
+  "ACH & Bank Transfers",
+  "Payment Links",
   "Invoicing",
-  "Recurring billing",
-  "Payment reporting",
+  "Recurring Billing",
+  "Payment Reporting",
 ];
 
 export function MerchantTeaser() {
@@ -273,16 +273,15 @@ export function MerchantTeaser() {
       <Container className="relative">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
           <div>
-            <Eyebrow tone="inverse" className="mb-5">
+            <Eyebrow tone="inverse" className="mb-4">
               Merchant Services
             </Eyebrow>
             <h2 id="merchant-heading" className="text-h2 text-white">
-              Accept payments, and know exactly what landed in the bank.
+              Accept Payments, and Know What Landed in the Bank
             </h2>
             <p className="measure mt-5 text-lead text-purple-100">
               Support for taking card, online, in-person and ACH payments — with
-              the settlement, fee and chargeback data reconciled back into your
-              books, where it can actually be understood.
+              settlement, fee and chargeback data reconciled back into your books.
             </p>
 
             <ul className="mt-8 grid gap-x-6 gap-y-3 sm:grid-cols-2">
@@ -350,10 +349,10 @@ export function MerchantTeaser() {
    ------------------------------------------------------------------------- */
 
 const industries = [
-  { icon: UserRound, title: "Startups & founders", body: "Getting the financial foundation right before it becomes expensive to fix." },
+  { icon: UserRound, title: "Startups & Founders", body: "Getting the financial foundation right before it becomes expensive to fix." },
   { icon: ShoppingBag, title: "eCommerce", body: "Multi-channel sales, payment processor settlements and sales tax across states." },
-  { icon: Wrench, title: "Professional services", body: "Project profitability, utilisation and receivables that fund the next month." },
-  { icon: Store, title: "Retail & hospitality", body: "Daily takings, POS reconciliation and margin visibility by location." },
+  { icon: Wrench, title: "Professional Services", body: "Project profitability, utilisation and receivables that fund the next month." },
+  { icon: Store, title: "Retail & Hospitality", body: "Daily takings, POS reconciliation and margin visibility by location." },
   { icon: Landmark, title: "Established SMBs", body: "Reporting, controls and assurance that keep pace with a growing organisation." },
   { icon: CreditCard, title: "Merchants", body: "Payment acceptance arranged and accounted for properly from day one." },
 ];
@@ -364,12 +363,12 @@ export function IndustriesSection() {
       <Container>
         <SectionHeading
           id="industries-heading"
-          eyebrow="Who we work with"
-          title="Built for the businesses that need a finance function, not a filing service."
+          eyebrow="Who We Work With"
+          title="Built for Businesses That Need a Finance Function"
           lead="We work with small and medium-sized businesses across the United States, and with international founders operating US entities."
         />
 
-        <ul className="mt-12 grid gap-5 sm:grid-cols-2 sm:gap-6 lg:mt-16 lg:grid-cols-3">
+        <ul className="mt-10 grid gap-5 sm:grid-cols-2 sm:gap-6 lg:mt-14 lg:grid-cols-3">
           {industries.map((industry) => {
             const Icon = industry.icon;
             return (

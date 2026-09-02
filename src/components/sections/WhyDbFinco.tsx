@@ -16,27 +16,27 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
  */
 const reasons = [
   {
-    title: "One team across the whole finance function",
+    title: "One Team Across the Whole Finance Function",
     body: "Bookkeeping, accounting, tax and assurance sit with the same firm, so the tax return is prepared from books we helped keep and the audit request list does not arrive as a surprise.",
   },
   {
-    title: "A named accountant, not a queue",
+    title: "A Named Accountant, Not a Queue",
     body: "Your account is handled by people who work on it every month and know its history. Questions go to someone who already has the context.",
   },
   {
-    title: "Dates you can plan around",
+    title: "Dates You Can Plan Around",
     body: "Close dates, reporting dates and filing dates are agreed at the start of the engagement and held. Predictability is most of the value.",
   },
   {
-    title: "Plain explanations",
+    title: "Plain Explanations",
     body: "Statements are delivered with commentary in ordinary language. If something needs your attention we say what it is and what we suggest doing.",
   },
   {
-    title: "Correct terminology, honestly used",
+    title: "Correct Terminology, Honestly Used",
     body: "An audit, a review and agreed-upon procedures are different engagements. We tell you which one answers your question — including when it is the cheaper one.",
   },
   {
-    title: "Scope agreed before work starts",
+    title: "Scope Agreed Before Work Starts",
     body: "Engagements are defined in writing. If something emerges that changes the scope, we come back to you rather than expanding it quietly.",
   },
 ];
@@ -69,11 +69,11 @@ export function WhyDbFinco() {
             <SectionHeading
               id="why-heading"
               eyebrow="Why DB FinCo"
-              title="The difference is in how the work is run."
+              title="The Difference Is in How the Work Is Run"
               lead="We would rather be judged on how an engagement actually feels month to month than on claims nobody can verify."
             />
 
-            <ul className="mt-12 grid gap-x-8 gap-y-8 sm:grid-cols-2 lg:mt-14">
+            <ul className="mt-10 grid gap-x-8 gap-y-8 sm:grid-cols-2 lg:mt-14">
               {reasons.map((reason, index) => (
                 <li key={reason.title}>
                   <p

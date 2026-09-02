@@ -17,7 +17,7 @@ export function Card({
   return (
     <Tag
       className={cn(
-        "relative rounded-xl border border-line bg-white p-6 sm:p-7",
+        "relative rounded-xl border border-line bg-white p-5 sm:p-6 lg:p-7",
         interactive &&
           "transition-[border-color,box-shadow,transform] duration-250 " +
             "ease-[var(--ease-out-brand)] hover:-translate-y-0.5 " +

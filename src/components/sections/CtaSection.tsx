@@ -12,14 +12,14 @@ import { bookingUrl, mailtoEnquiry, site, telHref } from "@/config/site";
 export function CtaSection({
   heading,
   body,
-  eyebrow = "Get started",
+  eyebrow = "Get Started",
 }: {
   heading: string;
   body: string;
   eyebrow?: string;
 }) {
   return (
-    <section className="bg-white py-16 sm:py-20 lg:py-24">
+    <section className="bg-white py-12 sm:py-16 lg:py-22">
       <Container>
         <div className="relative overflow-hidden rounded-2xl bg-purple-900 px-6 py-14 sm:px-10 sm:py-16 lg:px-16 lg:py-20">
           {/* Decorative brand wash — hidden from assistive tech, and it never
@@ -37,13 +37,13 @@ export function CtaSection({
 
           <div className="relative grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,20rem)] lg:items-center lg:gap-16">
             <div className="min-w-0">
-            <Eyebrow tone="inverse" className="mb-5">
+            <Eyebrow tone="inverse" className="mb-4">
               {eyebrow}
             </Eyebrow>
             <h2 className="text-h2 text-white">{heading}</h2>
             <p className="measure mt-5 text-lead text-purple-100">{body}</p>
 
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
               <Button href={bookingUrl} variant="gold" size="lg" className="sm:w-auto" fullWidth>
                 Schedule a Free Consultation
                 <ArrowRight aria-hidden="true" className="size-4" />
@@ -65,7 +65,7 @@ export function CtaSection({
                 and these are the details a ready visitor actually wants. */}
             <div className="min-w-0 rounded-xl border border-white/12 bg-white/[0.06] p-6 backdrop-blur-sm">
               <p className="text-eyebrow font-semibold uppercase text-gold-300">
-                Or reach us directly
+                Or Reach Us Directly
               </p>
               <ul className="mt-5 space-y-4 text-sm">
                 <li>

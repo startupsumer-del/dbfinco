@@ -34,7 +34,7 @@ export function PageBanner({
         <div className="absolute -bottom-48 -left-40 size-[30rem] rounded-full bg-[radial-gradient(circle,rgba(110,56,145,0.45),transparent_70%)]" />
       </div>
 
-      <Container className="relative pb-14 pt-8 sm:pb-16 sm:pt-10 lg:pb-20 lg:pt-12">
+      <Container className="relative pb-12 pt-8 sm:pb-16 sm:pt-10 lg:pb-22 lg:pt-12">
         <Breadcrumbs crumbs={crumbs} tone="inverse" />
 
         <div
@@ -45,12 +45,12 @@ export function PageBanner({
           }
         >
           <div className="min-w-0">
-            <Eyebrow tone="inverse" className="mb-5">
+            <Eyebrow tone="inverse" className="mb-4">
               {eyebrow}
             </Eyebrow>
             <h1 className="text-display-2 text-white">{title}</h1>
             {lead ? (
-              <p className="measure mt-6 text-lead text-purple-100">{lead}</p>
+              <p className="measure mt-5 text-lead text-purple-100">{lead}</p>
             ) : null}
             {actions ? <div className="mt-9">{actions}</div> : null}
           </div>

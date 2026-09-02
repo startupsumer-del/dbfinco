@@ -19,19 +19,19 @@ export default function NotFound() {
         <div className="absolute -right-40 -top-40 size-[32rem] rounded-full bg-[radial-gradient(circle,var(--color-purple-50),transparent_68%)]" />
       </div>
 
-      <Container className="py-20 sm:py-28 lg:py-36">
+      <Container className="py-16 sm:py-20 lg:py-24">
         <div className="max-w-2xl">
-          <Eyebrow className="mb-5">Error 404</Eyebrow>
+          <Eyebrow className="mb-4">Error 404</Eyebrow>
           <h1 className="text-display-2 text-ink-primary">
-            We couldn&apos;t find that page.
+            We Couldn&apos;t Find That Page
           </h1>
-          <p className="measure mt-6 text-lead text-ink-secondary">
+          <p className="measure mt-5 text-lead text-ink-secondary">
             The page may have moved, or the link may be out of date. Everything
             we offer is reachable from the links below — or call us and
             we&apos;ll point you to the right place.
           </p>
 
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Button href="/" size="lg" fullWidth className="sm:w-auto">
               Back to home
               <ArrowRight aria-hidden="true" className="size-4" />

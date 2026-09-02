@@ -46,12 +46,12 @@ export function EngagementComparison() {
       <Container>
         <SectionHeading
           id="engagements-heading"
-          eyebrow="Choosing an engagement"
-          title="Three engagements, three different answers."
+          eyebrow="Choosing an Engagement"
+          title="Three Engagements, Three Different Answers"
           lead="These terms are often used interchangeably. They should not be — the standards, the work and the report differ in each case."
         />
 
-        <div className="mt-12 grid gap-5 sm:gap-6 lg:grid-cols-3">
+        <div className="mt-10 grid gap-5 sm:gap-6 lg:grid-cols-3">
           {engagements.map((engagement) => (
             <div
               key={engagement.name}

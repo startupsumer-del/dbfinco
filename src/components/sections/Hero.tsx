@@ -37,24 +37,23 @@ export function Hero() {
         <div className="absolute -left-52 top-40 size-[30rem] rounded-full bg-[radial-gradient(circle,var(--color-gold-50),transparent_68%)]" />
       </div>
 
-      <Container className="pb-16 pt-7 sm:pb-20 sm:pt-10 lg:pb-28 lg:pt-14">
+      <Container className="pb-12 pt-7 sm:pb-16 sm:pt-10 lg:pb-22 lg:pt-14">
         <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)] lg:gap-14 xl:gap-20">
           <div>
-            <Eyebrow className="mb-6">Financial &amp; Accounting Services</Eyebrow>
+            <Eyebrow className="mb-4">Financial &amp; Accounting Services</Eyebrow>
 
             <h1 className="text-display-1 text-ink-primary">
-              Financial clarity for{" "}
-              <span className="text-gradient-gold">every stage</span> of your
-              business.
+              Financial Clarity for{" "}
+              <span className="text-gradient-gold">Every Stage</span> of Your
+              Business
             </h1>
 
-            <p className="measure mt-6 text-lead text-ink-secondary">
-              DB FinCo keeps the books accurate, the filings on time and the
-              reporting clear enough to act on — so you can make decisions from
-              numbers you trust rather than numbers you hope are right.
+            <p className="measure mt-5 text-lead text-ink-secondary">
+              Accurate books, filings on time and reporting clear enough to act
+              on — so you decide from numbers you trust.
             </p>
 
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Button href={bookingUrl} size="lg" fullWidth className="sm:w-auto">
                 Schedule a Free Consultation
                 <ArrowRight aria-hidden="true" className="size-4" />
@@ -66,7 +65,7 @@ export function Hero() {
 
             <a
               href={telHref}
-              className="mt-6 inline-flex min-h-11 items-center gap-2.5 text-[0.9375rem]
+              className="mt-5 inline-flex min-h-11 items-center gap-2.5 text-[0.9375rem]
                 font-semibold text-ink-primary transition-colors hover:text-purple-800"
             >
               <span
@@ -84,7 +83,7 @@ export function Hero() {
               </span>
             </a>
 
-            <ul className="mt-10 grid gap-3 border-t border-line pt-8 sm:grid-cols-1">
+            <ul className="mt-8 grid gap-3 border-t border-line pt-7 sm:grid-cols-1">
               {heroPoints.map((point) => (
                 <li key={point} className="flex items-start gap-3 text-sm text-ink-secondary">
                   <span

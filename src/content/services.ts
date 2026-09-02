@@ -24,14 +24,14 @@ const accounting: ServiceDetail = {
   summary:
     "Statement preparation, budgeting and forecasting handled by accountants who know your numbers.",
   eyebrow: "Financial Accounting",
-  headline: "Financial statements you can actually make decisions from.",
+  headline: "Financial Statements You Can Actually Make Decisions From",
   intro:
     "We prepare the profit and loss, balance sheet and cash flow statement that show where your business really stands — then help you read them. Budgets and forecasts are built from the same numbers, so the plan and the actuals speak the same language.",
   metaTitle: "Financial Accounting Services",
   metaDescription:
     "Financial statement preparation, budgeting and forecasting for small and medium-sized businesses. DB FinCo builds accounting you can plan against.",
   problem: {
-    heading: "When accounting is an afterthought, planning becomes guesswork",
+    heading: "When Accounting Is an Afterthought, Planning Becomes Guesswork",
     body: "Most growing businesses do not lack data — they lack accounting that arrives on time, in a consistent format, tied to a chart of accounts that reflects how the business actually operates. Until that exists, every budget conversation starts with a debate about whether the numbers are right.",
     points: [
       "Statements arrive weeks after the period closes, too late to change anything",
@@ -42,12 +42,12 @@ const accounting: ServiceDetail = {
   },
   features: [
     {
-      title: "Financial statement preparation",
+      title: "Financial Statement Preparation",
       description:
         "Profit and loss, balance sheet and statement of cash flows prepared on a consistent basis and delivered on a fixed schedule.",
     },
     {
-      title: "Chart of accounts design",
+      title: "Chart of Accounts Design",
       description:
         "An account structure built around your revenue streams, cost centers and reporting needs — detailed enough to be useful, short enough to maintain.",
     },
@@ -62,19 +62,19 @@ const accounting: ServiceDetail = {
         "Rolling revenue, expense and cash forecasts that update as actuals land, with the assumptions written down and open to challenge.",
     },
     {
-      title: "Accrual and adjusting entries",
+      title: "Accrual and Adjusting Entries",
       description:
         "Prepaids, accruals, deferred revenue, depreciation and amortization posted correctly so each period carries its own costs.",
     },
     {
-      title: "Management reporting",
+      title: "Management Reporting",
       description:
         "A reporting pack that pairs the statements with the handful of measures your leadership team actually uses.",
     },
   ],
   deliverables: [
     {
-      title: "Every period",
+      title: "Every Period",
       items: [
         "Profit and loss statement",
         "Balance sheet",
@@ -84,7 +84,7 @@ const accounting: ServiceDetail = {
       ],
     },
     {
-      title: "Every year",
+      title: "Every Year",
       items: [
         "Annual financial statements",
         "Full-year budget with departmental detail",
@@ -94,27 +94,27 @@ const accounting: ServiceDetail = {
     },
   ],
   process: {
-    heading: "How an accounting engagement runs",
+    heading: "How an Accounting Engagement Runs",
     intro:
       "The first weeks are about getting the foundation right. After that the work settles into a predictable rhythm.",
     steps: [
       {
-        title: "Review the current position",
+        title: "Review the Current Position",
         description:
           "We walk through your existing books, chart of accounts, accounting basis and reporting calendar, and write up what is working and what needs to change.",
       },
       {
-        title: "Rebuild the foundation",
+        title: "Rebuild the Foundation",
         description:
           "Where needed we restructure the chart of accounts, correct opening balances and agree the accounting policies that will apply going forward.",
       },
       {
-        title: "Establish the reporting cycle",
+        title: "Establish the Reporting Cycle",
         description:
           "We set a close calendar with named owners and due dates, so you know exactly when each period’s statements will land.",
       },
       {
-        title: "Report, review, refine",
+        title: "Report, Review, Refine",
         description:
           "Statements are delivered on schedule and reviewed with you. Budgets and forecasts are revised as the business changes rather than once a year.",
       },
@@ -144,7 +144,7 @@ const accounting: ServiceDetail = {
   ],
   related: ["bookkeeping", "analytics", "tax"],
   cta: {
-    heading: "Let’s look at your current statements",
+    heading: "Let’s Look at Your Current Statements",
     body: "Bring your most recent profit and loss and balance sheet to a free consultation. We will tell you what they show, what they are missing, and what it would take to fix.",
   },
 };
@@ -162,14 +162,14 @@ const bookkeeping: ServiceDetail = {
   summary:
     "Clean, reconciled books closed on a schedule — categorization, AR, AP and month-end close.",
   eyebrow: "Bookkeeping",
-  headline: "Books that are current, reconciled and closed on time.",
+  headline: "Books That Are Current, Reconciled and Closed on Time",
   intro:
     "Transactions categorized correctly, bank and card accounts reconciled, receivables and payables tracked, and the month closed on a date you can count on. Everything downstream — tax, financing, valuation, planning — depends on this being right.",
   metaTitle: "Bookkeeping Services",
   metaDescription:
     "Ongoing bookkeeping for small and medium-sized businesses: transaction categorization, reconciliation, accounts receivable and payable, and month-end close.",
   problem: {
-    heading: "Behind books cost more than they look like they cost",
+    heading: "Behind Books Cost More Than They Look Like They Cost",
     body: "Bookkeeping rarely fails loudly. It slips a week, then a month, and by the time anyone notices, the tax deadline is close, the lender wants statements, and nobody can say with confidence what the cash position was at month end.",
     points: [
       "Bank feeds pile up uncategorized or land in a catch-all account",
@@ -180,39 +180,39 @@ const bookkeeping: ServiceDetail = {
   },
   features: [
     {
-      title: "Bookkeeping setup",
+      title: "Bookkeeping Setup",
       description:
         "Opening balances, bank and card feeds, account mappings and rules configured properly from the start.",
     },
     {
-      title: "Transaction categorization",
+      title: "Transaction Categorization",
       description:
         "Every transaction coded to the right account against a documented policy, so categorization stays consistent month after month.",
     },
     {
-      title: "Bank and card reconciliation",
+      title: "Bank and Card Reconciliation",
       description:
         "All bank, credit card and merchant accounts reconciled each period, with unmatched items investigated rather than written off.",
     },
     {
-      title: "Accounts receivable",
+      title: "Accounts Receivable",
       description:
         "Invoices raised and tracked, an aging report you can act on, and follow-up on balances that have drifted past terms.",
     },
     {
-      title: "Accounts payable",
+      title: "Accounts Payable",
       description:
         "Bills recorded against the right period, approvals tracked, and a payables schedule that shows what is due and when.",
     },
     {
-      title: "Month-end close",
+      title: "Month-End Close",
       description:
         "A defined close checklist run every period, ending with reconciled books and a delivered reporting pack.",
     },
   ],
   deliverables: [
     {
-      title: "Every month",
+      title: "Every Month",
       items: [
         "Fully reconciled bank, card and merchant accounts",
         "Categorized transaction ledger",
@@ -233,27 +233,27 @@ const bookkeeping: ServiceDetail = {
     },
   ],
   process: {
-    heading: "How bookkeeping works with us",
+    heading: "How Bookkeeping Works with Us",
     intro:
       "Onboarding is front-loaded on purpose. Once the setup is right, the monthly cycle becomes routine.",
     steps: [
       {
-        title: "Assess and clean up",
+        title: "Assess and Clean Up",
         description:
           "We review the existing books, identify unreconciled periods and miscoded transactions, and agree the scope of any catch-up work before it starts.",
       },
       {
-        title: "Set up the system",
+        title: "Set up the System",
         description:
           "Feeds, chart of accounts, categorization rules and access permissions are configured, and we document how each type of transaction should be treated.",
       },
       {
-        title: "Run the monthly cycle",
+        title: "Run the Monthly Cycle",
         description:
           "Transactions are categorized and reconciled through the month rather than in a rush at the end, so the close date holds.",
       },
       {
-        title: "Close and report",
+        title: "Close and Report",
         description:
           "The close checklist is completed, statements are produced, and anything that needs your attention is flagged in plain language.",
       },
@@ -283,7 +283,7 @@ const bookkeeping: ServiceDetail = {
   ],
   related: ["accounting", "tax", "merchant-services"],
   cta: {
-    heading: "Find out what your books actually need",
+    heading: "Find Out What Your Books Actually Need",
     body: "We will review your current setup, tell you honestly whether you need a clean-up, and scope it before any work begins.",
   },
 };
@@ -301,14 +301,14 @@ const tax: ServiceDetail = {
   summary:
     "Business tax preparation, sales tax, information reporting and notice support, handled year-round.",
   eyebrow: "Tax Services",
-  headline: "Tax handled through the year, not just at the deadline.",
+  headline: "Tax Handled Through the Year, Not Just at the Deadline",
   intro:
     "Federal and state business tax preparation, sales tax filings, 1099 reporting and support when a notice arrives. Because we work from books we help maintain, filing season is a continuation of ordinary work rather than a scramble.",
   metaTitle: "Business Tax Services",
   metaDescription:
     "Business tax preparation and compliance: federal and state returns, sales tax, 1099 information reporting and tax notice support for small and medium-sized businesses.",
   problem: {
-    heading: "Deadline-driven tax work is where avoidable problems start",
+    heading: "Deadline-Driven Tax Work Is Where Avoidable Problems Start",
     body: "When tax is treated as a once-a-year event, the preparer inherits whatever the books happen to look like in March. Elections get missed, filing obligations in new states go unnoticed, and there is no time left to do anything but file.",
     points: [
       "Nexus is created in a new state and nobody registers until a notice arrives",
@@ -319,32 +319,32 @@ const tax: ServiceDetail = {
   },
   features: [
     {
-      title: "Business tax preparation",
+      title: "Business Tax Preparation",
       description:
         "Federal and state business income tax returns prepared from reconciled books, with the positions taken documented and explained.",
     },
     {
-      title: "Sales tax compliance",
+      title: "Sales Tax Compliance",
       description:
         "Registration, rate application, return preparation and filing calendars across the jurisdictions where you have an obligation.",
     },
     {
-      title: "Information reporting",
+      title: "Information Reporting",
       description:
         "Form 1099 preparation and filing, including vendor onboarding and W-9 collection through the year rather than in January.",
     },
     {
-      title: "Filing calendar management",
+      title: "Filing Calendar Management",
       description:
         "A single calendar covering every federal, state and local filing that applies to your business, with owners and lead times.",
     },
     {
-      title: "Tax notice support",
+      title: "Tax Notice Support",
       description:
         "When a notice arrives we read it, explain what it actually says, prepare the response and track it through to resolution.",
     },
     {
-      title: "Year-round coordination",
+      title: "Year-Round Coordination",
       description:
         "Tax treatment is considered as transactions happen — new states, new entities, new revenue streams — not reconstructed afterwards.",
     },
@@ -370,27 +370,27 @@ const tax: ServiceDetail = {
     },
   ],
   process: {
-    heading: "How we approach tax work",
+    heading: "How We Approach Tax Work",
     intro:
       "The aim is that nothing about filing season comes as a surprise to either side.",
     steps: [
       {
-        title: "Map your obligations",
+        title: "Map Your Obligations",
         description:
           "We establish which returns apply — entity type, states, sales tax registrations, information reporting — and build the filing calendar from that.",
       },
       {
-        title: "Keep records filing-ready",
+        title: "Keep Records Filing-Ready",
         description:
           "Vendor documentation, sales tax data and supporting records are collected as part of ordinary bookkeeping rather than gathered at the deadline.",
       },
       {
-        title: "Prepare and review",
+        title: "Prepare and Review",
         description:
           "Returns are prepared from closed books and reviewed with you before filing, including anything unusual and the reasoning behind it.",
       },
       {
-        title: "File and follow through",
+        title: "File and Follow Through",
         description:
           "We file, retain the workpapers, and handle any correspondence that follows.",
       },
@@ -420,7 +420,7 @@ const tax: ServiceDetail = {
   ],
   related: ["accounting", "bookkeeping", "audit-assurance"],
   cta: {
-    heading: "Get ahead of your next filing deadline",
+    heading: "Get Ahead of Your Next Filing Deadline",
     body: "Tell us your entity type and where you operate. We will map the filings that apply and what needs to happen before the next one is due.",
   },
 };
@@ -438,14 +438,14 @@ const auditAssurance: ServiceDetail = {
   summary:
     "Assurance work for privately held companies — external audit, internal audit and agreed-upon procedures.",
   eyebrow: "Audit & Assurance",
-  headline: "Assurance work built for privately held companies.",
+  headline: "Assurance Work Built for Privately Held Companies",
   intro:
     "Our assurance practice focuses on privately held businesses. That focus keeps engagements free of public company reporting deadlines and regulatory overhead, and keeps the work centered on the evidence behind your financial statements.",
   metaTitle: "Audit & Assurance Services",
   metaDescription:
     "Audit and assurance services for privately held companies: external audit, internal audit and agreed-upon procedures engagements from DB FinCo.",
   problem: {
-    heading: "Different questions need different engagements",
+    heading: "Different Questions Need Different Engagements",
     body: "\"We need an audit\" often turns out to mean something else. A lender may accept a review. A board may want internal audit work on a specific process. A buyer may want agreed-upon procedures over a defined set of balances. Choosing the wrong engagement costs time and money and still may not answer the question.",
     points: [
       "An audit provides an opinion on whether the financial statements are fairly presented",
@@ -456,39 +456,39 @@ const auditAssurance: ServiceDetail = {
   },
   features: [
     {
-      title: "Testing of accounting records",
+      title: "Testing of Accounting Records",
       description:
         "Rigorous testing of the underlying records supporting the figures and disclosures in the financial statements.",
     },
     {
-      title: "Evidence gathering",
+      title: "Evidence Gathering",
       description:
         "Evidence obtained through inquiry, analytical assessment, physical inspection, observation and independent confirmation.",
     },
     {
-      title: "Opinion on fair presentation",
+      title: "Opinion on Fair Presentation",
       description:
         "For audit engagements, an opinion on whether the financial statements are presented fairly in conformity with generally accepted accounting principles or another applicable reporting framework.",
     },
     {
-      title: "Private company focus",
+      title: "Private Company Focus",
       description:
         "Working exclusively with privately held companies keeps engagements clear of public company regulation, filing deadlines and the risk management overhead that comes with them.",
     },
     {
-      title: "Control observations",
+      title: "Control Observations",
       description:
         "Weaknesses and inefficiencies identified during the work are reported back to you in a form you can act on.",
     },
     {
-      title: "Coordinated planning",
+      title: "Coordinated Planning",
       description:
         "Timetables, document requests and site visits agreed in advance so the engagement fits around your operations.",
     },
   ],
   deliverables: [
     {
-      title: "Engagement outputs",
+      title: "Engagement Outputs",
       items: [
         "Audit report and opinion, where an audit is performed",
         "Internal audit findings and recommendations",
@@ -507,22 +507,22 @@ const auditAssurance: ServiceDetail = {
     },
   ],
   process: {
-    heading: "How an assurance engagement runs",
+    heading: "How an Assurance Engagement Runs",
     intro:
       "Scope is settled before fieldwork begins, so there are no surprises about what is and is not covered.",
     steps: [
       {
-        title: "Scope the engagement",
+        title: "Scope the Engagement",
         description:
           "We establish what question you actually need answered and which engagement type answers it, then set it out in an engagement letter.",
       },
       {
-        title: "Plan and assess risk",
+        title: "Plan and Assess Risk",
         description:
           "We build an understanding of the business and its processes, identify where material misstatement is most likely, and plan the work around that.",
       },
       {
-        title: "Perform fieldwork",
+        title: "Perform Fieldwork",
         description:
           "Testing, inspection, observation and confirmation are carried out against the plan, with findings raised as they emerge rather than held to the end.",
       },
@@ -557,7 +557,7 @@ const auditAssurance: ServiceDetail = {
   ],
   related: ["accounting", "risk-advisory", "tax"],
   cta: {
-    heading: "Not sure which engagement you need?",
+    heading: "Not Sure Which Engagement You Need?",
     body: "Tell us who is asking for the work and what they want to know. We will tell you which engagement answers that question — and if you need less than you thought, we will say so.",
   },
 };
@@ -575,14 +575,14 @@ const consulting: ServiceDetail = {
   summary:
     "Practical support on financial, operational and technology challenges as the business grows.",
   eyebrow: "Business Consulting",
-  headline: "Help with the financial and operational decisions in front of you.",
+  headline: "Help with the Financial and Operational Decisions in Front of You",
   intro:
     "Seasoned professionals working alongside your team on financial, operational and technology challenges — pricing and margin, finance operations, systems, and the structural questions that come with growth.",
   metaTitle: "Business Consulting Services",
   metaDescription:
     "Business consulting from DB FinCo: financial strategy, margin and pricing analysis, finance operations design and systems support for growing companies.",
   problem: {
-    heading: "Growth exposes the things that used to work",
+    heading: "Growth Exposes the Things That Used to Work",
     body: "Processes that carried a business through its first few years tend to break at the next stage. The close takes longer every month, the person who knows how everything works is a bottleneck, and nobody has time to redesign the system while running it.",
     points: [
       "Finance is stretched, and hiring a full-time leader is not yet justified",
@@ -593,39 +593,39 @@ const consulting: ServiceDetail = {
   },
   features: [
     {
-      title: "Financial strategy",
+      title: "Financial Strategy",
       description:
         "Working through the financial implications of the decisions on your table, with the assumptions made explicit.",
     },
     {
-      title: "Margin and pricing analysis",
+      title: "Margin and Pricing Analysis",
       description:
         "Unit economics built from your own cost data, showing where margin is actually earned and where it leaks.",
     },
     {
-      title: "Finance operations design",
+      title: "Finance Operations Design",
       description:
         "Redesigning the close, approval workflows and reporting cycle so they hold up as volume grows.",
     },
     {
-      title: "Systems and tooling",
+      title: "Systems and Tooling",
       description:
         "Assessing the accounting and finance stack, and supporting selection or implementation where a change is warranted.",
     },
     {
-      title: "Project-based support",
+      title: "Project-Based Support",
       description:
         "Defined pieces of work with a clear scope, timeline and output, rather than an open-ended retainer.",
     },
     {
-      title: "Preparation for external review",
+      title: "Preparation for External Review",
       description:
         "Getting records, reporting and controls into shape ahead of a lender, investor or audit process.",
     },
   ],
   deliverables: [
     {
-      title: "Typical outputs",
+      title: "Typical Outputs",
       items: [
         "A written assessment with prioritized recommendations",
         "Financial models with documented assumptions",
@@ -634,7 +634,7 @@ const consulting: ServiceDetail = {
       ],
     },
     {
-      title: "Working style",
+      title: "Working Style",
       items: [
         "A defined scope agreed before work starts",
         "Regular check-ins rather than a single reveal at the end",
@@ -644,27 +644,27 @@ const consulting: ServiceDetail = {
     },
   ],
   process: {
-    heading: "How consulting engagements work",
+    heading: "How Consulting Engagements Work",
     intro:
       "Every engagement starts with agreeing what \"done\" looks like.",
     steps: [
       {
-        title: "Define the question",
+        title: "Define the Question",
         description:
           "We spend the first conversation making sure we are solving the right problem, and write down what a useful answer would contain.",
       },
       {
-        title: "Gather and analyze",
+        title: "Gather and Analyze",
         description:
           "We work from your own data — books, systems, contracts, operational records — rather than generic benchmarks.",
       },
       {
-        title: "Present options",
+        title: "Present Options",
         description:
           "You get real alternatives with trade-offs shown, not a single recommendation presented as the only path.",
       },
       {
-        title: "Support the decision",
+        title: "Support the Decision",
         description:
           "Once you decide, we help put it into practice and stay available while it beds in.",
       },
@@ -689,7 +689,7 @@ const consulting: ServiceDetail = {
   ],
   related: ["risk-advisory", "analytics", "accounting"],
   cta: {
-    heading: "Talk through the decision you’re facing",
+    heading: "Talk Through the Decision You’re Facing",
     body: "A consultation costs nothing and usually clarifies whether the problem needs a project, a process change, or simply better reporting.",
   },
 };
@@ -707,14 +707,14 @@ const riskAdvisory: ServiceDetail = {
   summary:
     "Identifying financial and operational risk, and strengthening the controls that contain it.",
   eyebrow: "Risk & Financial Advisory",
-  headline: "Know where the business is exposed — before it costs you.",
+  headline: "Know Where the Business Is Exposed — Before It Costs You",
   intro:
     "Financial and operational risk is easiest to manage while it is still small. We work through where your business is exposed, how likely each exposure is to matter, and which controls are worth the effort of putting in place.",
   metaTitle: "Risk & Financial Advisory",
   metaDescription:
     "Risk and financial advisory services: financial risk assessment, internal control design, cash flow risk and process safeguards for growing businesses.",
   problem: {
-    heading: "Most financial losses are not sophisticated",
+    heading: "Most Financial Losses Are Not Sophisticated",
     body: "They come from ordinary gaps: one person controlling both approval and payment, a customer concentration nobody tracked, a cash position that was tight for a quarter before anyone raised it. None of these require bad intent to cause damage.",
     points: [
       "Approval and payment authority sit with the same person",
@@ -725,39 +725,39 @@ const riskAdvisory: ServiceDetail = {
   },
   features: [
     {
-      title: "Financial risk assessment",
+      title: "Financial Risk Assessment",
       description:
         "A structured review of where financial loss could originate, with each exposure rated by likelihood and impact.",
     },
     {
-      title: "Internal control design",
+      title: "Internal Control Design",
       description:
         "Controls sized to your business — segregation of duties, approval thresholds and reconciliation routines that people will actually follow.",
     },
     {
-      title: "Cash flow risk",
+      title: "Cash Flow Risk",
       description:
         "Forecasting that shows the pinch points ahead, including the effect of receivable timing and seasonal swings.",
     },
     {
-      title: "Concentration analysis",
+      title: "Concentration Analysis",
       description:
         "Customer, supplier and revenue concentration measured and monitored rather than assumed to be fine.",
     },
     {
-      title: "Process safeguards",
+      title: "Process Safeguards",
       description:
         "Practical checks built into payment, payroll and procurement processes to catch errors before money moves.",
     },
     {
-      title: "Advisory support",
+      title: "Advisory Support",
       description:
         "Ongoing input as circumstances change — new markets, new financing, new operating models.",
     },
   ],
   deliverables: [
     {
-      title: "Assessment outputs",
+      title: "Assessment Outputs",
       items: [
         "A risk register with likelihood and impact ratings",
         "Documented control gaps with recommended remediation",
@@ -776,27 +776,27 @@ const riskAdvisory: ServiceDetail = {
     },
   ],
   process: {
-    heading: "How risk work is carried out",
+    heading: "How Risk Work Is Carried Out",
     intro:
       "Risk work is only useful if it ends in changes people actually adopt.",
     steps: [
       {
-        title: "Understand the business",
+        title: "Understand the Business",
         description:
           "We map how money moves through the organization — who initiates, who approves, who records and who reconciles.",
       },
       {
-        title: "Identify and rate exposures",
+        title: "Identify and Rate Exposures",
         description:
           "Exposures are documented and rated so attention goes to what could genuinely hurt, not to whatever is easiest to fix.",
       },
       {
-        title: "Design proportionate controls",
+        title: "Design Proportionate Controls",
         description:
           "Controls are sized to the business. A ten-person company does not need the control environment of a hundred-person one, and imposing it guarantees it will be bypassed.",
       },
       {
-        title: "Implement and revisit",
+        title: "Implement and Revisit",
         description:
           "We help put controls in place, then reassess periodically as the business grows and the risk profile shifts.",
       },
@@ -821,7 +821,7 @@ const riskAdvisory: ServiceDetail = {
   ],
   related: ["audit-assurance", "consulting", "analytics"],
   cta: {
-    heading: "Find the gaps while they’re still small",
+    heading: "Find the Gaps While They’re Still Small",
     body: "A first conversation usually surfaces two or three exposures worth acting on straight away, at no cost.",
   },
 };
@@ -839,14 +839,14 @@ const analytics: ServiceDetail = {
   summary:
     "Reporting and analysis that turn your financial data into decisions you can defend.",
   eyebrow: "Financial Analytics",
-  headline: "Your numbers, arranged so the decision becomes obvious.",
+  headline: "Your Numbers, Arranged So the Decision Becomes Obvious",
   intro:
     "Management reporting, margin analysis, cash forecasting and the handful of measures that genuinely drive your business — built from your own books, refreshed on a cycle, and explained rather than dropped in an inbox.",
   metaTitle: "Financial Analytics Services",
   metaDescription:
     "Financial analytics and management reporting: margin analysis, cash flow forecasting, budget variance and KPI reporting built from your own accounting data.",
   problem: {
-    heading: "More reporting is not the same as more insight",
+    heading: "More Reporting Is Not the Same as More Insight",
     body: "Plenty of businesses have dashboards. Fewer can say which three numbers to watch this quarter and what they should do if one moves. The gap is not data volume — it is that reporting was never designed around the decisions it is meant to support.",
     points: [
       "Reports show what happened, but not what to do about it",
@@ -857,32 +857,32 @@ const analytics: ServiceDetail = {
   },
   features: [
     {
-      title: "Management reporting",
+      title: "Management Reporting",
       description:
         "A concise recurring pack covering performance, position and cash, with commentary on what changed and why.",
     },
     {
-      title: "Margin and profitability analysis",
+      title: "Margin and Profitability Analysis",
       description:
         "Profitability by product, service line, customer or channel, so pricing and investment decisions rest on real contribution.",
     },
     {
-      title: "Cash flow forecasting",
+      title: "Cash Flow Forecasting",
       description:
         "Short and medium-term cash forecasts that account for receivable timing, payables and seasonality.",
     },
     {
-      title: "Budget versus actual",
+      title: "Budget Versus Actual",
       description:
         "Variance reporting that separates volume, price and cost effects instead of showing a single unexplained difference.",
     },
     {
-      title: "KPI definition",
+      title: "KPI Definition",
       description:
         "Agreeing the small set of measures that matter for your business and defining precisely how each is calculated.",
     },
     {
-      title: "Data quality review",
+      title: "Data Quality Review",
       description:
         "Making sure the underlying records support the analysis, because analytics on unreliable books produces confident wrong answers.",
     },
@@ -898,7 +898,7 @@ const analytics: ServiceDetail = {
       ],
     },
     {
-      title: "On request",
+      title: "On Request",
       items: [
         "Profitability analysis by segment",
         "Pricing and margin models",
@@ -908,27 +908,27 @@ const analytics: ServiceDetail = {
     },
   ],
   process: {
-    heading: "How analytics engagements work",
+    heading: "How Analytics Engagements Work",
     intro:
       "We start from the decisions you need to make and work backwards to the reporting.",
     steps: [
       {
-        title: "Agree the questions",
+        title: "Agree the Questions",
         description:
           "We establish what you need to be able to answer each month, each quarter and each year. Everything else is noise.",
       },
       {
-        title: "Check the foundation",
+        title: "Check the Foundation",
         description:
           "We verify that the underlying accounting data can support those answers, and fix what cannot.",
       },
       {
-        title: "Build the reporting",
+        title: "Build the Reporting",
         description:
           "Reports and forecasts are built with definitions documented, so the same number means the same thing every period.",
       },
       {
-        title: "Review and adapt",
+        title: "Review and Adapt",
         description:
           "We review the pack with you regularly and change it as the questions change. Reporting that nobody reads gets removed.",
       },
@@ -953,7 +953,7 @@ const analytics: ServiceDetail = {
   ],
   related: ["accounting", "consulting", "bookkeeping"],
   cta: {
-    heading: "Get reporting that answers your questions",
+    heading: "Get Reporting That Answers Your Questions",
     body: "Tell us the three things you most need visibility on. We will show you what it takes to report on them reliably.",
   },
 };
@@ -971,14 +971,14 @@ const merchantServices: ServiceDetail = {
   summary:
     "Support for accepting card, online, in-person and ACH payments — and reconciling them properly.",
   eyebrow: "Merchant Services",
-  headline: "Accept payments, and know exactly what landed in the bank.",
+  headline: "Accept Payments, and Know Exactly What Landed in the Bank",
   intro:
     "Support for taking card payments online and in person, ACH and bank transfers, payment links, invoicing and recurring billing — with the settlement, fee and chargeback data flowing back into your books where it belongs.",
   metaTitle: "Merchant Services & Payment Support",
   metaDescription:
     "Merchant services support from DB FinCo: card acceptance, online and in-person payments, ACH transfers, payment links, invoicing, recurring billing and payment reporting.",
   problem: {
-    heading: "Taking the payment is only half the job",
+    heading: "Taking the Payment Is Only Half the Job",
     body: "Money arrives net of fees, in batches that do not match individual invoices, sometimes days after the sale, occasionally reversed. If none of that is reconciled properly, revenue is overstated, fees are invisible and the bank balance never quite agrees with the books.",
     points: [
       "Deposits arrive net of processing fees that never get recorded separately",
@@ -989,49 +989,49 @@ const merchantServices: ServiceDetail = {
   },
   features: [
     {
-      title: "Card acceptance",
+      title: "Card Acceptance",
       description:
         "Support for accepting the payment types your customers expect, with the acceptance costs made visible rather than buried in a net deposit.",
     },
     {
-      title: "Online payments",
+      title: "Online Payments",
       description:
         "Checkout and hosted payment page setup so online sales flow into your records with the detail needed to reconcile them.",
     },
     {
-      title: "In-person payments",
+      title: "In-Person Payments",
       description:
         "Point-of-sale and payment terminal arrangements for businesses taking payments at a counter, on site or on the move.",
     },
     {
-      title: "ACH and bank transfers",
+      title: "ACH and Bank Transfers",
       description:
         "Bank transfer options for higher-value or recurring business-to-business payments where card acceptance costs do not make sense.",
     },
     {
-      title: "Payment links and invoicing",
+      title: "Payment Links and Invoicing",
       description:
         "Sending a payable link or invoice, tracking what has been paid, and matching receipts against open receivables.",
     },
     {
-      title: "Recurring billing",
+      title: "Recurring Billing",
       description:
         "Subscription and retainer billing set up so renewals, failures and cancellations are visible in your reporting.",
     },
     {
-      title: "Payment reporting and reconciliation",
+      title: "Payment Reporting and Reconciliation",
       description:
         "Settlement, fee, refund and chargeback activity reconciled to your books so the numbers agree line by line.",
     },
     {
-      title: "Merchant payment support",
+      title: "Merchant Payment Support",
       description:
         "Help understanding statements, comparing acceptance costs and working through issues when something does not settle as expected.",
     },
   ],
   deliverables: [
     {
-      title: "Getting set up",
+      title: "Getting Set Up",
       items: [
         "A review of how you take payments today and what it costs",
         "Guidance on the acceptance methods that fit your business",
@@ -1040,7 +1040,7 @@ const merchantServices: ServiceDetail = {
       ],
     },
     {
-      title: "Once you’re running",
+      title: "Once You’re Running",
       items: [
         "Reconciliation of settlements to sales and to the bank",
         "Processing fees recorded and tracked as a cost of doing business",
@@ -1050,27 +1050,27 @@ const merchantServices: ServiceDetail = {
     },
   ],
   process: {
-    heading: "How merchant onboarding works",
+    heading: "How Merchant Onboarding Works",
     intro:
       "Payment acceptance involves a provider application and underwriting review. We help you prepare for it and make sure the accounting side is set up correctly from day one.",
     steps: [
       {
-        title: "Review how you get paid",
+        title: "Review How You Get Paid",
         description:
           "We look at your current payment mix, ticket sizes, customer types and what acceptance is costing you today.",
       },
       {
-        title: "Match methods to the business",
+        title: "Match Methods to the Business",
         description:
           "We identify which acceptance methods fit — card, online, in person, ACH, links, recurring — based on how your customers actually pay.",
       },
       {
-        title: "Prepare the application",
+        title: "Prepare the Application",
         description:
           "Providers review business documentation as part of underwriting. We help you assemble what is needed so the process is not delayed by missing paperwork.",
       },
       {
-        title: "Connect it to the books",
+        title: "Connect It to the Books",
         description:
           "Once you are accepting payments, settlements, fees and reversals are mapped into your accounts and reconciled as part of the normal monthly cycle.",
       },
@@ -1105,7 +1105,7 @@ const merchantServices: ServiceDetail = {
   ],
   related: ["bookkeeping", "accounting", "analytics"],
   cta: {
-    heading: "Let’s look at how you get paid",
+    heading: "Let’s Look at How You Get Paid",
     body: "Bring a recent processing statement to a free consultation. We will walk through what you are being charged and how the money is reaching your books.",
   },
 };

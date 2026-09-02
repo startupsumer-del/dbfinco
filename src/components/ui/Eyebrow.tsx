@@ -2,7 +2,12 @@ import type { ReactNode } from "react";
 
 import { cn } from "@/lib/cn";
 
-/** Small uppercase label that sits above a section heading. */
+/**
+ * Small uppercase label that sits above a section heading.
+ *
+ * Deliberately just type: the label carries the hierarchy on its own, and a
+ * decorative rule beside it only competed with the heading underneath.
+ */
 export function Eyebrow({
   children,
   className,
@@ -27,16 +32,7 @@ export function Eyebrow({
         className,
       )}
     >
-      <span className="inline-flex items-center gap-2">
-        <span
-          aria-hidden="true"
-          className={cn(
-            "h-px w-6",
-            tone === "inverse" ? "bg-gold-400/70" : "bg-gold-600",
-          )}
-        />
-        {children}
-      </span>
+      {children}
     </p>
   );
 }

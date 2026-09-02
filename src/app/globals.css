@@ -72,16 +72,16 @@
     system-ui, sans-serif;
 
   /* Fluid type scale — clamp(min, preferred, max) */
-  --text-display-1: clamp(2.5rem, 1.55rem + 4.25vw, 4.75rem);
+  --text-display-1: clamp(2.375rem, 1.7rem + 3vw, 4rem);
   --text-display-1--line-height: 1.04;
   --text-display-1--letter-spacing: -0.033em;
-  --text-display-2: clamp(2.125rem, 1.5rem + 2.8vw, 3.5rem);
+  --text-display-2: clamp(2rem, 1.6rem + 1.8vw, 3rem);
   --text-display-2--line-height: 1.08;
   --text-display-2--letter-spacing: -0.028em;
   --text-h1: clamp(1.95rem, 1.42rem + 2.35vw, 3rem);
   --text-h1--line-height: 1.12;
   --text-h1--letter-spacing: -0.024em;
-  --text-h2: clamp(1.6rem, 1.28rem + 1.42vw, 2.375rem);
+  --text-h2: clamp(1.5rem, 1.3rem + 0.9vw, 2.125rem);
   --text-h2--line-height: 1.18;
   --text-h2--letter-spacing: -0.02em;
   --text-h3: clamp(1.3rem, 1.14rem + 0.7vw, 1.6rem);
@@ -90,7 +90,7 @@
   --text-h4: clamp(1.1rem, 1.03rem + 0.32vw, 1.25rem);
   --text-h4--line-height: 1.36;
   --text-h4--letter-spacing: -0.01em;
-  --text-lead: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+  --text-lead: clamp(1.0625rem, 1.02rem + 0.2vw, 1.125rem);
   --text-lead--line-height: 1.62;
   --text-eyebrow: 0.75rem;
   --text-eyebrow--line-height: 1.2;
@@ -204,17 +204,20 @@
 @utility container-page {
   width: 100%;
   margin-inline: auto;
-  max-width: 84rem; /* 1344px content ceiling on very large displays */
+  max-width: 80rem; /* 1280px content ceiling on very large displays */
   padding-inline: 1.25rem; /* 20px — mobile gutter */
 
   @media (width >= 40rem) {
+    padding-inline: 1.75rem; /* 28px — small tablet */
+  }
+  @media (width >= 48rem) {
     padding-inline: 2rem; /* 32px — tablet */
   }
   @media (width >= 64rem) {
     padding-inline: 2.5rem; /* 40px — laptop */
   }
   @media (width >= 90rem) {
-    padding-inline: 4rem; /* 64px — desktop */
+    padding-inline: 3rem; /* 48px — desktop */
   }
 }
 
@@ -225,6 +228,9 @@
   padding-inline: 1.25rem;
 
   @media (width >= 40rem) {
+    padding-inline: 1.75rem;
+  }
+  @media (width >= 48rem) {
     padding-inline: 2rem;
   }
   @media (width >= 64rem) {

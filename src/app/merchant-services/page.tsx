@@ -61,27 +61,27 @@ const crumbs = [
 const paymentMethods = [
   {
     icon: CreditCard,
-    title: "Card acceptance",
+    title: "Card Acceptance",
     body: "Taking card payments from your customers, with the cost of acceptance made visible instead of disappearing into a net deposit.",
   },
   {
     icon: Globe,
-    title: "Online payments",
+    title: "Online Payments",
     body: "Checkout and hosted payment pages so online sales reach your records with enough detail to reconcile them properly.",
   },
   {
     icon: Store,
-    title: "In-person & POS",
+    title: "In-Person & POS",
     body: "Point-of-sale and payment terminal arrangements for payments taken at a counter, on site or on the move.",
   },
   {
     icon: Banknote,
-    title: "ACH & bank transfers",
+    title: "ACH & Bank Transfers",
     body: "Bank transfer options for higher-value or recurring business-to-business payments where card costs do not make sense.",
   },
   {
     icon: Link2,
-    title: "Payment links",
+    title: "Payment Links",
     body: "Sending a customer a payable link and matching the receipt against the open invoice when it is paid.",
   },
   {
@@ -91,12 +91,12 @@ const paymentMethods = [
   },
   {
     icon: Repeat,
-    title: "Recurring billing",
+    title: "Recurring Billing",
     body: "Subscription and retainer billing set up so renewals, failed payments and cancellations show up in your reporting.",
   },
   {
     icon: TrendingUp,
-    title: "Payment reporting",
+    title: "Payment Reporting",
     body: "Settlement, fee, refund and chargeback activity reconciled back to your books, line by line.",
   },
 ];
@@ -122,24 +122,24 @@ export default function MerchantServicesPage() {
           <div className="absolute -bottom-48 -left-40 size-[30rem] rounded-full bg-[radial-gradient(circle,rgba(110,56,145,0.45),transparent_70%)]" />
         </div>
 
-        <Container className="relative pb-16 pt-8 sm:pb-20 sm:pt-10 lg:pb-24 lg:pt-12">
+        <Container className="relative pb-12 pt-8 sm:pb-16 sm:pt-10 lg:pb-22 lg:pt-12">
           <Breadcrumbs crumbs={crumbs} tone="inverse" />
 
           <div className="mt-8 grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:items-center lg:gap-16">
             <div className="min-w-0">
-              <Eyebrow tone="inverse" className="mb-5">
+              <Eyebrow tone="inverse" className="mb-4">
                 Merchant Services
               </Eyebrow>
               <h1 className="text-display-2 text-white">
-                Accept payments, and know exactly what landed in the bank.
+                Accept Payments, and Know What Landed in the Bank
               </h1>
-              <p className="measure mt-6 text-lead text-purple-100">
+              <p className="measure mt-5 text-lead text-purple-100">
                 Support for taking card, online, in-person and ACH payments —
                 with settlement, fee and chargeback data reconciled back into
                 your books, where it can actually be understood.
               </p>
 
-              <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Button href={bookingUrl} variant="gold" size="lg" fullWidth className="sm:w-auto">
                   Schedule a Free Consultation
                   <ArrowRight aria-hidden="true" className="size-4" />
@@ -168,12 +168,12 @@ export default function MerchantServicesPage() {
         <Container>
           <SectionHeading
             id="methods-heading"
-            eyebrow="How you can get paid"
-            title="The ways your customers pay, supported and accounted for."
+            eyebrow="How You Can Get Paid"
+            title="The Ways Your Customers Pay"
             lead="Which methods are available to your business depends on the provider you work with and the outcome of its underwriting review."
           />
 
-          <ul className="mt-12 grid gap-5 sm:grid-cols-2 sm:gap-6 lg:mt-16 lg:grid-cols-4">
+          <ul className="mt-10 grid gap-5 sm:grid-cols-2 sm:gap-6 lg:mt-14 lg:grid-cols-4">
             {paymentMethods.map((method) => {
               const Icon = method.icon;
               return (
@@ -197,7 +197,7 @@ export default function MerchantServicesPage() {
           </ul>
 
           {/* Card acceptance and terminal, shown rather than described. */}
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:mt-14 lg:gap-8">
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:mt-14 lg:gap-8">
             <PaymentCard className="mx-auto w-full sm:max-w-none" />
             <PaymentTerminal className="mx-auto w-full sm:max-w-none" />
           </div>
@@ -209,15 +209,15 @@ export default function MerchantServicesPage() {
         <Container>
           <SectionHeading
             id="channels-heading"
-            eyebrow="Online and in person"
-            title="However the sale happens, the accounting should end up in the same place."
+            eyebrow="Online and in Person"
+            title="Every Channel, One Set of Books"
             lead="Online checkout, a terminal at the counter and a bank transfer all settle differently. The work is making sure all three reconcile against the same set of books."
           />
 
-          <div className="mt-12 grid gap-8 lg:mt-16 lg:grid-cols-2 lg:gap-12">
+          <div className="mt-10 grid gap-8 lg:mt-14 lg:grid-cols-2 lg:gap-12">
             <div>
               <CheckoutVisual />
-              <h3 className="mt-6 text-h3 text-ink-primary">Online payments</h3>
+              <h3 className="mt-6 text-h3 text-ink-primary">Online Payments</h3>
               <p className="measure mt-3 text-ink-secondary">
                 Hosted checkout and payment pages keep card data off your own
                 systems while still capturing the order detail needed to match
@@ -228,7 +228,7 @@ export default function MerchantServicesPage() {
             <div>
               <SettlementPanel />
               <h3 className="mt-6 text-h3 text-ink-primary">
-                Settlement reconciliation
+                Settlement Reconciliation
               </h3>
               <p className="measure mt-3 text-ink-secondary">
                 Deposits arrive net of fees, refunds and reversals. We record
@@ -246,8 +246,8 @@ export default function MerchantServicesPage() {
           <div className="grid gap-10 lg:grid-cols-[minmax(0,24rem)_minmax(0,1fr)] lg:gap-16">
             <SectionHeading
               id="types-heading"
-              eyebrow="Who this suits"
-              title="Businesses that take money in more than one way."
+              eyebrow="Who This Suits"
+              title="Businesses That Take Money More Than One Way"
               lead="If payments arrive through several channels and none of them reconcile cleanly, that is the problem this service exists to solve."
             />
             <ul className="grid gap-3 sm:grid-cols-2">
@@ -273,12 +273,12 @@ export default function MerchantServicesPage() {
         <Container>
           <SectionHeading
             id="onboarding-heading"
-            eyebrow="Merchant onboarding"
+            eyebrow="Merchant Onboarding"
             title={service.process.heading}
             lead={service.process.intro}
             align="center"
           />
-          <ProcessSteps steps={service.process.steps} className="mt-14 lg:mt-16" />
+          <ProcessSteps steps={service.process.steps} className="mt-10 lg:mt-14" />
         </Container>
       </Section>
 
@@ -287,11 +287,11 @@ export default function MerchantServicesPage() {
         <Container>
           <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
             <div>
-              <Eyebrow tone="inverse" className="mb-5">
-                Payment reporting
+              <Eyebrow tone="inverse" className="mb-4">
+                Payment Reporting
               </Eyebrow>
               <h2 id="reporting-heading" className="text-h2 text-white">
-                The part most businesses skip.
+                The Part Most Businesses Skip
               </h2>
               <p className="measure mt-5 text-lead text-purple-100">
                 Taking the payment is straightforward. Knowing what it actually
@@ -327,15 +327,15 @@ export default function MerchantServicesPage() {
         <Container>
           <SectionHeading
             id="security-heading"
-            eyebrow="Responsible processing"
-            title="What we will and won’t tell you about payments."
+            eyebrow="Responsible Processing"
+            title="What We Will and Won’t Tell You"
           />
 
-          <div className="mt-12 grid gap-5 sm:gap-6 lg:grid-cols-3">
+          <div className="mt-10 grid gap-5 sm:gap-6 lg:grid-cols-3">
             <Card className="bg-white">
               <Lock aria-hidden="true" className="size-6 text-purple-700" />
               <h3 className="mt-4 text-h4 font-semibold text-ink-primary">
-                Card data stays with the provider
+                Card Data Stays with the Provider
               </h3>
               <p className="mt-2.5 text-sm leading-relaxed text-ink-secondary">
                 We do not handle or store your customers&apos; card details.
@@ -347,7 +347,7 @@ export default function MerchantServicesPage() {
             <Card className="bg-white">
               <Info aria-hidden="true" className="size-6 text-purple-700" />
               <h3 className="mt-4 text-h4 font-semibold text-ink-primary">
-                No guarantees on approval
+                No Guarantees on Approval
               </h3>
               <p className="mt-2.5 text-sm leading-relaxed text-ink-secondary">
                 Approval is decided by the provider through its own underwriting
@@ -359,7 +359,7 @@ export default function MerchantServicesPage() {
             <Card className="bg-white">
               <CreditCard aria-hidden="true" className="size-6 text-purple-700" />
               <h3 className="mt-4 text-h4 font-semibold text-ink-primary">
-                We are not a bank or a processor
+                We Are Not a Bank or a Processor
               </h3>
               <p className="mt-2.5 text-sm leading-relaxed text-ink-secondary">
                 DB FinCo is an accounting and advisory firm. Payment processing,
@@ -372,7 +372,7 @@ export default function MerchantServicesPage() {
           {/* Merchant services disclaimer */}
           <div className="mt-10 rounded-xl border border-gold-200 bg-gold-50 p-6 sm:p-7">
             <h3 className="text-h4 font-semibold text-ink-primary">
-              Important information
+              Important Information
             </h3>
             <p className="measure mt-3 text-sm leading-relaxed text-ink-secondary">
               Payment methods, pricing and service availability may vary by
@@ -402,8 +402,8 @@ export default function MerchantServicesPage() {
 
       <FaqSection
         faqs={service.faqs}
-        eyebrow="Merchant questions"
-        heading="Merchant services questions"
+        eyebrow="Merchant Questions"
+        heading="Merchant Services Questions"
         tone="white"
       />
 

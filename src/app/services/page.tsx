@@ -32,7 +32,7 @@ export default function ServicesPage() {
       <PageBanner
         crumbs={crumbs}
         eyebrow="Our Services"
-        title="A complete finance function, delivered by one firm."
+        title="A Complete Finance Function, Delivered by One Firm"
         lead="Every service below can be engaged on its own. Most clients combine two or three, and they work better together — the tax return is prepared from books we keep, and the advisory work draws on reporting we build."
         visual={<ServicesOverviewScene />}
       />
@@ -41,10 +41,10 @@ export default function ServicesPage() {
         <Container>
           <SectionHeading
             id="core-heading"
-            eyebrow="Core services"
-            title="Accounting, tax and advisory"
+            eyebrow="Core Services"
+            title="Accounting, Tax and Advisory"
           />
-          <ServiceGrid services={coreServices} className="mt-12" />
+          <ServiceGrid services={coreServices} className="mt-10" />
         </Container>
       </Section>
 
@@ -52,11 +52,11 @@ export default function ServicesPage() {
         <Container>
           <SectionHeading
             id="assurance-heading"
-            eyebrow="Assurance engagements"
-            title="Three distinct engagements, not three names for the same thing."
+            eyebrow="Assurance Engagements"
+            title="Three Distinct Engagements, Not Three Names for One Thing"
             lead="An audit, an internal audit and an agreed-upon procedures engagement are performed under different standards and produce different reports. We will tell you which one answers your question."
           />
-          <ServiceGrid services={auditServices} className="mt-12" />
+          <ServiceGrid services={auditServices} className="mt-10" />
         </Container>
       </Section>
 
@@ -66,16 +66,16 @@ export default function ServicesPage() {
             <SectionHeading
               id="payments-heading"
               eyebrow="Payments"
-              title="Merchant services"
+              title="Merchant Services"
               lead="Support for accepting card, online, in-person and ACH payments — and for reconciling every settlement, fee and reversal back into your books."
             />
-            <ServiceGrid services={[merchant]} className="mt-12" columns={3} />
+            <ServiceGrid services={[merchant]} className="mt-10" columns={3} />
           </Container>
         </Section>
       ) : null}
 
       <CtaSection
-        heading="Not sure which services you need?"
+        heading="Not Sure Which Services You Need?"
         body="Describe your situation in a free consultation and we will tell you what we would recommend — including where you need less than you thought."
       />
 

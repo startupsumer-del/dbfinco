@@ -44,44 +44,44 @@ const crumbs = [
 const principles = [
   {
     icon: Compass,
-    title: "Accuracy before presentation",
+    title: "Accuracy Before Presentation",
     body: "Reporting is only worth producing if the underlying records are right. We fix the foundation first, even when that is the less exciting piece of work.",
   },
   {
     icon: ScrollText,
-    title: "Precise terminology",
+    title: "Precise Terminology",
     body: "An audit, a review and agreed-upon procedures are different engagements. We use the correct term for what we are actually doing, and explain the difference before you commit.",
   },
   {
     icon: Handshake,
-    title: "Scope agreed in writing",
+    title: "Scope Agreed in Writing",
     body: "Every engagement is defined before it starts. If the work uncovers something that changes the scope, we come back to you rather than expanding it quietly.",
   },
   {
     icon: Building2,
-    title: "Privately held focus",
+    title: "Privately Held Focus",
     body: "Our assurance practice works exclusively with privately held companies, which keeps engagements clear of public company regulation and reporting deadlines.",
   },
 ];
 
 const howWeWork = [
   {
-    title: "We learn the business first",
+    title: "We Learn the Business First",
     description:
       "Before recommending anything we understand how money moves through your organisation — how you sell, how you get paid and where the costs sit.",
   },
   {
-    title: "We fix the foundation",
+    title: "We Fix the Foundation",
     description:
       "Chart of accounts, opening balances, reconciliations and accounting policy come before reporting. Analysis built on unreliable books produces confident wrong answers.",
   },
   {
-    title: "We set a rhythm",
+    title: "We Set a Rhythm",
     description:
       "Close dates, reporting dates and filing dates are agreed and held, so the finance function becomes predictable rather than reactive.",
   },
   {
-    title: "We stay available",
+    title: "We Stay Available",
     description:
       "A named accountant who knows your history handles your account. Questions between reporting cycles get answered by someone with the context.",
   },
@@ -95,16 +95,16 @@ export default function AboutPage() {
           <div className="absolute -right-48 -top-44 size-[34rem] rounded-full bg-[radial-gradient(circle,var(--color-purple-50),transparent_68%)]" />
         </div>
 
-        <Container className="pb-16 pt-8 sm:pb-20 sm:pt-10 lg:pb-24 lg:pt-12">
+        <Container className="pb-12 pt-8 sm:pb-16 sm:pt-10 lg:pb-22 lg:pt-12">
           <Breadcrumbs crumbs={crumbs} />
 
           <div className="mt-8 grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,28rem)] lg:items-center lg:gap-16">
             <div>
-              <Eyebrow className="mb-5">About DB FinCo</Eyebrow>
+              <Eyebrow className="mb-4">About DB FinCo</Eyebrow>
               <h1 className="text-display-2 text-ink-primary">
-                A firm of accountants and business advisors.
+                A Firm of Accountants and Business Advisors
               </h1>
-              <p className="measure mt-6 text-lead text-ink-secondary">
+              <p className="measure mt-5 text-lead text-ink-secondary">
                 DB FinCo works with small and medium-sized businesses to improve
                 their financial outlook — keeping the books accurate, the
                 filings on time and the reporting clear enough to act on. We
@@ -114,7 +114,7 @@ export default function AboutPage() {
               </p>
 
               <Button href="/contact" size="lg" className="mt-9">
-                Talk to us
+                Talk to Us
                 <ArrowRight aria-hidden="true" className="size-4" />
               </Button>
             </div>
@@ -156,12 +156,12 @@ export default function AboutPage() {
         <Container>
           <SectionHeading
             id="principles-heading"
-            eyebrow="What we hold to"
-            title="Four things that shape how we work."
+            eyebrow="What We Hold To"
+            title="Four Things That Shape How We Work"
             lead="We would rather be specific about how we operate than make claims about ourselves that nobody can check."
           />
 
-          <ul className="mt-12 grid gap-5 sm:grid-cols-2 sm:gap-6 lg:mt-16">
+          <ul className="mt-10 grid gap-5 sm:grid-cols-2 sm:gap-6 lg:mt-14">
             {principles.map((principle) => {
               const Icon = principle.icon;
               return (
@@ -184,11 +184,11 @@ export default function AboutPage() {
         <Container>
           <SectionHeading
             id="howwework-heading"
-            eyebrow="How we work"
-            title="The same approach on every engagement."
+            eyebrow="How We Work"
+            title="The Same Approach on Every Engagement"
             align="center"
           />
-          <ProcessSteps steps={howWeWork} className="mt-14 lg:mt-16" />
+          <ProcessSteps steps={howWeWork} className="mt-10 lg:mt-14" />
         </Container>
       </Section>
 
@@ -198,15 +198,15 @@ export default function AboutPage() {
         <Container>
           <SectionHeading
             id="about-services-heading"
-            eyebrow="What we offer"
-            title="The full range of services."
+            eyebrow="What We Offer"
+            title="The Full Range of Services"
           />
-          <ServiceGrid services={coreServices} className="mt-12" />
+          <ServiceGrid services={coreServices} className="mt-10" />
         </Container>
       </Section>
 
       <CtaSection
-        heading="Start with a conversation."
+        heading="Start with a Conversation"
         body="Tell us where your finances stand today. We will tell you what we would recommend and what it would take — whether or not you engage us."
       />
 

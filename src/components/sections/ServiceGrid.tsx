@@ -59,7 +59,7 @@ export function ServiceGrid({
             </p>
 
             <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-purple-800">
-              Learn more
+              Learn More
               <ArrowRight aria-hidden="true" className="size-4" />
             </span>
           </Card>

@@ -51,7 +51,7 @@ export function ServicePageTemplate({
           <div className="absolute -bottom-48 -left-40 size-[30rem] rounded-full bg-[radial-gradient(circle,rgba(110,56,145,0.45),transparent_70%)]" />
         </div>
 
-        <Container className="relative pb-14 pt-8 sm:pb-16 sm:pt-10 lg:pb-20 lg:pt-12">
+        <Container className="relative pb-12 pt-8 sm:pb-16 sm:pt-10 lg:pb-22 lg:pt-12">
           <Breadcrumbs crumbs={crumbs} tone="inverse" />
 
           <div
@@ -62,15 +62,15 @@ export function ServicePageTemplate({
             }
           >
             <div className="min-w-0">
-              <Eyebrow tone="inverse" className="mb-5">
+              <Eyebrow tone="inverse" className="mb-4">
                 {service.eyebrow}
               </Eyebrow>
               <h1 className="text-display-2 text-white">{service.headline}</h1>
-              <p className="measure mt-6 text-lead text-purple-100">
+              <p className="measure mt-5 text-lead text-purple-100">
                 {service.intro}
               </p>
 
-              <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Button href={bookingUrl} variant="gold" size="lg" fullWidth className="sm:w-auto">
                   Schedule a Free Consultation
                   <ArrowRight aria-hidden="true" className="size-4" />
@@ -102,7 +102,7 @@ export function ServicePageTemplate({
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:gap-16">
             <SectionHeading
               id="problem-heading"
-              eyebrow="The problem"
+              eyebrow="The Problem"
               title={service.problem.heading}
               lead={service.problem.body}
             />
@@ -131,10 +131,10 @@ export function ServicePageTemplate({
         <Container>
           <SectionHeading
             id="capabilities-heading"
-            eyebrow="What’s included"
-            title={`What ${service.name.toLowerCase()} covers`}
+            eyebrow="What’s Included"
+            title={`What ${service.name} Covers`}
           />
-          <ul className="mt-12 grid gap-5 sm:grid-cols-2 sm:gap-6 lg:mt-14 lg:grid-cols-3">
+          <ul className="mt-10 grid gap-5 sm:grid-cols-2 sm:gap-6 lg:mt-14 lg:grid-cols-3">
             {service.features.map((feature) => (
               <Card key={feature.title} as="li" className="bg-surface-subtle">
                 <h3 className="text-h4 font-semibold text-ink-primary">
@@ -158,8 +158,8 @@ export function ServicePageTemplate({
           <div className="grid gap-10 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:gap-16">
             <SectionHeading
               id="deliverables-heading"
-              eyebrow="What you receive"
-              title="Exactly what gets handed over."
+              eyebrow="What You Receive"
+              title="Exactly What Gets Handed Over"
               lead="Engagements are defined by their outputs, so you can tell whether you are getting what you agreed."
             />
             <div className="grid gap-6 sm:grid-cols-2">
@@ -196,12 +196,12 @@ export function ServicePageTemplate({
         <Container>
           <SectionHeading
             id="process-heading"
-            eyebrow="How it works"
+            eyebrow="How It Works"
             title={service.process.heading}
             lead={service.process.intro}
             align="center"
           />
-          <ProcessSteps steps={service.process.steps} className="mt-14 lg:mt-16" />
+          <ProcessSteps steps={service.process.steps} className="mt-10 lg:mt-14" />
         </Container>
       </Section>
 
@@ -213,8 +213,8 @@ export function ServicePageTemplate({
           <Container>
             <SectionHeading
               id="related-heading"
-              eyebrow="Related services"
-              title="Often needed alongside this."
+              eyebrow="Related Services"
+              title="Often Needed Alongside This"
               level={2}
             />
             <ServiceGrid services={related} className="mt-10" />

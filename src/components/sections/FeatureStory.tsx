@@ -46,7 +46,7 @@ export function FeatureStory({
               truncating row in one of the visuals) widens the whole track and
               pushes the page 1px past the viewport at 360px. */}
           <div className={cn("min-w-0", reverse && "lg:order-2")}>
-            <Eyebrow className="mb-5">{eyebrow}</Eyebrow>
+            <Eyebrow className="mb-4">{eyebrow}</Eyebrow>
             <h2 id={headingId} className="text-h2 text-ink-primary">
               {heading}
             </h2>

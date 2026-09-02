@@ -13,8 +13,11 @@ const toneClasses: Record<Tone, string> = {
 };
 
 /**
- * Vertical rhythm for page sections. Padding scales with the viewport so
- * mobile sections stay compact and desktop sections get room to breathe.
+ * Vertical rhythm for page sections.
+ *
+ * One scale for the whole site: 48 / 64 / 88px by default, 40 / 48 / 64 when
+ * compact, 56 / 72 / 96 when roomy. Every section on every page uses one of
+ * the three, so vertical spacing never drifts page to page.
  */
 export function Section({
   children,
@@ -35,10 +38,10 @@ export function Section({
 }) {
   const padding =
     size === "compact"
-      ? "py-12 sm:py-16 lg:py-20"
+      ? "py-10 sm:py-12 lg:py-16"
       : size === "roomy"
-        ? "py-20 sm:py-28 lg:py-36"
-        : "py-16 sm:py-20 lg:py-28";
+        ? "py-14 sm:py-18 lg:py-24"
+        : "py-12 sm:py-16 lg:py-22";
 
   return (
     <Tag

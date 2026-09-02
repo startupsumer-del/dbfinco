@@ -40,15 +40,15 @@ export default function ContactPage() {
   return (
     <>
       <section className="border-b border-line bg-white">
-        <Container className="pb-12 pt-8 sm:pb-14 sm:pt-10 lg:pt-12">
+        <Container className="pb-12 pt-8 sm:pb-16 sm:pt-10 lg:pb-22 lg:pt-12">
           <Breadcrumbs crumbs={crumbs} />
           <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,20rem)] lg:items-center lg:gap-16">
             <div className="min-w-0">
-              <Eyebrow className="mb-5">Contact</Eyebrow>
+              <Eyebrow className="mb-4">Contact</Eyebrow>
               <h1 className="text-display-2 text-ink-primary">
-                Let&apos;s talk about your finances.
+                Let&apos;s Talk About Your Finances
               </h1>
-              <p className="measure mt-6 text-lead text-ink-secondary">
+              <p className="measure mt-5 text-lead text-ink-secondary">
                 Tell us where things stand and what you need. We&apos;ll respond
                 during business hours with a straight answer about how we can
                 help — and whether we&apos;re the right fit.
@@ -81,7 +81,7 @@ export default function ContactPage() {
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,22rem)] lg:gap-14 xl:gap-20">
             {/* Form first on mobile: it's the primary action */}
             <div className="rounded-2xl border border-line bg-white p-6 sm:p-8 lg:p-10">
-              <h2 className="text-h3 text-ink-primary">Send us a message</h2>
+              <h2 className="text-h3 text-ink-primary">Send Us a Message</h2>
               <p className="measure mt-2.5 text-sm text-ink-secondary">
                 Fields marked with an asterisk are required.
               </p>
@@ -93,7 +93,7 @@ export default function ContactPage() {
             {/* Contact details */}
             <div className="lg:sticky lg:top-28 lg:self-start">
               <div className="rounded-2xl border border-line bg-white p-6 sm:p-8">
-                <h2 className="text-h3 text-ink-primary">Get in touch directly</h2>
+                <h2 className="text-h3 text-ink-primary">Get in Touch Directly</h2>
 
                 <ul className="mt-7 space-y-6">
                   <li>
@@ -199,7 +199,7 @@ export default function ContactPage() {
 
               <div className="mt-6 rounded-2xl border border-gold-200 bg-gold-50 p-6">
                 <h2 className="text-h4 font-semibold text-ink-primary">
-                  What happens next
+                  What Happens Next
                 </h2>
                 <ol className="mt-4 space-y-3">
                   {[

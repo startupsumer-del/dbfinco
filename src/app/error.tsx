@@ -19,18 +19,18 @@ export default function Error({ reset }: { error: Error; reset: () => void }) {
 
   return (
     <section className="bg-white">
-      <Container className="py-20 sm:py-28 lg:py-32">
+      <Container className="py-16 sm:py-20 lg:py-24">
         <div className="max-w-2xl">
-          <Eyebrow className="mb-5">Something went wrong</Eyebrow>
+          <Eyebrow className="mb-4">Something went wrong</Eyebrow>
           <h1 className="text-h1 text-ink-primary">
-            This page didn&apos;t load correctly.
+            This Page Didn&apos;t Load Correctly
           </h1>
           <p className="measure mt-5 text-lead text-ink-secondary">
             Please try again. If it keeps happening, get in touch and we&apos;ll
             help you directly.
           </p>
 
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Button onClick={reset} size="lg" fullWidth className="sm:w-auto">
               <RotateCcw aria-hidden="true" className="size-4" />
               Try again
