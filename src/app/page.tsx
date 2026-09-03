@@ -13,6 +13,7 @@ import {
 } from "@/components/sections/HomeSections";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { PlatformMarquee } from "@/components/sections/PlatformMarquee";
 import { PricingSection } from "@/components/sections/PricingSection";
 import { ProcessSteps } from "@/components/sections/ProcessSteps";
 import { ServiceGrid } from "@/components/sections/ServiceGrid";
@@ -74,6 +75,8 @@ export default function HomePage() {
           <ServiceGrid services={services} columns={4} className="mt-10 lg:mt-14" />
         </Container>
       </Section>
+
+      <PlatformMarquee />
 
       <ReportingSection />
 

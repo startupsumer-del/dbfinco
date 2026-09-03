@@ -343,6 +343,50 @@
   will-change: auto;
 }
 
+/* --------------------------------------------------------------------------
+   Logo marquee
+
+   The track holds the logo sequence twice and slides exactly one copy's width
+   (-50%), so the moment it resets the second copy is sitting precisely where
+   the first started — no jump, no gap, no flash. Only transform animates.
+
+   Reduced motion is handled at the component level by rendering a static
+   wrapped row instead, so there is no animation to stop here.
+   -------------------------------------------------------------------------- */
+
+@keyframes db-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@utility marquee-track {
+  animation: db-marquee var(--marquee-duration, 34s) linear infinite;
+  will-change: transform;
+}
+
+/* Hover pauses it for a closer look — pointer devices only, so a touch
+   scroll never freezes the row. */
+@media (hover: hover) and (pointer: fine) {
+  .marquee-viewport:hover .marquee-track {
+    animation-play-state: paused;
+  }
+}
+
+/* Logos enter and leave through a soft edge rather than a hard cut. */
+@utility marquee-viewport {
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 5rem,
+    #000 calc(100% - 5rem),
+    transparent 100%
+  );
+}
+
 @media (prefers-reduced-motion: reduce) {
   .js-reveal [data-reveal],
   .js-reveal [data-reveal="in"],

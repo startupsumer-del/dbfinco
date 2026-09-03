@@ -22,7 +22,9 @@ import {
   SettlementPanel,
 } from "@/components/merchant/PaymentVisuals";
 import { MerchantScene } from "@/components/illustrations/ServiceScenes";
+import { LogoGrid } from "@/components/merchant/LogoGrid";
 import { ServicePortrait } from "@/components/imagery/ServicePortrait";
+import { bankLogos, cardNetworkLogos } from "@/content/logos";
 import { CtaSection } from "@/components/sections/CtaSection";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { ProcessSteps } from "@/components/sections/ProcessSteps";
@@ -200,6 +202,37 @@ export default function MerchantServicesPage() {
             <PaymentCard className="mx-auto w-full sm:max-w-none" />
             <PaymentTerminal className="mx-auto w-full sm:max-w-none" />
           </div>
+        </Container>
+      </Section>
+
+      {/* Card networks and banks.
+
+          The headings and the note under them are deliberately narrow. Showing
+          these marks says what a customer can pay with and where settlement can
+          land — not that DB FinCo holds a partnership, certification or
+          endorsement from any of them. The page's "We Are Not a Bank or a
+          Processor" disclosure further down says the same thing in words. */}
+      <Section tone="lilac" ariaLabelledBy="networks-heading">
+        <Container>
+          <SectionHeading
+            id="networks-heading"
+            eyebrow="Payment Options"
+            title="Cards and Banks Your Customers Use"
+            lead="Which card networks and banking options your business can offer depends on your payment provider and the outcome of its underwriting review."
+          />
+
+          <div className="mt-10 space-y-10 lg:mt-14 lg:space-y-12">
+            <LogoGrid label="Card networks" logos={cardNetworkLogos} columns={4} />
+            <LogoGrid label="Banks" logos={bankLogos} />
+          </div>
+
+          <p className="measure mt-10 text-sm text-ink-muted">
+            Card network and bank marks are the property of their respective
+            owners and are shown to indicate commonly supported payment and
+            settlement options. Their appearance here does not imply any
+            partnership with, endorsement by, or certification from those
+            organizations.
+          </p>
         </Container>
       </Section>
 
