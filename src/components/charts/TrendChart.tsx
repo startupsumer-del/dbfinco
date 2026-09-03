@@ -25,6 +25,8 @@ export function TrendChart({
   fillTo = "rgba(86, 39, 117, 0)",
   height = 180,
   showGrid = true,
+  showLabels = true,
+  zeroBaseline = true,
   animate = true,
 }: {
   series: number[];
@@ -36,12 +38,25 @@ export function TrendChart({
   fillTo?: string;
   height?: number;
   showGrid?: boolean;
+  /** Drop the month row when the chart is small enough that it would crowd. */
+  showLabels?: boolean;
+  /**
+   * Full-size charts start at zero, because a truncated axis overstates
+   * movement and this is a finance site. A sparkline has no axis to read and
+   * no room to spend on the empty band below the data, so it may sit on a
+   * floating baseline — the caption still names the real range.
+   */
+  zeroBaseline?: boolean;
   animate?: boolean;
 }) {
   const width = 640;
   const padY = 14;
-  const max = niceMax(Math.max(...series) * 1.08);
-  const min = 0;
+  const seriesMin = Math.min(...series);
+  const seriesMax = Math.max(...series);
+  const max = zeroBaseline
+    ? niceMax(seriesMax * 1.08)
+    : seriesMax + (seriesMax - seriesMin) * 0.18;
+  const min = zeroBaseline ? 0 : Math.max(0, seriesMin - (seriesMax - seriesMin) * 0.3);
 
   const points: Point[] = series.map((value, index) => ({
     x: scale(index, 0, Math.max(1, series.length - 1), 6, width - 6),
@@ -119,18 +134,20 @@ export function TrendChart({
         ) : null}
       </svg>
 
-      <div
-        aria-hidden="true"
-        className="mt-3 flex justify-between text-[0.6875rem] font-medium text-ink-muted"
-      >
-        {visibleLabels.map((label) => (
-          <span key={label}>{label}</span>
-        ))}
-      </div>
+      {showLabels ? (
+        <div
+          aria-hidden="true"
+          className="mt-3 flex justify-between text-[0.6875rem] font-medium text-ink-muted"
+        >
+          {visibleLabels.map((label) => (
+            <span key={label}>{label}</span>
+          ))}
+        </div>
+      ) : null}
 
       <figcaption className="sr-only">
-        {ariaLabel}. Values range from {formatCompactCurrency(Math.min(...series))} to{" "}
-        {formatCompactCurrency(Math.max(...series))}.
+        {ariaLabel}. Values range from {formatCompactCurrency(seriesMin)} to{" "}
+        {formatCompactCurrency(seriesMax)}.
       </figcaption>
     </figure>
   );

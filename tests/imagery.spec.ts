@@ -287,3 +287,71 @@ for (const path of HERO_ROUTES) {
     expect(gap!, "but not collide with it").toBeGreaterThan(12);
   });
 }
+
+/**
+ * A reporting panel must never sit on top of a person.
+ *
+ * The first version of the home hero floated the panel over the portrait and
+ * it buried her behind it. The fix was structural — the two are separate grid
+ * columns now — but nothing stopped a later absolute position from putting a
+ * chart back over a face, so this measures it.
+ *
+ * Widths span the two-column and stacked arrangements, plus the point just
+ * under the breakpoint where the columns are narrowest and any overlap would
+ * appear first.
+ */
+const SURFACE_ROUTES = ["/"] as const;
+const SURFACE_WIDTHS = [390, 640, 768, 1024, 1279, 1440, 1920] as const;
+
+for (const path of SURFACE_ROUTES) {
+  test(`${path} never lays a reporting surface over a portrait`, async ({
+    page,
+  }) => {
+    for (const width of SURFACE_WIDTHS) {
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto(path);
+
+      const result = await page.evaluate(() => {
+        const portraits = Array.from(
+          document.querySelectorAll<HTMLImageElement>('img[src*="advisor-"]'),
+        ).map((el) => el.getBoundingClientRect());
+        const surfaces = Array.from(
+          document.querySelectorAll<HTMLElement>("[data-finance-surface]"),
+        ).map((el) => el.getBoundingClientRect());
+
+        const hits: string[] = [];
+        for (const p of portraits) {
+          if (p.width === 0 || p.height === 0) continue;
+          for (const s of surfaces) {
+            if (s.width === 0 || s.height === 0) continue;
+            const overlaps =
+              p.right > s.left &&
+              s.right > p.left &&
+              p.bottom > s.top &&
+              s.bottom > p.top;
+            if (overlaps) {
+              hits.push(
+                `portrait ${Math.round(p.left)},${Math.round(p.top)} ` +
+                  `${Math.round(p.width)}x${Math.round(p.height)} ` +
+                  `vs surface ${Math.round(s.left)},${Math.round(s.top)} ` +
+                  `${Math.round(s.width)}x${Math.round(s.height)}`,
+              );
+            }
+          }
+        }
+        return { portraits: portraits.length, surfaces: surfaces.length, hits };
+      });
+
+      expect(result.portraits, `${path} at ${width}px should show a portrait`)
+        .toBeGreaterThan(0);
+      expect(
+        result.surfaces,
+        `${path} at ${width}px should show a reporting surface`,
+      ).toBeGreaterThan(0);
+      expect(
+        result.hits,
+        `at ${width}px a reporting surface covers a portrait`,
+      ).toEqual([]);
+    }
+  });
+}

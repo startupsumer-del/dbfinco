@@ -83,3 +83,49 @@ export const budgetVsActual = [
   { label: "Operating costs", budget: 386_000, actual: 398_400 },
   { label: "Net income", budget: 342_000, actual: 372_300 },
 ];
+
+/**
+ * Accounts receivable by age. Aging buckets are the standard way this is
+ * read, so the visual is a bar per bucket rather than a trend.
+ */
+export const arAging = [
+  { label: "Current", amount: 148_200 },
+  { label: "1–30", amount: 71_900 },
+  { label: "31–60", amount: 29_400 },
+  { label: "61–90", amount: 12_600 },
+  { label: "90+", amount: 6_300 },
+];
+
+/**
+ * Six months of projection following the actuals above. Kept visually
+ * distinct from actuals wherever it is charted — a forecast presented as
+ * though it were history is the one thing a finance visual must not do.
+ */
+export const forecastMonths = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"] as const;
+
+export const forecastSeries = [
+  441_000, 452_800, 468_100, 479_400, 496_200, 512_700,
+];
+
+/** How a merchant's customers actually paid, over the last month. */
+export const paymentMethodMix = [
+  { label: "Card present", share: 38, colorVar: "var(--color-viz-1)" },
+  { label: "Online checkout", share: 31, colorVar: "var(--color-viz-2)" },
+  { label: "ACH / bank transfer", share: 19, colorVar: "var(--color-viz-3)" },
+  { label: "Payment links", share: 12, colorVar: "var(--color-viz-4)" },
+];
+
+/** Daily processed volume across the last fortnight. */
+export const paymentVolumeSeries = [
+  4_820, 5_140, 4_390, 6_210, 7_480, 8_120, 5_960, 5_310, 6_040, 6_880, 7_240,
+  8_640, 9_120, 7_530,
+];
+
+export const merchantKpis = {
+  todaysSales: 7_530,
+  transactions: 148,
+  get averageTransaction() {
+    return Math.round(this.todaysSales / this.transactions);
+  },
+  settledThisMonth: 168_940,
+};

@@ -118,6 +118,7 @@ export function PortraitScene({
   cards,
   className,
   priority = false,
+  frame = "standard",
   sizes = "(min-width: 1024px) 26rem, (min-width: 640px) 24rem, 90vw",
 }: {
   portrait: PortraitName;
@@ -126,6 +127,13 @@ export function PortraitScene({
   cards?: ReactNode;
   className?: string;
   priority?: boolean;
+  /**
+   * Frame proportion. "standard" (4:5) is the card-sized version used beside
+   * body copy; "tall" (3:4) is for the home hero, where the composition has a
+   * full column of text to stand against and a squat frame leaves a hole
+   * under it.
+   */
+  frame?: "standard" | "tall";
   /**
    * The rendered width of the portrait, as a `sizes` list. Getting this right
    * matters: with the old blanket value a 304px slot was fetching the 1080px
@@ -137,8 +145,8 @@ export function PortraitScene({
 
   return (
     <div className={cn("relative mx-auto w-full max-w-[26rem] lg:max-w-none", className)}>
-      {/* 4:5 frame keeps the composition stable at every width. */}
-      <div className="relative aspect-[4/5]">
+      {/* A fixed frame ratio keeps the composition stable at every width. */}
+      <div className={cn("relative", frame === "tall" ? "aspect-[3/4]" : "aspect-[4/5]")}>
         {/* Coloured ground the portrait stands on */}
         <div
           aria-hidden="true"

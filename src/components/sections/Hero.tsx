@@ -1,10 +1,6 @@
-import { ArrowRight, CalendarCheck, CircleCheck, Phone } from "lucide-react";
+import { ArrowRight, Phone } from "lucide-react";
 
-import {
-  CardIcon,
-  FloatCard,
-  PortraitScene,
-} from "@/components/imagery/PortraitScene";
+import { HomeHeroVisual } from "@/components/sections/HomeHeroVisual";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
@@ -38,7 +34,17 @@ export function Hero() {
       </div>
 
       <Container className="pb-12 pt-7 sm:pb-16 sm:pt-10 lg:pb-22 lg:pt-14">
-        <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)] lg:gap-14 xl:gap-20">
+        {/* Two columns at xl, not lg. The visual needs ~34rem before the
+            panel beside the portrait stops squeezing, and at 1024 taking
+            that much left the headline four narrow lines with the buttons
+            wrapped underneath. Below xl the visual goes under the copy at
+            its own comfortable width instead.
+
+            Centred rather than top-aligned: the copy column runs taller than
+            the visual, and top-aligning left the whole difference as a hole
+            under the cards. Centring splits it evenly, where it reads as
+            breathing room. */}
+        <div className="grid items-start gap-12 xl:grid-cols-[minmax(0,1fr)_minmax(0,36rem)] xl:items-center xl:gap-16">
           <div>
             <Eyebrow className="mb-4">Financial &amp; Accounting Services</Eyebrow>
 
@@ -80,7 +86,10 @@ export function Hero() {
               </span>
             </a>
 
-            <ul className="mt-8 grid gap-3 border-t border-line pt-7 sm:grid-cols-1">
+            {/* Between lg and xl the copy owns the full width, so the points
+                run across it rather than stacking down one side and leaving
+                the other half empty. */}
+            <ul className="mt-8 grid gap-3 border-t border-line pt-7 lg:grid-cols-3 lg:gap-x-8 xl:grid-cols-1">
               {heroPoints.map((point) => (
                 <li key={point} className="flex items-start gap-3 text-sm text-ink-secondary">
                   <span
@@ -93,38 +102,10 @@ export function Hero() {
             </ul>
           </div>
 
-          {/* Portrait composition. Below lg it sits after the content in the flow. */}
+          {/* Portrait plus the reporting it produces. Below xl it sits after
+              the content in the flow, so a visitor reaches an action first. */}
           <div className="relative">
-            <PortraitScene
-              portrait="explaining"
-              tone="gold"
-              priority
-              sizes="(min-width: 1024px) 30rem, (min-width: 640px) 26rem, 90vw"
-              cards={
-                <>
-                  <FloatCard
-                    at="mid-left"
-                    icon={
-                      <CardIcon tone="success">
-                        <CircleCheck className="size-4" />
-                      </CardIcon>
-                    }
-                    title="Books reconciled"
-                    detail="Bank, card and merchant accounts"
-                  />
-                  <FloatCard
-                    at="low-right"
-                    icon={
-                      <CardIcon tone="gold">
-                        <CalendarCheck className="size-4" />
-                      </CardIcon>
-                    }
-                    title="Filed on time"
-                    detail="Federal, state and local"
-                  />
-                </>
-              }
-            />
+            <HomeHeroVisual />
           </div>
         </div>
       </Container>
