@@ -23,6 +23,8 @@ import {
 } from "@/components/merchant/PaymentVisuals";
 import { MerchantScene } from "@/components/illustrations/ServiceScenes";
 import { LogoGrid } from "@/components/merchant/LogoGrid";
+import { MerchantReporting } from "@/components/merchant/MerchantReporting";
+import { PaymentJourney } from "@/components/merchant/PaymentJourney";
 import { ServicePortrait } from "@/components/imagery/ServicePortrait";
 import { bankLogos, cardNetworkLogos } from "@/content/logos";
 import { CtaSection } from "@/components/sections/CtaSection";
@@ -205,6 +207,24 @@ export default function MerchantServicesPage() {
         </Container>
       </Section>
 
+      {/* From the customer tapping a card to the figure being right in the
+          books. The middle step names the payment provider as the party that
+          authorises and settles, because that is who does it. */}
+      <Section tone="white" ariaLabelledBy="journey-heading">
+        <Container>
+          <SectionHeading
+            id="journey-heading"
+            eyebrow="End To End"
+            title="From the Payment to the Books"
+            lead="Three things have to happen before a sale is money you can plan around. We do the third, and make the first two legible."
+          />
+
+          <div className="mt-10 lg:mt-14">
+            <PaymentJourney />
+          </div>
+        </Container>
+      </Section>
+
       {/* Card networks and banks.
 
           The headings and the note under them are deliberately narrow. Showing
@@ -360,6 +380,23 @@ export default function MerchantServicesPage() {
             </div>
 
             <SettlementPanel />
+          </div>
+        </Container>
+      </Section>
+
+      {/* The reporting itself, rather than a description of it. Sits straight
+          after the section that argues for it. */}
+      <Section tone="white" ariaLabelledBy="merchant-reporting-heading">
+        <Container>
+          <SectionHeading
+            id="merchant-reporting-heading"
+            eyebrow="What You Get Back"
+            title="Your Payments, Read as Numbers"
+            lead="The day's takings, how volume has moved, and which methods the money actually arrived by — the reading that decides whether the cost of acceptance is worth changing anything about."
+          />
+
+          <div className="mt-10 lg:mt-14">
+            <MerchantReporting />
           </div>
         </Container>
       </Section>

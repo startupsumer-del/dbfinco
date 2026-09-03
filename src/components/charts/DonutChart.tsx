@@ -1,6 +1,6 @@
 import { formatCompactCurrency } from "@/lib/chart";
 import { cn } from "@/lib/cn";
-import type { ExpenseCategory } from "@/content/demo-financials";
+import type { DonutSegment } from "@/content/demo-financials";
 
 /**
  * Expense breakdown donut.
@@ -13,13 +13,20 @@ export function DonutChart({
   categories,
   total,
   centerLabel,
+  centerValue,
   ariaLabel,
   className,
   size = 200,
 }: {
-  categories: ExpenseCategory[];
+  categories: DonutSegment[];
   total: number;
   centerLabel: string;
+  /**
+   * What sits in the middle. Defaults to the total as currency, which is
+   * right for a money breakdown and wrong for one already in percentage
+   * points — those pass their own.
+   */
+  centerValue?: string;
   ariaLabel: string;
   className?: string;
   size?: number;
@@ -49,68 +56,79 @@ export function DonutChart({
   });
 
   return (
-    <figure className={cn("flex flex-col gap-6 sm:flex-row sm:items-center", className)}>
-      <div className="relative mx-auto shrink-0 sm:mx-0" style={{ width: size, maxWidth: "100%" }}>
-        <svg
-          viewBox="0 0 100 100"
-          role="img"
-          aria-label={ariaLabel}
-          className="h-auto w-full -rotate-90"
+    /* Container query, not a viewport one: whether the legend fits beside the
+       ring depends on the column this sits in, not on the window. In a
+       two-fifths column at 1024 the labels were truncating while the same
+       component at the same viewport was fine full-width. */
+    <figure className={cn("@container", className)}>
+      <div className="flex flex-col gap-6 @[24rem]:flex-row @[24rem]:items-center">
+        <div
+          className="relative mx-auto shrink-0 @[24rem]:mx-0"
+          style={{ width: size, maxWidth: "100%" }}
         >
-          <circle
-            cx="50"
-            cy="50"
-            r={radius}
-            fill="none"
-            stroke="var(--color-surface-muted)"
-            strokeWidth="13"
-          />
-          {segments.map((segment) => (
+          <svg
+            viewBox="0 0 100 100"
+            role="img"
+            aria-label={ariaLabel}
+            className="h-auto w-full -rotate-90"
+          >
             <circle
-              key={segment.label}
               cx="50"
               cy="50"
               r={radius}
               fill="none"
-              stroke={segment.colorVar}
+              stroke="var(--color-surface-muted)"
               strokeWidth="13"
-              strokeDasharray={segment.dashArray}
-              strokeDashoffset={segment.dashOffset}
-              strokeLinecap="butt"
             />
-          ))}
-        </svg>
-
-        <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center text-center">
-          <span className="text-h4 font-bold text-ink-primary">
-            {formatCompactCurrency(total)}
-          </span>
-          <span className="mt-0.5 text-[0.6875rem] font-medium text-ink-muted">
-            {centerLabel}
-          </span>
-        </div>
-      </div>
-
-      <ul className="min-w-0 flex-1 space-y-2.5">
-        {segments.map((segment) => (
-          <li
-            key={segment.label}
-            className="flex items-baseline justify-between gap-3 text-sm"
-          >
-            <span className="flex min-w-0 items-baseline gap-2.5">
-              <span
-                aria-hidden="true"
-                className="size-2.5 shrink-0 translate-y-px rounded-full"
-                style={{ background: segment.colorVar }}
+            {segments.map((segment) => (
+              <circle
+                key={segment.label}
+                cx="50"
+                cy="50"
+                r={radius}
+                fill="none"
+                stroke={segment.colorVar}
+                strokeWidth="13"
+                strokeDasharray={segment.dashArray}
+                strokeDashoffset={segment.dashOffset}
+                strokeLinecap="butt"
               />
-              <span className="truncate text-ink-secondary">{segment.label}</span>
+            ))}
+          </svg>
+
+          <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center text-center">
+            <span className="text-h4 font-bold text-ink-primary">
+              {centerValue ?? formatCompactCurrency(total)}
             </span>
-            <span className="shrink-0 font-semibold tabular-nums text-ink-primary">
-              {Math.round(segment.fraction * 100)}%
+            <span className="mt-0.5 text-[0.6875rem] font-medium text-ink-muted">
+              {centerLabel}
             </span>
-          </li>
-        ))}
-      </ul>
+          </div>
+        </div>
+
+        <ul className="min-w-0 flex-1 space-y-2.5">
+          {segments.map((segment) => (
+            <li
+              key={segment.label}
+              className="flex items-baseline justify-between gap-3 text-sm"
+            >
+              <span className="flex min-w-0 items-baseline gap-2.5">
+                <span
+                  aria-hidden="true"
+                  className="size-2.5 shrink-0 translate-y-px rounded-full"
+                  style={{ background: segment.colorVar }}
+                />
+                <span className="truncate text-ink-secondary">
+                  {segment.label}
+                </span>
+              </span>
+              <span className="shrink-0 font-semibold tabular-nums text-ink-primary">
+                {Math.round(segment.fraction * 100)}%
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </figure>
   );
 }

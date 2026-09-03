@@ -40,13 +40,14 @@ export const cashBalanceSeries = [
   586_400, 618_900, 662_500, 714_800,
 ];
 
-export interface ExpenseCategory {
+/** One arc of a donut: a label, a magnitude and the colour it is drawn in. */
+export interface DonutSegment {
   label: string;
   amount: number;
   colorVar: string;
 }
 
-export const expenseBreakdown: ExpenseCategory[] = [
+export const expenseBreakdown: DonutSegment[] = [
   { label: "Payroll & benefits", amount: 1_284_600, colorVar: "var(--color-viz-1)" },
   { label: "Software & tools", amount: 486_200, colorVar: "var(--color-viz-2)" },
   { label: "Contractors", amount: 371_400, colorVar: "var(--color-viz-3)" },
@@ -107,12 +108,16 @@ export const forecastSeries = [
   441_000, 452_800, 468_100, 479_400, 496_200, 512_700,
 ];
 
-/** How a merchant's customers actually paid, over the last month. */
-export const paymentMethodMix = [
-  { label: "Card present", share: 38, colorVar: "var(--color-viz-1)" },
-  { label: "Online checkout", share: 31, colorVar: "var(--color-viz-2)" },
-  { label: "ACH / bank transfer", share: 19, colorVar: "var(--color-viz-3)" },
-  { label: "Payment links", share: 12, colorVar: "var(--color-viz-4)" },
+/**
+ * How a merchant's customers paid this month, in percentage points.
+ * `amount` rather than `share` so it drops straight into the donut, and the
+ * four add to 100 so the donut closes.
+ */
+export const paymentMethodMix: DonutSegment[] = [
+  { label: "Card present", amount: 38, colorVar: "var(--color-viz-1)" },
+  { label: "Online checkout", amount: 31, colorVar: "var(--color-viz-2)" },
+  { label: "ACH / bank transfer", amount: 19, colorVar: "var(--color-viz-3)" },
+  { label: "Payment links", amount: 12, colorVar: "var(--color-viz-4)" },
 ];
 
 /** Daily processed volume across the last fortnight. */

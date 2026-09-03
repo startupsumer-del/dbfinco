@@ -8,6 +8,8 @@ import { ServicePageTemplate } from "@/components/sections/ServicePageTemplate";
 import {
   AuditEvidenceVisual,
   EngagementComparison,
+  ReceivablesAgingSection,
+  RevenueForecastSection,
   RiskRegisterVisual,
 } from "@/components/sections/ServiceVisuals";
 import {
@@ -103,6 +105,24 @@ function deliverableVisualFor(slug: string) {
   }
 }
 
+/**
+ * The one extra section a page gets between its deliverables and its process.
+ * Only where the service has a second thing worth *showing* rather than
+ * describing — not every page needs one.
+ */
+function extraSectionFor(slug: string) {
+  switch (slug) {
+    case "audit-assurance":
+      return <EngagementComparison />;
+    case "accounting":
+      return <ReceivablesAgingSection />;
+    case "analytics":
+      return <RevenueForecastSection />;
+    default:
+      return undefined;
+  }
+}
+
 export default async function ServicePage({
   params,
 }: {
@@ -135,7 +155,7 @@ export default async function ServicePage({
         heroVisual={<ServicePortrait slug={slug} />}
         deliverableVisual={deliverableVisualFor(slug)}
         processVisual={processVisualFor(slug)}
-        extraSection={slug === "audit-assurance" ? <EngagementComparison /> : undefined}
+        extraSection={extraSectionFor(slug)}
         related={related}
       />
       <JsonLd data={breadcrumbSchema(crumbs)} />

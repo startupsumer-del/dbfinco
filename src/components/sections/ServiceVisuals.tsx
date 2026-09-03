@@ -1,10 +1,21 @@
 import Link from "next/link";
 import { ArrowRight, ShieldAlert, ShieldCheck, TriangleAlert } from "lucide-react";
 
+import { BarChart } from "@/components/charts/BarChart";
+import { ForecastChart } from "@/components/charts/ForecastChart";
+import { FinancePanel, MetricTile } from "@/components/finance/FinanceUI";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { ILLUSTRATIVE_NOTE } from "@/content/demo-financials";
+import {
+  arAging,
+  forecastMonths,
+  forecastSeries,
+  ILLUSTRATIVE_NOTE,
+  months,
+  revenueSeries,
+} from "@/content/demo-financials";
+import { formatCompactCurrency } from "@/lib/chart";
 
 /* -------------------------------------------------------------------------
    Assurance: what each engagement provides
@@ -221,5 +232,99 @@ export function AuditEvidenceVisual() {
         ))}
       </ul>
     </div>
+  );
+}
+
+/* -------------------------------------------------------------------------
+   Accounting: what is owed, and how old it is
+   ------------------------------------------------------------------------- */
+
+/**
+ * Receivables by age.
+ *
+ * Aging is read as buckets, not as a trend — the question is "how much of
+ * this is stale", and a line over time cannot answer it. The buckets add to
+ * the receivables figure the rest of the site's illustrative accounts carry,
+ * so the two never contradict each other.
+ */
+export function ReceivablesAgingSection() {
+  const total = arAging.reduce((sum, bucket) => sum + bucket.amount, 0);
+  const current = arAging[0]?.amount ?? 0;
+  const overdue = total - current;
+
+  return (
+    <Section tone="white" ariaLabelledBy="aging-heading">
+      <Container>
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:items-center lg:gap-16">
+          <SectionHeading
+            id="aging-heading"
+            eyebrow="Working Capital"
+            title="Where the Money Owed to You Is Sitting"
+            lead="A receivables total on its own says nothing. Split by age it tells you which invoices need a call this week and which are on track."
+          />
+
+          <FinancePanel title="Accounts receivable" meta="By age">
+            <div className="grid grid-cols-3 gap-2 sm:gap-3">
+              <MetricTile label="Total owed" value={formatCompactCurrency(total)} />
+              <MetricTile label="Current" value={formatCompactCurrency(current)} />
+              <MetricTile label="Past due" value={formatCompactCurrency(overdue)} />
+            </div>
+
+            <BarChart
+              className="mt-6"
+              bars={arAging.map((bucket) => ({
+                label: bucket.label,
+                srLabel: `${bucket.label} days`,
+                value: bucket.amount,
+              }))}
+              ariaLabel="Accounts receivable by age bucket, in days outstanding"
+              height={160}
+            />
+
+            <p className="mt-4 text-xs text-ink-muted">{ILLUSTRATIVE_NOTE}</p>
+          </FinancePanel>
+        </div>
+      </Container>
+    </Section>
+  );
+}
+
+/* -------------------------------------------------------------------------
+   Analytics: what the numbers say happens next
+   ------------------------------------------------------------------------- */
+
+/**
+ * Twelve months of actuals with six projected months after them.
+ *
+ * The projection is drawn so it cannot be mistaken for history — dashed line,
+ * tinted ground, a rule at the boundary — because presenting a forecast as
+ * recorded results is the one failure mode a chart like this has.
+ */
+export function RevenueForecastSection() {
+  return (
+    <Section tone="white" ariaLabelledBy="forecast-heading">
+      <Container>
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:items-center lg:gap-16">
+          <SectionHeading
+            id="forecast-heading"
+            eyebrow="Looking Forward"
+            title="A Forecast Built From the Same Numbers"
+            lead="Projections are only useful when they run off the actuals rather than off a separate spreadsheet nobody reconciles. Where the estimate starts is always marked."
+          />
+
+          <FinancePanel title="Revenue" meta="Actual and projected">
+            <ForecastChart
+              actuals={revenueSeries}
+              forecast={[...forecastSeries]}
+              labels={[...months, ...forecastMonths]}
+              ariaLabel="Monthly revenue, twelve months actual followed by six months projected"
+            />
+            <p className="mt-4 text-xs text-ink-muted">
+              {ILLUSTRATIVE_NOTE} Projected months are an estimate, not results.
+            </p>
+          </FinancePanel>
+        </div>
+      </Container>
+    </Section>
   );
 }
