@@ -126,7 +126,7 @@ export default function MerchantServicesPage() {
         <Container className="relative pb-12 pt-8 sm:pb-16 sm:pt-10 lg:pb-22 lg:pt-12">
           <Breadcrumbs crumbs={crumbs} tone="inverse" />
 
-          <div className="mt-8 grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:items-center lg:gap-16">
+          <div className="mt-7 grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:items-start lg:gap-16">
             <div className="min-w-0">
               <Eyebrow tone="inverse" className="mb-4">
                 Merchant Services

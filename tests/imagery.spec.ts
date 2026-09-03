@@ -247,3 +247,43 @@ test("portraits declare a blur placeholder and a realistic size", async ({
   expect(width, `unexpected source: ${chosen}`).toBeGreaterThan(0);
   expect(width, "the fetched source should be sized to the slot").toBeLessThanOrEqual(640);
 });
+
+const HERO_ROUTES = [
+  "/about",
+  "/services",
+  "/services/tax",
+  "/services/audit-assurance/external-audit",
+  "/merchant-services",
+  "/contact",
+  "/privacy",
+] as const;
+
+for (const path of HERO_ROUTES) {
+  test(`${path} starts its hero close under the breadcrumb`, async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto(path);
+
+    const gap = await page.evaluate(() => {
+      const crumb = document.querySelector('nav[aria-label="Breadcrumb"]');
+      const h1 = document.querySelector("h1");
+      if (!crumb || !h1) return null;
+      const bottom = crumb.getBoundingClientRect().bottom;
+      const eyebrow = Array.from(document.querySelectorAll("p"))
+        .map((el) => ({ el, rect: el.getBoundingClientRect() }))
+        .filter(
+          (x) =>
+            getComputedStyle(x.el).textTransform === "uppercase" &&
+            x.rect.top >= bottom - 2 &&
+            x.rect.bottom <= h1.getBoundingClientRect().top + 2,
+        )
+        .sort((a, b) => a.rect.top - b.rect.top)[0];
+      return Math.round((eyebrow?.rect.top ?? h1.getBoundingClientRect().top) - bottom);
+    });
+
+    expect(gap).not.toBeNull();
+    // Centring a short text column against a tall portrait used to push this
+    // to 118-152px on desktop — the dead band the design brief flagged.
+    expect(gap!, "breadcrumb should sit close to the hero content").toBeLessThan(56);
+    expect(gap!, "but not collide with it").toBeGreaterThan(12);
+  });
+}

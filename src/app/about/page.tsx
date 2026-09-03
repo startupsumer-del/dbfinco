@@ -98,7 +98,7 @@ export default function AboutPage() {
         <Container className="pb-12 pt-8 sm:pb-16 sm:pt-10 lg:pb-22 lg:pt-12">
           <Breadcrumbs crumbs={crumbs} />
 
-          <div className="mt-8 grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,28rem)] lg:items-center lg:gap-16">
+          <div className="mt-7 grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,28rem)] lg:items-start lg:gap-16">
             <div>
               <Eyebrow className="mb-4">About DB FinCo</Eyebrow>
               <h1 className="text-display-2 text-ink-primary">

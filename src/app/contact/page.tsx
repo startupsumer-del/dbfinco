@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Mail, MapPin, Phone, PhoneCall } from "lucide-react";
+import { ArrowRight, Mail, MapPin, Phone, PhoneCall } from "lucide-react";
 
 import { socialIconMap } from "@/components/brand/SocialIcons";
 import { ContactForm } from "@/components/forms/ContactForm";
@@ -10,6 +10,7 @@ import {
 } from "@/components/imagery/PortraitScene";
 import { JsonLd } from "@/components/layout/JsonLd";
 import { Breadcrumbs } from "@/components/sections/ServicePageTemplate";
+import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Section } from "@/components/ui/Section";
@@ -42,7 +43,7 @@ export default function ContactPage() {
       <section className="border-b border-line bg-white">
         <Container className="pb-12 pt-8 sm:pb-16 sm:pt-10 lg:pb-22 lg:pt-12">
           <Breadcrumbs crumbs={crumbs} />
-          <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,20rem)] lg:items-center lg:gap-16">
+          <div className="mt-7 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,20rem)] lg:items-start lg:gap-16">
             <div className="min-w-0">
               <Eyebrow className="mb-4">Contact</Eyebrow>
               <h1 className="text-display-2 text-ink-primary">
@@ -53,6 +54,22 @@ export default function ContactPage() {
                 back with a straight answer about how we can help — and whether
                 we&apos;re the right fit.
               </p>
+
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <Button href="#message" size="lg" fullWidth className="sm:w-auto">
+                  Send Us a Message
+                  <ArrowRight aria-hidden="true" className="size-4" />
+                </Button>
+                <a
+                  href={telHref}
+                  className="inline-flex min-h-11 items-center justify-center gap-2 rounded-pill
+                    border border-line-strong bg-white px-6 py-3.5 text-base font-semibold
+                    text-ink-primary transition-colors hover:border-purple-300 hover:bg-purple-50"
+                >
+                  <Phone aria-hidden="true" className="size-4 text-purple-700" />
+                  {site.contact.phoneDisplay}
+                </a>
+              </div>
             </div>
 
             <PortraitScene
@@ -77,7 +94,7 @@ export default function ContactPage() {
         </Container>
       </section>
 
-      <Section tone="subtle" size="default">
+      <Section tone="subtle" size="default" id="message">
         <Container>
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,22rem)] lg:gap-14 xl:gap-20">
             {/* Form first on mobile: it's the primary action */}

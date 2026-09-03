@@ -60,7 +60,7 @@ export function ServicePageTemplate({
           <div
             className={
               heroVisual
-                ? "mt-8 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:items-center lg:gap-14"
+                ? "mt-7 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:items-start lg:gap-14"
                 : "mt-8"
             }
           >
