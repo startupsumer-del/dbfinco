@@ -6,6 +6,7 @@ import {
   smoothPath,
   type Point,
 } from "@/lib/chart";
+import { Reveal } from "@/components/motion/Reveal";
 import { cn } from "@/lib/cn";
 
 /**
@@ -73,7 +74,7 @@ export function TrendChart({
   const visibleLabels = labels.filter((_, index) => index % labelStep === 0);
 
   return (
-    <figure className={cn("w-full", className)}>
+    <Reveal as="figure" className={cn("reveal-still w-full", className)}>
       <svg
         viewBox={`0 0 ${width} ${height}`}
         preserveAspectRatio="none"
@@ -113,6 +114,7 @@ export function TrendChart({
           strokeLinecap="round"
           strokeLinejoin="round"
           vectorEffect="non-scaling-stroke"
+          data-chart-anim={animate ? "" : undefined}
           className={animate ? "[animation:db-draw_900ms_var(--ease-out-brand)_both]" : undefined}
           style={
             animate
@@ -149,6 +151,6 @@ export function TrendChart({
         {ariaLabel}. Values range from {formatCompactCurrency(seriesMin)} to{" "}
         {formatCompactCurrency(seriesMax)}.
       </figcaption>
-    </figure>
+    </Reveal>
   );
 }

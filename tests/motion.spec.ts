@@ -104,3 +104,108 @@ test("reduced motion shows every section immediately", async ({ browser }) => {
 
   await context.close();
 });
+
+/**
+ * A chart that draws itself is only worth having if the visitor is looking at
+ * it. Left ungated, the line animation starts the moment the element is
+ * parsed, so a chart halfway down the page has finished before anyone reaches
+ * it. These hold the gate — and, more importantly, hold the failure mode the
+ * gate introduces: a *paused* animation whose duration a reduced-motion
+ * override has collapsed to nothing sits on its first frame for good, which
+ * for a drawn line means a line nobody ever sees.
+ */
+test("charts below the fold hold their draw until they are scrolled to", async ({
+  page,
+}) => {
+  await page.goto("/merchant-services");
+
+  const before = await page.evaluate(() => {
+    const els = Array.from(document.querySelectorAll("[data-chart-anim]"));
+    const below = els.filter(
+      (el) => el.getBoundingClientRect().top > window.innerHeight,
+    );
+    return {
+      total: els.length,
+      below: below.length,
+      allPaused: below.every(
+        (el) => getComputedStyle(el).animationPlayState === "paused",
+      ),
+    };
+  });
+
+  expect(before.total, "the page should carry animated charts").toBeGreaterThan(0);
+  expect(before.below, "some charts should start below the fold").toBeGreaterThan(0);
+  expect(before.allPaused, "an off-screen chart should not be drawing").toBe(true);
+
+  await page
+    .locator("#merchant-reporting-heading")
+    .scrollIntoViewIfNeeded();
+
+  await expect
+    .poll(
+      async () =>
+        page.evaluate(() => {
+          const section = document
+            .getElementById("merchant-reporting-heading")
+            ?.closest("section");
+          const els = Array.from(
+            section?.querySelectorAll("[data-chart-anim]") ?? [],
+          );
+          return els.every(
+            (el) => getComputedStyle(el).animationPlayState === "running",
+          );
+        }),
+      { message: "charts should draw once they are on screen" },
+    )
+    .toBe(true);
+});
+
+test("reduced motion never leaves a chart on its first frame", async ({
+  browser,
+}) => {
+  const context = await browser.newContext({ reducedMotion: "reduce" });
+  const page = await context.newPage();
+  await page.goto("/merchant-services");
+  await page.locator("#merchant-reporting-heading").scrollIntoViewIfNeeded();
+
+  const readState = () =>
+    page.evaluate(() => {
+    const section = document
+      .getElementById("merchant-reporting-heading")
+      ?.closest("section");
+    const els = Array.from(section?.querySelectorAll("[data-chart-anim]") ?? []);
+    const bars = els.filter((el) => el.tagName === "rect");
+    const arcs = els.filter((el) => el.tagName === "circle");
+    return {
+      paused: els.some(
+        (el) => getComputedStyle(el).animationPlayState === "paused",
+      ),
+      bars: bars.length,
+      drawnBars: bars.filter((el) => el.getBoundingClientRect().height > 2).length,
+      arcs: arcs.length,
+      drawnArcs: arcs.filter(
+        (el) => !getComputedStyle(el).strokeDasharray.startsWith("0px"),
+      ).length,
+    };
+  });
+
+  // Poll: the reveal still has to mark the section before the chart's own
+  // (instant) animation resolves, and that is a frame or two away.
+  await expect
+    .poll(async () => (await readState()).drawnBars, {
+      message: "every bar should be drawn",
+    })
+    .toBe((await readState()).bars);
+
+  const state = await readState();
+
+  expect(state.paused, "nothing should be held paused under reduced motion").toBe(
+    false,
+  );
+  expect(state.bars).toBeGreaterThan(0);
+  expect(state.drawnBars, "every bar should be drawn").toBe(state.bars);
+  expect(state.arcs).toBeGreaterThan(0);
+  expect(state.drawnArcs, "every donut arc should be drawn").toBe(state.arcs);
+
+  await context.close();
+});

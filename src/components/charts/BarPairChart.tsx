@@ -1,4 +1,5 @@
 import { formatCompactCurrency, niceMax, scale } from "@/lib/chart";
+import { Reveal } from "@/components/motion/Reveal";
 import { cn } from "@/lib/cn";
 
 interface BarGroup {
@@ -38,7 +39,7 @@ export function BarPairChart({
   const gap = barWidth * 0.34;
 
   return (
-    <figure className={cn("w-full", className)}>
+    <Reveal as="figure" className={cn("reveal-still w-full", className)}>
       <ul className="mb-4 flex flex-wrap items-center gap-x-5 gap-y-2">
         <li className="flex items-center gap-2 text-xs font-medium text-ink-secondary">
           <span
@@ -93,6 +94,7 @@ export function BarPairChart({
                 height={primaryHeight}
                 rx="3"
                 fill="var(--color-viz-1)"
+                data-chart-anim=""
                 className="origin-bottom [animation:db-grow-y_620ms_var(--ease-out-brand)_both]"
                 style={{ animationDelay: `${index * 55}ms` }}
               />
@@ -103,6 +105,7 @@ export function BarPairChart({
                 height={secondaryHeight}
                 rx="3"
                 fill="var(--color-viz-2)"
+                data-chart-anim=""
                 className="origin-bottom [animation:db-grow-y_620ms_var(--ease-out-brand)_both]"
                 style={{ animationDelay: `${index * 55 + 70}ms` }}
               />
@@ -133,6 +136,6 @@ export function BarPairChart({
           .join(". ")}
         .
       </figcaption>
-    </figure>
+    </Reveal>
   );
 }

@@ -1,4 +1,5 @@
 import { formatCompactCurrency, niceMax, scale } from "@/lib/chart";
+import { Reveal } from "@/components/motion/Reveal";
 import { cn } from "@/lib/cn";
 
 export interface Bar {
@@ -51,7 +52,7 @@ export function BarChart({
   const labelStep = Math.max(1, Math.ceil(bars.length / maxLabels));
 
   return (
-    <figure className={cn("w-full", className)}>
+    <Reveal as="figure" className={cn("reveal-still w-full", className)}>
       <svg
         viewBox={`0 0 ${width} ${height}`}
         preserveAspectRatio="none"
@@ -86,6 +87,7 @@ export function BarChart({
               height={Math.max(1, height - padY - top)}
               rx="3"
               fill={highlightLast && isLast ? "var(--color-gold-500)" : fill}
+              data-chart-anim=""
               className="origin-bottom [animation:db-grow-y_620ms_var(--ease-out-brand)_both]"
               style={{ animationDelay: `${index * 45}ms` }}
             />
@@ -115,6 +117,6 @@ export function BarChart({
           .join(", ")}
         .
       </figcaption>
-    </figure>
+    </Reveal>
   );
 }

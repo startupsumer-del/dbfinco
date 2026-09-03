@@ -5,6 +5,7 @@ import {
   smoothPath,
   type Point,
 } from "@/lib/chart";
+import { Reveal } from "@/components/motion/Reveal";
 import { cn } from "@/lib/cn";
 
 /**
@@ -50,7 +51,7 @@ export function ForecastChart({
   const labelStep = Math.max(1, Math.ceil(labels.length / 6));
 
   return (
-    <figure className={cn("w-full", className)}>
+    <Reveal as="figure" className={cn("reveal-still w-full", className)}>
       <ul className="mb-4 flex flex-wrap items-center gap-x-5 gap-y-2">
         <li className="flex items-center gap-2 text-xs font-medium text-ink-secondary">
           <span
@@ -120,6 +121,7 @@ export function ForecastChart({
           strokeLinecap="round"
           strokeLinejoin="round"
           vectorEffect="non-scaling-stroke"
+          data-chart-anim=""
           className="[animation:db-draw_900ms_var(--ease-out-brand)_both]"
           style={{ strokeDasharray: 2200, "--db-draw-length": 2200 } as React.CSSProperties}
         />
@@ -154,6 +156,6 @@ export function ForecastChart({
         {formatCompactCurrency(forecast[forecast.length - 1] ?? 0)}. The
         projected months are an estimate, not recorded results.
       </figcaption>
-    </figure>
+    </Reveal>
   );
 }

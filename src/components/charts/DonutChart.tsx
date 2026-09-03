@@ -1,9 +1,10 @@
 import { formatCompactCurrency } from "@/lib/chart";
+import { Reveal } from "@/components/motion/Reveal";
 import { cn } from "@/lib/cn";
 import type { DonutSegment } from "@/content/demo-financials";
 
 /**
- * Expense breakdown donut.
+ * Proportional breakdown donut.
  *
  * Segments are drawn with stroke-dasharray on circles, which keeps the SVG
  * tiny and lets every segment animate independently. The legend is HTML with
@@ -60,7 +61,7 @@ export function DonutChart({
        ring depends on the column this sits in, not on the window. In a
        two-fifths column at 1024 the labels were truncating while the same
        component at the same viewport was fine full-width. */
-    <figure className={cn("@container", className)}>
+    <Reveal as="figure" className={cn("reveal-still @container", className)}>
       <div className="flex flex-col gap-6 @[24rem]:flex-row @[24rem]:items-center">
         <div
           className="relative mx-auto shrink-0 @[24rem]:mx-0"
@@ -80,7 +81,7 @@ export function DonutChart({
               stroke="var(--color-surface-muted)"
               strokeWidth="13"
             />
-            {segments.map((segment) => (
+            {segments.map((segment, index) => (
               <circle
                 key={segment.label}
                 cx="50"
@@ -92,6 +93,15 @@ export function DonutChart({
                 strokeDasharray={segment.dashArray}
                 strokeDashoffset={segment.dashOffset}
                 strokeLinecap="butt"
+                data-chart-anim=""
+                className="[animation:db-arc_600ms_var(--ease-out-brand)_both]"
+                style={
+                  {
+                    "--db-arc-circumference": circumference,
+                    "--db-arc-dasharray": segment.dashArray,
+                    animationDelay: `${index * 90}ms`,
+                  } as React.CSSProperties
+                }
               />
             ))}
           </svg>
@@ -129,6 +139,6 @@ export function DonutChart({
           ))}
         </ul>
       </div>
-    </figure>
+    </Reveal>
   );
 }

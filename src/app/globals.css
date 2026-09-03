@@ -293,6 +293,19 @@
   }
 }
 
+/* A donut arc growing from its own start point. Animating the dash array
+   rather than the offset is what keeps each arc anchored where it belongs —
+   shifting the offset slides the arc into the previous segment's place
+   instead of shortening it. */
+@keyframes db-arc {
+  from {
+    stroke-dasharray: 0 var(--db-arc-circumference);
+  }
+  to {
+    stroke-dasharray: var(--db-arc-dasharray);
+  }
+}
+
 @keyframes db-grow-y {
   from {
     transform: scaleY(0);
@@ -341,6 +354,38 @@
   transform: none;
   transition: none;
   will-change: auto;
+}
+
+/* Opt out of the movement while keeping the state.
+
+   A chart uses the reveal only as a signal that it is now on screen — the
+   panel around it has already done the moving, and a second 16px slide inside
+   that one just looks loose. */
+.js-reveal [data-reveal].reveal-still {
+  transform: none;
+  transition: none;
+  will-change: auto;
+}
+
+/* --------------------------------------------------------------------------
+   Chart draw-in
+
+   A chart's own animation starts the moment the element is parsed, so a line
+   halfway down the page finished drawing long before anybody scrolled to it.
+   Holding it paused until its reveal wrapper reports the chart on screen is
+   what makes the draw worth having.
+
+   Scoped to `no-preference` deliberately: the reduced-motion block further
+   down collapses every animation to 0.01ms, and a *paused* animation would
+   then sit on its first frame for good — for a drawn line, a line nobody
+   ever sees.
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: no-preference) {
+  .js-reveal
+    [data-reveal]:not([data-reveal="in"]):not([data-reveal="ready"])
+    [data-chart-anim] {
+    animation-play-state: paused;
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -416,7 +461,13 @@
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+    /* Delays too, not just durations. A staggered group left the last of its
+       items on the animation's first frame for the length of the stagger —
+       for a bar that grows from scaleY(0), an invisible bar for half a
+       second, which is exactly the movement this block exists to remove. */
+    animation-delay: -1ms !important;
     transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
     scroll-behavior: auto !important;
   }
 }
