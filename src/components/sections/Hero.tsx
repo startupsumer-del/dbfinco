@@ -40,11 +40,13 @@ export function Hero() {
             wrapped underneath. Below xl the visual goes under the copy at
             its own comfortable width instead.
 
-            Centred rather than top-aligned: the copy column runs taller than
-            the visual, and top-aligning left the whole difference as a hole
-            under the cards. Centring splits it evenly, where it reads as
-            breathing room. */}
-        <div className="grid items-start gap-12 xl:grid-cols-[minmax(0,1fr)_minmax(0,36rem)] xl:items-center xl:gap-16">
+            Top-aligned, and the proof points moved out from under the copy to
+            a full-width row below — with them in the column the copy ran
+            180px taller than the visual, and neither alignment was right:
+            top-aligning left a hole under the cards, centring left one above
+            them. Taking them out makes the two columns almost the same
+            height, so there is no hole to place. */}
+        <div className="grid items-start gap-12 xl:grid-cols-[minmax(0,1fr)_minmax(0,36rem)] xl:gap-16">
           <div>
             <Eyebrow className="mb-4">Financial &amp; Accounting Services</Eyebrow>
 
@@ -86,20 +88,6 @@ export function Hero() {
               </span>
             </a>
 
-            {/* Between lg and xl the copy owns the full width, so the points
-                run across it rather than stacking down one side and leaving
-                the other half empty. */}
-            <ul className="mt-8 grid gap-3 border-t border-line pt-7 lg:grid-cols-3 lg:gap-x-8 xl:grid-cols-1">
-              {heroPoints.map((point) => (
-                <li key={point} className="flex items-start gap-3 text-sm text-ink-secondary">
-                  <span
-                    aria-hidden="true"
-                    className="mt-1.5 size-1.5 shrink-0 rounded-full bg-gold-600"
-                  />
-                  {point}
-                </li>
-              ))}
-            </ul>
           </div>
 
           {/* Portrait plus the reporting it produces. Below xl it sits after
@@ -108,6 +96,22 @@ export function Hero() {
             <HomeHeroVisual />
           </div>
         </div>
+
+        {/* The proof points close the hero across its full width. Three short
+            lines read better side by side than stacked down one column, and
+            keeping them out of the grid is what lets both columns start and
+            end at about the same place. */}
+        <ul className="mt-10 grid gap-3 border-t border-line pt-7 sm:grid-cols-3 sm:gap-x-8 lg:mt-12">
+          {heroPoints.map((point) => (
+            <li key={point} className="flex items-start gap-3 text-sm text-ink-secondary">
+              <span
+                aria-hidden="true"
+                className="mt-1.5 size-1.5 shrink-0 rounded-full bg-gold-600"
+              />
+              {point}
+            </li>
+          ))}
+        </ul>
       </Container>
     </section>
   );

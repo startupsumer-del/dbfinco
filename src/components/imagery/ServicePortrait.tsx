@@ -16,7 +16,8 @@ import {
  * conclude the page had no people on it at all.
  *
  * One face per page, chosen so no two pages a visitor is likely to see in a
- * row repeat. The ground is always gold or lilac: the banner behind it is
+ * row repeat. The services index reuses the audit hub's face on the other
+ * ground, since the two are never one click apart. The ground is always gold or lilac: the banner behind it is
  * deep purple, so a violet ground would disappear into it.
  *
  * The card restates the promise the site already makes in the hero and on the
@@ -27,6 +28,7 @@ const assignments: Record<
   string,
   { portrait: PortraitName; tone: "gold" | "lilac" }
 > = {
+  services: { portrait: "director", tone: "gold" },
   accounting: { portrait: "principal", tone: "gold" },
   bookkeeping: { portrait: "lead", tone: "lilac" },
   tax: { portrait: "associate", tone: "gold" },

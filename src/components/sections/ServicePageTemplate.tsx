@@ -24,13 +24,16 @@ import type { Crumb } from "@/lib/seo";
  * deliverables, process and FAQs, and can inject a bespoke visual into the
  * hero and an extra section below the deliverables — so the pages share a
  * spine without reading as the same page eight times.
+ *
+ * The process steps run full width and centred. They used to sit beside a
+ * flat vector scene; the scenes are gone, and a row of numbered steps across
+ * the page reads better than the same row squeezed into two thirds of it.
  */
 export function ServicePageTemplate({
   service,
   crumbs,
   heroVisual,
   deliverableVisual,
-  processVisual,
   extraSection,
   related,
 }: {
@@ -40,8 +43,6 @@ export function ServicePageTemplate({
   heroVisual?: ReactNode;
   /** Data-rich preview shown above the deliverables grid. */
   deliverableVisual?: ReactNode;
-  /** Illustration shown alongside the process steps. */
-  processVisual?: ReactNode;
   extraSection?: ReactNode;
   related: ServiceDetail[];
 }) {
@@ -88,6 +89,10 @@ export function ServicePageTemplate({
                   {site.contact.phoneDisplay}
                 </a>
               </div>
+
+              {heroVisual ? (
+                <HeroDeliverables items={service.deliverables[0]?.items ?? []} />
+              ) : null}
             </div>
 
             {heroVisual ? (
@@ -197,31 +202,14 @@ export function ServicePageTemplate({
       {/* Process */}
       <Section tone="white" ariaLabelledBy="process-heading">
         <Container>
-          <div
-            className={
-              processVisual
-                ? "grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,22rem)] lg:items-center lg:gap-16"
-                : undefined
-            }
-          >
-            <div className="min-w-0">
-              <SectionHeading
-                id="process-heading"
-                eyebrow="How It Works"
-                title={service.process.heading}
-                lead={service.process.intro}
-                align={processVisual ? "left" : "center"}
-              />
-              <ProcessSteps
-                steps={service.process.steps}
-                className="mt-10 lg:mt-14"
-              />
-            </div>
-
-            {processVisual ? (
-              <div className="min-w-0">{processVisual}</div>
-            ) : null}
-          </div>
+          <SectionHeading
+            id="process-heading"
+            eyebrow="How It Works"
+            title={service.process.heading}
+            lead={service.process.intro}
+            align="center"
+          />
+          <ProcessSteps steps={service.process.steps} className="mt-10 lg:mt-14" />
         </Container>
       </Section>
 
@@ -297,5 +285,42 @@ export function Breadcrumbs({
         })}
       </ol>
     </nav>
+  );
+}
+
+/**
+ * The first four things the engagement hands over, shown in the hero.
+ *
+ * It earns its place twice. It answers "what do I actually get" before the
+ * visitor has scrolled anywhere, and it fills the band under the CTAs: the
+ * copy column runs about 330px against the portrait's 520, and top-aligning
+ * them — which the breadcrumb spacing requires, see `tests/imagery.spec.ts` —
+ * left the difference as a hole. Real content is a better answer to that hole
+ * than centring everything and pushing the headline down the page.
+ *
+ * The items come from the page's own deliverables, so nothing here is a claim
+ * the page does not already make in full further down.
+ */
+export function HeroDeliverables({ items }: { items: readonly string[] }) {
+  const shown = items.slice(0, 4);
+  if (shown.length === 0) return null;
+
+  return (
+    <div className="mt-9 border-t border-white/15 pt-7">
+      <p className="text-eyebrow font-semibold uppercase tracking-[0.12em] text-gold-300">
+        What You Receive
+      </p>
+      <ul className="mt-4 grid gap-x-8 gap-y-2.5 sm:grid-cols-2">
+        {shown.map((item) => (
+          <li key={item} className="flex items-start gap-2.5 text-sm text-purple-100">
+            <CircleCheck
+              aria-hidden="true"
+              className="mt-0.5 size-4 shrink-0 text-gold-400"
+            />
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

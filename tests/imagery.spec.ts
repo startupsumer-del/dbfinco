@@ -1,10 +1,9 @@
 import { expect, test } from "@playwright/test";
 
 /**
- * The photographic portraits and the service illustrations are decorative:
- * every claim they echo is made in real text next to them. These tests hold
- * that contract, and check the portraits actually decode rather than
- * silently rendering as a broken box.
+ * The photographic portraits are decorative: every claim they echo is made in
+ * real text next to them. These tests hold that contract, and check the
+ * portraits actually decode rather than silently rendering as a broken box.
  */
 
 const PORTRAIT_PAGES = [
@@ -62,9 +61,9 @@ const BANNER_PAGES = [
 ] as const;
 
 /**
- * The /services index is a directory rather than a service page: it carries
- * the overview illustration and no portrait, which is why it is excluded here
- * but still included in the illustration checks below.
+ * The /services index is a directory rather than a service page. Its banner
+ * carries a portrait like the rest, but the assertions below are about a
+ * service's own page, so it sits out.
  */
 const SERVICE_PAGES = BANNER_PAGES.filter((p) => p !== "/services");
 
@@ -85,39 +84,6 @@ for (const path of SERVICE_PAGES) {
     expect(top, "the portrait should be in the first viewport").toBeLessThan(900);
   });
 }
-
-for (const path of BANNER_PAGES) {
-  test(`${path} carries its own illustration, hidden from assistive tech`, async ({
-    page,
-  }) => {
-    await page.goto(path);
-
-    const scene = page.locator("svg[viewBox='0 0 400 280']").first();
-    await scene.scrollIntoViewIfNeeded();
-
-    await expect(scene).toBeVisible();
-    await expect(scene).toHaveAttribute("aria-hidden", "true");
-
-    // No lettering inside the artwork: nothing there can become unreadable.
-    expect(await scene.locator("text").count()).toBe(0);
-  });
-}
-
-test("service illustrations differ from one another", async ({ page }) => {
-  const markup = new Set<string>();
-
-  for (const path of BANNER_PAGES) {
-    await page.goto(path);
-    const scene = page.locator("svg[viewBox='0 0 400 280']").first();
-    await scene.scrollIntoViewIfNeeded();
-    markup.add(await scene.innerHTML());
-  }
-
-  expect(
-    markup.size,
-    "each service page should carry its own illustration",
-  ).toBe(BANNER_PAGES.length);
-});
 
 test("every portrait supplied is used somewhere on the site", async ({
   page,
@@ -353,5 +319,53 @@ for (const path of SURFACE_ROUTES) {
         `at ${width}px a reporting surface covers a portrait`,
       ).toEqual([]);
     }
+  });
+}
+
+/**
+ * A hero's two columns must end at roughly the same place.
+ *
+ * The copy column on a service page runs about 330px; the portrait beside it
+ * runs 520. Top-aligning them — which the breadcrumb spacing above requires —
+ * left 160 to 190px of empty banner under the buttons on every one of these
+ * pages. The fix was content rather than alignment (the deliverables strip),
+ * and this is what stops the hole coming back the next time that strip moves.
+ */
+const TWO_COLUMN_HERO_ROUTES = [
+  "/services/accounting",
+  "/services/bookkeeping",
+  "/services/tax",
+  "/services/audit-assurance",
+  "/services/audit-assurance/external-audit",
+  "/services/consulting",
+  "/services/risk-advisory",
+  "/services/analytics",
+  "/merchant-services",
+] as const;
+
+for (const path of TWO_COLUMN_HERO_ROUTES) {
+  test(`${path} hero columns end at about the same height`, async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto(path);
+
+    const measured = await page.evaluate(() => {
+      const h1 = document.querySelector("h1");
+      const grid = h1?.closest("[class*='grid-cols']");
+      if (!grid) return null;
+
+      const columns = Array.from(grid.children)
+        .map((el) => el.getBoundingClientRect())
+        .filter((rect) => rect.height > 0);
+      if (columns.length !== 2) return null;
+
+      const [a, b] = columns as [DOMRect, DOMRect];
+      return { difference: Math.round(Math.abs(a.height - b.height)) };
+    });
+
+    expect(measured, `${path} should lay its hero out in two columns`).not.toBeNull();
+    expect(
+      measured!.difference,
+      "one hero column should not tower over the other",
+    ).toBeLessThan(90);
   });
 }

@@ -32,6 +32,7 @@ export function BarChart({
   fill = "var(--color-viz-1)",
   highlightLast = false,
   maxLabels = 7,
+  valueLabel = "currency",
 }: {
   bars: Bar[];
   ariaLabel: string;
@@ -41,6 +42,12 @@ export function BarChart({
   /** Draw the final bar in the accent colour — "today", "current period". */
   highlightLast?: boolean;
   maxLabels?: number;
+  /**
+   * How the caption reads the values. Not every bar chart is money —
+   * transactions categorised and returns filed are counts, and reading them
+   * out as dollars would be worse than saying nothing.
+   */
+  valueLabel?: "currency" | "count";
 }) {
   const width = 640;
   const padY = 8;
@@ -110,10 +117,13 @@ export function BarChart({
       <figcaption className="sr-only">
         {ariaLabel}.{" "}
         {bars
-          .map(
-            (bar) =>
-              `${bar.srLabel ?? bar.label}: ${formatCompactCurrency(bar.value)}`,
-          )
+          .map((bar) => {
+            const value =
+              valueLabel === "currency"
+                ? formatCompactCurrency(bar.value)
+                : bar.value.toLocaleString("en-US");
+            return `${bar.srLabel ?? bar.label}: ${value}`;
+          })
           .join(", ")}
         .
       </figcaption>

@@ -255,7 +255,7 @@ export function ReceivablesAgingSection() {
   return (
     <Section tone="white" ariaLabelledBy="aging-heading">
       <Container>
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:items-center lg:gap-16">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:items-start lg:gap-16">
           <SectionHeading
             id="aging-heading"
             eyebrow="Working Capital"
@@ -304,7 +304,7 @@ export function RevenueForecastSection() {
   return (
     <Section tone="white" ariaLabelledBy="forecast-heading">
       <Container>
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:items-center lg:gap-16">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:items-start lg:gap-16">
           <SectionHeading
             id="forecast-heading"
             eyebrow="Looking Forward"

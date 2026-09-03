@@ -6,6 +6,12 @@ import { ServicePortrait } from "@/components/imagery/ServicePortrait";
 import { JsonLd } from "@/components/layout/JsonLd";
 import { ServicePageTemplate } from "@/components/sections/ServicePageTemplate";
 import {
+  AuditProgressSection,
+  BookkeepingVolumeSection,
+  FilingActivitySection,
+  RiskProfileSection,
+} from "@/components/sections/EngagementVisuals";
+import {
   AuditEvidenceVisual,
   EngagementComparison,
   ReceivablesAgingSection,
@@ -17,15 +23,6 @@ import {
   CloseChecklistVisual,
   FilingCalendarVisual,
 } from "@/components/sections/StoryVisuals";
-import {
-  AccountingScene,
-  AnalyticsScene,
-  AuditScene,
-  BookkeepingScene,
-  ConsultingScene,
-  RiskScene,
-  TaxScene,
-} from "@/components/illustrations/ServiceScenes";
 import { getAuditServices } from "@/content/audit-services";
 import { coreServices, getService, getServices } from "@/content/services";
 import { breadcrumbSchema, buildMetadata, serviceSchema } from "@/lib/seo";
@@ -53,32 +50,6 @@ export async function generateMetadata({
     description: service.metaDescription,
     path: service.href,
   });
-}
-
-/**
- * Each service's own illustration, shown beside the process steps — a diagram
- * of the work sits more naturally next to "how the engagement runs" than a
- * person does, and it keeps the eight pages distinguishable further down.
- */
-function processVisualFor(slug: string) {
-  switch (slug) {
-    case "accounting":
-      return <AccountingScene />;
-    case "bookkeeping":
-      return <BookkeepingScene />;
-    case "tax":
-      return <TaxScene />;
-    case "audit-assurance":
-      return <AuditScene />;
-    case "risk-advisory":
-      return <RiskScene />;
-    case "consulting":
-      return <ConsultingScene />;
-    case "analytics":
-      return <AnalyticsScene />;
-    default:
-      return undefined;
-  }
 }
 
 /**
@@ -113,11 +84,29 @@ function deliverableVisualFor(slug: string) {
 function extraSectionFor(slug: string) {
   switch (slug) {
     case "audit-assurance":
-      return <EngagementComparison />;
+      return (
+        <>
+          <EngagementComparison />
+          <AuditProgressSection />
+        </>
+      );
     case "accounting":
       return <ReceivablesAgingSection />;
     case "analytics":
       return <RevenueForecastSection />;
+    case "bookkeeping":
+      return <BookkeepingVolumeSection />;
+    case "tax":
+      return <FilingActivitySection />;
+    case "risk-advisory":
+      return (
+        <RiskProfileSection
+          eyebrow="The Register"
+          title="A Risk Register You Can Actually Work Through"
+          lead="A list of everything that could go wrong is not useful. A list rated by severity, with an owner and a status against each item, is."
+          panelTitle="Open risks"
+        />
+      );
     default:
       return undefined;
   }
@@ -154,7 +143,6 @@ export default async function ServicePage({
         crumbs={crumbs}
         heroVisual={<ServicePortrait slug={slug} />}
         deliverableVisual={deliverableVisualFor(slug)}
-        processVisual={processVisualFor(slug)}
         extraSection={extraSectionFor(slug)}
         related={related}
       />

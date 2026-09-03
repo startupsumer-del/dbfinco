@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import { JsonLd } from "@/components/layout/JsonLd";
 import { CtaSection } from "@/components/sections/CtaSection";
-import { ServicesOverviewScene } from "@/components/illustrations/ServiceScenes";
+import { ServicePortrait } from "@/components/imagery/ServicePortrait";
 import { PageBanner } from "@/components/sections/PageBanner";
 import { ServiceGrid } from "@/components/sections/ServiceGrid";
 import { Container } from "@/components/ui/Container";
@@ -34,7 +34,7 @@ export default function ServicesPage() {
         eyebrow="Our Services"
         title="A Complete Finance Function, Delivered by One Firm"
         lead="Every service below can be engaged on its own. Most clients combine two or three, and they work better together — the tax return is prepared from books we keep, and the advisory work draws on reporting we build."
-        visual={<ServicesOverviewScene />}
+        visual={<ServicePortrait slug="services" />}
       />
 
       <Section tone="subtle" ariaLabelledBy="core-heading">
@@ -43,8 +43,10 @@ export default function ServicesPage() {
             id="core-heading"
             eyebrow="Core Services"
             title="Accounting, Tax and Advisory"
+            lead="Each one shares the same books and the same chart of accounts, so the work compounds instead of being repeated."
           />
-          <ServiceGrid services={coreServices} className="mt-10" />
+
+          <ServiceGrid services={coreServices} className="mt-10 lg:mt-14" />
         </Container>
       </Section>
 

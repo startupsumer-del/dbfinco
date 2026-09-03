@@ -21,7 +21,6 @@ import {
   PaymentTerminal,
   SettlementPanel,
 } from "@/components/merchant/PaymentVisuals";
-import { MerchantScene } from "@/components/illustrations/ServiceScenes";
 import { LogoGrid } from "@/components/merchant/LogoGrid";
 import { MerchantReporting } from "@/components/merchant/MerchantReporting";
 import { PaymentJourney } from "@/components/merchant/PaymentJourney";
@@ -30,7 +29,10 @@ import { bankLogos, cardNetworkLogos } from "@/content/logos";
 import { CtaSection } from "@/components/sections/CtaSection";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { ProcessSteps } from "@/components/sections/ProcessSteps";
-import { Breadcrumbs } from "@/components/sections/ServicePageTemplate";
+import {
+  Breadcrumbs,
+  HeroDeliverables,
+} from "@/components/sections/ServicePageTemplate";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Container } from "@/components/ui/Container";
@@ -159,6 +161,8 @@ export default function MerchantServicesPage() {
                   {site.contact.phoneDisplay}
                 </a>
               </div>
+
+              <HeroDeliverables items={service.deliverables[0]?.items ?? []} />
             </div>
 
             <ServicePortrait slug="merchant-services" />
@@ -323,24 +327,14 @@ export default function MerchantServicesPage() {
       {/* Onboarding */}
       <Section tone="white" id="onboarding" ariaLabelledBy="onboarding-heading">
         <Container>
-          <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,19rem)] lg:items-center lg:gap-16">
-            <div className="min-w-0">
-              <SectionHeading
-                id="onboarding-heading"
-                eyebrow="Merchant Onboarding"
-                title={service.process.heading}
-                lead={service.process.intro}
-              />
-              <ProcessSteps
-                steps={service.process.steps}
-                className="mt-10 lg:mt-14"
-              />
-            </div>
-
-            <div className="min-w-0 [&_svg]:drop-shadow-[0_10px_30px_rgba(46,13,68,0.12)]">
-              <MerchantScene />
-            </div>
-          </div>
+          <SectionHeading
+            id="onboarding-heading"
+            eyebrow="Merchant Onboarding"
+            title={service.process.heading}
+            lead={service.process.intro}
+            align="center"
+          />
+          <ProcessSteps steps={service.process.steps} className="mt-10 lg:mt-14" />
         </Container>
       </Section>
 

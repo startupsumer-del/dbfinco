@@ -45,7 +45,7 @@ export function WhyDbFinco() {
   return (
     <Section tone="subtle" ariaLabelledBy="why-heading">
       <Container>
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:items-center lg:gap-16">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:items-start lg:gap-16">
           {/* Portrait sits second on mobile so the heading is read first. */}
           <PortraitScene
             portrait="manager"

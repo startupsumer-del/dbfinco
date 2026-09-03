@@ -94,11 +94,21 @@ export function formatPercent(value: number, digits = 1): string {
   return `${value > 0 ? "+" : ""}${value.toFixed(digits)}%`;
 }
 
-/** Returns a "nice" upper bound so gridlines land on readable numbers. */
+/**
+ * A "nice" upper bound, so gridlines land on readable numbers.
+ *
+ * The ladder is finer than the usual 1 / 2 / 5 / 10. On a series that tops
+ * out at 11 the coarse version returns 20, and the tallest bar then fills
+ * barely half the plot — a chart that reads as flat when the data is not.
+ * Every rung here is still a number a reader can divide by four in their
+ * head, which is all a gridline needs.
+ */
+const NICE_STEPS = [1, 1.2, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10] as const;
+
 export function niceMax(value: number): number {
   if (value <= 0) return 1;
   const magnitude = 10 ** Math.floor(Math.log10(value));
   const normalized = value / magnitude;
-  const step = normalized <= 1 ? 1 : normalized <= 2 ? 2 : normalized <= 5 ? 5 : 10;
+  const step = NICE_STEPS.find((candidate) => normalized <= candidate) ?? 10;
   return step * magnitude;
 }

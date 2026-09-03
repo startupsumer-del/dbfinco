@@ -4,12 +4,11 @@ import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/layout/JsonLd";
 import { ServicePortrait } from "@/components/imagery/ServicePortrait";
 import { ServicePageTemplate } from "@/components/sections/ServicePageTemplate";
-import { AuditEvidenceVisual } from "@/components/sections/ServiceVisuals";
 import {
-  AuditScene,
-  InternalAuditScene,
-  ProceduresScene,
-} from "@/components/illustrations/ServiceScenes";
+  AuditProgressSection,
+  RiskProfileSection,
+} from "@/components/sections/EngagementVisuals";
+import { AuditEvidenceVisual } from "@/components/sections/ServiceVisuals";
 import { auditServices, getAuditService, getAuditServices } from "@/content/audit-services";
 import { breadcrumbSchema, buildMetadata, serviceSchema } from "@/lib/seo";
 
@@ -35,15 +34,24 @@ export async function generateMetadata({
   });
 }
 
-/** Each engagement type's own illustration, shown beside the process steps. */
-function processVisualFor(slug: string) {
+/**
+ * Agreed-upon procedures gets no progress or findings chart, deliberately:
+ * the engagement expresses no conclusion, and a chart summarising it would
+ * imply one. Its evidence panel says what it does say.
+ */
+function extraSectionFor(slug: string) {
   switch (slug) {
     case "external-audit":
-      return <AuditScene />;
+      return <AuditProgressSection />;
     case "internal-audit":
-      return <InternalAuditScene />;
-    case "agreed-upon-procedures":
-      return <ProceduresScene />;
+      return (
+        <RiskProfileSection
+          eyebrow="The Findings"
+          title="Findings You Can Rank, Assign and Close"
+          lead="An internal audit report is only worth the follow-up it gets. Every finding carries a rating, an owner and a status, so the next review starts from what actually moved."
+          panelTitle="Open findings"
+        />
+      );
     default:
       return undefined;
   }
@@ -77,7 +85,7 @@ export default async function AuditServicePage({
         deliverableVisual={
           slug === "external-audit" ? <AuditEvidenceVisual /> : undefined
         }
-        processVisual={processVisualFor(slug)}
+        extraSection={extraSectionFor(slug)}
         related={getAuditServices(service.related)}
       />
       <JsonLd data={breadcrumbSchema(crumbs)} />
