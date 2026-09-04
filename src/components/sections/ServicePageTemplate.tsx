@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 
 import { CtaSection } from "@/components/sections/CtaSection";
 import { FaqSection } from "@/components/sections/FaqSection";
+import { PlatformStrip } from "@/components/sections/PlatformStrip";
 import { ProcessSteps } from "@/components/sections/ProcessSteps";
 import { ServiceGrid } from "@/components/sections/ServiceGrid";
 import { Button } from "@/components/ui/Button";
@@ -29,6 +30,14 @@ import type { Crumb } from "@/lib/seo";
  * flat vector scene; the scenes are gone, and a row of numbered steps across
  * the page reads better than the same row squeezed into two thirds of it.
  */
+/** Services performed inside the client's own accounting software. */
+const LEDGER_SERVICES = new Set([
+  "accounting",
+  "bookkeeping",
+  "tax",
+  "analytics",
+]);
+
 export function ServicePageTemplate({
   service,
   crumbs,
@@ -154,6 +163,12 @@ export function ServicePageTemplate({
               </Card>
             ))}
           </ul>
+
+          {/* Only where the question actually arises. An audit or an
+              agreed-upon procedures engagement is not performed inside the
+              client's bookkeeping software, so the strip would be answering a
+              question nobody asked. */}
+          {LEDGER_SERVICES.has(service.slug) ? <PlatformStrip /> : null}
         </Container>
       </Section>
 

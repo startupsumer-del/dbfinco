@@ -11,6 +11,7 @@ import {
 
 import { JsonLd } from "@/components/layout/JsonLd";
 import { CtaSection } from "@/components/sections/CtaSection";
+import { EngagementOutput } from "@/components/sections/EngagementOutput";
 import { ProcessSteps } from "@/components/sections/ProcessSteps";
 import { Breadcrumbs } from "@/components/sections/ServicePageTemplate";
 import { ServiceGrid } from "@/components/sections/ServiceGrid";
@@ -192,6 +193,8 @@ export default function AboutPage() {
           <ProcessSteps steps={howWeWork} className="mt-10 lg:mt-14" />
         </Container>
       </Section>
+
+      <EngagementOutput />
 
       <WhyDbFinco />
 
