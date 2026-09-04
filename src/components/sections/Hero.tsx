@@ -19,6 +19,10 @@ const heroPoints = [
  * phone, proof points, then the reporting visual — so the visitor reaches an
  * action before any decoration. Desktop switches to a two-column editorial
  * composition with the portrait alongside.
+ *
+ * The entrance staggers in that same reading order. It moves position only —
+ * a fade would hold the largest text on the page below full contrast and push
+ * the LCP paint back for nothing anyone can see.
  */
 export function Hero() {
   return (
@@ -48,20 +52,29 @@ export function Hero() {
             height, so there is no hole to place. */}
         <div className="grid items-start gap-12 xl:grid-cols-[minmax(0,1fr)_minmax(0,36rem)] xl:gap-16">
           <div>
-            <Eyebrow className="mb-4">Financial &amp; Accounting Services</Eyebrow>
+            <Eyebrow className="db-lift mb-4">Financial &amp; Accounting Services</Eyebrow>
 
-            <h1 className="text-display-1 text-ink-primary">
+            <h1
+              className="db-lift text-display-1 text-ink-primary"
+              style={{ "--db-lift-delay": "70ms" } as React.CSSProperties}
+            >
               Financial Clarity for{" "}
               <span className="text-gradient-gold">Every Stage</span> of Your
               Business
             </h1>
 
-            <p className="measure mt-5 text-lead text-ink-secondary">
+            <p
+              className="db-lift measure mt-5 text-lead text-ink-secondary"
+              style={{ "--db-lift-delay": "140ms" } as React.CSSProperties}
+            >
               Accurate books, filings on time and reporting clear enough to act
               on — so you decide from numbers you trust.
             </p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <div
+              className="db-lift mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap"
+              style={{ "--db-lift-delay": "210ms" } as React.CSSProperties}
+            >
               <Button href={bookingUrl} size="lg" fullWidth className="sm:w-auto">
                 Schedule a Free Consultation
                 <ArrowRight aria-hidden="true" className="size-4" />
@@ -73,8 +86,10 @@ export function Hero() {
 
             <a
               href={telHref}
-              className="mt-5 inline-flex min-h-11 items-center gap-2.5 text-[0.9375rem]
-                font-semibold text-ink-primary transition-colors hover:text-purple-800"
+              className="db-lift mt-5 inline-flex min-h-11 items-center gap-2.5
+                text-[0.9375rem] font-semibold text-ink-primary transition-colors
+                hover:text-purple-800"
+              style={{ "--db-lift-delay": "280ms" } as React.CSSProperties}
             >
               <span
                 aria-hidden="true"
@@ -92,7 +107,10 @@ export function Hero() {
 
           {/* Portrait plus the reporting it produces. Below xl it sits after
               the content in the flow, so a visitor reaches an action first. */}
-          <div className="relative">
+          <div
+            className="db-lift relative"
+            style={{ "--db-lift-delay": "340ms" } as React.CSSProperties}
+          >
             <HomeHeroVisual />
           </div>
         </div>
@@ -101,7 +119,11 @@ export function Hero() {
             lines read better side by side than stacked down one column, and
             keeping them out of the grid is what lets both columns start and
             end at about the same place. */}
-        <ul className="mt-10 grid gap-3 border-t border-line pt-7 sm:grid-cols-3 sm:gap-x-8 lg:mt-12">
+        <ul
+          className="db-lift mt-10 grid gap-3 border-t border-line pt-7 sm:grid-cols-3
+            sm:gap-x-8 lg:mt-12"
+          style={{ "--db-lift-delay": "410ms" } as React.CSSProperties}
+        >
           {heroPoints.map((point) => (
             <li key={point} className="flex items-start gap-3 text-sm text-ink-secondary">
               <span

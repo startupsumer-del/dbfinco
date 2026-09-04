@@ -44,11 +44,28 @@ export function ServiceGrid({
             // Capped so a long grid never trails far behind the first card.
             delay={Math.min(index, 5) * 70}
           >
-            <Card as="div" interactive className="flex w-full flex-col">
+            <Card
+              as="div"
+              interactive
+              className="group flex w-full flex-col overflow-hidden"
+            >
+              {/* A gold hairline that draws across the top on hover. The card
+                  already lifts; this gives the lift somewhere to land. */}
               <span
                 aria-hidden="true"
-                className="flex size-11 items-center justify-center rounded-lg border
-                  border-purple-100 bg-purple-50 text-purple-700"
+                className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0
+                  bg-[linear-gradient(90deg,var(--color-gold-500),var(--color-purple-700))]
+                  transition-transform duration-300 ease-[var(--ease-out-brand)]
+                  group-hover:scale-x-100 group-focus-within:scale-x-100"
+              />
+
+              <span
+                aria-hidden="true"
+                className="flex size-12 items-center justify-center rounded-xl text-white
+                  shadow-[0_6px_16px_-6px_rgba(86,39,117,0.6)]
+                  bg-[linear-gradient(140deg,var(--color-purple-700),var(--color-purple-900))]
+                  transition-transform duration-300 ease-[var(--ease-out-brand)]
+                  group-hover:-rotate-3 group-hover:scale-105"
               >
                 <Icon className="size-5" />
               </span>
@@ -68,7 +85,11 @@ export function ServiceGrid({
 
               <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-purple-800">
                 Learn More
-                <ArrowRight aria-hidden="true" className="size-4" />
+                <ArrowRight
+                  aria-hidden="true"
+                  className="size-4 transition-transform duration-250
+                    ease-[var(--ease-out-brand)] group-hover:translate-x-1"
+                />
               </span>
               </Card>
           </Reveal>

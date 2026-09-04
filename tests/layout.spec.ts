@@ -70,3 +70,32 @@ for (const width of [1440, 1024] as const) {
     ).toEqual([]);
   });
 }
+
+/**
+ * The contact page's summary column sticks as the form scrolls past it.
+ *
+ * It stopped doing that the moment its section got `overflow-hidden` for a
+ * background wash — hidden makes the section a scroll container, and a sticky
+ * child sticks to that instead of to the viewport. `overflow-clip` trims the
+ * wash without creating one, and this measures the difference.
+ */
+test("the contact summary sticks while the form scrolls past", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/contact");
+
+  const column = page.locator(".lg\\:sticky").first();
+  await expect(column).toBeVisible();
+
+  const before = await column.boundingBox();
+  await page.evaluate(() => window.scrollTo(0, 600));
+  await page.waitForFunction(() => window.scrollY > 400);
+  const after = await column.boundingBox();
+
+  expect(before, "the summary column should be laid out").not.toBeNull();
+  expect(after, "the summary column should stay laid out").not.toBeNull();
+
+  // Without sticky it would have scrolled fully out of view (600px up from
+  // ~750). Sticking pins it below the header instead.
+  expect(after!.y, "the column should pin, not scroll away").toBeGreaterThan(0);
+  expect(after!.y).toBeLessThan(before!.y);
+});

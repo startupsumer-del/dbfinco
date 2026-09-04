@@ -35,7 +35,7 @@ export function FinancePanel({
       // that none of them ever covers a portrait.
       data-finance-surface=""
       className={cn(
-        "overflow-hidden rounded-xl border border-line bg-white shadow-lg",
+        "brand-rule overflow-hidden rounded-xl border border-line bg-white shadow-lg",
         className,
       )}
     >
@@ -73,7 +73,7 @@ export function FinanceCard({
     <div
       data-finance-surface=""
       className={cn(
-        "rounded-xl border border-line bg-white p-3 shadow-lg",
+        "brand-rule overflow-hidden rounded-xl border border-line bg-white p-3 shadow-lg",
         className,
       )}
     >

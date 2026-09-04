@@ -1,4 +1,4 @@
-import { UserRound } from "lucide-react";
+import { BadgeCheck, UserRound } from "lucide-react";
 
 import {
   CardIcon,
@@ -42,6 +42,42 @@ const assignments: Record<
   "agreed-upon-procedures": { portrait: "consultant", tone: "gold" },
 };
 
+/**
+ * Merchant services gets its own card. The page is about money arriving, so
+ * the card is the moment it does — the same beat the printed advert leads on.
+ * Everywhere else the card restates the promise the site already makes in the
+ * hero and on the About page.
+ */
+function cardFor(slug: string) {
+  if (slug === "merchant-services") {
+    return (
+      <FloatCard
+        at="low-left"
+        icon={
+          <CardIcon tone="success">
+            <BadgeCheck className="size-4" />
+          </CardIcon>
+        }
+        title="Payment received"
+        detail="Funds credited to your account"
+      />
+    );
+  }
+
+  return (
+    <FloatCard
+      at="low-left"
+      icon={
+        <CardIcon tone="violet">
+          <UserRound className="size-4" />
+        </CardIcon>
+      }
+      title="A named accountant"
+      detail="Who knows your engagement"
+    />
+  );
+}
+
 export function ServicePortrait({ slug }: { slug: string }) {
   const assignment = assignments[slug];
   if (!assignment) return null;
@@ -54,18 +90,7 @@ export function ServicePortrait({ slug }: { slug: string }) {
       priority
       className="mx-auto max-w-[20rem] lg:max-w-none"
       sizes="(min-width: 1024px) 24rem, (min-width: 640px) 22rem, 90vw"
-      cards={
-        <FloatCard
-          at="low-left"
-          icon={
-            <CardIcon tone="violet">
-              <UserRound className="size-4" />
-            </CardIcon>
-          }
-          title="A named accountant"
-          detail="Who knows your engagement"
-        />
-      }
+      cards={cardFor(slug)}
     />
   );
 }

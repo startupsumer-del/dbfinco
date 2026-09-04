@@ -13,7 +13,11 @@ const base =
   // 44px minimum touch target on every variant.
   "min-h-11 " +
   "focus-visible:outline-2 focus-visible:outline-offset-2 " +
-  "active:translate-y-px disabled:pointer-events-none disabled:opacity-60";
+  "active:translate-y-px disabled:pointer-events-none disabled:opacity-60 " +
+  // A trailing icon leans toward where the button is taking you.
+  "[&>svg:last-child]:transition-transform [&>svg:last-child]:duration-200 " +
+  "[&>svg:last-child]:ease-[var(--ease-out-brand)] " +
+  "hover:[&>svg:last-child]:translate-x-0.5";
 
 const variants: Record<Variant, string> = {
   primary:

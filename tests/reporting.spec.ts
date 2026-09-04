@@ -59,7 +59,6 @@ test("the payment journey names the provider as the party that settles", async (
 }) => {
   await page.goto("/merchant-services");
 
-  const steps = page.locator("li", { hasText: /^Step [123]/ });
   await expect(
     page.getByRole("heading", { name: "Your customer pays" }),
   ).toBeVisible();
@@ -69,11 +68,21 @@ test("the payment journey names the provider as the party that settles", async (
   await expect(
     page.getByRole("heading", { name: "It lands in your books" }),
   ).toBeVisible();
-  expect(await steps.count()).toBeGreaterThanOrEqual(3);
-
   // The authorisation and the payout belong to the provider, and the page has
   // to keep saying so.
   await expect(
     page.getByText(/provider you hold the account with authorises the payment/i),
+  ).toBeVisible();
+
+  // Brand marks appear in the sequence now, so the caveat that goes with them
+  // has to appear with it — not only in the logo section further down.
+  await expect(
+    page.getByText(/do not imply a partnership with, or endorsement by/i),
+  ).toBeVisible();
+
+  // And the security line must keep attributing the certification to the
+  // provider rather than to DB FinCo.
+  await expect(
+    page.getByText(/Card details stay with your provider/i),
   ).toBeVisible();
 });

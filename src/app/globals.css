@@ -201,6 +201,27 @@
    Utilities
    ========================================================================== */
 
+/* A brand hairline along the top edge of a surface. The one piece of colour
+   on an otherwise white card, and what makes a set of them read as one
+   product rather than as separate boxes. Needs `overflow-hidden` on the
+   element so the rule is clipped to the rounded corners. */
+@utility brand-rule {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      var(--color-purple-700),
+      var(--color-gold-500)
+    );
+  }
+}
+
 @utility container-page {
   width: 100%;
   margin-inline: auto;
@@ -309,6 +330,18 @@
 /* Left-to-right reveal. Used for progress tracks, and — as a clip rect — for
    a dashed line, where animating the dash offset would slide the dashes along
    the path instead of drawing it. */
+/* Hero entrance. Transform only — an opacity fade would hold the largest
+   text on the page below full contrast, and would push the LCP paint back by
+   the length of the fade for no benefit anyone can see. */
+@keyframes db-lift {
+  from {
+    transform: translate3d(0, 14px, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 @keyframes db-grow-x {
   from {
     transform: scaleX(0);
@@ -387,6 +420,21 @@
   transform: none;
   transition: none;
   will-change: auto;
+}
+
+/* --------------------------------------------------------------------------
+   Hero entrance
+
+   The hero is above the fold on every page, so it plays on load rather than on
+   a reveal. Children carry their own delay through `--db-lift-delay`, which
+   staggers eyebrow, headline, copy, buttons and visual in reading order.
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .db-lift {
+    animation: db-lift 620ms var(--ease-out-brand) both;
+    animation-delay: var(--db-lift-delay, 0ms);
+  }
 }
 
 /* --------------------------------------------------------------------------

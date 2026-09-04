@@ -28,6 +28,7 @@ import {
   budgetVsActual,
   cashBalanceSeries,
   expenseBreakdown,
+  kpis,
   months,
   revenueSeries,
   totalExpenses,
@@ -153,7 +154,7 @@ export function ReportingSection() {
         />
 
         <div className="mt-10 grid gap-5 sm:gap-6 lg:mt-14 lg:grid-cols-3">
-          <div className="rounded-xl border border-line bg-white p-5 sm:p-6 lg:col-span-2">
+          <div className="brand-rule overflow-hidden rounded-xl border border-line bg-white p-5 sm:p-6 lg:col-span-2">
             <div className="flex flex-wrap items-end justify-between gap-3">
               <div>
                 <p className="text-sm font-semibold text-ink-primary">
@@ -178,7 +179,7 @@ export function ReportingSection() {
             />
           </div>
 
-          <div className="rounded-xl border border-line bg-white p-5 sm:p-6">
+          <div className="brand-rule overflow-hidden rounded-xl border border-line bg-white p-5 sm:p-6">
             <p className="text-sm font-semibold text-ink-primary">Cash balance</p>
             <p className="mt-1 text-xs text-ink-muted">Rolling 12 months</p>
             <p className="mt-4 text-h2 font-bold tabular-nums text-ink-primary">
@@ -194,9 +195,26 @@ export function ReportingSection() {
               fillTo="rgba(18, 101, 68, 0)"
               height={150}
             />
+
+            {/* Two more readings, so the card fills the row beside the taller
+                chart next to it instead of ending in white space. */}
+            <dl className="mt-5 grid grid-cols-2 gap-3 border-t border-line pt-4">
+              <div>
+                <dt className="text-xs text-ink-muted">Net income</dt>
+                <dd className="mt-1 text-base font-bold tabular-nums text-ink-primary">
+                  {formatCompactCurrency(kpis.netIncome)}
+                </dd>
+              </div>
+              <div>
+                <dt className="text-xs text-ink-muted">Receivables</dt>
+                <dd className="mt-1 text-base font-bold tabular-nums text-ink-primary">
+                  {formatCompactCurrency(kpis.accountsReceivable)}
+                </dd>
+              </div>
+            </dl>
           </div>
 
-          <div className="rounded-xl border border-line bg-white p-5 sm:p-6 lg:col-span-2">
+          <div className="brand-rule overflow-hidden rounded-xl border border-line bg-white p-5 sm:p-6 lg:col-span-2">
             <p className="text-sm font-semibold text-ink-primary">
               Where the money goes
             </p>
@@ -213,7 +231,7 @@ export function ReportingSection() {
             />
           </div>
 
-          <div className="rounded-xl border border-line bg-white p-5 sm:p-6">
+          <div className="brand-rule overflow-hidden rounded-xl border border-line bg-white p-5 sm:p-6">
             <p className="text-sm font-semibold text-ink-primary">Revenue trend</p>
             <p className="mt-1 text-xs text-ink-muted">Rolling 12 months</p>
             <TrendChart

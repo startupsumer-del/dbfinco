@@ -18,6 +18,8 @@ const toneClasses: Record<Tone, string> = {
  * One scale for the whole site: 48 / 64 / 88px by default, 40 / 48 / 64 when
  * compact, 56 / 72 / 96 when roomy. Every section on every page uses one of
  * the three, so vertical spacing never drifts page to page.
+ *
+ * Tinted sections also carry a soft brand wash behind their content.
  */
 export function Section({
   children,
@@ -47,9 +49,38 @@ export function Section({
     <Tag
       id={id}
       aria-labelledby={ariaLabelledBy}
-      className={cn("relative", toneClasses[tone], padding, className)}
+      // `overflow-clip`, not `overflow-hidden`: hidden makes the section a
+      // scroll container and a `position: sticky` child inside it — the
+      // contact page's summary column — stops sticking. Clip trims the wash
+      // to the section without creating one.
+      className={cn("relative overflow-clip", toneClasses[tone], padding, className)}
     >
-      {children}
+      {/* Brand wash. Two soft radials, the same device the hero uses, so the
+          tinted bands read as lit rather than as flat fill. Decorative,
+          absolutely positioned and clipped by the section, so it can never
+          create horizontal overflow or intercept a click. */}
+      {tone === "subtle" || tone === "lilac" || tone === "deep" ? (
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+          <div
+            className={cn(
+              "absolute -right-40 -top-48 size-[34rem] rounded-full",
+              tone === "deep"
+                ? "bg-[radial-gradient(circle,rgba(201,154,84,0.18),transparent_68%)]"
+                : "bg-[radial-gradient(circle,var(--color-gold-100),transparent_66%)] opacity-70",
+            )}
+          />
+          <div
+            className={cn(
+              "absolute -bottom-52 -left-44 size-[30rem] rounded-full",
+              tone === "deep"
+                ? "bg-[radial-gradient(circle,rgba(110,56,145,0.45),transparent_70%)]"
+                : "bg-[radial-gradient(circle,var(--color-purple-100),transparent_68%)] opacity-70",
+            )}
+          />
+        </div>
+      ) : null}
+
+      <div className="relative">{children}</div>
     </Tag>
   );
 }
