@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
-import { ArrowRight, Mail, MapPin, Phone, PhoneCall } from "lucide-react";
+import {
+  ArrowRight,
+  CircleCheck,
+  Mail,
+  MapPin,
+  Phone,
+  PhoneCall,
+} from "lucide-react";
 
 import { socialIconMap } from "@/components/brand/SocialIcons";
 import { ContactForm } from "@/components/forms/ContactForm";
@@ -69,6 +76,35 @@ export default function ContactPage() {
                   <Phone aria-hidden="true" className="size-4 text-purple-700" />
                   {site.contact.phoneDisplay}
                 </a>
+              </div>
+
+              {/* What the first conversation is, in the page's own terms. It
+                  answers the question a visitor hesitates over before writing
+                  to a firm, and it fills the band the portrait beside it would
+                  otherwise leave under the buttons. */}
+              <div className="mt-9 border-t border-line pt-7">
+                <p className="text-eyebrow font-semibold uppercase tracking-[0.12em] text-gold-800">
+                  What to Expect
+                </p>
+                <ul className="mt-4 grid gap-x-8 gap-y-2.5 sm:grid-cols-2">
+                  {[
+                    "A conversation about where things actually stand",
+                    "A straight answer on whether we are the right fit",
+                    "Scope and price agreed in writing before any work starts",
+                    "No cost and no obligation for the first conversation",
+                  ].map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-start gap-2.5 text-sm text-ink-secondary"
+                    >
+                      <CircleCheck
+                        aria-hidden="true"
+                        className="mt-0.5 size-4 shrink-0 text-success"
+                      />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
 
