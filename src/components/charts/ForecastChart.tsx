@@ -49,6 +49,7 @@ export function ForecastChart({
   const boundaryX = actualPoints[actualPoints.length - 1]?.x ?? 0;
 
   const labelStep = Math.max(1, Math.ceil(labels.length / 6));
+  const clipId = `fc-${ariaLabel.replace(/\W+/g, "-").toLowerCase()}`;
 
   return (
     <Reveal as="figure" className={cn("reveal-still w-full", className)}>
@@ -80,6 +81,23 @@ export function ForecastChart({
         className="h-auto min-h-[8.5rem] w-full"
         style={{ aspectRatio: `${width} / ${height}` }}
       >
+        <defs>
+          {/* The projection is wiped in left to right. A dashed line cannot be
+              drawn with a dash offset — that slides the dashes along the path
+              rather than extending it — so the clip does the drawing. */}
+          <clipPath id={`${clipId}-forecast`}>
+            <rect
+              x={boundaryX}
+              y="0"
+              width={Math.max(0, width - boundaryX)}
+              height={height}
+              data-chart-anim=""
+              className="origin-left [animation:db-grow-x_720ms_var(--ease-out-brand)_both_620ms]"
+              style={{ transformBox: "fill-box" } as React.CSSProperties}
+            />
+          </clipPath>
+        </defs>
+
         {/* Tinted ground under the projected months */}
         <rect
           x={boundaryX}
@@ -87,6 +105,9 @@ export function ForecastChart({
           width={Math.max(0, width - boundaryX)}
           height={height}
           fill="var(--color-surface-muted)"
+          data-chart-anim=""
+          className="origin-left [animation:db-grow-x_720ms_var(--ease-out-brand)_both_620ms]"
+          style={{ transformBox: "fill-box" } as React.CSSProperties}
         />
 
         {[0.25, 0.5, 0.75, 1].map((fraction) => (
@@ -111,6 +132,8 @@ export function ForecastChart({
           strokeWidth="1"
           strokeDasharray="3 3"
           vectorEffect="non-scaling-stroke"
+          data-chart-anim=""
+          className="origin-bottom [animation:db-grow-y_420ms_var(--ease-out-brand)_both_520ms]"
         />
 
         <path
@@ -134,6 +157,7 @@ export function ForecastChart({
           strokeLinejoin="round"
           strokeDasharray="7 6"
           vectorEffect="non-scaling-stroke"
+          clipPath={`url(#${clipId}-forecast)`}
         />
       </svg>
 

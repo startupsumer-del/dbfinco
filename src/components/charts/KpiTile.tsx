@@ -1,6 +1,7 @@
 import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 
 import { Sparkline } from "@/components/charts/Sparkline";
+import { Reveal } from "@/components/motion/Reveal";
 import { cn } from "@/lib/cn";
 
 /**
@@ -31,9 +32,12 @@ export function KpiTile({
   const Icon = isPositiveMovement ? ArrowUpRight : ArrowDownRight;
 
   return (
-    <div
+    // Reveal anchor as well as tile: the sparkline inside draws when the tile
+    // reaches the viewport rather than at page load.
+    <Reveal
+      as="div"
       className={cn(
-        "rounded-lg border border-line bg-white p-4 sm:p-5",
+        "reveal-still rounded-lg border border-line bg-white p-4 sm:p-5",
         className,
       )}
     >
@@ -61,6 +65,6 @@ export function KpiTile({
       {series ? (
         <Sparkline series={series} stroke={seriesColor} className="mt-4 h-8 w-full" />
       ) : null}
-    </div>
+    </Reveal>
   );
 }

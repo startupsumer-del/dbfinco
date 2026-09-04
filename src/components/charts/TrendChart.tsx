@@ -105,7 +105,17 @@ export function TrendChart({
             ))
           : null}
 
-        <path d={area} fill={`url(#${gradientId})`} />
+        {/* The fill arrives behind the line rather than with it: a gradient
+            appearing at full strength on frame one reads as a block, and the
+            line has nothing to draw over. */}
+        <path
+          d={area}
+          fill={`url(#${gradientId})`}
+          data-chart-anim={animate ? "" : undefined}
+          className={
+            animate ? "[animation:db-fade_600ms_var(--ease-out-brand)_both_250ms]" : undefined
+          }
+        />
         <path
           d={line}
           fill="none"
@@ -123,6 +133,7 @@ export function TrendChart({
           }
         />
 
+        {/* The head of the line, landing as the draw finishes. */}
         {last ? (
           <circle
             cx={last.x}
@@ -132,6 +143,17 @@ export function TrendChart({
             stroke={stroke}
             strokeWidth="2.5"
             vectorEffect="non-scaling-stroke"
+            data-chart-anim={animate ? "" : undefined}
+            className={
+              animate
+                ? "[animation:db-pop_320ms_var(--ease-out-brand)_both_760ms]"
+                : undefined
+            }
+            style={
+              animate
+                ? { transformOrigin: `${last.x}px ${last.y}px` }
+                : undefined
+            }
           />
         ) : null}
       </svg>

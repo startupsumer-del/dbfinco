@@ -1,6 +1,7 @@
 import type { LucideIcon } from "lucide-react";
 import { ArrowUpRight, ChevronRight } from "lucide-react";
 
+import { Reveal } from "@/components/motion/Reveal";
 import { cn } from "@/lib/cn";
 
 /**
@@ -47,7 +48,12 @@ export function FinancePanel({
           <p className="text-[0.6875rem] font-medium text-ink-muted">{meta}</p>
         ) : null}
       </div>
-      <div className="p-4">{children}</div>
+      {/* The body is the reveal anchor for everything inside it. Progress
+          tracks and sparklines are held at zero until the panel is on screen,
+          the same gate the charts use. */}
+      <Reveal as="div" className="reveal-still p-4">
+        {children}
+      </Reveal>
     </div>
   );
 }
@@ -71,7 +77,9 @@ export function FinanceCard({
         className,
       )}
     >
-      {children}
+      <Reveal as="div" className="reveal-still">
+        {children}
+      </Reveal>
     </div>
   );
 }
@@ -193,8 +201,13 @@ export function ProgressRow({
         aria-hidden="true"
         className="mt-2 h-1.5 overflow-hidden rounded-pill bg-purple-100"
       >
+        {/* Fills from the left when the panel comes on screen, like the bars
+            and lines around it. `data-chart-anim` is what holds it at zero
+            until then — see the chart draw-in block in globals.css. */}
         <div
-          className="h-full rounded-pill bg-purple-700"
+          data-chart-anim=""
+          className="h-full origin-left rounded-pill bg-purple-700
+            [animation:db-grow-x_700ms_var(--ease-out-brand)_both]"
           style={{ width: `${Math.min(100, Math.max(0, percent))}%` }}
         />
       </div>

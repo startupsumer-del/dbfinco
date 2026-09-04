@@ -306,6 +306,28 @@
   }
 }
 
+/* Left-to-right reveal. Used for progress tracks, and — as a clip rect — for
+   a dashed line, where animating the dash offset would slide the dashes along
+   the path instead of drawing it. */
+@keyframes db-grow-x {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* A mark arriving at the end of a line that has just drawn itself. */
+@keyframes db-pop {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
 @keyframes db-grow-y {
   from {
     transform: scaleY(0);

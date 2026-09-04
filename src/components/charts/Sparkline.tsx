@@ -36,6 +36,9 @@ export function Sparkline({
         strokeWidth="2"
         strokeLinecap="round"
         vectorEffect="non-scaling-stroke"
+        data-chart-anim=""
+        className="[animation:db-draw_700ms_var(--ease-out-brand)_both]"
+        style={{ strokeDasharray: 400, "--db-draw-length": 400 } as React.CSSProperties}
       />
     </svg>
   );

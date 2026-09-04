@@ -209,3 +209,54 @@ test("reduced motion never leaves a chart on its first frame", async ({
 
   await context.close();
 });
+
+/**
+ * Progress tracks animate on the same gate as the charts, and carry the same
+ * risk: a paused `scaleX(0)` under a reduced-motion override is a bar that
+ * never appears. The audit page's engagement status is four of them.
+ */
+test("progress tracks fill when reached, and are full under reduced motion", async ({
+  browser,
+}) => {
+  const normal = await browser.newPage();
+  await normal.goto("/services/audit-assurance");
+
+  const trackState = (page: typeof normal) =>
+    page.evaluate(() => {
+      const tracks = Array.from(
+        document.querySelectorAll<HTMLElement>("[data-chart-anim]"),
+      ).filter((el) => el.tagName === "DIV");
+      return {
+        count: tracks.length,
+        paused: tracks.filter(
+          (el) => getComputedStyle(el).animationPlayState === "paused",
+        ).length,
+        drawn: tracks.filter((el) => el.getBoundingClientRect().width > 2).length,
+      };
+    });
+
+  const before = await trackState(normal);
+  expect(before.count, "the audit page should show progress tracks").toBeGreaterThan(0);
+  expect(before.paused, "an off-screen track should not be filling").toBe(before.count);
+
+  await normal.locator("#audit-progress-heading").scrollIntoViewIfNeeded();
+  await expect
+    .poll(async () => (await trackState(normal)).drawn, {
+      message: "tracks should fill once on screen",
+    })
+    .toBe(before.count);
+  await normal.close();
+
+  const context = await browser.newContext({ reducedMotion: "reduce" });
+  const reduced = await context.newPage();
+  await reduced.goto("/services/audit-assurance");
+  await reduced.locator("#audit-progress-heading").scrollIntoViewIfNeeded();
+
+  await expect
+    .poll(async () => (await trackState(reduced)).drawn, {
+      message: "every track should be drawn under reduced motion",
+    })
+    .toBe(before.count);
+  expect((await trackState(reduced)).paused).toBe(0);
+  await context.close();
+});
