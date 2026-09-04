@@ -108,7 +108,7 @@ export function SettlementPanel({ className }: { className?: string }) {
 
   return (
     <div
-      className={`overflow-hidden rounded-xl border border-line bg-white shadow-md ${className ?? ""}`}
+      className={`brand-rule overflow-hidden rounded-xl border border-line bg-white shadow-md ${className ?? ""}`}
     >
       <div className="flex flex-wrap items-center justify-between gap-2 border-b border-line bg-surface-subtle px-5 py-3.5">
         <p className="text-sm font-semibold text-ink-primary">

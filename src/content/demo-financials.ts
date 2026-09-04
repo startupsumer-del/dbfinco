@@ -73,6 +73,24 @@ export const kpis = {
   accountsPayable: 147_900,
 };
 
+/**
+ * Net income by month, derived rather than declared — it is revenue less
+ * expenses by definition, and a separately typed series would eventually
+ * drift from the two it is supposed to be the difference of.
+ */
+export const netIncomeSeries = revenueSeries.map(
+  (revenue, index) => revenue - (expenseSeries[index] ?? 0),
+);
+
+/**
+ * Receivables by month. Ends on the same figure the KPI tiles carry, so the
+ * sparkline and the number above it cannot tell different stories.
+ */
+export const receivablesSeries = [
+  241_800, 236_400, 248_900, 255_200, 249_700, 261_300, 272_600, 264_100,
+  279_400, 285_100, 276_900, 268_400,
+];
+
 export const grossMarginSeries = [
   58.2, 58.9, 57.4, 59.6, 60.1, 60.8, 59.7, 61.4, 62.0, 62.6, 63.1, 63.8,
 ];

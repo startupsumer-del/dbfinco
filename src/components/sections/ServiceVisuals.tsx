@@ -149,7 +149,7 @@ const riskTones = {
 
 export function RiskRegisterVisual() {
   return (
-    <div className="overflow-hidden rounded-xl border border-line bg-white shadow-md">
+    <div className="brand-rule overflow-hidden rounded-xl border border-line bg-white shadow-md">
       <div className="flex flex-wrap items-center justify-between gap-2 border-b border-line bg-surface-subtle px-5 py-3.5">
         <p className="text-sm font-semibold text-ink-primary">Risk register</p>
         <p className="text-xs text-ink-muted">Current assessment</p>
@@ -204,7 +204,7 @@ const evidenceMethods = [
 
 export function AuditEvidenceVisual() {
   return (
-    <div className="overflow-hidden rounded-xl border border-line bg-white shadow-md">
+    <div className="brand-rule overflow-hidden rounded-xl border border-line bg-white shadow-md">
       <div className="border-b border-line bg-surface-subtle px-5 py-3.5">
         <p className="text-sm font-semibold text-ink-primary">
           How audit evidence is gathered

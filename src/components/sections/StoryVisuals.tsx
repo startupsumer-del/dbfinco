@@ -13,7 +13,7 @@ export function CloseChecklistVisual() {
   ];
 
   return (
-    <div className="overflow-hidden rounded-xl border border-line bg-white shadow-md">
+    <div className="brand-rule overflow-hidden rounded-xl border border-line bg-white shadow-md">
       <div className="flex flex-wrap items-center justify-between gap-2 border-b border-line bg-surface-subtle px-5 py-3.5">
         <p className="text-sm font-semibold text-ink-primary">Month-end close</p>
         <span className="inline-flex items-center gap-1.5 rounded-pill bg-success/10 px-2.5 py-1 text-[0.6875rem] font-semibold text-success">
@@ -77,7 +77,7 @@ export function FilingCalendarVisual() {
   };
 
   return (
-    <div className="overflow-hidden rounded-xl border border-line bg-white shadow-md">
+    <div className="brand-rule overflow-hidden rounded-xl border border-line bg-white shadow-md">
       <div className="flex flex-wrap items-center justify-between gap-2 border-b border-line bg-surface-subtle px-5 py-3.5">
         <p className="text-sm font-semibold text-ink-primary">Filing calendar</p>
         <p className="text-xs text-ink-muted">Current year</p>
@@ -122,7 +122,7 @@ export function FilingCalendarVisual() {
 /* Advisory / analytics: margin trend with a control observation. */
 export function AdvisoryVisual() {
   return (
-    <div className="overflow-hidden rounded-xl border border-line bg-white shadow-md">
+    <div className="brand-rule overflow-hidden rounded-xl border border-line bg-white shadow-md">
       <div className="border-b border-line bg-surface-subtle px-5 py-3.5">
         <p className="text-sm font-semibold text-ink-primary">Gross margin</p>
         <p className="mt-0.5 text-xs text-ink-muted">Rolling 12 months, percent</p>

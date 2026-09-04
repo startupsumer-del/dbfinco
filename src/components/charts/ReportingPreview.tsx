@@ -7,6 +7,8 @@ import {
   expenseBreakdown,
   kpis,
   months,
+  netIncomeSeries,
+  receivablesSeries,
   revenueSeries,
   totalExpenses,
 } from "@/content/demo-financials";
@@ -34,7 +36,7 @@ export function ReportingPreview({
   return (
     <div
       className={cn(
-        "overflow-hidden rounded-xl border border-line bg-white shadow-lg",
+        "brand-rule overflow-hidden rounded-xl border border-line bg-white shadow-lg",
         className,
       )}
     >
@@ -87,10 +89,13 @@ export function ReportingPreview({
             series={cashBalanceSeries}
             seriesColor="var(--color-viz-4)"
           />
+          {/* All three carry a sparkline. With it on one tile only, the row
+              read as two empty boxes beside a full one. */}
           <KpiTile
             label="Net income"
             value={formatCompactCurrency(kpis.netIncome)}
             change="+15.2%"
+            series={netIncomeSeries}
           />
           {/* Third tile is additive on larger screens rather than a squeeze */}
           <KpiTile
@@ -98,6 +103,8 @@ export function ReportingPreview({
             value={formatCompactCurrency(kpis.accountsReceivable)}
             change="-4.1%"
             direction="up-bad"
+            series={receivablesSeries}
+            seriesColor="var(--color-viz-3)"
             className="col-span-2 lg:col-span-1"
           />
         </div>
