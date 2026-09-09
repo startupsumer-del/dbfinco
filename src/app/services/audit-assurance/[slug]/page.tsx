@@ -46,7 +46,6 @@ function extraSectionFor(slug: string) {
     case "internal-audit":
       return (
         <RiskProfileSection
-          eyebrow="The Findings"
           title="Findings You Can Rank, Assign and Close"
           lead="An internal audit report is only worth the follow-up it gets. Every finding carries a rating, an owner and a status, so the next review starts from what actually moved."
           panelTitle="Open findings"

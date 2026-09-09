@@ -2,7 +2,6 @@ import type { ReactNode } from "react";
 
 import { Breadcrumbs } from "@/components/sections/ServicePageTemplate";
 import { Container } from "@/components/ui/Container";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import type { Crumb } from "@/lib/seo";
 
 /**
@@ -14,14 +13,12 @@ import type { Crumb } from "@/lib/seo";
  */
 export function PageBanner({
   crumbs,
-  eyebrow,
   title,
   lead,
   visual,
   actions,
 }: {
   crumbs: Crumb[];
-  eyebrow: string;
   title: string;
   lead?: string;
   visual?: ReactNode;
@@ -45,9 +42,6 @@ export function PageBanner({
           }
         >
           <div className="min-w-0">
-            <Eyebrow tone="inverse" className="mb-4">
-              {eyebrow}
-            </Eyebrow>
             <h1 className="text-display-2 text-white">{title}</h1>
             {lead ? (
               <p className="measure mt-5 text-lead text-purple-100">{lead}</p>

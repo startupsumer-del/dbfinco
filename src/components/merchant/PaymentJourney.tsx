@@ -153,7 +153,7 @@ function PaymentReceived() {
         </svg>
       </span>
       <span className="min-w-0">
-        <span className="block text-[0.8125rem] font-bold uppercase tracking-[0.06em] text-ink-primary">
+        <span className="block text-[0.8125rem] font-bold text-ink-primary">
           Payment received
         </span>
         <span className="block text-xs text-ink-secondary">
@@ -274,7 +274,7 @@ export function PaymentJourney() {
           rather than inside step one, where four more tiles would bury the
           picker they belong to. */}
       <Reveal className="mt-5 rounded-xl border border-line bg-white p-5 shadow-sm" delay={330}>
-        <p className="text-eyebrow font-semibold uppercase text-gold-800">
+        <p className="text-xs font-semibold text-gold-800">
           Cards your customers carry
         </p>
         <MarkRow logos={cardNetworkLogos} columns="mt-4 grid-cols-2 sm:grid-cols-4" />

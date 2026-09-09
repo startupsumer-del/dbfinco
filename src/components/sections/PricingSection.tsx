@@ -35,7 +35,6 @@ export function PricingSection() {
         <Reveal>
           <SectionHeading
             id="pricing-heading"
-            eyebrow="Transparent Pricing"
             title="Plans Built for Business Growth"
             lead="Three monthly packages covering bookkeeping, reporting and filing — each one scoped and agreed with you before any work begins."
             align="center"
@@ -66,7 +65,7 @@ export function PricingSection() {
                     <p className="mb-5 flex min-h-7 items-center">
                       <span
                         className="inline-flex items-center rounded-pill bg-purple-900 px-3 py-1.5
-                          text-eyebrow font-semibold uppercase text-gold-300"
+                          text-xs font-semibold text-gold-300"
                       >
                         {plan.badge}
                       </span>

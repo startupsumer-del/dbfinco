@@ -36,7 +36,6 @@ import {
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Container } from "@/components/ui/Container";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { bookingUrl, site, telHref } from "@/config/site";
@@ -134,9 +133,6 @@ export default function MerchantServicesPage() {
 
           <div className="mt-7 grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:items-start lg:gap-16">
             <div className="min-w-0">
-              <Eyebrow tone="inverse" className="mb-4">
-                Merchant Services
-              </Eyebrow>
               <h1 className="text-display-2 text-white">
                 Accept Payments, and Know What Landed in the Bank
               </h1>
@@ -175,7 +171,6 @@ export default function MerchantServicesPage() {
         <Container>
           <SectionHeading
             id="methods-heading"
-            eyebrow="How You Can Get Paid"
             title="The Ways Your Customers Pay"
             lead="Which methods are available to your business depends on the provider you work with and the outcome of its underwriting review."
           />
@@ -218,7 +213,6 @@ export default function MerchantServicesPage() {
         <Container>
           <SectionHeading
             id="journey-heading"
-            eyebrow="End To End"
             title="From the Payment to the Books"
             lead="Three things have to happen before a sale is money you can plan around. We do the third, and make the first two legible."
           />
@@ -240,7 +234,6 @@ export default function MerchantServicesPage() {
         <Container>
           <SectionHeading
             id="networks-heading"
-            eyebrow="Payment Options"
             title="Cards and Banks Your Customers Use"
             lead="Which card networks and banking options your business can offer depends on your payment provider and the outcome of its underwriting review."
           />
@@ -265,7 +258,6 @@ export default function MerchantServicesPage() {
         <Container>
           <SectionHeading
             id="channels-heading"
-            eyebrow="Online and in Person"
             title="Every Channel, One Set of Books"
             lead="Online checkout, a terminal at the counter and a bank transfer all settle differently. The work is making sure all three reconcile against the same set of books."
           />
@@ -302,7 +294,6 @@ export default function MerchantServicesPage() {
           <div className="grid gap-10 lg:grid-cols-[minmax(0,24rem)_minmax(0,1fr)] lg:gap-16">
             <SectionHeading
               id="types-heading"
-              eyebrow="Who This Suits"
               title="Businesses That Take Money More Than One Way"
               lead="If payments arrive through several channels and none of them reconcile cleanly, that is the problem this service exists to solve."
             />
@@ -329,7 +320,6 @@ export default function MerchantServicesPage() {
         <Container>
           <SectionHeading
             id="onboarding-heading"
-            eyebrow="Merchant Onboarding"
             title={service.process.heading}
             lead={service.process.intro}
             align="center"
@@ -343,9 +333,6 @@ export default function MerchantServicesPage() {
         <Container>
           <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
             <div>
-              <Eyebrow tone="inverse" className="mb-4">
-                Payment Reporting
-              </Eyebrow>
               <h2 id="reporting-heading" className="text-h2 text-white">
                 The Part Most Businesses Skip
               </h2>
@@ -384,7 +371,6 @@ export default function MerchantServicesPage() {
         <Container>
           <SectionHeading
             id="merchant-reporting-heading"
-            eyebrow="What You Get Back"
             title="Your Payments, Read as Numbers"
             lead="The day's takings, how volume has moved, and which methods the money actually arrived by — the reading that decides whether the cost of acceptance is worth changing anything about."
           />
@@ -400,7 +386,6 @@ export default function MerchantServicesPage() {
         <Container>
           <SectionHeading
             id="security-heading"
-            eyebrow="Responsible Processing"
             title="What We Will and Won’t Tell You"
           />
 
@@ -475,7 +460,6 @@ export default function MerchantServicesPage() {
 
       <FaqSection
         faqs={service.faqs}
-        eyebrow="Merchant Questions"
         heading="Merchant Services Questions"
         tone="white"
       />

@@ -33,7 +33,6 @@ export default function ServicesPage() {
     <>
       <PageBanner
         crumbs={crumbs}
-        eyebrow="Our Services"
         title="A Complete Finance Function, Delivered by One Firm"
         lead="Every service below can be engaged on its own. Most clients combine two or three, and they work better together — the tax return is prepared from books we keep, and the advisory work draws on reporting we build."
         visual={<ServicePortrait slug="services" />}
@@ -68,7 +67,6 @@ export default function ServicesPage() {
         <Container>
           <SectionHeading
             id="core-heading"
-            eyebrow="Core Services"
             title="Accounting, Tax and Advisory"
             lead="Each one shares the same books and the same chart of accounts, so the work compounds instead of being repeated."
           />
@@ -81,7 +79,6 @@ export default function ServicesPage() {
         <Container>
           <SectionHeading
             id="assurance-heading"
-            eyebrow="Assurance Engagements"
             title="Three Distinct Engagements, Not Three Names for One Thing"
             lead="An audit, an internal audit and an agreed-upon procedures engagement are performed under different standards and produce different reports. We will tell you which one answers your question."
           />
@@ -94,7 +91,6 @@ export default function ServicesPage() {
           <Container>
             <SectionHeading
               id="payments-heading"
-              eyebrow="Payments"
               title="Merchant Services"
               lead="Support for accepting card, online, in-person and ACH payments — and for reconciling every settlement, fee and reversal back into your books."
             />

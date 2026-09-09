@@ -12,14 +12,12 @@ import type { FaqItem } from "@/types/content";
 export function FaqSection({
   faqs,
   heading = "Frequently Asked Questions",
-  eyebrow = "Questions",
   lead,
   tone = "subtle",
   includeSchema = true,
 }: {
   faqs: FaqItem[];
   heading?: string;
-  eyebrow?: string;
   lead?: string;
   tone?: "white" | "subtle";
   includeSchema?: boolean;
@@ -29,7 +27,7 @@ export function FaqSection({
       <Container>
         <div className="grid gap-10 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:gap-16">
           <div className="min-w-0">
-            <SectionHeading id="faq-heading" eyebrow={eyebrow} title={heading} lead={lead} />
+            <SectionHeading id="faq-heading" title={heading} lead={lead} />
 
             {/* The way out of an FAQ that does not answer your question. It
                 belongs here rather than three sections further down, and it

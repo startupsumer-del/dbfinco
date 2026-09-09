@@ -219,7 +219,7 @@ export function MobileNav({
                   </Link>
                   {servicesMenu.map((column) => (
                     <div key={column.heading} className="mb-3">
-                      <p className="text-eyebrow px-3 pb-1 pt-2 font-semibold uppercase text-gold-800">
+                      <p className="px-3 pb-1 pt-2 text-xs font-semibold text-gold-800">
                         {column.heading}
                       </p>
                       <ul>

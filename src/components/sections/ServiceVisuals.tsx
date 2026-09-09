@@ -58,7 +58,6 @@ export function EngagementComparison() {
       <Container>
         <SectionHeading
           id="engagements-heading"
-          eyebrow="Choosing an Engagement"
           title="Three Engagements, Three Different Answers"
           lead="These terms are often used interchangeably. They should not be — the standards, the work and the report differ in each case."
         />
@@ -78,7 +77,7 @@ export function EngagementComparison() {
 
               <dl className="mt-6 flex-1 space-y-4">
                 <div>
-                  <dt className="text-eyebrow font-semibold uppercase text-gold-800">
+                  <dt className="text-xs font-semibold text-gold-800">
                     What you get
                   </dt>
                   <dd className="mt-1.5 text-sm leading-relaxed text-ink-secondary">
@@ -86,7 +85,7 @@ export function EngagementComparison() {
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-eyebrow font-semibold uppercase text-gold-800">
+                  <dt className="text-xs font-semibold text-gold-800">
                     Based on
                   </dt>
                   <dd className="mt-1.5 text-sm leading-relaxed text-ink-secondary">
@@ -259,7 +258,6 @@ export function ReceivablesAgingSection() {
         <div className="grid gap-10 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:items-start lg:gap-16">
           <SectionHeading
             id="aging-heading"
-            eyebrow="Working Capital"
             title="Where the Money Owed to You Is Sitting"
             lead="A receivables total on its own says nothing. Split by age it tells you which invoices need a call this week and which are on track."
           />
@@ -313,7 +311,6 @@ export function RevenueForecastSection() {
         <div className="grid gap-10 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:items-start lg:gap-16">
           <SectionHeading
             id="forecast-heading"
-            eyebrow="Looking Forward"
             title="A Forecast Built From the Same Numbers"
             lead="Projections are only useful when they run off the actuals rather than off a separate spreadsheet nobody reconciles. Where the estimate starts is always marked."
           />

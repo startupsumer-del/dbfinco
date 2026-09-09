@@ -5,7 +5,6 @@ import { useEffect } from "react";
 
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { mailtoSupport, site, telHref } from "@/config/site";
 
 /**
@@ -21,7 +20,6 @@ export default function Error({ reset }: { error: Error; reset: () => void }) {
     <section className="bg-white">
       <Container className="py-16 sm:py-20 lg:py-24">
         <div className="max-w-2xl">
-          <Eyebrow className="mb-4">Something went wrong</Eyebrow>
           <h1 className="text-h1 text-ink-primary">
             This Page Didn&apos;t Load Correctly
           </h1>

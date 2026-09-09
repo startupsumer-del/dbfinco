@@ -19,7 +19,7 @@ import { logoSrc, platformLogos } from "@/content/logos";
 export function PlatformStrip() {
   return (
     <Reveal className="mt-12 rounded-xl border border-line bg-surface-subtle p-6 sm:p-7 lg:mt-16">
-      <p className="text-eyebrow font-semibold uppercase text-gold-800">
+      <p className="text-xs font-semibold text-gold-800">
         Works in the Ledger You Already Run
       </p>
 

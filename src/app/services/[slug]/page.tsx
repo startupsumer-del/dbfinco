@@ -101,7 +101,6 @@ function extraSectionFor(slug: string) {
     case "risk-advisory":
       return (
         <RiskProfileSection
-          eyebrow="The Register"
           title="A Risk Register You Can Actually Work Through"
           lead="A list of everything that could go wrong is not useful. A list rated by severity, with an owner and a status against each item, is."
           panelTitle="Open risks"

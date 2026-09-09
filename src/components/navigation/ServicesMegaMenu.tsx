@@ -35,7 +35,7 @@ export function ServicesMegaMenu({
           <div className="grid gap-x-8 gap-y-8 p-7 xl:grid-cols-4 lg:grid-cols-2 xl:p-9">
             {servicesMenu.map((column) => (
               <div key={column.heading}>
-                <p className="text-eyebrow mb-4 font-semibold uppercase text-gold-800">
+                <p className="mb-4 text-xs font-semibold text-gold-800">
                   {column.heading}
                 </p>
                 <ul className="space-y-1">

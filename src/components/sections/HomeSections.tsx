@@ -20,7 +20,6 @@ import { TrendChart } from "@/components/charts/TrendChart";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Container } from "@/components/ui/Container";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import {
@@ -55,7 +54,7 @@ export function CapabilityStrip() {
     <section className="border-y border-line bg-surface-subtle py-6">
       <Container>
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-8">
-          <p className="text-eyebrow shrink-0 font-semibold uppercase text-ink-muted">
+          <p className="shrink-0 text-xs font-semibold text-ink-muted">
             What we handle
           </p>
           <ul className="flex flex-wrap gap-x-2 gap-y-2">
@@ -112,7 +111,6 @@ export function ProblemSection() {
       <Container>
         <SectionHeading
           id="problem-heading"
-          eyebrow="Why This Matters"
           title="Most Businesses Have a Clarity Problem, Not a Data Problem"
           lead="The information already exists — in the bank feed, the invoicing system, the payment processor. What is missing is someone making it accurate, timely and readable."
         />
@@ -148,7 +146,6 @@ export function ReportingSection() {
       <Container>
         <SectionHeading
           id="reporting-heading"
-          eyebrow="Financial Reporting"
           title="Reporting That Shows What Changed, and Why"
           lead="Every engagement includes a reporting pack built from your own books — performance, position and cash, with written commentary."
         />
@@ -294,9 +291,6 @@ export function MerchantTeaser() {
             section past the viewport at 320px. */}
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
           <div className="min-w-0">
-            <Eyebrow tone="inverse" className="mb-4">
-              Merchant Services
-            </Eyebrow>
             <h2 id="merchant-heading" className="text-h2 text-white">
               Accept Payments, and Know What Landed in the Bank
             </h2>
@@ -387,7 +381,6 @@ export function IndustriesSection() {
       <Container>
         <SectionHeading
           id="industries-heading"
-          eyebrow="Who We Work With"
           title="Built for Businesses That Need a Finance Function"
           lead="We work with small and medium-sized businesses across the United States, and with international founders operating US entities."
         />

@@ -66,8 +66,15 @@ export const contactSchema = z.object({
     .trim()
     .min(10, "Please tell us a little more — at least 10 characters.")
     .max(4000, "Message must be 4000 characters or fewer."),
-  /** Honeypot. Real users never see this field, so it must stay empty. */
-  website: z.string().max(0).optional().or(z.literal("")),
+  /**
+   * Honeypot. Real users never see this field, so anything in it came from a
+   * bot — but the schema must *accept* it rather than reject it. With a
+   * `max(0)` here the request failed validation and came back as a 400 naming
+   * `website`, which tells the bot exactly which field caught it and left the
+   * route's silent-discard branch unreachable. Accepting it is what lets the
+   * route answer as though the message were sent while sending nothing.
+   */
+  website: z.string().max(200).optional().or(z.literal("")),
 });
 
 export type ContactInput = z.infer<typeof contactSchema>;

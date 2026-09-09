@@ -10,7 +10,6 @@ import { ServiceGrid } from "@/components/sections/ServiceGrid";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Container } from "@/components/ui/Container";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Section } from "@/components/ui/Section";
 import { cn } from "@/lib/cn";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -75,9 +74,6 @@ export function ServicePageTemplate({
             }
           >
             <div className="min-w-0">
-              <Eyebrow tone="inverse" className="mb-4">
-                {service.eyebrow}
-              </Eyebrow>
               <h1 className="text-display-2 text-white">{service.headline}</h1>
               <p className="measure mt-5 text-lead text-purple-100">
                 {service.intro}
@@ -119,7 +115,6 @@ export function ServicePageTemplate({
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:gap-16">
             <SectionHeading
               id="problem-heading"
-              eyebrow="The Problem"
               title={service.problem.heading}
               lead={service.problem.body}
             />
@@ -148,7 +143,6 @@ export function ServicePageTemplate({
         <Container>
           <SectionHeading
             id="capabilities-heading"
-            eyebrow="What’s Included"
             title={`What ${service.name} Covers`}
           />
           <ul className="mt-10 grid gap-5 sm:grid-cols-2 sm:gap-6 lg:mt-14 lg:grid-cols-3">
@@ -181,7 +175,6 @@ export function ServicePageTemplate({
           <div className="grid gap-10 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:gap-16">
             <SectionHeading
               id="deliverables-heading"
-              eyebrow="What You Receive"
               title="Exactly What Gets Handed Over"
               lead="Engagements are defined by their outputs, so you can tell whether you are getting what you agreed."
             />
@@ -191,7 +184,7 @@ export function ServicePageTemplate({
                   key={group.title}
                   className="rounded-xl border border-line bg-white p-6"
                 >
-                  <h3 className="text-eyebrow font-semibold uppercase text-gold-800">
+                  <h3 className="text-xs font-semibold text-gold-800">
                     {group.title}
                   </h3>
                   <ul className="mt-5 space-y-3">
@@ -219,7 +212,6 @@ export function ServicePageTemplate({
         <Container>
           <SectionHeading
             id="process-heading"
-            eyebrow="How It Works"
             title={service.process.heading}
             lead={service.process.intro}
             align="center"
@@ -236,7 +228,6 @@ export function ServicePageTemplate({
           <Container>
             <SectionHeading
               id="related-heading"
-              eyebrow="Related Services"
               title="Often Needed Alongside This"
               level={2}
             />
@@ -322,7 +313,7 @@ export function HeroDeliverables({ items }: { items: readonly string[] }) {
 
   return (
     <div className="mt-9 border-t border-white/15 pt-7">
-      <p className="text-eyebrow font-semibold uppercase tracking-[0.12em] text-gold-300">
+      <p className="text-xs font-semibold text-gold-300">
         What You Receive
       </p>
       <ul className="mt-4 grid gap-x-8 gap-y-2.5 sm:grid-cols-2">

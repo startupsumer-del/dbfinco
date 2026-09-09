@@ -2,7 +2,6 @@ import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { bookingUrl, mailtoEnquiry, site, telHref } from "@/config/site";
 
 /**
@@ -12,11 +11,9 @@ import { bookingUrl, mailtoEnquiry, site, telHref } from "@/config/site";
 export function CtaSection({
   heading,
   body,
-  eyebrow = "Get Started",
 }: {
   heading: string;
   body: string;
-  eyebrow?: string;
 }) {
   return (
     <section className="bg-white py-12 sm:py-16 lg:py-22">
@@ -37,9 +34,6 @@ export function CtaSection({
 
           <div className="relative grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,20rem)] lg:items-center lg:gap-16">
             <div className="min-w-0">
-            <Eyebrow tone="inverse" className="mb-4">
-              {eyebrow}
-            </Eyebrow>
             <h2 className="text-h2 text-white">{heading}</h2>
             <p className="measure mt-5 text-lead text-purple-100">{body}</p>
 
@@ -64,7 +58,7 @@ export function CtaSection({
             {/* Direct contact routes — the panel would otherwise be dead space,
                 and these are the details a ready visitor actually wants. */}
             <div className="min-w-0 rounded-xl border border-white/12 bg-white/[0.06] p-6 backdrop-blur-sm">
-              <p className="text-eyebrow font-semibold uppercase text-gold-300">
+              <p className="text-xs font-semibold text-gold-300">
                 Or Reach Us Directly
               </p>
               <ul className="mt-5 space-y-4 text-sm">

@@ -43,7 +43,6 @@ export function EngagementOutput() {
         <div className="grid gap-10 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:items-start lg:gap-16">
           <SectionHeading
             id="output-heading"
-            eyebrow="What You Receive"
             title="The Same Pack, Every Period"
             lead="Whatever the engagement, the output is the same shape: statements that reconcile, a comparison against the plan, and a written note on what moved and why."
           />

@@ -69,7 +69,6 @@ export function WhyDbFinco() {
           <div className="order-1 min-w-0 lg:order-2">
             <SectionHeading
               id="why-heading"
-              eyebrow="Why DB FinCo"
               title="The Difference Is in How the Work Is Run"
               lead="We would rather be judged on how an engagement actually feels month to month than on claims nobody can verify."
             />

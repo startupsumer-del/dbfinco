@@ -23,7 +23,7 @@ hue rather than an approximation. See [`logo-restoration.md`](./logo-restoration
 | `--color-purple-600` | `#6e3891` | Icon accents |
 | `--color-purple-500` | `#8a4db2` | Chart series 3 |
 | `--color-purple-400` | `#a579c3` | Chart series 5 |
-| `--color-purple-300` | `#bfa1d3` | Chart series 6, inverse eyebrow |
+| `--color-purple-300` | `#bfa1d3` | Chart series 6 |
 | `--color-purple-200` | `#dac9e6` | Inverse tagline, card hover border |
 | `--color-purple-100` | `#ede4f4` | Soft borders on tinted surfaces |
 | `--color-purple-50` | `#f8f3fb` | Icon chips, hover fills |
@@ -38,10 +38,10 @@ darkest through `#f5e99e` at its lightest, hue 36°.
 | `--color-gold-900` | `#593d15` | Reserved |
 | `--color-gold-800` | `#704e1c` | **All gold text** — 7.5:1 on white |
 | `--color-gold-700` | `#866027` | Wordmark gradient mid, non-text accents |
-| `--color-gold-600` | `#997033` | Eyebrow rules, bullets, chart series 2 |
+| `--color-gold-600` | `#997033` | Bullets, chart series 2 |
 | `--color-gold-500` | `#b4833c` | Gold button fill |
 | `--color-gold-400` | `#c99a54` | Accents on violet grounds |
-| `--color-gold-300` | `#d9b27b` | Inverse eyebrow, icons on violet |
+| `--color-gold-300` | `#d9b27b` | Labels and icons on violet |
 | `--color-gold-200` | `#e9cea7` | Disclaimer panel border |
 | `--color-gold-100` | `#f5e5cf` | Tinted chips |
 | `--color-gold-50` | `#fcf6ee` | Warm surface, disclaimer panel |
@@ -119,7 +119,6 @@ breakpoints.
 | `text-h3` | 1.3 → 1.6rem | 1.28 | −0.014em |
 | `text-h4` | 1.1 → 1.25rem | 1.36 | −0.01em |
 | `text-lead` | 1.0625 → 1.1875rem | 1.62 | — |
-| `text-eyebrow` | 0.75rem | 1.2 | +0.11em |
 
 **Measure.** `.measure` caps prose at `68ch` and `.measure-tight` at `56ch`,
 keeping lines in the 55–75 character range. Headings use `text-wrap: balance`

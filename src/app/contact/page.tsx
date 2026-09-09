@@ -19,7 +19,6 @@ import { JsonLd } from "@/components/layout/JsonLd";
 import { Breadcrumbs } from "@/components/sections/ServicePageTemplate";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Section } from "@/components/ui/Section";
 import {
   directionsUrl,
@@ -52,7 +51,6 @@ export default function ContactPage() {
           <Breadcrumbs crumbs={crumbs} />
           <div className="mt-7 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,20rem)] lg:items-start lg:gap-16">
             <div className="min-w-0">
-              <Eyebrow className="mb-4">Contact</Eyebrow>
               <h1 className="text-display-2 text-ink-primary">
                 Let&apos;s Talk About Your Finances
               </h1>
@@ -83,7 +81,7 @@ export default function ContactPage() {
                   to a firm, and it fills the band the portrait beside it would
                   otherwise leave under the buttons. */}
               <div className="mt-9 border-t border-line pt-7">
-                <p className="text-eyebrow font-semibold uppercase tracking-[0.12em] text-gold-800">
+                <p className="text-xs font-semibold text-gold-800">
                   What to Expect
                 </p>
                 <ul className="mt-4 grid gap-x-8 gap-y-2.5 sm:grid-cols-2">
@@ -151,7 +149,7 @@ export default function ContactPage() {
 
                 <ul className="mt-7 space-y-6">
                   <li>
-                    <p className="text-eyebrow font-semibold uppercase text-gold-800">
+                    <p className="text-xs font-semibold text-gold-800">
                       Call us
                     </p>
                     <a
@@ -165,7 +163,7 @@ export default function ContactPage() {
                   </li>
 
                   <li>
-                    <p className="text-eyebrow font-semibold uppercase text-gold-800">
+                    <p className="text-xs font-semibold text-gold-800">
                       Email us
                     </p>
                     <div className="mt-2 space-y-1">
@@ -189,7 +187,7 @@ export default function ContactPage() {
                   </li>
 
                   <li>
-                    <p className="text-eyebrow font-semibold uppercase text-gold-800">
+                    <p className="text-xs font-semibold text-gold-800">
                       {address.label}
                     </p>
                     <address className="mt-2 not-italic text-[0.9375rem] leading-relaxed text-ink-secondary">
@@ -212,7 +210,7 @@ export default function ContactPage() {
                   </li>
 
                   <li>
-                    <p className="text-eyebrow font-semibold uppercase text-gold-800">
+                    <p className="text-xs font-semibold text-gold-800">
                       Follow us
                     </p>
                     <div className="mt-3 flex gap-3">

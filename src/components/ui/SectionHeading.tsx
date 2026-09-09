@@ -1,15 +1,17 @@
 import type { ReactNode } from "react";
 
 import { Reveal } from "@/components/motion/Reveal";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { cn } from "@/lib/cn";
 
 /**
- * Standard section header: eyebrow, heading, optional lead paragraph.
- * Centred variants keep a tighter measure so lines never run too long.
+ * Standard section header: heading and an optional lead paragraph.
+ *
+ * There is no kicker above the heading. A small uppercase label there repeated
+ * in shorthand what the heading said in full, and every section opening with
+ * one made the page read as a list of labels rather than a sequence of
+ * statements. Centred variants keep a tighter measure so lines never run long.
  */
 export function SectionHeading({
-  eyebrow,
   title,
   lead,
   align = "left",
@@ -18,7 +20,6 @@ export function SectionHeading({
   className,
   level = 2,
 }: {
-  eyebrow?: string;
   title: ReactNode;
   lead?: ReactNode;
   align?: "left" | "center";
@@ -34,14 +35,6 @@ export function SectionHeading({
     <Reveal
       className={cn("max-w-3xl", centered && "mx-auto text-center", className)}
     >
-      {eyebrow ? (
-        <Eyebrow
-          tone={tone === "dark" ? "inverse" : "purple"}
-          className="mb-3.5"
-        >
-          {eyebrow}
-        </Eyebrow>
-      ) : null}
       <Heading
         id={id}
         className={cn(

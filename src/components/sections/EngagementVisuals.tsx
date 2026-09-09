@@ -36,13 +36,11 @@ import { ILLUSTRATIVE_NOTE } from "@/content/demo-financials";
 /** Shared shell: a heading beside a single reporting panel. */
 function VisualSection({
   id,
-  eyebrow,
   title,
   lead,
   children,
 }: {
   id: string;
-  eyebrow: string;
   title: string;
   lead: string;
   children: React.ReactNode;
@@ -55,7 +53,7 @@ function VisualSection({
             empty space above it, so the first thing in the left column is
             nothing at all. `tests/layout.spec.ts` measures this everywhere. */}
         <div className="grid gap-10 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:items-start lg:gap-16">
-          <SectionHeading id={id} eyebrow={eyebrow} title={title} lead={lead} />
+          <SectionHeading id={id} title={title} lead={lead} />
           {children}
         </div>
       </Container>
@@ -72,7 +70,6 @@ export function BookkeepingVolumeSection() {
   return (
     <VisualSection
       id="volume-heading"
-      eyebrow="The Month's Work"
       title="What a Month of Bookkeeping Actually Moves"
       lead="Volume is the part nobody sees until it slips. Every transaction is categorised, matched and reconciled before the close is signed off."
     >
@@ -130,7 +127,6 @@ export function FilingActivitySection() {
   return (
     <VisualSection
       id="filings-heading"
-      eyebrow="The Year's Filings"
       title="More Deadlines Than Anyone Keeps in Their Head"
       lead="Business returns are only part of it. Sales tax, payroll-related filings and information returns each have their own calendar, and each one is a penalty if it slips."
     >
@@ -182,7 +178,6 @@ export function AuditProgressSection() {
   return (
     <VisualSection
       id="audit-progress-heading"
-      eyebrow="Where It Stands"
       title="You Should Never Have to Ask How the Audit Is Going"
       lead="An engagement runs in phases, and each one either is or is not finished. Status is reported against the plan rather than summarised as a feeling about it."
     >
@@ -211,12 +206,10 @@ export function AuditProgressSection() {
  * its framing from the page rather than duplicating the panel.
  */
 export function RiskProfileSection({
-  eyebrow,
   title,
   lead,
   panelTitle,
 }: {
-  eyebrow: string;
   title: string;
   lead: string;
   panelTitle: string;
@@ -227,7 +220,7 @@ export function RiskProfileSection({
     .reduce((sum, item) => sum + item.count, 0);
 
   return (
-    <VisualSection id="risk-profile-heading" eyebrow={eyebrow} title={title} lead={lead}>
+    <VisualSection id="risk-profile-heading" title={title} lead={lead}>
       <div className="grid gap-5 xl:grid-cols-2 xl:items-start">
         <FinancePanel title={panelTitle} meta="By severity">
           <div className="grid grid-cols-2 gap-3">

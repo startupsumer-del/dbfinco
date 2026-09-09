@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 import { Container } from "@/components/ui/Container";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { logoSrc, platformLogos, type BrandLogo } from "@/content/logos";
 
 /**
@@ -56,7 +55,6 @@ export function PlatformMarquee() {
     >
       <Container>
         <div className="text-center">
-          <Eyebrow className="mb-3">Accounting &amp; Business Tools</Eyebrow>
           <h2 id="platforms-heading" className="text-h3 text-ink-primary">
             Works With the Tools You Already Use
           </h2>

@@ -29,7 +29,7 @@ export function LogoGrid({
 }) {
   return (
     <div className={cn("min-w-0", className)}>
-      <p className="text-eyebrow font-semibold uppercase text-gold-800">
+      <p className="text-xs font-semibold text-gold-800">
         {label}
       </p>
       <ul

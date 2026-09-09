@@ -94,7 +94,7 @@ src/
 │   │                   StoryVisuals, ServiceVisuals, EngagementVisuals,
 │   │                   EngagementOutput
 │   └── ui/             Button, Card, Container, Section, Accordion,
-│                       SectionHeading, Eyebrow, Badge, Prose
+│                       SectionHeading, Badge, Prose
 │
 ├── config/
 │   ├── site.ts         ★ Single source of truth for every business fact

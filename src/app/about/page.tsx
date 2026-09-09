@@ -24,7 +24,6 @@ import {
   PortraitScene,
 } from "@/components/imagery/PortraitScene";
 import { Container } from "@/components/ui/Container";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { coreServices } from "@/content/services";
@@ -101,7 +100,6 @@ export default function AboutPage() {
 
           <div className="mt-7 grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,28rem)] lg:items-start lg:gap-16">
             <div>
-              <Eyebrow className="mb-4">About DB FinCo</Eyebrow>
               <h1 className="text-display-2 text-ink-primary">
                 A Firm of Accountants and Business Advisors
               </h1>
@@ -158,7 +156,6 @@ export default function AboutPage() {
         <Container>
           <SectionHeading
             id="principles-heading"
-            eyebrow="What We Hold To"
             title="Four Things That Shape How We Work"
             lead="We would rather be specific about how we operate than make claims about ourselves that nobody can check."
           />
@@ -186,7 +183,6 @@ export default function AboutPage() {
         <Container>
           <SectionHeading
             id="howwework-heading"
-            eyebrow="How We Work"
             title="The Same Approach on Every Engagement"
             align="center"
           />
@@ -202,7 +198,6 @@ export default function AboutPage() {
         <Container>
           <SectionHeading
             id="about-services-heading"
-            eyebrow="What We Offer"
             title="The Full Range of Services"
           />
           <ServiceGrid services={coreServices} className="mt-10" />

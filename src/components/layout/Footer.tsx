@@ -127,7 +127,7 @@ export function Footer() {
           >
             {footerNav.map((group) => (
               <div key={group.heading}>
-                <h2 className="text-eyebrow font-semibold uppercase text-gold-400">
+                <h2 className="text-xs font-semibold text-gold-400">
                   {group.heading}
                 </h2>
                 <ul className="mt-5 space-y-3">

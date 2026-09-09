@@ -3,7 +3,6 @@ import { ArrowRight, Phone } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { primaryNav } from "@/config/navigation";
 import { site, telHref } from "@/config/site";
 
@@ -21,7 +20,6 @@ export default function NotFound() {
 
       <Container className="py-16 sm:py-20 lg:py-24">
         <div className="max-w-2xl">
-          <Eyebrow className="mb-4">Error 404</Eyebrow>
           <h1 className="text-display-2 text-ink-primary">
             We Couldn&apos;t Find That Page
           </h1>
@@ -48,7 +46,7 @@ export default function NotFound() {
           </div>
 
           <nav aria-label="Helpful links" className="mt-12 border-t border-line pt-8">
-            <p className="text-eyebrow font-semibold uppercase text-gold-800">
+            <p className="text-xs font-semibold text-gold-800">
               Popular pages
             </p>
             <ul className="mt-5 flex flex-wrap gap-2">

@@ -3,7 +3,6 @@ import type { ReactNode } from "react";
 
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Section } from "@/components/ui/Section";
 import { cn } from "@/lib/cn";
 
@@ -13,7 +12,6 @@ import { cn } from "@/lib/cn";
  * so the reading order stays logical.
  */
 export function FeatureStory({
-  eyebrow,
   heading,
   body,
   points,
@@ -24,7 +22,6 @@ export function FeatureStory({
   tone = "white",
   id,
 }: {
-  eyebrow: string;
   heading: string;
   body: string;
   points: string[];
@@ -40,13 +37,16 @@ export function FeatureStory({
   return (
     <Section tone={tone} id={id} ariaLabelledBy={headingId}>
       <Container>
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
+        {/* Top-aligned. With a kicker above it the copy column was the taller
+            of the two and centring was harmless; without one it is the
+            shorter, and centring pushed the heading 38px down the page —
+            which is the hole `tests/layout.spec.ts` exists to catch. */}
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-start lg:gap-16">
           {/* `min-w-0` stops a grid item's min-content size from inflating the
               track. Without it a nowrap element deep inside a column (a
               truncating row in one of the visuals) widens the whole track and
               pushes the page 1px past the viewport at 360px. */}
           <div className={cn("min-w-0", reverse && "lg:order-2")}>
-            <Eyebrow className="mb-4">{eyebrow}</Eyebrow>
             <h2 id={headingId} className="text-h2 text-ink-primary">
               {heading}
             </h2>

@@ -2,9 +2,48 @@ import { NextResponse } from "next/server";
 
 import { contactSchema, type ContactFieldErrors } from "@/lib/contact-schema";
 import { readOptionalEnv } from "@/lib/env";
+import { clientKey, createRateLimiter } from "@/lib/rate-limit";
 import { site } from "@/config/site";
 
 export const runtime = "nodejs";
+
+/**
+ * Two budgets, because the two things being protected are different.
+ *
+ * `sendLimiter` guards the paid mail API and the inbox behind it, so it counts
+ * only submissions that are actually about to be delivered. Five per address
+ * per ten minutes is generous for a person — nobody sends a sixth message
+ * about their accounts inside ten minutes.
+ *
+ * `requestLimiter` guards the endpoint itself against raw volume, and counts
+ * everything. It is deliberately looser: a malformed request costs nothing to
+ * refuse, and counting rejects against the send budget would let one bad
+ * script lock out a real enquiry from the same office.
+ *
+ * See `lib/rate-limit.ts` for what this does and does not protect.
+ */
+const sendLimiter = createRateLimiter({ limit: 5, windowMs: 10 * 60 * 1000 });
+const requestLimiter = createRateLimiter({ limit: 40, windowMs: 10 * 60 * 1000 });
+
+const tooManyMessage =
+  "That is more messages than we can accept from one place at once. " +
+  "Please call or email us directly and we will pick it up.";
+
+function tooMany(retryAfterSeconds: number) {
+  return NextResponse.json(
+    { ok: false, message: tooManyMessage },
+    { status: 429, headers: { "Retry-After": String(retryAfterSeconds) } },
+  );
+}
+
+/**
+ * The largest body worth reading. Every field is capped by the schema and the
+ * longest of them is a 4,000-character message, so a valid submission is a
+ * few kilobytes. The cap is checked before parsing, because `request.json()`
+ * would otherwise pull a multi-megabyte body into memory on its way to being
+ * rejected.
+ */
+const MAX_BODY_BYTES = 32 * 1024;
 
 /** Escapes text before it is placed inside the HTML email body. */
 function escapeHtml(value: string): string {
@@ -24,10 +63,33 @@ function escapeHtml(value: string): string {
  * routes instead of a false success message.
  */
 export async function POST(request: Request) {
+  const caller = clientKey(request.headers);
+
+  const volume = requestLimiter.check(caller);
+  if (!volume.allowed) return tooMany(volume.retryAfterSeconds);
+
+  // `content-length` can be absent or wrong, so the body is measured after
+  // reading as well. Checking the header first is what avoids reading a large
+  // body at all in the common case.
+  const declaredLength = Number(request.headers.get("content-length") ?? 0);
+  if (declaredLength > MAX_BODY_BYTES) {
+    return NextResponse.json(
+      { ok: false, message: "That message is too large to accept." },
+      { status: 413 },
+    );
+  }
+
   let payload: unknown;
 
   try {
-    payload = await request.json();
+    const body = await request.text();
+    if (body.length > MAX_BODY_BYTES) {
+      return NextResponse.json(
+        { ok: false, message: "That message is too large to accept." },
+        { status: 413 },
+      );
+    }
+    payload = JSON.parse(body) as unknown;
   } catch {
     return NextResponse.json(
       { ok: false, message: "Invalid request." },
@@ -53,10 +115,15 @@ export async function POST(request: Request) {
 
   const data = parsed.data;
 
-  // Honeypot tripped — respond as success so bots learn nothing, but send nothing.
+  // Honeypot tripped — respond as success so bots learn nothing, but send
+  // nothing, and do not spend the send budget on it either.
   if (data.website) {
     return NextResponse.json({ ok: true, status: "sent" });
   }
+
+  // Past validation, so this one would cost something to deliver.
+  const send = sendLimiter.check(caller);
+  if (!send.allowed) return tooMany(send.retryAfterSeconds);
 
   // Read through `readOptionalEnv` so a variable set to an empty string or to
   // whitespace counts as "not configured" — the same trap that `??` alone

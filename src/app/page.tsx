@@ -59,7 +59,6 @@ export default function HomePage() {
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
             <SectionHeading
               id="services-heading"
-              eyebrow="What We Do"
               title="A Complete Finance Function, Delivered by One Firm"
               lead="Each service stands on its own, and they work better together — the tax return is prepared from books we keep."
             />
@@ -86,7 +85,6 @@ export default function HomePage() {
             <div className="min-w-0">
               <SectionHeading
                 id="how-heading"
-                eyebrow="How It Works"
                 title="Four Steps to a Finance Function That Runs"
                 lead="Nothing starts until the scope is agreed in writing. After that, the work settles into a monthly rhythm."
               />
@@ -105,7 +103,6 @@ export default function HomePage() {
       <PricingSection />
 
       <FeatureStory
-        eyebrow="Bookkeeping"
         heading="Books That Close on the Date We Agreed"
         body="Transactions categorized against a documented policy, every account reconciled, and a close checklist completed before the period is called done."
         points={[
@@ -123,7 +120,6 @@ export default function HomePage() {
       />
 
       <FeatureStory
-        eyebrow="Tax &amp; Compliance"
         heading="Filing Deadlines That Never Arrive as a Surprise"
         body="We map every federal, state and local obligation, build the calendar around it, and prepare returns from books already closed."
         points={[
@@ -142,7 +138,6 @@ export default function HomePage() {
       />
 
       <FeatureStory
-        eyebrow="Advisory &amp; Analytics"
         heading="Analysis That Turns Reporting Into a Decision"
         body="Margin analysis, cash forecasting and risk review — built from your own data, with the assumptions open to challenge."
         points={[

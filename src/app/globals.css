@@ -92,9 +92,6 @@
   --text-h4--letter-spacing: -0.01em;
   --text-lead: clamp(1.0625rem, 1.02rem + 0.2vw, 1.125rem);
   --text-lead--line-height: 1.62;
-  --text-eyebrow: 0.75rem;
-  --text-eyebrow--line-height: 1.2;
-  --text-eyebrow--letter-spacing: 0.11em;
 
   /* --- Radii --------------------------------------------------------- */
   --radius-xs: 0.25rem;
