@@ -76,14 +76,23 @@ src/
 │
 ├── components/
 │   ├── brand/          Logo, LogoMark, social glyphs
-│   ├── charts/         TrendChart, BarPairChart, DonutChart, Sparkline,
-│   │                   KpiTile, ReportingPreview
+│   ├── charts/         TrendChart, BarChart, BarPairChart, ForecastChart,
+│   │                   DonutChart, Sparkline, KpiTile, ReportingPreview
+│   ├── finance/        FinanceUI — panel, metric tile, report row, status
+│   │                   row, progress track: the kit the charts sit in
 │   ├── forms/          ContactForm
+│   ├── imagery/        PortraitScene (frames, float cards), ServicePortrait
 │   ├── layout/         Footer, LegalPage, JsonLd
-│   ├── merchant/       PaymentVisuals
+│   ├── merchant/       PaymentVisuals, PaymentJourney, MerchantReporting,
+│   │                   LogoGrid
+│   ├── motion/         Reveal — one shared observer for the whole page
 │   ├── navigation/     Header, ServicesMegaMenu, MobileNav
-│   ├── sections/       Hero, ServiceGrid, ProcessSteps, FaqSection,
-│   │                   FeatureStory, CtaSection, ServicePageTemplate, …
+│   ├── sections/       Hero, HomeHeroVisual, HomeSections, ServiceGrid,
+│   │                   ServicePageTemplate, PageBanner, ProcessSteps,
+│   │                   PricingSection, PlatformMarquee, PlatformStrip,
+│   │                   FaqSection, FeatureStory, CtaSection, WhyDbFinco,
+│   │                   StoryVisuals, ServiceVisuals, EngagementVisuals,
+│   │                   EngagementOutput
 │   └── ui/             Button, Card, Container, Section, Accordion,
 │                       SectionHeading, Eyebrow, Badge, Prose
 │
@@ -94,13 +103,16 @@ src/
 ├── content/
 │   ├── services.ts             8 services with full page content
 │   ├── audit-services.ts       3 assurance engagements
+│   ├── pricing.ts              The three published packages
 │   ├── home-faqs.ts
-│   └── demo-financials.ts      Illustrative figures for the visuals
+│   ├── logos.ts                Third-party marks + their tuned heights
+│   ├── demo-financials.ts      Illustrative money figures for the visuals
+│   └── demo-engagements.ts     Illustrative counts of work for the visuals
 │
 ├── lib/                chart maths, SEO builders, hooks, validation schema
 └── types/              Content type definitions
 
-tests/                  responsive · smoke · accessibility
+tests/                  12 suites — see Testing below
 docs/                   Research, audits, design system, QA records
 ```
 
@@ -195,17 +207,90 @@ npm run test
 The Playwright config starts `next start` automatically, so the suite always
 runs against the production build rather than dev.
 
-**197 tests:**
+**337 tests.** Every suite runs against the production build.
 
 | Suite | Tests | Covers |
 |---|---|---|
-| `responsive.spec.ts` | 144 | Page-level horizontal overflow on 18 routes × 8 viewports (360→1920) |
-| `smoke.spec.ts` | 32 | Status codes, single `h1`, titles, meta descriptions, canonicals, console errors, dead links, mega-menu, mobile drawer, focus trap, scroll lock, form validation, accordion ARIA, sitemap, robots, OG image |
+| `responsive.spec.ts` | 162 | Page-level horizontal overflow on 18 routes × 9 viewports (320→1920) |
+| `imagery.spec.ts` | 42 | Portraits decode and stay decorative; float cards clear the face and hands; `sizes` fetches the right source; no reporting surface ever covers a portrait; hero columns end at the same height |
+| `smoke.spec.ts` | 34 | Status codes, single `h1`, console errors, dead links, mega-menu, mobile drawer, focus trap, scroll lock, form validation, accordion ARIA, brand assets |
+| `site-url.spec.ts` | 27 | Canonical host resolution in every deployment configuration |
 | `accessibility.spec.ts` | 21 | axe-core WCAG 2.1/2.2 A + AA on every route, plus the open drawer, open mega-menu and form error states |
+| `seo.spec.ts` | 20 | Title and description length, canonical, Open Graph and Twitter cards, document language, parseable structured data, and robots/sitemap/route agreement |
+| `motion.spec.ts` | 7 | Reveal never leaves content unreadable or displaced; charts hold their draw until on screen; reduced motion never strands a chart on frame one |
+| `pricing.spec.ts` | 7 | The three packages, their figures and their "from" framing |
+| `logos.spec.ts` | 6 | Every mark is served, labelled and shown once in the accessibility tree |
+| `mobile-nav.spec.ts` | 5 | The drawer's real geometry, not just its accessibility tree |
+| `layout.spec.ts` | 3 | No heading pushed down by the column beside it; the contact summary sticks |
+| `reporting.spec.ts` | 3 | Every page showing demo figures says so; the forecast is labelled an estimate; the payment journey names the provider as the party that settles |
 
 > **Browser note.** If Playwright cannot find its browser, set
 > `PLAYWRIGHT_CHROMIUM_PATH` to a Chromium binary; the config uses it when
 > present. Otherwise run `npm run test:install`.
+
+---
+
+## Maintaining the site
+
+Common changes, and the one file each needs.
+
+| To change | Edit | Notes |
+|---|---|---|
+| Phone, email, address, social links | `src/config/site.ts` | Nothing is duplicated anywhere; the header, footer, contact page, schema and sitemap all read from here |
+| Header, mega-menu or footer links | `src/config/navigation.ts` | |
+| A service page's copy, features, deliverables, process or FAQs | `src/content/services.ts` | One object per service; the page template renders whatever is there |
+| An assurance engagement | `src/content/audit-services.ts` | |
+| Package names, prices or included items | `src/content/pricing.ts` | `tests/pricing.spec.ts` asserts the figures, so it fails if a price changes without the test being updated with it |
+| Homepage FAQs | `src/content/home-faqs.ts` | Feeds both the accordion and the `FAQPage` structured data |
+| The illustrative figures in the charts | `src/content/demo-financials.ts`, `src/content/demo-engagements.ts` | Money in the first, counts of work in the second |
+| A third-party logo | `src/content/logos.ts` + a file in `public/logos/` | `displayHeight` is hand-tuned per mark so a circular badge and a wide wordmark carry the same visual weight |
+| Design tokens — colour, type scale, spacing, motion | `src/app/globals.css` | Tailwind 4 reads `@theme` directly; there is no `tailwind.config.js` |
+
+### Adding a service
+
+1. Add the object to `src/content/services.ts`. The route, metadata,
+   breadcrumb, `Service` schema and sitemap entry all derive from it.
+2. Assign it a portrait in `src/components/imagery/ServicePortrait.tsx`.
+3. Optionally give it a section of its own in
+   `src/app/services/[slug]/page.tsx` — `deliverableVisualFor` for a panel
+   above the deliverables, `extraSectionFor` for a full section between the
+   deliverables and the process.
+4. Add the route to `tests/routes.ts`. The responsive, accessibility and SEO
+   suites pick it up from there, so a new page is covered without writing a
+   test for it.
+
+### What the tests protect
+
+Several of these exist because the bug they catch already happened once and
+was invisible until it was measured:
+
+- **Nothing covers a face.** A reporting panel once floated over a portrait
+  and buried the person. The two are separate grid columns now, and
+  `imagery.spec.ts` measures their boxes at seven widths.
+- **No heading is pushed down.** `items-center` on a two-column section is
+  harmless until one column is a tall panel — the heading then floats to the
+  middle and the column opens with 200px of nothing. `layout.spec.ts` measures
+  every two-column grid on every route.
+- **Charts wait to be seen.** A chart's animation starts when its element is
+  parsed, so one halfway down the page had finished drawing before anyone
+  reached it. `motion.spec.ts` holds both the gate and the failure mode the
+  gate introduces under reduced motion.
+- **Every figure is labelled illustrative.** `reporting.spec.ts` fails if a
+  page shows demo figures without saying so.
+- **Social previews exist.** Declaring `openGraph` on a page silently drops
+  the inherited card image. `seo.spec.ts` checks it on all eighteen routes.
+
+### Repository files worth knowing about
+
+- `AGENTS.md` / `CLAUDE.md` — instructions for AI coding tools, written by
+  `next dev`. They affect no runtime behaviour and can be deleted if the team
+  does not use those tools.
+- `assets/logo-source/` — the original supplied artwork, kept outside
+  `public/` so it is never served.
+- `docs/` — a historical record of how the site was built: the audit of the
+  previous site, the content migration matrix, the design system and the QA
+  runs. The design system and asset inventory stay current; the audits and
+  migration documents describe the build and are not maintained.
 
 ---
 
@@ -286,6 +371,10 @@ failing contrast on their own tinted backgrounds — see
 ---
 
 ## Documentation
+
+These are the record of how the site was built. `design-system.md` and
+`assets.md` stay current; the rest describe decisions made during the build
+and are not updated as the site changes.
 
 | Document | Contents |
 |---|---|
