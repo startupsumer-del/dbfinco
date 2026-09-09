@@ -11,8 +11,10 @@ import {
 import { PortraitScene } from "@/components/imagery/PortraitScene";
 import {
   ILLUSTRATIVE_NOTE,
+  cashBalanceSeries,
   kpis,
   months,
+  netIncomeSeries,
   revenueSeries,
 } from "@/content/demo-financials";
 import { formatCompactCurrency } from "@/lib/chart";
@@ -81,10 +83,13 @@ export function HomeHeroVisual() {
               value={formatCompactCurrency(kpis.netIncome)}
               delta="+4.1%"
               tone="positive"
+              series={netIncomeSeries}
             />
             <MetricTile
               label="Cash"
               value={formatCompactCurrency(kpis.cashBalance)}
+              series={cashBalanceSeries}
+              seriesColor="var(--color-viz-4)"
             />
           </div>
 

@@ -79,7 +79,11 @@ export function BookkeepingVolumeSection() {
       <div className="grid gap-5 xl:grid-cols-2 xl:items-start">
         <FinancePanel title="Transactions processed" meta="Last six months">
           <div className="grid grid-cols-2 gap-3">
-            <MetricTile label="This month" value={latest.toLocaleString("en-US")} />
+            <MetricTile
+              label="This month"
+              value={latest.toLocaleString("en-US")}
+              series={transactionsByMonth}
+            />
             <MetricTile
               label="Six-month total"
               value={total.toLocaleString("en-US")}
@@ -133,7 +137,12 @@ export function FilingActivitySection() {
       <div className="grid gap-5 xl:grid-cols-2 xl:items-start">
         <FinancePanel title="Filings prepared" meta="By quarter">
           <div className="grid grid-cols-2 gap-3">
-            <MetricTile label="Across the year" value={String(total)} />
+            <MetricTile
+              label="Across the year"
+              value={String(total)}
+              series={[...filingsByQuarter]}
+              seriesColor="var(--color-viz-2)"
+            />
             <MetricTile label="Busiest quarter" value="Q4" />
           </div>
 

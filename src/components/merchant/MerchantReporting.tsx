@@ -57,6 +57,7 @@ export function MerchantReporting() {
           <MetricTile
             label="Today's sales"
             value={formatCurrency(merchantKpis.todaysSales)}
+            series={paymentVolumeSeries}
           />
           <MetricTile
             label="Transactions"

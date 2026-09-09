@@ -1,6 +1,7 @@
 import type { LucideIcon } from "lucide-react";
 import { ArrowUpRight, ChevronRight } from "lucide-react";
 
+import { Sparkline } from "@/components/charts/Sparkline";
 import { Reveal } from "@/components/motion/Reveal";
 import { cn } from "@/lib/cn";
 
@@ -113,18 +114,27 @@ export function ReportRow({
   );
 }
 
-/** A headline number with its movement. */
+/** A headline number with its movement, and where it came from. */
 export function MetricTile({
   label,
   value,
   delta,
   tone = "neutral",
+  series,
+  seriesColor,
   className,
 }: {
   label: string;
   value: string;
   delta?: string;
   tone?: "neutral" | "positive";
+  /**
+   * The run of values behind the figure. A number on its own says where
+   * something is; the line under it says how it got there, which is most of
+   * what a reader wants from a metric and costs two lines of SVG.
+   */
+  series?: number[];
+  seriesColor?: string;
   className?: string;
 }) {
   return (
@@ -145,6 +155,13 @@ export function MetricTile({
           ) : null}
           {delta}
         </p>
+      ) : null}
+      {series ? (
+        <Sparkline
+          series={series}
+          stroke={seriesColor}
+          className="mt-2.5 h-5 w-full"
+        />
       ) : null}
     </div>
   );

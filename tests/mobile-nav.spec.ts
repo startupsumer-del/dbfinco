@@ -106,15 +106,32 @@ test("the accordion animates open rather than snapping", async ({ page }) => {
       ),
     );
 
-  await page.waitForTimeout(90);
-  const mid = await row();
+  // Read the contract from CSS rather than racing the clock. Sampling the row
+  // at a fixed 90ms and asserting it had not finished passed alone and failed
+  // under parallel load, because the sample can land after the transition ends
+  // when four workers are competing for the main thread. What the test is
+  // actually for — that the panel eases open instead of snapping — is stated
+  // in the transition itself, and that can be read without any timing window.
+  const transition = await page.evaluate(() => {
+    const style = getComputedStyle(
+      document.querySelector("#mobile-services-panel")!,
+    );
+    return {
+      property: style.transitionProperty,
+      duration: style.transitionDuration,
+    };
+  });
 
-  await page.waitForTimeout(500);
-  const settled = await row();
+  expect(transition.property, "the grid row is what animates").toContain(
+    "grid-template-rows",
+  );
+  const seconds = Math.max(
+    ...transition.duration.split(",").map((value) => parseFloat(value)),
+  );
+  expect(seconds, "a transition long enough to read as motion").toBeGreaterThanOrEqual(0.2);
 
-  expect(mid, "the panel should still be opening at 90ms").toBeGreaterThan(0);
-  expect(settled).toBeGreaterThan(mid);
-  expect(settled).toBeGreaterThan(400);
+  // And it does open, all the way.
+  await expect.poll(row, { message: "the panel should open" }).toBeGreaterThan(400);
 });
 
 test("every drawer link resolves", async ({ page, request }) => {

@@ -13,6 +13,7 @@ import {
   forecastSeries,
   ILLUSTRATIVE_NOTE,
   months,
+  receivablesSeries,
   revenueSeries,
 } from "@/content/demo-financials";
 import { formatCompactCurrency } from "@/lib/chart";
@@ -265,7 +266,12 @@ export function ReceivablesAgingSection() {
 
           <FinancePanel title="Accounts receivable" meta="By age">
             <div className="grid grid-cols-3 gap-2 sm:gap-3">
-              <MetricTile label="Total owed" value={formatCompactCurrency(total)} />
+              <MetricTile
+                label="Total owed"
+                value={formatCompactCurrency(total)}
+                series={receivablesSeries}
+                seriesColor="var(--color-viz-3)"
+              />
               <MetricTile label="Current" value={formatCompactCurrency(current)} />
               <MetricTile label="Past due" value={formatCompactCurrency(overdue)} />
             </div>
