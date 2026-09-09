@@ -25,7 +25,7 @@ const externalAudit: ServiceDetail = {
     "An external audit examines the evidence behind the figures and disclosures in your financial statements and results in an opinion on whether those statements are presented fairly, in conformity with the applicable financial reporting framework.",
   metaTitle: "External Audit Services",
   metaDescription:
-    "External audit for privately held companies: independent testing of accounting records and evidence, resulting in an opinion on the fair presentation of financial statements.",
+    "External audit for privately held companies: independent testing of records and evidence, resulting in an opinion on the financial statements.",
   problem: {
     heading: "When an Outside Party Needs More Than Your Word",
     body: "Lenders, investors, boards, franchisors and counterparties often need assurance that financial statements can be relied on. An external audit provides that through independent testing — and it also tends to surface control weaknesses that were invisible from inside the business.",
@@ -158,7 +158,7 @@ const internalAudit: ServiceDetail = {
     "Internal audit examines whether the controls and processes your business relies on are designed properly and operating as intended. It reports to management or the board, and its purpose is improvement rather than an opinion on financial statements.",
   metaTitle: "Internal Audit Services",
   metaDescription:
-    "Internal audit services for privately held companies: independent examination of internal controls, processes and compliance, reporting to management and the board.",
+    "Internal audit for privately held companies: independent examination of controls, processes and compliance, reported to management and the board.",
   problem: {
     heading: "Controls on Paper Are Not Controls in Practice",
     body: "Most businesses can describe their controls. Far fewer have tested whether those controls are being followed under real conditions — when someone is on leave, when a payment is urgent, when a workaround saves an afternoon.",
@@ -286,7 +286,7 @@ const agreedUponProcedures: ServiceDetail = {
     "In an agreed-upon procedures engagement, you and the other parties who will use the report define exactly which procedures we perform. We carry them out and report the findings factually. No opinion or assurance conclusion is expressed — the users draw their own conclusions from the findings.",
   metaTitle: "Agreed-Upon Procedures Engagements",
   metaDescription:
-    "Agreed-upon procedures engagements: specific procedures defined by the engaging parties, performed and reported as factual findings without an opinion or assurance conclusion.",
+    "Agreed-upon procedures: the specific procedures you define, performed and reported as factual findings, with no opinion or assurance conclusion expressed.",
   problem: {
     heading: "Sometimes an Audit Is More Than the Question Requires",
     body: "When the question is narrow — do these royalty calculations agree to the underlying sales records, does this grant expenditure match the approved budget, do these balances agree to the schedule — a full audit is an expensive way to answer it. Agreed-upon procedures target exactly the question asked.",

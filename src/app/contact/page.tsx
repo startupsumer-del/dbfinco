@@ -33,7 +33,7 @@ import { breadcrumbSchema, buildMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "Contact DB FinCo",
   description:
-    "Get in touch with DB FinCo. Call 718-559-7748, email us, or send a message and we’ll respond with a straight answer. Head office at 459 Columbus Ave, New York, NY 10024.",
+    "Get in touch with DB FinCo. Call 718-559-7748, email us, or send a message and we’ll come back with a straight answer. Head office on Columbus Ave, New York.",
   path: "/contact",
 });
 

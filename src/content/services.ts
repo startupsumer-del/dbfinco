@@ -306,7 +306,7 @@ const tax: ServiceDetail = {
     "Federal and state business tax preparation, sales tax filings, 1099 reporting and support when a notice arrives. Because we work from books we help maintain, filing season is a continuation of ordinary work rather than a scramble.",
   metaTitle: "Business Tax Services",
   metaDescription:
-    "Business tax preparation and compliance: federal and state returns, sales tax, 1099 information reporting and tax notice support for small and medium-sized businesses.",
+    "Business tax preparation and compliance for small and medium-sized businesses: federal and state returns, sales tax, 1099 reporting and notice support.",
   problem: {
     heading: "Deadline-Driven Tax Work Is Where Avoidable Problems Start",
     body: "When tax is treated as a once-a-year event, the preparer inherits whatever the books happen to look like in March. Elections get missed, filing obligations in new states go unnoticed, and there is no time left to do anything but file.",
@@ -976,7 +976,7 @@ const merchantServices: ServiceDetail = {
     "Support for taking card payments online and in person, ACH and bank transfers, payment links, invoicing and recurring billing — with the settlement, fee and chargeback data flowing back into your books where it belongs.",
   metaTitle: "Merchant Services & Payment Support",
   metaDescription:
-    "Merchant services support from DB FinCo: card acceptance, online and in-person payments, ACH transfers, payment links, invoicing, recurring billing and payment reporting.",
+    "Merchant services support: card acceptance, online and in-person payments, ACH transfers, payment links, invoicing and reconciled payment reporting.",
   problem: {
     heading: "Taking the Payment Is Only Half the Job",
     body: "Money arrives net of fees, in batches that do not match individual invoices, sometimes days after the sale, occasionally reversed. If none of that is reconciled properly, revenue is overstated, fees are invisible and the bank balance never quite agrees with the books.",

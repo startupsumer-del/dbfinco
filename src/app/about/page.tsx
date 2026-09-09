@@ -33,7 +33,7 @@ import { breadcrumbSchema, buildMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "About DB FinCo",
   description:
-    "DB FinCo is a firm of accountants and business advisors focused on improving the financial outlook of small and medium-sized businesses through accounting, tax, assurance and advisory services.",
+    "A firm of accountants and business advisors improving the financial outlook of small and medium-sized businesses across accounting, tax and advisory.",
   path: "/about",
 });
 

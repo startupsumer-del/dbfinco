@@ -17,6 +17,15 @@ export const site = {
     "DB FinCo is a firm of accountants and business advisors providing accounting, bookkeeping, tax, audit and assurance, consulting, risk and financial advisory, analytics and merchant services to small and medium-sized businesses.",
 
   /**
+   * The same positioning inside a search result's limit. `description` above
+   * is what structured data should carry — a knowledge panel has room for the
+   * full list — while a SERP snippet is cut at roughly 160 characters, and a
+   * sentence that ends mid-word reads as neglect.
+   */
+  metaDescription:
+    "Accounting, bookkeeping, tax, audit and assurance, consulting, risk advisory, analytics and merchant services for small and medium-sized businesses.",
+
+  /**
    * Public origin, used for canonical URLs, Open Graph URLs, the sitemap and
    * structured data. Overridden per-environment so previews get correct URLs.
    *

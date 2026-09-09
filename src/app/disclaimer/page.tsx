@@ -7,7 +7,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "Professional Services Disclaimer",
   description:
-    "Important information about the scope of DB FinCo’s accounting, tax, assurance, advisory and merchant services, and the limits of the information provided on this website.",
+    "The scope of DB FinCo’s accounting, tax, assurance, advisory and merchant services, and the limits of the information provided on this website.",
   path: "/disclaimer",
 });
 

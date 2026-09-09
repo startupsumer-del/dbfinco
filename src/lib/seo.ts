@@ -8,6 +8,22 @@ export function absoluteUrl(path = "/"): string {
 }
 
 /**
+ * The generated card at `app/opengraph-image.tsx`, as an absolute URL.
+ *
+ * Next inherits that file convention down the tree only while a page does not
+ * declare `openGraph` of its own. Every page here declares one — for the
+ * canonical URL and the title pattern — which silently dropped the inherited
+ * image, so every route but the home page was sharing with no preview at all.
+ * Naming it explicitly is what puts it back.
+ */
+const ogImage = {
+  url: absoluteUrl("/opengraph-image"),
+  width: 1200,
+  height: 630,
+  alt: `${site.name} — ${site.tagline}`,
+};
+
+/**
  * Builds page metadata with a consistent title pattern, canonical URL and
  * complete Open Graph / Twitter cards so Facebook shares render correctly.
  */
@@ -37,11 +53,13 @@ export function buildMetadata({
       description,
       url,
       locale: "en_US",
+      images: [ogImage],
     },
     twitter: {
       card: "summary_large_image",
       title: fullTitle,
       description,
+      images: [ogImage.url],
     },
   };
 }
