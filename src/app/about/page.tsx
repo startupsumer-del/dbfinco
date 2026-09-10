@@ -98,7 +98,7 @@ export default function AboutPage() {
         <Container className="pb-12 pt-8 sm:pb-16 sm:pt-10 lg:pb-22 lg:pt-12">
           <Breadcrumbs crumbs={crumbs} />
 
-          <div className="mt-7 grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,28rem)] lg:items-start lg:gap-16">
+          <div className="mt-7 grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] lg:items-start lg:gap-16">
             <div>
               <h1 className="text-display-2 text-ink-primary">
                 A Firm of Accountants and Business Advisors
@@ -116,13 +116,41 @@ export default function AboutPage() {
                 Talk to Us
                 <ArrowRight aria-hidden="true" className="size-4" />
               </Button>
+
+              {/* What "a complete suite" actually means, listed rather than
+                  claimed — and the content the band under the button was
+                  missing beside a portrait half again as tall as the copy. */}
+              <div className="mt-9 border-t border-line pt-7">
+                <p className="text-xs font-semibold text-gold-800">
+                  What we cover
+                </p>
+                <ul className="mt-4 grid gap-x-8 gap-y-2.5 sm:grid-cols-2">
+                  {[
+                    "Accounting, bookkeeping and month-end close",
+                    "Business tax preparation and compliance",
+                    "Audit and assurance for privately held companies",
+                    "Consulting, risk advisory and analytics",
+                  ].map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-start gap-2.5 text-sm text-ink-secondary"
+                    >
+                      <CircleCheck
+                        aria-hidden="true"
+                        className="mt-0.5 size-4 shrink-0 text-success"
+                      />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
             <PortraitScene
               portrait="partner"
               tone="lilac"
               priority
-              sizes="(min-width: 1024px) 28rem, (min-width: 640px) 26rem, 90vw"
+              sizes="(min-width: 1024px) 24rem, (min-width: 640px) 26rem, 90vw"
               cards={
                 <>
                   <FloatCard

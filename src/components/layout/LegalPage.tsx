@@ -21,19 +21,26 @@ export function LegalPage({
 }) {
   return (
     <>
+      {/* A narrow, centred column rather than a full-width one. These pages are
+          a single run of prose with nothing beside it, and in the page-width
+          container the text sat in the left half with the right half empty.
+          Centring the reading measure is what a document looks like. */}
       <section className="border-b border-line bg-white">
-        <Container className="pb-12 pt-8 sm:pb-16 sm:pt-10 lg:pb-22 lg:pt-12">
+        <Container
+          width="narrow"
+          className="pb-12 pt-8 sm:pb-16 sm:pt-10 lg:pb-22 lg:pt-12"
+        >
           <Breadcrumbs crumbs={crumbs} />
-          <div className="mt-8 max-w-3xl">
+          <div className="mt-8">
             <h1 className="text-h1 text-ink-primary">{title}</h1>
-            <p className="measure mt-5 text-lead text-ink-secondary">{intro}</p>
+            <p className="mt-5 text-lead text-ink-secondary">{intro}</p>
             <p className="mt-6 text-sm text-ink-muted">Last updated: {updated}</p>
           </div>
         </Container>
       </section>
 
       <Section tone="white">
-        <Container>
+        <Container width="narrow">
           <Prose>{children}</Prose>
         </Container>
       </Section>

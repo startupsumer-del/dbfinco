@@ -37,7 +37,7 @@ export function PageBanner({
         <div
           className={
             visual
-              ? "mt-7 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] lg:items-start lg:gap-14"
+              ? "mt-7 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,21rem)] lg:items-start lg:gap-14"
               : "mt-8 max-w-3xl"
           }
         >
