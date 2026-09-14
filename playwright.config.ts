@@ -9,13 +9,21 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
   workers: process.env.CI ? 2 : 4,
-  reporter: process.env.CI ? "line" : [["list"]],
+  // On CI the line reporter keeps the log readable while the HTML report is
+  // written to disk for the workflow to upload — a failure there is otherwise
+  // a stack trace with no way to see what the page actually looked like.
+  reporter: process.env.CI
+    ? [["line"], ["html", { open: "never" }]]
+    : [["list"]],
   timeout: 45_000,
   expect: { timeout: 10_000 },
   use: {
     baseURL,
-    trace: "off",
-    screenshot: "off",
+    // Local runs stay fast; CI keeps a trace and a screenshot for anything
+    // that fails, which is the only chance to understand a failure that does
+    // not reproduce on a developer's machine.
+    trace: process.env.CI ? "retain-on-failure" : "off",
+    screenshot: process.env.CI ? "only-on-failure" : "off",
   },
   projects: [
     {

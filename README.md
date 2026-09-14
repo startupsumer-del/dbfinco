@@ -224,6 +224,26 @@ runs against the production build rather than dev.
 | `layout.spec.ts` | 3 | No heading pushed down by the column beside it; the contact summary sticks |
 | `reporting.spec.ts` | 3 | Every page showing demo figures says so; the forecast is labelled an estimate; the payment journey names the provider as the party that settles |
 
+### Continuous integration
+
+`.github/workflows/ci.yml` runs the same four checks on every push to `main`
+and every pull request, in the same order a contributor runs them:
+
+```
+npm ci · npm run typecheck · npm run lint · npm run build · npm run test
+```
+
+`npm ci` rather than `npm install`, so a lockfile that has drifted fails the
+run rather than being silently reconciled. The Node version comes from
+`.nvmrc`, so CI and a developer's machine cannot diverge. Only Chromium is
+installed — the suite declares one project, and pulling Firefox and WebKit
+would add minutes per run for browsers nothing tests in.
+
+On CI the suite also keeps a trace and a screenshot for anything that fails
+and writes an HTML report, which the workflow uploads. A CI failure that does
+not reproduce locally is otherwise a stack trace with no way to see what the
+page looked like.
+
 > **Browser note.** If Playwright cannot find its browser, set
 > `PLAYWRIGHT_CHROMIUM_PATH` to a Chromium binary; the config uses it when
 > present. Otherwise run `npm run test:install`.

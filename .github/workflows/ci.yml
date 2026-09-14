@@ -1,0 +1,65 @@
+name: CI
+
+# Every push to main and every pull request runs the same four checks a
+# contributor runs locally, in the same order, so a red tick here means the
+# same thing as a red terminal.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# A second push to the same branch cancels the run still in flight. The older
+# result is about to be stale anyway, and Playwright is the slow part.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          # Read from .nvmrc so CI and a developer's machine cannot drift.
+          node-version-file: .nvmrc
+          cache: npm
+
+      # `npm ci` rather than `npm install`: it installs exactly what the
+      # lockfile says and fails if the two have diverged, which is the whole
+      # point of running this on a clean machine.
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+      # Only Chromium — the suite declares one project, so pulling Firefox and
+      # WebKit would add minutes to every run for browsers nothing tests in.
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      # The Playwright config starts `next start` itself, so this runs against
+      # the production build just made rather than against a dev server.
+      - name: Test
+        run: npm run test
+
+      - name: Upload report on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7
