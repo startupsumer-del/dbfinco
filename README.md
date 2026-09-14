@@ -112,7 +112,7 @@ src/
 ├── lib/                chart maths, SEO builders, hooks, validation schema
 └── types/              Content type definitions
 
-tests/                  12 suites — see Testing below
+tests/                  14 suites — see Testing below
 docs/                   Research, audits, design system, QA records
 ```
 
@@ -207,7 +207,7 @@ npm run test
 The Playwright config starts `next start` automatically, so the suite always
 runs against the production build rather than dev.
 
-**337 tests.** Every suite runs against the production build.
+**350 tests.** Every suite runs against the production build.
 
 | Suite | Tests | Covers |
 |---|---|---|
@@ -223,6 +223,8 @@ runs against the production build rather than dev.
 | `mobile-nav.spec.ts` | 5 | The drawer's real geometry, not just its accessibility tree |
 | `layout.spec.ts` | 3 | No heading pushed down by the column beside it; the contact summary sticks |
 | `reporting.spec.ts` | 3 | Every page showing demo figures says so; the forecast is labelled an estimate; the payment journey names the provider as the party that settles |
+| `keyboard.spec.ts` | 6 | The tab order itself — no focus stop without a box, nothing focusable inside `aria-hidden`, the skip link first, and the other breakpoint's navigation kept out of the order |
+| `contact-api.spec.ts` | 7 | The endpoint when the caller is not the form: malformed bodies, schema failures, oversized payloads, the honeypot, and both rate-limit budgets |
 
 ### Continuous integration
 
