@@ -395,8 +395,10 @@ failing contrast on their own tinted backgrounds — see
 ## Documentation
 
 These are the record of how the site was built. `design-system.md` and
-`assets.md` stay current; the rest describe decisions made during the build
-and are not updated as the site changes.
+`assets.md` describe the site as it stands and are kept current;
+`content-conflicts.md` carries the open items for the owner, one of which
+should be settled before launch. The rest describe decisions made during the
+build and are not updated as the site changes.
 
 | Document | Contents |
 |---|---|

@@ -2,19 +2,33 @@
 
 ## Summary
 
-**Apart from the official DB FinCo logo supplied by the owner, this site uses
-no external image assets, no stock photography, and no third-party artwork of
-any kind.** Every other visual is generated in code.
+The site uses three kinds of image asset, and every other visual is generated
+in code:
 
-That is a deliberate decision rather than a shortcut:
+1. **DB FinCo's own brand artwork**, supplied by the owner.
+2. **Thirteen photographic portraits**, supplied by the owner during the
+   build, used decoratively.
+3. **Fourteen third-party brand logos** — accounting platforms, card networks
+   and banks — supplied by the owner, displayed to show what a customer can
+   pay with and what software the firm works in.
 
-- Stock photography of "our team" would imply a claim about DB FinCo's people
-  that cannot be verified.
+> **This section previously said the opposite.** Until the portraits and logos
+> were added it read "no external image assets, no stock photography, and no
+> third-party artwork of any kind", and specifically that no card-network or
+> bank logo was displayed. Both statements were true when written and are not
+> true now. Anyone who relied on the old wording for a licensing review should
+> re-read this file.
+
+What still holds:
+
 - No competitor screenshot, illustration or dashboard image is used anywhere.
-- No card-network, bank or payment-processor logo is displayed, because
-  displaying one would imply a partnership that has not been confirmed.
-- Vector visuals stay crisp at any resolution, carry zero image-loading cost,
-  contribute no layout shift, and inherit the design tokens directly.
+- No visual asserts a claim about DB FinCo that cannot be verified. The
+  portraits carry an empty `alt`, are never captioned with a name or a role,
+  and nowhere does the site say they depict its staff.
+- Every surface showing a third-party mark carries a caveat that it implies no
+  partnership — see the licensing position below.
+- The remaining visuals are vector or code-drawn, so they stay crisp at any
+  resolution, contribute no layout shift, and inherit the design tokens.
 
 ## Inventory
 
@@ -33,6 +47,10 @@ That is a deliberate decision rather than a shortcut:
 | Financial charts | `src/components/charts/*` | Inline SVG | Hand-built from `src/content/demo-financials.ts` |
 | Payment card, terminal, checkout, settlement panel | `src/components/merchant/PaymentVisuals.tsx` | JSX + CSS + inline SVG | Drawn from scratch, deliberately unbranded |
 | Close checklist, filing calendar, advisory, risk register, audit evidence | `src/components/sections/StoryVisuals.tsx`, `ServiceVisuals.tsx` | JSX + CSS | Drawn from scratch |
+| **Photographic portraits (13)** | `public/imagery/advisor-*.webp` | WebP, ~1.5 MB total | **Supplied by the owner during the build.** Rendered through `next/image` with an empty `alt`, a blur placeholder and a per-placement `sizes` |
+| **Accounting platform logos (5)** | `public/logos/{quickbooks,xero,zoho-books,gusto,sage}.webp` | WebP, ~136 KB for all 14 | **Supplied by the owner.** Each is the official mark, trimmed of surrounding canvas and scaled proportionally — never recoloured, redrawn or stretched |
+| **Card network logos (4)** | `public/logos/{visa,mastercard,american-express,discover}.webp` | WebP | As above |
+| **Bank logos (5)** | `public/logos/{chase,bank-of-america,wells-fargo,citi,us-bank}.webp` | WebP | As above |
 
 ## Fonts
 
@@ -71,17 +89,45 @@ open-licensed:
 - Brand assets: DB FinCo's own. The logo was supplied by the owner; the vector versions are derived from it (see [`logo-restoration.md`](./logo-restoration.md)).
 - Icons: [Lucide](https://lucide.dev), ISC License.
 - Fonts: SIL Open Font License 1.1.
-- All other visuals: authored for this project.
+- Code-drawn visuals: authored for this project.
 
 No asset was scraped, copied or adapted from a competitor or reference site.
 
-## If photography is added later
+### Third-party marks — two items for the owner
 
-Should DB FinCo wish to add imagery, the recommendation is:
+The fourteen logos are the trademarks of their respective owners. The site
+displays them to identify what a customer can pay with and what software the
+firm works in, which is the ordinary nominative use of a mark, and every
+surface that shows one states that it implies no partnership, endorsement or
+certification — `merchant-services/page.tsx`, `PaymentJourney.tsx` and
+`PlatformStrip.tsx` each carry that wording. No mark is recoloured, redrawn,
+distorted, or placed so as to suggest a relationship.
+
+That is the correct posture, but it is not the same as clearance. Two things
+only the owner can settle:
+
+1. **Trademark use.** Several of these companies publish brand-usage
+   guidelines governing how third parties may display their marks. The owner
+   should confirm the use here is consistent with them.
+2. **Portrait rights.** The thirteen portraits were supplied during the build
+   with no stated provenance or licence. If they are stock, generated, or
+   photographs of identifiable people, the owner needs the right to use them
+   commercially — and, for identifiable people, a model release. The build
+   recorded no licence because none was provided.
+
+Neither is a defect in the code. Both are facts the build could not verify,
+and they are listed alongside the other open items in
+[`content-conflicts.md`](./content-conflicts.md).
+
+## If more photography is added
+
+The thirteen portraits now in use are decorative. Should DB FinCo add further
+imagery, the recommendation is unchanged:
 
 1. **Authentic photography of the actual team and office** is worth
    substantially more than stock. The site's credibility rests on being
-   verifiably real.
+   verifiably real, and it is the one kind of image that could carry a name
+   and a role rather than an empty `alt`.
 2. If stock is used, license it properly, record the source and licence in
    this file, and avoid the generic "smiling professionals around a laptop"
    register that reads as filler.

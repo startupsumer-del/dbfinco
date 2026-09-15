@@ -164,6 +164,8 @@ and none of them blocks deployment.
 | 4 | **Testimonials and client references** | None used | No testimonial, rating, review score, client count or logo appears, because none was verifiable. Owner-supplied, attributable testimonials could be added |
 | 5 | ~~**Saturday hours / after-hours contact**~~ — no longer applicable | Business hours were removed from the site at the owner's instruction, and `site.contact.hours` no longer exists | Nothing. Published hours would have to be reintroduced deliberately, as a new decision |
 | 6 | **Live chat** | Not implemented | The source site advertised "initiate a chat with experts" but no provider could be identified. A dead chat button is worse than none |
+| 7 | **Rights to the supplied portraits** | Thirteen photographs supplied during the build, used decoratively with an empty `alt` and never captioned as staff | The build recorded no licence because none was provided. If they are stock, generated, or photographs of identifiable people, the owner needs commercial rights — and a model release for identifiable people. See [`assets.md`](./assets.md) |
+| 8 | **Third-party trademark use** | Fourteen logos displayed, unaltered, each with a stated non-partnership caveat | This is ordinary nominative use and the caveats are in place, but several of these companies publish brand-usage guidelines. The owner should confirm the use is consistent with them |
 
 ---
 
