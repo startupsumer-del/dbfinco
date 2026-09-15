@@ -404,7 +404,7 @@ and are not updated as the site changes.
 | [`docs/dbfinco-site-map-current.md`](docs/dbfinco-site-map-current.md) | Existing architecture |
 | [`docs/dbfinco-site-map-new.md`](docs/dbfinco-site-map-new.md) | New architecture and the reasoning behind it |
 | [`docs/content-migration-matrix.md`](docs/content-migration-matrix.md) | Every source content item mapped to a destination or a documented exclusion |
-| [`docs/content-conflicts.md`](docs/content-conflicts.md) | Conflicting facts, how each was resolved, and open items for the owner |
+| [`docs/content-conflicts.md`](docs/content-conflicts.md) | Conflicting facts, how each was resolved, and open items for the owner — **including one to settle before launch: item 3, professional credentials** |
 | [`docs/current-site-qa-audit.md`](docs/current-site-qa-audit.md) | QA audit of the existing site |
 | [`docs/reference-design-research.md`](docs/reference-design-research.md) | Design principles extracted from the reference sites, and what was rejected |
 | [`docs/design-system.md`](docs/design-system.md) | Tokens, typography, layout, components, motion |

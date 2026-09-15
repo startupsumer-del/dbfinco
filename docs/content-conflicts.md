@@ -152,14 +152,56 @@ scope and it can be added as `/services/business-formation`.
 
 ## Open items requiring owner confirmation
 
-Nothing below blocks deployment. Each is an opportunity to strengthen the
-site with facts that could not be verified during the build.
+Item 3 should be settled before launch. The rest are opportunities to
+strengthen the site with facts that could not be verified during the build,
+and none of them blocks deployment.
 
 | # | Item | Current state | What would change |
 |---|---|---|---|
 | 1 | **Payment provider relationships** | No processor, gateway or acquiring bank is named on `/merchant-services` | If DB FinCo has confirmed provider relationships, they can be named accurately, with correct taxonomy (a card network is not a bank; a payment platform is not a bank) |
 | 2 | **Additional social profiles** | Only Facebook, which the owner confirmed | No Instagram, LinkedIn, X or YouTube appears, because none could be verified. Verified handles can be added to `site.social` in one edit |
-| 3 | **Professional credentials** | No CPA licence, registration or certification is claimed anywhere | If DB FinCo holds CPA licences or state registrations, stating them would materially strengthen the assurance pages |
+| 3 | **Professional credentials** — settle before launch | No CPA licence, registration or certification is claimed anywhere, while the site does offer work that generally requires one. See the note below | Either the credentials are stated, or the affected copy is reworked to match what the firm is authorised to do |
 | 4 | **Testimonials and client references** | None used | No testimonial, rating, review score, client count or logo appears, because none was verifiable. Owner-supplied, attributable testimonials could be added |
-| 5 | **Saturday hours / after-hours contact** | Mon–Fri 9:00 AM – 6:30 PM only, as verified | If other hours apply, one edit to `site.contact.hours` updates the footer, contact page, CTA blocks and structured data together |
+| 5 | ~~**Saturday hours / after-hours contact**~~ — no longer applicable | Business hours were removed from the site at the owner's instruction, and `site.contact.hours` no longer exists | Nothing. Published hours would have to be reintroduced deliberately, as a new decision |
 | 6 | **Live chat** | Not implemented | The source site advertised "initiate a chat with experts" but no provider could be identified. A dead chat button is worse than none |
+
+---
+
+### Note on item 3 — professional credentials
+
+Raised again during the pre-handover content review, because the original
+entry framed this only as an upside. It is sharper than that.
+
+The site does not state a licence status anywhere — not in the footer, not on
+the disclaimer page, not in the `ProfessionalService` structured data. It
+does, however, offer two things that in the United States generally require
+one:
+
+| Claim | Where |
+|---|---|
+| "An independent opinion on whether your financial statements are fairly presented", and an "Independent auditor's report containing the opinion" | `src/content/audit-services.ts` — the external audit page, and the audit deliverables |
+| "IRS Tax Notice Resolution" and "Responses to tax authority correspondence" | `src/content/pricing.ts` (Enterprise package) and `src/content/services.ts` (tax deliverables) |
+
+Issuing an audit opinion on financial statements is generally restricted to
+licensed CPA firms; in New York a firm performing attest work is normally
+registered with the State Education Department and subject to peer review.
+Representing a taxpayer before the IRS — as distinct from preparing a return,
+which requires a PTIN — generally requires a CPA, enrolled agent or attorney
+under Circular 230. This is the general shape of the rules and not advice on
+them; the firm's own professional adviser should confirm what applies.
+
+Two directions follow, and they point opposite ways:
+
+- **If the firm holds the credentials**, the site is under-selling itself.
+  Licence status is among the strongest trust signals an accounting firm has.
+  It belongs in the footer, in the disclaimer, and in the structured data, and
+  it would sit naturally in `src/config/site.ts` alongside every other
+  business fact.
+- **If it does not**, the audit pages and the IRS-resolution line describe
+  work the firm may not be authorised to perform, and the copy needs reworking
+  to match what it actually does.
+
+Nothing was changed either way, because the answer depends on facts the build
+could not verify.
+
+**Action needed:** owner to confirm which case applies.
